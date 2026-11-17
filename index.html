@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hospitality Landing Page Generator</title>
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js" onload="initPaddle()"></script>
+<script>
+  function initPaddle() {
+    Paddle.Initialize({
+      token: 'live_3506df6f6808f630825c1d97468'
+    });
+  }
+</script>
 <style>
   :root {
     --bg: #0f0f0f;
@@ -294,9 +302,9 @@
       </div>
     </div>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;">
-      <a href="https://checkout.paddle.com/checkout?items[0][priceId]=pri_01m7kxr0g1d4akp00xtpbfrq2z&items[0][quantity]=1" target="_blank" class="btn-upgrade" style="font-size:0.82rem;padding:11px 22px;">Starter $19/mo →</a>
-      <a href="https://checkout.paddle.com/checkout?items[0][priceId]=pri_01m7kxw9p15jxevpa58h1xs1fc&items[0][quantity]=1" target="_blank" class="btn-upgrade" style="font-size:0.82rem;padding:11px 22px;">Pro $49/mo →</a>
-      <a href="https://checkout.paddle.com/checkout?items[0][priceId]=pri_01m7kxz0m9tmc8dyv8x97kgwrw&items[0][quantity]=1" target="_blank" class="btn-upgrade" style="font-size:0.82rem;padding:11px 22px;">Agency $99/mo →</a>
+      <button onclick="openCheckout('pri_01m7kxr0g1d4akp00xtpbfrq2z')" class="btn-upgrade" style="font-size:0.82rem;padding:11px 22px;border:none;cursor:pointer;">Starter $19/mo →</button>
+      <button onclick="openCheckout('pri_01m7kxw9p15jxevpa58h1xs1fc')" class="btn-upgrade" style="font-size:0.82rem;padding:11px 22px;border:none;cursor:pointer;">Pro $49/mo →</button>
+      <button onclick="openCheckout('pri_01m7kxz0m9tmc8dyv8x97kgwrw')" class="btn-upgrade" style="font-size:0.82rem;padding:11px 22px;border:none;cursor:pointer;">Agency $99/mo →</button>
     </div>
     <div class="license-row">
       <input type="text" id="licenseKey" placeholder="Have a license key? Enter it here…" />
@@ -343,6 +351,12 @@
 </div>
 
 <script>
+  function openCheckout(priceId) {
+    Paddle.Checkout.open({
+      items: [{ priceId: priceId, quantity: 1 }]
+    });
+  }
+
   const FREE_LIMIT = 3;
   const LS_COUNT = 'hlpg_count';
   const LS_PRO = 'hlpg_pro';
