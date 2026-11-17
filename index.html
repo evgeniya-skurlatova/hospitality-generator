@@ -8,8 +8,9 @@
 <meta name="keywords" content="hospitality landing page generator, hotel website builder, villa landing page, resort marketing, AI hotel page, GPT hospitality">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://hospitality-generator.vercel.app/">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAzMiAzMic+PHJlY3Qgd2lkdGg9JzMyJyBoZWlnaHQ9JzMyJyByeD0nOCcgZmlsbD0nIzBhMGEwYScvPjxwYXRoIGQ9J004IDIydi03YTIgMiAwIDAxMi0yaDE2YTIgMiAwIDAxMiAydjcnIHN0cm9rZT0nI2M5YTk2ZScgc3Ryb2tlLXdpZHRoPScxLjUnIGZpbGw9J25vbmUnIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcvPjxwYXRoIGQ9J004IDE2aDE2JyBzdHJva2U9JyNjOWE5NmUnIHN0cm9rZS13aWR0aD0nMS41JyBzdHJva2UtbGluZWNhcD0ncm91bmQnLz48cGF0aCBkPSdNMTIgMTZ2LTRhMSAxIDAgMDExLTFoM2ExIDEgMCAwMTEgMXY0JyBzdHJva2U9JyNjOWE5NmUnIHN0cm9rZS13aWR0aD0nMS41JyBmaWxsPSdub25lJyBzdHJva2UtbGluZWNhcD0ncm91bmQnLz48cGF0aCBkPSdNMTYgMTAgTDE2IDgnIHN0cm9rZT0nI2M5YTk2ZScgc3Ryb2tlLXdpZHRoPScxLjUnIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcvPjwvc3ZnPg==">
-<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -204,6 +205,8 @@ select option { background: #141414; }
   font-size: 0.8rem; cursor: pointer; font-family: sans-serif;
   transition: all 0.15s; user-select: none; color: var(--muted);
   display: flex; align-items: center; gap: 7px;
+  background: transparent; appearance: none; -webkit-appearance: none;
+  line-height: 1.4;
 }
 .chip .chip-icon { font-size: 0.95rem; }
 .chip:hover { border-color: rgba(201,169,110,0.4); color: var(--text); }
@@ -523,13 +526,13 @@ select option { background: #141414; }
   <div class="card">
     <div class="section-label">Style &amp; Vibe</div>
     <div class="chips" id="styleChips" role="group" aria-label="Style &amp; Vibe">
-      <span class="chip" data-val="luxury" role="button" tabindex="0" aria-pressed="false">Luxury</span>
-      <span class="chip" data-val="eco / wellness" role="button" tabindex="0" aria-pressed="false">Eco / Wellness</span>
-      <span class="chip" data-val="family-friendly" role="button" tabindex="0" aria-pressed="false">Family</span>
-      <span class="chip" data-val="romantic couples" role="button" tabindex="0" aria-pressed="false">Romantic</span>
-      <span class="chip" data-val="adventure" role="button" tabindex="0" aria-pressed="false">Adventure</span>
-      <span class="chip" data-val="minimalist design" role="button" tabindex="0" aria-pressed="false">Minimalist</span>
-      <span class="chip" data-val="boutique artsy" role="button" tabindex="0" aria-pressed="false">Boutique / Artsy</span>
+      <button type="button" class="chip" data-val="luxury" aria-pressed="false">Luxury</button>
+      <button type="button" class="chip" data-val="eco / wellness" aria-pressed="false">Eco / Wellness</button>
+      <button type="button" class="chip" data-val="family-friendly" aria-pressed="false">Family</button>
+      <button type="button" class="chip" data-val="romantic couples" aria-pressed="false">Romantic</button>
+      <button type="button" class="chip" data-val="adventure" aria-pressed="false">Adventure</button>
+      <button type="button" class="chip" data-val="minimalist design" aria-pressed="false">Minimalist</button>
+      <button type="button" class="chip" data-val="boutique artsy" aria-pressed="false">Boutique / Artsy</button>
     </div>
   </div>
 
@@ -537,12 +540,12 @@ select option { background: #141414; }
   <div class="card">
     <div class="section-label">Target Audience</div>
     <div class="chips" id="audienceChips" role="group" aria-label="Target Audience">
-      <span class="chip" data-val="honeymooners" role="button" tabindex="0" aria-pressed="false">Honeymooners</span>
-      <span class="chip" data-val="families with children" role="button" tabindex="0" aria-pressed="false">Families</span>
-      <span class="chip" data-val="solo travelers" role="button" tabindex="0" aria-pressed="false">Solo Travelers</span>
-      <span class="chip" data-val="digital nomads" role="button" tabindex="0" aria-pressed="false">Digital Nomads</span>
-      <span class="chip" data-val="corporate retreats" role="button" tabindex="0" aria-pressed="false">Corporate</span>
-      <span class="chip" data-val="wellness seekers" role="button" tabindex="0" aria-pressed="false">Wellness Seekers</span>
+      <button type="button" class="chip" data-val="honeymooners" aria-pressed="false">Honeymooners</button>
+      <button type="button" class="chip" data-val="families with children" aria-pressed="false">Families</button>
+      <button type="button" class="chip" data-val="solo travelers" aria-pressed="false">Solo Travelers</button>
+      <button type="button" class="chip" data-val="digital nomads" aria-pressed="false">Digital Nomads</button>
+      <button type="button" class="chip" data-val="corporate retreats" aria-pressed="false">Corporate</button>
+      <button type="button" class="chip" data-val="wellness seekers" aria-pressed="false">Wellness Seekers</button>
     </div>
   </div>
 
