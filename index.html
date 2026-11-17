@@ -968,190 +968,118 @@ PROPERTY BRIEF:
 - Primary CTA text: "${cta}"
 - Page language: ${lang}
 
-IMAGES — use these exact URLs verbatim, do not alter them:
-- Hero: ${heroImg}
-- Room 1: ${roomImg1}
-- Room 2: ${roomImg2}
-- Room 3: ${roomImg3}
-- Strip 4: ${roomImg4}
-
 ════════════════════════════════
 RULE 1 — OUTPUT FORMAT
 ════════════════════════════════
-Output ONLY the raw HTML document. Start with <!DOCTYPE html>. No markdown, no code fences, no explanations. First character must be < and last must be >.
+Output ONLY the raw HTML. First character: <!DOCTYPE html>. Last character: >. No markdown, no code fences, no explanations before or after.
 
 ════════════════════════════════
-RULE 2 — TECH STACK (MANDATORY)
+RULE 2 — TECH STACK
 ════════════════════════════════
-Load Tailwind CSS via CDN script tag: src="https://cdn.tailwindcss.com"
-Configure Tailwind in an inline script block with custom theme extending colors and fonts.
-Google Fonts via <link>: Cormorant Garamond (serif editorial) + Plus Jakarta Sans (body).
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-Add a small <style> block ONLY for: .reveal animation, custom scrollbar, .img-zoom hover, and @keyframes.
-Use Tailwind utility classes for ALL layout, spacing, colors, and typography. No inline style="" blocks except for background-image on hero.
+Load Tailwind CSS CDN, Google Fonts (Cormorant Garamond + Plus Jakarta Sans), and configure tailwind.config exactly like this:
+tailwind.config = { theme: { extend: { colors: { brand: 'BRAND_COLOR', surface: 'SURFACE_COLOR', txt: 'TEXT_COLOR', muted: 'MUTED_COLOR', accent: 'ACCENT_COLOR', accent2: 'ACCENT2_COLOR' }, fontFamily: { serif: ['"Cormorant Garamond"', 'Georgia', 'serif'], sans: ['"Plus Jakarta Sans"', 'sans-serif'] }, boxShadow: { soft: '0 24px 60px -15px rgba(0,0,0,0.08)', floating: '0 32px 75px -12px rgba(0,0,0,0.22)' } } } }
+Replace BRAND/SURFACE/TEXT/MUTED/ACCENT/ACCENT2 with the hex values from RULE 3 below.
+Add a style block for ONLY: .reveal, .reveal.visible, .img-zoom, .group:hover .img-zoom, @keyframes hotspotPulse, .hotspot-ring, ::-webkit-scrollbar.
 
 ════════════════════════════════
-RULE 3 — COLOR PALETTE (based on style: "${style}")
+RULE 3 — COLOR PALETTE for style "${style}"
 ════════════════════════════════
-Map these to Tailwind config colors for the "${style}" style:
-- luxury    → bg:#0a0f1e  surface:#111827  text:#f0ebe0  muted:#8a8070  accent:#c9a96e
-- eco       → bg:#f4f1eb  surface:#eae5d8  text:#2c2c2c  muted:#6b6559  accent:#5a7a5f
-- wellness  → bg:#f9f6f1  surface:#edf2ed  text:#2c2c2c  muted:#7a6e62  accent:#8b7355
-- romantic  → bg:#faf5f0  surface:#f0e8e0  text:#2a1a1a  muted:#8a6a6a  accent:#b87a7a
-- minimalist→ bg:#ffffff  surface:#f7f7f5  text:#111111  muted:#666666  accent:#1a1a1a
-- adventure → bg:#0f1a0f  surface:#1a2a1a  text:#e8f0e8  muted:#7a9070  accent:#d4a843
-- boutique  → bg:#f2ede4  surface:#e8e0d4  text:#1a1a1a  muted:#6a6055  accent:#2d5f5f
-- artsy     → bg:#1a1218  surface:#231820  text:#f5f0eb  muted:#8a7a72  accent:#c47b5a
-Register these in tailwind.config as: colors.brand, colors.surface, colors.txt, colors.muted, colors.accent.
-Light styles (eco, wellness, romantic, minimalist, boutique): dark nav text, light hero overlay.
-Dark styles (luxury, adventure, artsy): white nav text, dark hero overlay.
+- luxury    → brand:#0a0f1e  surface:#111827  txt:#f0ebe0  muted:#8a8070  accent:#c9a96e  accent2:#a07840
+- eco       → brand:#f4f1eb  surface:#eae5d8  txt:#2c2c2c  muted:#6b6559  accent:#5a7a5f  accent2:#3d5c41
+- wellness  → brand:#FBF9F5  surface:#F3EFE8  txt:#1C1917  muted:#78716C  accent:#B5794B  accent2:#CA9366
+- romantic  → brand:#faf5f0  surface:#f0e8e0  txt:#2a1a1a  muted:#8a6a6a  accent:#b87a7a  accent2:#8f5555
+- minimalist→ brand:#ffffff  surface:#f7f7f5  txt:#111111  muted:#666666  accent:#1a1a1a  accent2:#444444
+- adventure → brand:#0f1a0f  surface:#1a2a1a  txt:#e8f0e8  muted:#7a9070  accent:#d4a843  accent2:#a87e28
+- boutique  → brand:#f2ede4  surface:#e8e0d4  txt:#1a1a1a  muted:#6a6055  accent:#2d5f5f  accent2:#1a4040
+- artsy     → brand:#1a1218  surface:#231820  txt:#f5f0eb  muted:#8a7a72  accent:#c47b5a  accent2:#9a5a3a
 
 ════════════════════════════════
-RULE 4 — TYPOGRAPHY SYSTEM
+RULE 4 — IMAGES
 ════════════════════════════════
-- Serif headings: font-family Cormorant Garamond. Use class "font-serif" after extending Tailwind fontFamily.
-- Body: Plus Jakarta Sans. Use class "font-sans".
-- Editorial display headings: text-5xl sm:text-6xl lg:text-7xl font-serif font-normal leading-tight tracking-tight
-- Section eyebrows: text-xs uppercase tracking-widest font-sans font-semibold text-accent
-- Body copy: text-base sm:text-lg font-sans font-light leading-relaxed text-muted
+HERO — use this exact src: ${heroImg}
+Place as: <img src="${heroImg}" loading="eager" alt="..." class="absolute inset-0 w-full h-full object-cover">
 
-════════════════════════════════
-RULE 5 — IMAGES (MANDATORY — copy these URLs verbatim into src attributes)
-════════════════════════════════
-HERO IMAGE URL: ${heroImg}
-ROOM IMAGE 1 URL: ${roomImg1}
-ROOM IMAGE 2 URL: ${roomImg2}
-ROOM IMAGE 3 URL: ${roomImg3}
-STRIP IMAGE 4 URL: ${roomImg4}
-
-CRITICAL IMAGE RULES:
-- Every <img> must have src set to the EXACT URL above — do NOT use placeholder text, do NOT use a path, do NOT use a local filename
-- Hero <img>: src="${heroImg}" loading="eager" class="absolute inset-0 w-full h-full object-cover" alt="property exterior"
-- Room cards: src set to ROOM IMAGE 1/2/3 URL respectively
-- Photo strip: 4 imgs using HERO, ROOM 1, ROOM 2, STRIP 4 URLs
-- NO onerror fallback — if you add one it will hide the real photo
+For ROOM CARDS and DECORATIVE IMAGES — pick curated Unsplash IDs (use different ones for each card):
+Bedroom/Suite:
+  1618773928121-c32242e63f39 · 1582719478250-c89cae4dc85b · 1631049307264-da0ec9d70304
+  1590490360182-c33d57733427 · 1566665797739-1674de7a421a · 1566073771259-6a8506099945
+  1584622650111-993a426fbf0a · 1631049552240-59a8ad4b228f
+Living/Lounge:
+  1600607687939-ce8a6c25118c · 1600596542815-ffad4c1539a9 · 1613490493576-7fde63acd811
+Outdoor/Pool:
+  1540541338287-41700207dee6 · 1512917774080-9991f1c4c750 · 1537953773345-d172ccf13cf1
+Format: https://images.unsplash.com/photo-{ID}?auto=format&fit=crop&w=1100&q=85
+NEVER use placeholder.co, NEVER use picsum, NEVER use 2200px for room cards.
 
 ════════════════════════════════
-RULE 6 — PAGE SECTIONS (build all in this order)
+RULE 5 — ALL 10 SECTIONS (build in this exact order)
 ════════════════════════════════
 
-A) NAVIGATION — fixed top-0 inset-x-0 z-50. Starts transparent; JS adds bg-brand/95 backdrop-blur shadow on scroll.
-   Left: property name in font-serif text-2xl tracking-wider. Right: desktop anchor links + Book CTA button (rounded-full, border border-accent, hover:bg-accent hover:text-brand transition).
-   Include mobile hamburger menu that toggles a dropdown panel.
+A) NAVIGATION — fixed top-0 inset-x-0 z-40. Transparent start; on scroll JS adds bg-brand/95 backdrop-blur shadow. Left: 2-letter monogram circle (w-9 h-9 rounded-full border border-accent flex items-center justify-center font-serif text-sm text-accent) + property name serif text-xl + tiny subtitle text-muted text-xs. Right: anchor links (hidden mobile) + "Reserve" CTA rounded-full border border-accent hover:bg-accent + hamburger button. Mobile drawer: absolute top-full inset-x-0 rounded-2xl bg-brand/98 backdrop-blur p-6 with anchor links stacked.
 
-B) HERO — min-h-screen relative overflow-hidden flex flex-col justify-between.
-   Full-bleed background: <img src="${heroImg}" loading="eager" class="absolute inset-0 w-full h-full object-cover" alt="...">
-   Two gradient overlays for depth (from-brand/60 via-transparent to-brand/70, plus a lateral warm overlay).
-   Content (relative z-10, max-w-7xl mx-auto w-full): eyebrow location tag, then large serif headline (the property's marketing tagline or name — NEVER a quote), italic subtitle, two CTA buttons (primary filled + ghost outline), both rounded-full.
-   CRITICAL: Hero heading must NOT start with a quotation mark. It is the property name or tagline, NOT a guest review.
-   Below content: a floating quick-availability bar (check-in date, check-out date, guests select, CTA button) with rounded-2xl bg-brand/95 backdrop-blur shadow-xl.
+B) HERO — min-h-[95vh] flex flex-col justify-between. Hero image absolute inset-0 object-cover. Two gradient overlays (from-brand/65 via-transparent to-brand/75 vertical + from-brand/30 horizontal). Content relative z-10 max-w-7xl mx-auto px-6 pt-32: eyebrow pill with property location text-xs uppercase tracking-widest, large serif h2 text-5xl sm:text-6xl lg:text-7xl font-normal leading-tight (property name or tagline — NEVER a quote, NEVER starts with "), italic serif subtitle, two CTA buttons (filled bg-accent text-brand + ghost outline), both rounded-full.
+   Availability bar: rounded-2xl lg:rounded-full bg-brand/95 backdrop-blur shadow-floating mx-6 mb-8 p-4 lg:px-8. grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4. Fields: Check-In (date input), Check-Out (date input), Guests (select), "Check Availability" button bg-accent text-brand rounded-full.
 
-C) ABOUT — py-24 lg:py-32. 12-column CSS grid: image left (col-span-6) + text right (col-span-6).
-   Image: rounded-3xl overflow-hidden aspect-[4/5] with .img-zoom hover. Decorative offset border frame behind image. Badge overlay on image: "Only X Rooms" or key USP in alabaster card.
-   Text: eyebrow, large serif h2, body paragraph, 3-column stat row (key numbers in accent color, serif, large), animated arrow link.
+C) OVERVIEW — py-24 lg:py-32. grid grid-cols-1 lg:grid-cols-12 gap-16 max-w-7xl mx-auto px-6. Left col lg:col-span-5: eyebrow "01 · Property Overview" text-xs uppercase tracking-widest text-accent, serif h2 text-4xl lg:text-5xl, body paragraph text-muted, 3-stat row (numbers text-4xl font-serif text-accent), CTA button. Right col lg:col-span-7: interactive slideshow — div with rounded-3xl overflow-hidden relative aspect-[4/3]. 3 slide images (use bedroom Unsplash IDs). Prev/next arrow buttons inside image bottom-right. Dot nav below. JS handles slide transitions.
 
-D) ROOM FEATURES — bg-surface py-24 lg:py-32. eyebrow + serif h2 centered. 3-column card grid.
-   Each card: bg-brand rounded-3xl overflow-hidden shadow-soft flex flex-col. Image top (aspect-[4/3]) with .img-zoom + badge pill. Card body: padding p-8, serif room name text-3xl, description text-sm text-muted, amenity strip, Reserve button text-accent.
-   Use room images: ${roomImg1}, ${roomImg2}, ${roomImg3}.
+D) ACCOMMODATIONS — bg-surface py-24 lg:py-32. eyebrow "02 · Accommodations". Serif h2 + body + "View All" button top right of header. ASYMMETRIC grid: grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-7 max-w-7xl mx-auto px-6. First 2 rooms: lg:col-span-3. Remaining: lg:col-span-2. Each room card: bg-brand rounded-3xl overflow-hidden shadow-soft group cursor-pointer. Image div with .img-zoom + category badge pill top-left absolute. Card body p-6 lg:p-8: serif room name text-2xl lg:text-3xl, body text-sm text-muted mt-2, border-t border-muted/15 mt-4 pt-4 flex justify-between: amenity list text-xs text-muted + "Details →" text-accent font-medium. Number of room cards = ${rooms || 3} (minimum 3, max 5). Use DIFFERENT bedroom Unsplash IDs for each room.
 
-E) OUTDOOR / HIGHLIGHTS — py-24 lg:py-32 bg-brand. Full-width editorial image (${heroImg}) with rounded-3xl, aspect-video, .img-zoom. Text overlay or sidebar with key highlights list (checkmark SVG bullets).
+E) LIVING SPACES — py-24 lg:py-32 bg-brand. max-w-7xl mx-auto px-6. Full-bleed image block: rounded-[32px] overflow-hidden relative min-h-[500px] lg:min-h-[600px]. Use living/lounge Unsplash ID (1600607687939-ce8a6c25118c). Two gradient overlays. Glassmorphic card absolute bottom-8 left-8 right-8 lg:right-auto lg:max-w-sm: bg-brand/90 backdrop-blur-xl rounded-3xl p-8. eyebrow "03 · Living Spaces", serif h2 text-3xl, description text-sm text-muted mt-3, feature pills mt-4 flex flex-wrap gap-2 (rounded-full bg-surface/80 px-3 py-1 text-xs text-txt), CTA button mt-6.
 
-F) PHOTO STRIP — PURELY VISUAL, no text, no headings.
-   The <section> itself is the grid: class="grid grid-cols-4 gap-0 w-full" style="height:340px;overflow:hidden"
-   4 direct child divs, each class="overflow-hidden relative": inside each: <img> class="w-full h-full object-cover .img-zoom" alt="...".
-   Images: ${heroImg}, ${roomImg1}, ${roomImg2}, ${roomImg4}.
-   On mobile: grid-cols-2, height 220px each (use responsive Tailwind classes).
-   ZERO wrapper divs between <section> and the 4 image cells.
+F) OUTDOOR & NATURE — py-24 lg:py-32 bg-surface. eyebrow "04 · Outdoor". Serif h2 + body centered max-w-2xl mx-auto px-6 mb-12. Full-width image: rounded-3xl overflow-hidden relative aspect-video max-w-7xl mx-auto mx-6. Use outdoor Unsplash ID (1540541338287-41700207dee6). Two overlays. 3 hotspot annotations: absolute divs with position (top-1/3 left-1/4 etc). Each hotspot: outer div w-8 h-8 rounded-full border-2 border-white/60 flex items-center justify-center + inner div w-3 h-3 rounded-full bg-white + .hotspot-ring div absolute inset-0 rounded-full border border-white/40. Tooltip on hover: absolute bg-brand/90 backdrop-blur rounded-xl px-3 py-2 text-xs text-txt whitespace-nowrap. Below image: grid grid-cols-3 gap-8 max-w-4xl mx-auto px-6 mt-10: numbered features (text-4xl font-serif text-accent + label text-sm text-muted).
 
-G) AMENITIES — bg-surface py-24 lg:py-32. eyebrow + serif h2 centered mb-16. Icon grid: grid grid-cols-5 gap-10 max-w-4xl mx-auto (mobile: grid-cols-3).
-   Each item: text-center. Circle div (w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3) with bg-accent/10. Inside: a real SVG icon (see SVG LIBRARY below).
-   CRITICAL: EVERY amenity circle must contain a DIFFERENT SVG icon from the library below. NEVER put the same icon twice. NEVER use a star SVG for an amenity icon.
-   10 amenities relevant to "${usp}".
+G) AMENITIES — bg-brand py-24 lg:py-32. eyebrow "05 · Amenities" + serif h2 centered mb-16. grid grid-cols-3 sm:grid-cols-5 gap-10 max-w-4xl mx-auto px-6. Each item: text-center. Circle div w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-3 text-accent. Inside: UNIQUE SVG from library. Label text-xs uppercase tracking-widest text-muted. 10 amenities based on "${usp}".
+   SVG LIBRARY (copy verbatim, one per amenity, never duplicate):
+   Pool: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h20M2 17c2-2 4 2 6 0s4-2 6 0 4 2 6 0"/><circle cx="12" cy="7" r="3"/></svg>
+   Wifi: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
+   Spa: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s-8-5.4-8-11a8 8 0 0116 0c0 5.6-8 11-8 11z"/><path d="M12 11c0-2 1.5-4 4-5-1 3-2 4-4 5zM12 11c0-2-1.5-4-4-5 1 3 2 4 4 5z"/></svg>
+   Bed: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20v-8a2 2 0 012-2h16a2 2 0 012 2v8"/><path d="M2 14h20"/><path d="M6 14V9a1 1 0 011-1h4a1 1 0 011 1v5"/></svg>
+   Coffee: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+   Location: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+   Sun: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+   Chef: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 13.87A4 4 0 017.41 6a5.11 5.11 0 019.18 0A4 4 0 0118 13.87V21H6z"/><line x1="6" y1="17" x2="18" y2="17"/></svg>
+   Garden: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12M12 12C12 7 7 4 3 6c3 1 6 3 9 6zM12 12c0-5 5-8 9-6-3 1-6 3-9 6z"/></svg>
+   Person: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+   NEVER use a star SVG for amenities. NEVER duplicate an icon.
 
-   SVG LIBRARY — copy these verbatim, one per amenity:
-   Pool:    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h20M2 17c2-2 4 2 6 0s4-2 6 0 4 2 6 0"/><circle cx="12" cy="7" r="3"/></svg>
-   Wifi:    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
-   Spa:     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s-8-5.4-8-11a8 8 0 0116 0c0 5.6-8 11-8 11z"/><path d="M12 11c0-2 1.5-4 4-5-1 3-2 4-4 5zM12 11c0-2-1.5-4-4-5 1 3 2 4 4 5z"/></svg>
-   Bed:     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20v-8a2 2 0 012-2h16a2 2 0 012 2v8"/><path d="M2 14h20"/><path d="M6 14V9a1 1 0 011-1h4a1 1 0 011 1v5"/></svg>
-   Coffee:  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-   Location:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-   Sun:     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-   Chef:    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 13.87A4 4 0 017.41 6a5.11 5.11 0 019.18 0A4 4 0 0118 13.87V21H6z"/><line x1="6" y1="17" x2="18" y2="17"/></svg>
-   Garden:  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12M12 12C12 7 7 4 3 6c3 1 6 3 9 6zM12 12c0-5 5-8 9-6-3 1-6 3-9 6z"/></svg>
-   Concierge:<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+H) TESTIMONIALS — bg-surface py-24 lg:py-32. eyebrow "06 · Guest Voices" + serif h2 centered. Large card max-w-3xl mx-auto bg-brand rounded-3xl p-10 lg:p-14 shadow-soft. Carousel of 2-3 testimonials with dot buttons below. Each testimonial: decorative large open-quote " text-6xl lg:text-8xl font-serif text-accent leading-none, italic serif blockquote text-xl lg:text-2xl font-normal text-txt mt-2, then flex row mt-6 items-center gap-4: colored-initial-circle avatar (w-12 h-12 rounded-full bg-accent flex items-center justify-center font-bold text-brand text-lg — use FIRST LETTER of guest name, never photo) + div with guest name font-semibold text-sm + country text-muted text-xs, then 5 star SVGs flex gap-1 ml-auto.
+   STAR SVG (use this × 5): <svg width="16" height="16" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+   NEVER Unicode stars ☆ ★. NEVER Unsplash URLs for avatars.
 
-H) TESTIMONIALS — bg-brand py-24 lg:py-32. eyebrow + serif h2 centered. Large featured quote card (bg-surface rounded-3xl p-12 lg:p-16) with carousel dots for 2-3 quotes.
-   Each quote: decorative large " in accent text-6xl, italic serif quote text-2xl, guest name (font-semibold), country, then 5 FILLED gold stars.
+I) BOOKING CTA — bg-accent py-24 lg:py-32 text-center. Italic serif h2 text-4xl lg:text-5xl font-normal text-brand. Subtext text-brand/80 mt-4 max-w-xl mx-auto. CTA button mt-8 bg-brand text-accent rounded-full px-10 py-4 uppercase tracking-widest text-sm font-semibold hover:bg-brand/90.
 
-   GUEST AVATAR: Use a colored initial circle instead of a photo. Example:
-   <div style="width:48px;height:48px;border-radius:50%;background:#c9a96e;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;color:#0a0f1e">S</div>
-   Use first initial of guest name. NEVER use an Unsplash face URL — they return 404s.
-
-   STAR SVG — use this EXACT pattern, repeat 5 times in a flex row (gap-1) for each review:
-   <svg width="16" height="16" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-   NEVER use Unicode ☆ ★ or empty star outlines. NEVER use a star SVG for the amenity icons.
-
-I) BOOKING CTA — bg-accent py-24 lg:py-32 text-center. Large serif h2 italic in white/brand color (high contrast). Subtext opacity-85. Prominent CTA button (bg-brand text-accent rounded-full px-10 py-4 font-semibold tracking-widest).
-
-J) FOOTER — bg-brand border-t border-white/10 py-16 px-6 lg:px-12.
-   3-column grid (grid-cols-3, mobile: grid-cols-1 gap-8).
-   Col 1: serif property name, tagline muted, location muted.
-   Col 2: eyebrow "Navigation", then 3-4 SEPARATE <a> block links (text-muted hover:text-accent).
-   Col 3: eyebrow "Follow Us", then Instagram, Facebook, TripAdvisor as 3 SEPARATE <a> block links.
-   CRITICAL: Every link is its own <a> element. NEVER concatenate link text. NEVER add copyright, year, or "All rights reserved".
+J) FOOTER — bg-brand border-t border-muted/20 py-16 px-6 lg:px-12. max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10. Col 1: monogram circle + serif property name text-2xl + tagline text-muted text-sm mt-1 + location text-muted text-xs mt-1. Col 2: label text-xs uppercase tracking-widest text-accent mb-4 + 4 SEPARATE <a> elements each block text-muted hover:text-accent text-sm mb-2 py-1. Col 3: label + 3 SEPARATE <a> blocks (Instagram, Facebook, TripAdvisor). ZERO copyright. ZERO year. ZERO "All rights reserved".
 
 ════════════════════════════════
-RULE 7 — SCHEMA.ORG (required in <head>)
+RULE 6 — BOOKING MODAL
 ════════════════════════════════
-Add an inline script tag with type="application/ld+json" containing Hotel schema: name, description, numberOfRooms (use "${rooms}"), address (city: "${location}"), amenityFeature array (5-6 items from USPs), checkinTime, checkoutTime, priceRange "$$$".
+Full-screen overlay fixed inset-0 z-[200] bg-black/60 backdrop-blur, hidden by default, id="bookingModal". Inner: max-w-lg mx-auto mt-16 bg-brand rounded-3xl p-10 relative. Close × button absolute top-4 right-4. Serif h2 "Reserve Your Stay" text-3xl. Form: suite name select (pre-filled from JS), check-in date, check-out date, full name text, email, special requests select (4 options). Submit button bg-accent text-brand rounded-full px-8 py-3 w-full mt-6. On submit: hide form, show thank-you div. openBookingModal(suiteName) and closeBookingModal() as named JS functions. All "Reserve/Book" buttons on page call openBookingModal(suiteName).
 
 ════════════════════════════════
-RULE 8 — BOOKING MODAL
+RULE 7 — SCHEMA.ORG
 ════════════════════════════════
-Add a full-screen overlay booking modal (fixed inset-0 z-[200] bg-black/60 backdrop-blur hidden) containing a white/surface card with:
-- Serif heading "Reserve Your Stay"
-- Form fields: Preferred Suite (select), Check-In (date), Check-Out (date), Full Name (text), Email (email), Special Requests (select with 3-4 options)
-- Submit button styled like primary CTA
-- Close button top-right (×)
-All "Book" CTA buttons on the page call openBookingModal(suiteName) JS function.
-Modal form submission shows a confirmation thank-you message.
+In head: LodgingBusiness JSON-LD: name, description, numberOfRooms="${rooms}", address city="${location}", amenityFeature (6 items), checkinTime "15:00", checkoutTime "11:00", priceRange "$$$$", aggregateRating ratingValue "4.9" reviewCount "86".
 
 ════════════════════════════════
-RULE 9 — ANIMATIONS & INTERACTIONS
+RULE 8 — ANIMATIONS
 ════════════════════════════════
-.reveal class: opacity:0; transform:translateY(24px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s;
-.reveal.visible: opacity:1; transform:none;
-.img-zoom: transition:transform 1.2s cubic-bezier(0.22,1,0.36,1); parent:hover .img-zoom { transform:scale(1.04) }
-IntersectionObserver: threshold 0.12, adds .visible to .reveal elements. Stagger children with nth-child transition-delay 0s, 0.1s, 0.2s.
-Nav scroll: JS toggles bg/shadow class at scrollY > 60.
-Photo carousel for testimonials: prev/next dot buttons, JS slides between 2-3 testimonials.
+.reveal { opacity:0; transform:translateY(22px); transition: opacity 0.85s cubic-bezier(0.22,1,0.36,1), transform 0.85s cubic-bezier(0.22,1,0.36,1) }
+.reveal.visible { opacity:1; transform:translateY(0) }
+.img-zoom { transition:transform 1.2s cubic-bezier(0.22,1,0.36,1) }
+.group:hover .img-zoom { transform:scale(1.04) }
+@keyframes hotspotPulse { 0%,100%{transform:scale(1);opacity:.55} 50%{transform:scale(1.9);opacity:0} }
+.hotspot-ring { animation: hotspotPulse 2.6s infinite }
+IntersectionObserver (threshold 0.12) adds .visible to all .reveal elements. Stagger with nth-child delays 0s/0.1s/0.2s. Nav scrollY>60 → add backdrop + shadow.
 
 ════════════════════════════════
-RULE 10 — COPY QUALITY
+RULE 9 — COPY & LANGUAGE
 ════════════════════════════════
-Every word must be SPECIFIC to "${propLabel}" in "${location}" with style "${style}" for "${audience}".
-USPs to weave throughout: "${usp}".
-NO generic filler: "Welcome to our hotel", "luxury awaits", "your home away from home".
-YES to: specific location atmosphere, authentic details, emotional copy for the target audience.
-Testimonial quotes: 2-3 sentences, authentic-sounding, name specific details of the property.
-Language for all copy, labels, buttons: ${lang}.
-
-════════════════════════════════
-RULE 11 — TECHNICAL
-════════════════════════════════
-- html class="scroll-smooth"
-- All images: loading="lazy" except hero (loading="eager"), proper alt text, onerror fallback
-- No inline onclick handlers — use addEventListener or named JS functions
-- No placeholder HTML comments
-- Mobile-first responsive with Tailwind sm/md/lg breakpoints
-- Custom scrollbar via CSS (subtle, matches accent color)
+Every word: specific to "${propLabel}" in "${location}", style "${style}", audience "${audience}", USPs "${usp}". Language: ${lang}. No generic filler. Testimonials: 2-3 specific sentences, 3 different guests, 3 different countries.
 
 ════════════════════════════════
 CRITICAL — COMPLETE OUTPUT
 ════════════════════════════════
-Output the ENTIRE HTML from <!DOCTYPE html> to </html>. ALL sections required: Nav, Hero, About, Rooms, Highlights, Photo Strip, Amenities, Testimonials, Booking CTA, Footer, Booking Modal. FOOTER IS MANDATORY. Never truncate. Never stop before </html>.
-
-Output ONLY the complete HTML. First character: <. Last character: >.`;
+Output ENTIRE HTML from <!DOCTYPE html> to </html>. All 10 sections A–J + Booking Modal are MANDATORY. FOOTER IS MANDATORY. Never truncate. Never stop before </html>.`;
     }
 
     document.getElementById('loadingMsg').textContent = loadingMsg;
