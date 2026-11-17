@@ -904,7 +904,7 @@ select option { background: #141414; }
         { mode: 'light', colors: { brand: '#f7f3ec', surface: '#eee7da', elevated: '#fffdf9', txt: '#1d1a16', muted: '#6b6257', accent: '#7d5f37', accentHover: '#664d2c', onAccent: '#fbf8f2' } },
         { mode: 'dark', colors: { brand: '#0a1714', surface: '#10221d', elevated: '#173029', txt: '#eef2ec', muted: '#9fb1a7', accent: '#c8a66a', accentHover: '#d8b97f', onAccent: '#0a1714' } }
       ],
-      layouts: { hero: ['full', 'center', 'split'], rooms: ['grid', 'feature', 'alternating'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'] , audience: ['cards', 'band'], location: ['mapLeft', 'mapRight'] }
+      layouts: { hero: ['full', 'center', 'split'], rooms: ['grid', 'feature', 'alternating'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'] , audience: ['cards', 'band'], location: ['mapLeft', 'mapRight'] , overview: ['slideshow', 'mosaic', 'statsBand'], living: ['overlay', 'split', 'banner'], outdoor: ['hotspots', 'gallery', 'splitList'], cta: ['image', 'split', 'minimal'], footer: ['columns', 'big'] }
     },
     eco: {
       serif: 'Fraunces', sans: 'Inter',
@@ -918,7 +918,7 @@ select option { background: #141414; }
         { mode: 'dark', colors: { brand: '#121a14', surface: '#18231b', elevated: '#203024', txt: '#eef1e8', muted: '#a4ae9c', accent: '#a9c08f', accentHover: '#bcd0a5', onAccent: '#121a14' } },
         { mode: 'light', colors: { brand: '#f5efe6', surface: '#ebe1d2', elevated: '#fffaf3', txt: '#2b231c', muted: '#6e6153', accent: '#8d4f32', accentHover: '#763f26', onAccent: '#fbf6ef' } }
       ],
-      layouts: { hero: ['full', 'split'], rooms: ['grid', 'feature', 'alternating'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'] , audience: ['cards', 'band'], location: ['mapLeft', 'mapRight'] }
+      layouts: { hero: ['full', 'split'], rooms: ['grid', 'feature', 'alternating'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'] , audience: ['cards', 'band'], location: ['mapLeft', 'mapRight'] , overview: ['slideshow', 'mosaic', 'statsBand'], living: ['overlay', 'split', 'banner'], outdoor: ['hotspots', 'gallery', 'splitList'], cta: ['image', 'split'], footer: ['columns', 'big'] }
     },
     family: {
       serif: 'DM Serif Display', sans: 'Nunito Sans',
@@ -931,7 +931,7 @@ select option { background: #141414; }
         { mode: 'light', colors: { brand: '#fffaf2', surface: '#fdf0dc', elevated: '#ffffff', txt: '#1f2a37', muted: '#5b6573', accent: '#ad4816', accentHover: '#943c11', onAccent: '#ffffff' } },
         { mode: 'light', colors: { brand: '#f3fafa', surface: '#e3f2f1', elevated: '#ffffff', txt: '#14303a', muted: '#4f6b73', accent: '#0c6c75', accentHover: '#095961', onAccent: '#ffffff' } }
       ],
-      layouts: { hero: ['full', 'split'], rooms: ['grid', 'feature'], testimonials: ['cards'], amenities: ['cards'] , audience: ['band', 'cards'], location: ['mapRight'] }
+      layouts: { hero: ['full', 'split'], rooms: ['grid', 'feature'], testimonials: ['cards'], amenities: ['cards'] , audience: ['band', 'cards'], location: ['mapRight'] , overview: ['slideshow', 'mosaic'], living: ['overlay', 'split'], outdoor: ['hotspots', 'gallery'], cta: ['image', 'split'], footer: ['columns'] }
     },
     romantic: {
       serif: 'Playfair Display', sans: 'Lato',
@@ -944,7 +944,7 @@ select option { background: #141414; }
         { mode: 'light', colors: { brand: '#fbf5f2', surface: '#f3e6e0', elevated: '#fffbf9', txt: '#2e1d1d', muted: '#7a5f5c', accent: '#944852', accentHover: '#7d3b44', onAccent: '#fff8f6' } },
         { mode: 'dark', colors: { brand: '#1a0f12', surface: '#24151a', elevated: '#2f1c22', txt: '#f6ece8', muted: '#b59e9a', accent: '#e0a3a3', accentHover: '#ebb8b8', onAccent: '#1a0f12' } }
       ],
-      layouts: { hero: ['center', 'full', 'split'], rooms: ['alternating', 'grid', 'feature'], testimonials: ['single', 'cards'], amenities: ['cards', 'list'] , audience: ['cards', 'band'], location: ['mapLeft', 'mapRight'] }
+      layouts: { hero: ['center', 'full', 'split'], rooms: ['alternating', 'grid', 'feature'], testimonials: ['single', 'cards'], amenities: ['cards', 'list'] , audience: ['cards', 'band'], location: ['mapLeft', 'mapRight'] , overview: ['mosaic', 'slideshow'], living: ['banner', 'overlay', 'split'], outdoor: ['gallery', 'hotspots'], cta: ['image', 'split'], footer: ['big', 'columns'] }
     },
     adventure: {
       serif: 'Barlow Condensed', sans: 'Barlow',
@@ -957,7 +957,7 @@ select option { background: #141414; }
         { mode: 'dark', colors: { brand: '#0e140f', surface: '#152017', elevated: '#1d2b20', txt: '#edf2e9', muted: '#9aaa95', accent: '#e3a33b', accentHover: '#efb658', onAccent: '#0e140f' } },
         { mode: 'dark', colors: { brand: '#17110d', surface: '#211812', elevated: '#2c2018', txt: '#f4ece4', muted: '#b3a291', accent: '#e2753a', accentHover: '#ec8b55', onAccent: '#17110d' } }
       ],
-      layouts: { hero: ['full', 'center'], rooms: ['feature', 'grid'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'] , audience: ['band', 'cards'], location: ['mapLeft', 'mapRight'] }
+      layouts: { hero: ['full', 'center'], rooms: ['feature', 'grid'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'] , audience: ['band', 'cards'], location: ['mapLeft', 'mapRight'] , overview: ['statsBand', 'slideshow'], living: ['banner', 'split'], outdoor: ['hotspots', 'splitList'], cta: ['image', 'split'], footer: ['columns', 'big'] }
     },
     minimalist: {
       serif: 'Inter Tight', sans: 'Inter',
@@ -971,7 +971,7 @@ select option { background: #141414; }
         { mode: 'light', colors: { brand: '#efeeeb', surface: '#e4e2de', elevated: '#f8f7f5', txt: '#1a1a1a', muted: '#5e5c5b', accent: '#2f3b45', accentHover: '#1f2830', onAccent: '#f8f7f5' } },
         { mode: 'dark', colors: { brand: '#0e0e0e', surface: '#161616', elevated: '#1e1e1e', txt: '#f2f2f0', muted: '#9a9a96', accent: '#f2f2f0', accentHover: '#ffffff', onAccent: '#0e0e0e' } }
       ],
-      layouts: { hero: ['split', 'center'], rooms: ['alternating', 'grid'], testimonials: ['single'], amenities: ['list'] , audience: ['cards'], location: ['mapLeft', 'mapRight'] }
+      layouts: { hero: ['split', 'center'], rooms: ['alternating', 'grid'], testimonials: ['single'], amenities: ['list'] , audience: ['cards'], location: ['mapLeft', 'mapRight'] , overview: ['statsBand', 'mosaic'], living: ['split', 'banner'], outdoor: ['splitList', 'gallery'], cta: ['minimal', 'split'], footer: ['big', 'columns'] }
     },
     boutique: {
       serif: 'Instrument Serif', sans: 'Space Grotesk',
@@ -984,7 +984,7 @@ select option { background: #141414; }
         { mode: 'light', colors: { brand: '#f2ede4', surface: '#e7dfd2', elevated: '#fbf8f2', txt: '#1b1b1b', muted: '#625b52', accent: '#1f5c5c', accentHover: '#164848', onAccent: '#f7f3ec' } },
         { mode: 'dark', colors: { brand: '#1a1218', surface: '#241a22', elevated: '#2e222b', txt: '#f5f0eb', muted: '#b3a39d', accent: '#d9825b', accentHover: '#e5976f', onAccent: '#1a1218' } }
       ],
-      layouts: { hero: ['split', 'full', 'center'], rooms: ['alternating', 'feature', 'grid'], testimonials: ['single', 'cards'], amenities: ['list', 'cards'] , audience: ['band', 'cards'], location: ['mapLeft', 'mapRight'] }
+      layouts: { hero: ['split', 'full', 'center'], rooms: ['alternating', 'feature', 'grid'], testimonials: ['single', 'cards'], amenities: ['list', 'cards'] , audience: ['band', 'cards'], location: ['mapLeft', 'mapRight'] , overview: ['mosaic', 'slideshow', 'statsBand'], living: ['split', 'overlay', 'banner'], outdoor: ['gallery', 'hotspots', 'splitList'], cta: ['split', 'image', 'minimal'], footer: ['big', 'columns'] }
     }
   };
 
@@ -1000,7 +1000,9 @@ select option { background: #141414; }
       palette: Math.floor(Math.random() * S.palettes.length),
       hero: pick(S.layouts.hero), rooms: pick(S.layouts.rooms),
       testimonials: pick(S.layouts.testimonials), amenities: pick(S.layouts.amenities),
-      audience: pick(S.layouts.audience), location: pick(S.layouts.location)
+      audience: pick(S.layouts.audience), location: pick(S.layouts.location),
+      overview: pick(S.layouts.overview), living: pick(S.layouts.living), outdoor: pick(S.layouts.outdoor),
+      cta: pick(S.layouts.cta), footer: pick(S.layouts.footer)
     };
   }
 
@@ -1409,6 +1411,259 @@ select option { background: #141414; }
   </div>
 </section>`;
 
+
+    const ovText = () => `<div class="${reveal}">
+        ${eb(0, c.overview.eyebrow)}
+        ${h2(c.overview.heading, 'text-4xl sm:text-5xl lg:text-[3.25rem]')}
+        <p class="mt-6 text-muted leading-relaxed">${e(c.overview.body)}</p>
+        <div class="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-txt/10">
+          ${c.overview.stats.map((s) => '<div><div class="text-3xl sm:text-4xl serif text-accent">' + e(s.value) + '</div><div class="text-xs uppercase tracking-wider text-muted mt-1">' + e(s.label) + '</div></div>').join('')}
+        </div>
+        <div class="mt-9"><a href="#living" class="inline-flex ${btnPrimary} px-8 py-3.5">${e(c.overview.cta)}</a></div>
+      </div>`;
+    const capImg = (src, cap, cls) => '<figure class="relative overflow-hidden ' + S.card + ' group ' + (cls || '') + '"><img src="' + src + '" alt="' + e(cap || name) + '" loading="lazy" class="absolute inset-0 w-full h-full object-cover img-zoom"><div class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"></div>' + (cap ? '<figcaption class="absolute bottom-4 left-4 right-4 serif text-lg text-white leading-snug">' + e(cap) + '</figcaption>' : '') + '</figure>';
+    const ovVariants = {
+      slideshow: () => `<section id="overview" class="py-24 lg:py-36 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <div class="lg:col-span-5 reveal">
+        ${eb(0, c.overview.eyebrow)}
+        ${h2(c.overview.heading, 'text-4xl sm:text-5xl lg:text-[3.25rem]')}
+        <p class="mt-6 text-muted leading-relaxed">${e(c.overview.body)}</p>
+        <div class="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-txt/10">
+          ${c.overview.stats.map((s) => '<div><div class="text-3xl sm:text-4xl serif text-accent">' + e(s.value) + '</div><div class="text-xs uppercase tracking-wider text-muted mt-1">' + e(s.label) + '</div></div>').join('')}
+        </div>
+        <div class="mt-9"><a href="#living" class="inline-flex ${btnPrimary} px-8 py-3.5">${e(c.overview.cta)}</a></div>
+      </div>
+      <div class="lg:col-span-7 reveal">
+        <div class="${S.card} overflow-hidden relative aspect-[4/3] shadow-soft border border-txt/10">
+          <img id="ovImg" src="${slides[0].src}" alt="${e(name)}" class="w-full h-full object-cover transition-opacity duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
+            <div>
+              <span id="ovTag" class="text-[11px] uppercase tracking-[0.2em] text-white/80 block">${e(slides[0].tag)}</span>
+              <p id="ovCap" class="serif text-2xl text-white mt-1">${e(slides[0].caption)}</p>
+            </div>
+            <div class="flex items-center gap-2.5 shrink-0">
+              <button type="button" onclick="changeSlide(-1)" aria-label="Previous" class="w-11 h-11 rounded-full bg-black/40 hover:bg-accent text-white hover:text-onAccent border border-white/20 backdrop-blur-md flex items-center justify-center transition-colors">${LP_CHEV_L}</button>
+              <button type="button" onclick="changeSlide(1)" aria-label="Next" class="w-11 h-11 rounded-full bg-black/40 hover:bg-accent text-white hover:text-onAccent border border-white/20 backdrop-blur-md flex items-center justify-center transition-colors">${LP_CHEV_R}</button>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center items-center gap-2.5 mt-5" id="ovDots">
+          ${slides.map((s, i) => '<button type="button" onclick="setSlide(' + i + ')" aria-label="Slide ' + (i + 1) + '" class="' + (i === 0 ? 'w-8 h-2 rounded-full bg-accent' : 'w-2.5 h-2 rounded-full bg-muted/40 hover:bg-muted') + ' transition-all"></button>').join('')}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>`,
+      mosaic: () => `<section id="overview" class="py-24 lg:py-36 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <div class="lg:col-span-5">${ovText()}</div>
+    <div class="lg:col-span-7 grid grid-cols-2 grid-rows-2 gap-4 lg:gap-5 h-[460px] sm:h-[600px] ${reveal}">
+      ${capImg(slides[0].src, c.overview.slides[0].caption, 'row-span-2')}
+      ${capImg(slides[1].src, c.overview.slides[1].caption, '')}
+      ${capImg(slides[2].src, c.overview.slides[2].caption, '')}
+    </div>
+  </div>
+</section>`,
+      statsBand: () => `<section id="overview" class="py-24 lg:py-36 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-3xl mx-auto text-center ${reveal}">
+      ${eb(0, c.overview.eyebrow)}
+      ${h2(c.overview.heading, 'text-4xl sm:text-5xl lg:text-6xl')}
+      <p class="mt-6 text-muted leading-relaxed text-lg">${e(c.overview.body)}</p>
+    </div>
+    <div class="grid grid-cols-3 divide-x divide-txt/10 border-y border-txt/10 mt-14 ${reveal}">
+      ${c.overview.stats.map((s) => '<div class="py-10 px-3 text-center"><div class="serif text-4xl sm:text-5xl lg:text-6xl text-accent leading-none">' + e(s.value) + '</div><div class="text-[11px] sm:text-xs uppercase tracking-[0.18em] text-muted mt-3">' + e(s.label) + '</div></div>').join('')}
+    </div>
+    <div class="mt-14 ${reveal}">${capImg(slides[0].src, c.overview.slides[0].caption, 'aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9] shadow-soft')}</div>
+    <div class="text-center mt-10"><a href="#living" class="inline-flex ${btnPrimary} px-8 py-3.5">${e(c.overview.cta)}</a></div>
+  </div>
+</section>`
+    };
+
+    const livPills = c.living.pills.filter(Boolean);
+    const checkIco = '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>';
+    const livVariants = {
+      overlay: () => `<section id="living" class="py-12 lg:py-20 bg-brand">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 reveal">
+    <div class="${S.big} overflow-hidden relative min-h-[540px] lg:min-h-[640px] border border-txt/10 shadow-floating flex items-end">
+      <img src="${LP_IMG(LP_PHOTOS.living, 2200)}" alt="${e(c.living.heading)}" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-t from-brand/80 via-brand/10 to-transparent"></div>
+      <div class="relative z-10 m-6 sm:m-10 lg:m-12 max-w-md bg-brand/90 backdrop-blur-xl border border-txt/10 ${S.card} p-8 lg:p-10 shadow-soft">
+        ${eb(2, c.living.eyebrow)}
+        ${h2(c.living.heading, 'text-3xl sm:text-4xl')}
+        <p class="text-sm text-muted mt-3.5 leading-relaxed">${e(c.living.body)}</p>
+        <div class="flex flex-wrap gap-2 mt-5">${c.living.pills.filter(Boolean).map((p) => '<span class="rounded-full bg-surface border border-txt/10 px-3.5 py-1.5 text-xs text-txt/90">' + e(p) + '</span>').join('')}</div>
+        <button type="button" onclick="openBookingModal(LP_FIRST)" class="mt-7 ${btnPrimary} px-7 py-3">${e(c.living.cta)}</button>
+      </div>
+    </div>
+  </div>
+</section>`,
+      split: () => `<section id="living" class="py-24 lg:py-36 bg-brand">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 items-center">
+    <div class="lg:col-span-7 relative ${reveal}">
+      <div class="${S.big} overflow-hidden aspect-[4/3] shadow-floating"><img src="${LP_IMG(LP_PHOTOS.living, 1600)}" alt="${e(c.living.heading)}" loading="lazy" class="w-full h-full object-cover"></div>
+      <div class="hidden sm:block absolute -bottom-10 -right-4 lg:-right-10 w-2/5 aspect-square ${S.card} overflow-hidden border-[6px] border-brand shadow-floating"><img src="${slides[1].src}" alt="" loading="lazy" class="w-full h-full object-cover"></div>
+    </div>
+    <div class="lg:col-span-5 ${reveal}">
+      ${eb(2, c.living.eyebrow)}
+      ${h2(c.living.heading)}
+      <p class="text-muted mt-5 leading-relaxed">${e(c.living.body)}</p>
+      <ul class="mt-7 space-y-3">${livPills.map((p) => '<li class="flex items-center gap-3 text-txt"><span class="w-7 h-7 rounded-full bg-accent/10 text-accent flex items-center justify-center">' + checkIco + '</span>' + e(p) + '</li>').join('')}</ul>
+      <button type="button" onclick="openBookingModal(LP_FIRST)" class="mt-9 ${btnPrimary} px-8 py-3.5">${e(c.living.cta)}</button>
+    </div>
+  </div>
+</section>`,
+      banner: () => `<section id="living" class="relative min-h-[85vh] flex items-end overflow-hidden">
+  <img src="${LP_IMG(LP_PHOTOS.living, 2400)}" alt="${e(c.living.heading)}" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10"></div>
+  <div class="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-10 pb-16 lg:pb-24 ${reveal}">
+    <div class="max-w-2xl">
+      <div class="${S.eyebrow} text-white/80 mb-3">${num(2)} · ${e(c.living.eyebrow)}</div>
+      <h2 class="serif text-4xl sm:text-5xl lg:text-6xl ${S.head} leading-[1.08] text-white">${e(c.living.heading)}</h2>
+      <p class="text-white/85 mt-5 leading-relaxed text-lg">${e(c.living.body)}</p>
+      <div class="flex flex-wrap gap-2 mt-6">${livPills.map((p) => '<span class="rounded-full border border-white/30 bg-white/10 backdrop-blur-md px-4 py-1.5 text-xs text-white">' + e(p) + '</span>').join('')}</div>
+      <button type="button" onclick="openBookingModal(LP_FIRST)" class="mt-9 ${btnPrimary} px-8 py-3.5">${e(c.living.cta)}</button>
+    </div>
+  </div>
+</section>`
+    };
+
+    const odHeader = `<div class="text-center max-w-2xl mx-auto mb-14 ${reveal}">${eb(3, c.outdoor.eyebrow)}${h2(c.outdoor.heading)}<p class="text-muted mt-4 leading-relaxed">${e(c.outdoor.body)}</p></div>`;
+    const odItems = c.outdoor.features.concat(c.outdoor.hotspots).filter((f) => f.title);
+    const odVariants = {
+      hotspots: () => `<section id="outdoor" class="py-24 lg:py-36 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      ${eb(3, c.outdoor.eyebrow)}
+      ${h2(c.outdoor.heading)}
+      <p class="text-muted mt-4 leading-relaxed">${e(c.outdoor.body)}</p>
+    </div>
+    <div class="${S.card} overflow-hidden relative aspect-[4/5] sm:aspect-[16/9] shadow-floating border border-txt/10 reveal">
+      <img src="${LP_IMG(LP_PHOTOS.outdoor, 2000)}" alt="${e(c.outdoor.heading)}" loading="lazy" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20"></div>
+      ${c.outdoor.hotspots.map((h, i) => `<div class="absolute ${hotspotPos[i][0]} ${hotspotPos[i][1]} -translate-x-1/2 -translate-y-1/2 z-20">
+        <button type="button" onclick="toggleHotspot(${i})" aria-label="${e(h.title)}" class="relative flex items-center justify-center w-10 h-10">
+          <span class="hotspot-ring absolute inset-0 rounded-full bg-accent"></span>
+          <span class="relative w-8 h-8 rounded-full bg-brand/85 border-2 border-accent flex items-center justify-center shadow-lg"><span class="w-2.5 h-2.5 rounded-full bg-accent"></span></span>
+        </button>
+        <div id="hs-card-${i}" class="mt-2.5 ${hotspotPos[i][2]} w-56 bg-brand/95 backdrop-blur-xl border border-accent/30 ${S.input} p-3.5 shadow-floating text-left">
+          <div class="text-[10px] uppercase tracking-[0.18em] text-accent">${num(i)}${h.tag ? ' · ' + e(h.tag) : ''}</div>
+          <div class="serif text-lg text-txt leading-snug mt-0.5">${e(h.title)}</div>
+          <p class="text-xs text-muted mt-1">${e(h.text)}</p>
+        </div>
+      </div>`).join('\n      ')}
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 reveal">
+      ${c.outdoor.features.map((f, i) => '<div class="bg-brand/70 border border-txt/10 ' + S.input + ' p-6 flex items-center gap-5"><span class="text-4xl serif text-accent">' + num(i) + '</span><div><div class="text-txt font-medium">' + e(f.title) + '</div><div class="text-xs text-muted mt-0.5">' + e(f.text) + '</div></div></div>').join('\n      ')}
+    </div>
+  </div>
+</section>`,
+      gallery: () => `<section id="outdoor" class="py-24 lg:py-36 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    ${odHeader}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 ${reveal}">
+      ${[LP_IMG(LP_PHOTOS.outdoor, 1000), LP_IMG(LP_PHOTOS.cta, 1000), slides[2].src].map((src, i) => {
+        const f = c.outdoor.features[i] || {};
+        return '<div class="' + (i === 1 ? 'md:mt-12' : '') + '">' + capImg(src, '', 'aspect-[3/4] shadow-soft') + '<div class="mt-5 flex gap-4"><span class="serif text-3xl text-accent leading-none">' + num(i) + '</span><div><div class="text-txt font-medium">' + e(f.title) + '</div><div class="text-sm text-muted mt-1">' + e(f.text) + '</div></div></div></div>';
+      }).join('')}
+    </div>
+  </div>
+</section>`,
+      splitList: () => `<section id="outdoor" class="py-24 lg:py-36 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <div class="lg:col-span-5 ${reveal}">
+      ${eb(3, c.outdoor.eyebrow)}${h2(c.outdoor.heading)}<p class="text-muted mt-5 leading-relaxed">${e(c.outdoor.body)}</p>
+      <ol class="mt-8 border-t border-txt/10">${odItems.map((f, i) => '<li class="flex gap-5 py-5 border-b border-txt/10"><span class="serif text-2xl text-accent leading-none w-8 shrink-0">' + num(i) + '</span><div><div class="text-txt font-medium">' + e(f.title) + '</div><div class="text-sm text-muted mt-1">' + e(f.text) + '</div></div></li>').join('')}</ol>
+    </div>
+    <div class="lg:col-span-7 ${reveal}">${capImg(LP_IMG(LP_PHOTOS.outdoor, 1600), c.outdoor.hotspots[0].title, 'aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] shadow-floating')}</div>
+  </div>
+</section>`
+    };
+
+    const ctaBg = faqBg === 'brand' ? 'surface' : 'brand';
+    const ctaVariants = {
+      image: () => `<section id="booking" class="relative py-28 lg:py-36 overflow-hidden text-center">
+  <img src="${LP_IMG(LP_PHOTOS.cta, 2200)}" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+  <div class="absolute inset-0 ${dark ? 'bg-brand/80' : 'bg-brand/85'}"></div>
+  <div class="relative z-10 max-w-2xl mx-auto px-6 reveal">
+    ${c.cta.eyebrow ? '<div class="' + S.eyebrow + ' text-accent mb-4">' + e(c.cta.eyebrow) + '</div>' : ''}
+    <h2 class="serif ${S.quote} text-4xl sm:text-6xl ${S.head} text-txt">${e(c.cta.heading)}</h2>
+    <p class="text-txt/85 mt-5 text-base sm:text-lg leading-relaxed">${e(c.cta.body)}</p>
+    <button type="button" onclick="openBookingModal(LP_FIRST)" class="mt-9 ${btnPrimary} px-10 py-4 shadow-glow">${e(c.cta.button)}</button>
+  </div>
+</section>`,
+      split: () => `<section id="booking" class="py-24 lg:py-32 bg-${ctaBg}">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 ${reveal}">
+    <div class="grid grid-cols-1 lg:grid-cols-2 ${S.big} overflow-hidden shadow-floating">
+      <div class="bg-accent text-onAccent p-10 sm:p-14 lg:p-16 flex flex-col justify-center">
+        ${c.cta.eyebrow ? '<div class="' + S.eyebrow + ' opacity-80 mb-4">' + e(c.cta.eyebrow) + '</div>' : ''}
+        <h2 class="serif ${S.quote} text-4xl sm:text-5xl ${S.head} leading-[1.08]">${e(c.cta.heading)}</h2>
+        <p class="mt-5 leading-relaxed opacity-85">${e(c.cta.body)}</p>
+        <div><button type="button" onclick="openBookingModal(LP_FIRST)" class="mt-9 bg-onAccent text-accent hover:opacity-90 ${S.btn} ${S.btnText} px-9 py-4 transition-opacity">${e(c.cta.button)}</button></div>
+      </div>
+      <div class="relative min-h-[320px]"><img src="${LP_IMG(LP_PHOTOS.cta, 1400)}" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover"></div>
+    </div>
+  </div>
+</section>`,
+      minimal: () => `<section id="booking" class="py-24 lg:py-32 bg-${ctaBg}">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 ${reveal}">
+    <div class="border-y border-txt/15 py-14 lg:py-20 flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+      <div class="max-w-3xl">
+        ${c.cta.eyebrow ? '<div class="' + S.eyebrow + ' text-accent mb-4">' + e(c.cta.eyebrow) + '</div>' : ''}
+        <h2 class="serif text-5xl sm:text-6xl lg:text-7xl ${S.head} leading-[1.02] text-txt">${e(c.cta.heading)}</h2>
+        <p class="text-muted mt-6 text-lg leading-relaxed max-w-xl">${e(c.cta.body)}</p>
+      </div>
+      <button type="button" onclick="openBookingModal(LP_FIRST)" class="shrink-0 self-start lg:self-auto ${btnPrimary} px-10 py-4 shadow-glow">${e(c.cta.button)}</button>
+    </div>
+  </div>
+</section>`
+    };
+
+    const wordSize = name.length <= 6 ? 'text-[22vw] lg:text-[15rem]' : name.length <= 12 ? 'text-[13vw] lg:text-[10rem]' : 'text-[8vw] lg:text-[6.5rem]';
+    const ftLinks = c.ui.nav.map((t, i) => '<a href="#' + ids[i] + '" class="hover:text-accent transition-colors">' + e(t) + '</a>').join('');
+    const ftSocial = ['Instagram', 'Facebook', 'TripAdvisor'].map((t) => '<a href="https://' + t.toLowerCase() + '.com" target="_blank" rel="noopener" class="hover:text-accent transition-colors">' + t + '</a>').join('');
+    const ftVariants = {
+      columns: () => `<footer class="bg-brand border-t border-txt/10 py-16 px-6 lg:px-10">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full border border-accent flex items-center justify-center serif text-lg text-accent">${e(mono)}</div>
+        <div><span class="block serif text-2xl text-txt leading-none">${e(name)}</span><span class="text-[11px] uppercase tracking-[0.2em] text-muted">${e(c.ui.typeLabel + ' · ' + ctx.location)}</span></div>
+      </div>
+      <p class="text-muted text-sm mt-5 max-w-sm leading-relaxed">${e(c.footer.about)}</p>
+    </div>
+    <div>
+      <div class="text-xs uppercase tracking-[0.2em] text-accent mb-4 font-medium">${e(c.ui.explore)}</div>
+      <ul class="space-y-2.5 text-sm text-muted">${c.ui.nav.map((t, i) => '<li><a href="#' + ids[i] + '" class="hover:text-accent transition-colors">' + e(t) + '</a></li>').join('')}</ul>
+    </div>
+    <div>
+      <div class="text-xs uppercase tracking-[0.2em] text-accent mb-4 font-medium">${e(c.ui.connect)}</div>
+      <ul class="space-y-2.5 text-sm text-muted">
+        <li><a href="https://instagram.com" target="_blank" rel="noopener" class="hover:text-accent transition-colors">Instagram</a></li>
+        <li><a href="https://facebook.com" target="_blank" rel="noopener" class="hover:text-accent transition-colors">Facebook</a></li>
+        <li><a href="https://tripadvisor.com" target="_blank" rel="noopener" class="hover:text-accent transition-colors">TripAdvisor</a></li>
+        <li class="pt-2 text-xs text-muted/80">${e(c.ui.checkTimes)}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-txt/5 text-xs text-muted/80 text-center sm:text-left">${e(c.ui.directBooking)}</div>
+</footer>`,
+      big: () => `<footer class="bg-brand border-t border-txt/10 pt-20 pb-10 px-6 lg:px-10 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <p class="text-muted text-sm leading-relaxed max-w-sm">${e(c.footer.about)}</p>
+      <div><div class="text-xs uppercase tracking-[0.2em] text-accent mb-4 font-medium">${e(c.ui.explore)}</div><div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">${ftLinks}</div></div>
+      <div><div class="text-xs uppercase tracking-[0.2em] text-accent mb-4 font-medium">${e(c.ui.connect)}</div><div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">${ftSocial}</div><div class="text-xs text-muted/80 mt-4">${e(c.ui.checkTimes)}</div></div>
+    </div>
+    <div class="serif ${wordSize} ${S.head} leading-[0.9] text-txt/90 mt-16 lg:mt-20 text-center whitespace-nowrap overflow-hidden" aria-hidden="true">${e(name)}</div>
+    <div class="mt-10 pt-6 border-t border-txt/10 flex flex-col sm:flex-row justify-between gap-3 text-xs text-muted/80"><span>${e(c.ui.typeLabel + ' · ' + ctx.location)}</span><span>${e(c.ui.directBooking)}</span></div>
+  </div>
+</footer>`
+    };
+
     const pageScript = [
       'var LP_SLIDES=' + safeJSON(slides) + ';',
       'var LP_SUITES=' + safeJSON(suiteData) + ';',
@@ -1423,7 +1678,7 @@ select option { background: #141414; }
       'document.querySelectorAll(".mobile-link").forEach(function(l){l.addEventListener("click",function(){mMenu.classList.add("hidden");mBtn.setAttribute("aria-expanded","false")})});',
       'if("IntersectionObserver" in window){var ro=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("visible");ro.unobserve(x.target)}})},{threshold:0.12});document.querySelectorAll(".reveal").forEach(function(el){ro.observe(el)})}else{document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible")})}',
       'var slideIdx=0;',
-      'function renderSlide(){var img=document.getElementById("ovImg"),s=LP_SLIDES[slideIdx];img.style.opacity="0.35";setTimeout(function(){img.src=s.src;document.getElementById("ovTag").textContent=s.tag;document.getElementById("ovCap").textContent=s.caption;img.style.opacity="1"},180);Array.prototype.forEach.call(document.getElementById("ovDots").children,function(d,i){d.className=i===slideIdx?"w-8 h-2 rounded-full bg-accent transition-all":"w-2.5 h-2 rounded-full bg-muted/40 hover:bg-muted transition-all"})}',
+      'function renderSlide(){var img=document.getElementById("ovImg"),s=LP_SLIDES[slideIdx];if(!img)return;img.style.opacity="0.35";setTimeout(function(){img.src=s.src;document.getElementById("ovTag").textContent=s.tag;document.getElementById("ovCap").textContent=s.caption;img.style.opacity="1"},180);Array.prototype.forEach.call(document.getElementById("ovDots").children,function(d,i){d.className=i===slideIdx?"w-8 h-2 rounded-full bg-accent transition-all":"w-2.5 h-2 rounded-full bg-muted/40 hover:bg-muted transition-all"})}',
       'function changeSlide(d){slideIdx=(slideIdx+d+LP_SLIDES.length)%LP_SLIDES.length;renderSlide()}',
       'function setSlide(i){slideIdx=i;renderSlide()}',
       'var tIdx=0;',
@@ -1503,40 +1758,7 @@ ${dark ? 'input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.8
 
 ${(heroVariants[V.hero] || heroVariants.full)()}
 
-<section id="overview" class="py-24 lg:py-36 bg-surface">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-      <div class="lg:col-span-5 reveal">
-        ${eb(0, c.overview.eyebrow)}
-        ${h2(c.overview.heading, 'text-4xl sm:text-5xl lg:text-[3.25rem]')}
-        <p class="mt-6 text-muted leading-relaxed">${e(c.overview.body)}</p>
-        <div class="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-txt/10">
-          ${c.overview.stats.map((s) => '<div><div class="text-3xl sm:text-4xl serif text-accent">' + e(s.value) + '</div><div class="text-xs uppercase tracking-wider text-muted mt-1">' + e(s.label) + '</div></div>').join('')}
-        </div>
-        <div class="mt-9"><a href="#living" class="inline-flex ${btnPrimary} px-8 py-3.5">${e(c.overview.cta)}</a></div>
-      </div>
-      <div class="lg:col-span-7 reveal">
-        <div class="${S.card} overflow-hidden relative aspect-[4/3] shadow-soft border border-txt/10">
-          <img id="ovImg" src="${slides[0].src}" alt="${e(name)}" class="w-full h-full object-cover transition-opacity duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-          <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
-            <div>
-              <span id="ovTag" class="text-[11px] uppercase tracking-[0.2em] text-white/80 block">${e(slides[0].tag)}</span>
-              <p id="ovCap" class="serif text-2xl text-white mt-1">${e(slides[0].caption)}</p>
-            </div>
-            <div class="flex items-center gap-2.5 shrink-0">
-              <button type="button" onclick="changeSlide(-1)" aria-label="Previous" class="w-11 h-11 rounded-full bg-black/40 hover:bg-accent text-white hover:text-onAccent border border-white/20 backdrop-blur-md flex items-center justify-center transition-colors">${LP_CHEV_L}</button>
-              <button type="button" onclick="changeSlide(1)" aria-label="Next" class="w-11 h-11 rounded-full bg-black/40 hover:bg-accent text-white hover:text-onAccent border border-white/20 backdrop-blur-md flex items-center justify-center transition-colors">${LP_CHEV_R}</button>
-            </div>
-          </div>
-        </div>
-        <div class="flex justify-center items-center gap-2.5 mt-5" id="ovDots">
-          ${slides.map((s, i) => '<button type="button" onclick="setSlide(' + i + ')" aria-label="Slide ' + (i + 1) + '" class="' + (i === 0 ? 'w-8 h-2 rounded-full bg-accent' : 'w-2.5 h-2 rounded-full bg-muted/40 hover:bg-muted') + ' transition-all"></button>').join('')}
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+${(ovVariants[V.overview] || ovVariants.slideshow)()}
 
 <section id="accommodations" class="bg-brand py-24 lg:py-36">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
@@ -1544,49 +1766,9 @@ ${(heroVariants[V.hero] || heroVariants.full)()}
   </div>
 </section>
 
-<section id="living" class="py-12 lg:py-20 bg-brand">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 reveal">
-    <div class="${S.big} overflow-hidden relative min-h-[540px] lg:min-h-[640px] border border-txt/10 shadow-floating flex items-end">
-      <img src="${LP_IMG(LP_PHOTOS.living, 2200)}" alt="${e(c.living.heading)}" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-      <div class="absolute inset-0 bg-gradient-to-t from-brand/80 via-brand/10 to-transparent"></div>
-      <div class="relative z-10 m-6 sm:m-10 lg:m-12 max-w-md bg-brand/90 backdrop-blur-xl border border-txt/10 ${S.card} p-8 lg:p-10 shadow-soft">
-        ${eb(2, c.living.eyebrow)}
-        ${h2(c.living.heading, 'text-3xl sm:text-4xl')}
-        <p class="text-sm text-muted mt-3.5 leading-relaxed">${e(c.living.body)}</p>
-        <div class="flex flex-wrap gap-2 mt-5">${c.living.pills.filter(Boolean).map((p) => '<span class="rounded-full bg-surface border border-txt/10 px-3.5 py-1.5 text-xs text-txt/90">' + e(p) + '</span>').join('')}</div>
-        <button type="button" onclick="openBookingModal(LP_FIRST)" class="mt-7 ${btnPrimary} px-7 py-3">${e(c.living.cta)}</button>
-      </div>
-    </div>
-  </div>
-</section>
+${(livVariants[V.living] || livVariants.overlay)()}
 
-<section id="outdoor" class="py-24 lg:py-36 bg-surface">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
-      ${eb(3, c.outdoor.eyebrow)}
-      ${h2(c.outdoor.heading)}
-      <p class="text-muted mt-4 leading-relaxed">${e(c.outdoor.body)}</p>
-    </div>
-    <div class="${S.card} overflow-hidden relative aspect-[4/5] sm:aspect-[16/9] shadow-floating border border-txt/10 reveal">
-      <img src="${LP_IMG(LP_PHOTOS.outdoor, 2000)}" alt="${e(c.outdoor.heading)}" loading="lazy" class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20"></div>
-      ${c.outdoor.hotspots.map((h, i) => `<div class="absolute ${hotspotPos[i][0]} ${hotspotPos[i][1]} -translate-x-1/2 -translate-y-1/2 z-20">
-        <button type="button" onclick="toggleHotspot(${i})" aria-label="${e(h.title)}" class="relative flex items-center justify-center w-10 h-10">
-          <span class="hotspot-ring absolute inset-0 rounded-full bg-accent"></span>
-          <span class="relative w-8 h-8 rounded-full bg-brand/85 border-2 border-accent flex items-center justify-center shadow-lg"><span class="w-2.5 h-2.5 rounded-full bg-accent"></span></span>
-        </button>
-        <div id="hs-card-${i}" class="mt-2.5 ${hotspotPos[i][2]} w-56 bg-brand/95 backdrop-blur-xl border border-accent/30 ${S.input} p-3.5 shadow-floating text-left">
-          <div class="text-[10px] uppercase tracking-[0.18em] text-accent">${num(i)}${h.tag ? ' · ' + e(h.tag) : ''}</div>
-          <div class="serif text-lg text-txt leading-snug mt-0.5">${e(h.title)}</div>
-          <p class="text-xs text-muted mt-1">${e(h.text)}</p>
-        </div>
-      </div>`).join('\n      ')}
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 reveal">
-      ${c.outdoor.features.map((f, i) => '<div class="bg-brand/70 border border-txt/10 ' + S.input + ' p-6 flex items-center gap-5"><span class="text-4xl serif text-accent">' + num(i) + '</span><div><div class="text-txt font-medium">' + e(f.title) + '</div><div class="text-xs text-muted mt-0.5">' + e(f.text) + '</div></div></div>').join('\n      ')}
-    </div>
-  </div>
-</section>
+${(odVariants[V.outdoor] || odVariants.hotspots)()}
 
 <section id="amenities" class="bg-brand py-24 lg:py-36">
   <div class="${V.amenities === 'list' ? 'max-w-7xl' : 'max-w-6xl'} mx-auto px-6 lg:px-10">
@@ -1606,42 +1788,9 @@ ${locationHTML()}
 
 ${faqHTML()}
 
-<section id="booking" class="relative py-28 lg:py-36 overflow-hidden text-center">
-  <img src="${LP_IMG(LP_PHOTOS.cta, 2200)}" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-  <div class="absolute inset-0 ${dark ? 'bg-brand/80' : 'bg-brand/85'}"></div>
-  <div class="relative z-10 max-w-2xl mx-auto px-6 reveal">
-    ${c.cta.eyebrow ? '<div class="' + S.eyebrow + ' text-accent mb-4">' + e(c.cta.eyebrow) + '</div>' : ''}
-    <h2 class="serif ${S.quote} text-4xl sm:text-6xl ${S.head} text-txt">${e(c.cta.heading)}</h2>
-    <p class="text-txt/85 mt-5 text-base sm:text-lg leading-relaxed">${e(c.cta.body)}</p>
-    <button type="button" onclick="openBookingModal(LP_FIRST)" class="mt-9 ${btnPrimary} px-10 py-4 shadow-glow">${e(c.cta.button)}</button>
-  </div>
-</section>
+${(ctaVariants[V.cta] || ctaVariants.image)()}
 
-<footer class="bg-brand border-t border-txt/10 py-16 px-6 lg:px-10">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-    <div class="md:col-span-2">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full border border-accent flex items-center justify-center serif text-lg text-accent">${e(mono)}</div>
-        <div><span class="block serif text-2xl text-txt leading-none">${e(name)}</span><span class="text-[11px] uppercase tracking-[0.2em] text-muted">${e(c.ui.typeLabel + ' · ' + ctx.location)}</span></div>
-      </div>
-      <p class="text-muted text-sm mt-5 max-w-sm leading-relaxed">${e(c.footer.about)}</p>
-    </div>
-    <div>
-      <div class="text-xs uppercase tracking-[0.2em] text-accent mb-4 font-medium">${e(c.ui.explore)}</div>
-      <ul class="space-y-2.5 text-sm text-muted">${c.ui.nav.map((t, i) => '<li><a href="#' + ids[i] + '" class="hover:text-accent transition-colors">' + e(t) + '</a></li>').join('')}</ul>
-    </div>
-    <div>
-      <div class="text-xs uppercase tracking-[0.2em] text-accent mb-4 font-medium">${e(c.ui.connect)}</div>
-      <ul class="space-y-2.5 text-sm text-muted">
-        <li><a href="https://instagram.com" target="_blank" rel="noopener" class="hover:text-accent transition-colors">Instagram</a></li>
-        <li><a href="https://facebook.com" target="_blank" rel="noopener" class="hover:text-accent transition-colors">Facebook</a></li>
-        <li><a href="https://tripadvisor.com" target="_blank" rel="noopener" class="hover:text-accent transition-colors">TripAdvisor</a></li>
-        <li class="pt-2 text-xs text-muted/80">${e(c.ui.checkTimes)}</li>
-      </ul>
-    </div>
-  </div>
-  <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-txt/5 text-xs text-muted/80 text-center sm:text-left">${e(c.ui.directBooking)}</div>
-</footer>
+${(ftVariants[V.footer] || ftVariants.columns)()}
 
 <div id="suiteModal" class="fixed inset-0 z-[190] bg-black/70 backdrop-blur-md hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="sdTitle">
   <div class="max-w-xl w-full bg-surface border border-txt/10 ${S.card} overflow-hidden shadow-floating relative">
@@ -1716,7 +1865,7 @@ Return ONLY a JSON object with exactly this structure:
   "overview": { "eyebrow": "1-2 words", "heading": "max 8 words", "body": "2-3 sentences, concrete sensory detail", "stats": [{"value": "short number or fact, e.g. 14 or 5 min", "label": "1-3 words"}, {}, {}], "cta": "2-3 words", "slides": [{"tag": "2-3 words", "caption": "max 9 words"}, {}, {}] },
   "rooms": { "eyebrow": "", "heading": "", "body": "1 sentence", "link": "2-4 words", "items": [ { "name": "room type name", "badge": "view or feature, 1-2 words", "size": "e.g. 65 m²", "price": "e.g. $340", "description": "1 sentence, max 22 words", "long_description": "2 sentences", "beds": "beds and baths, e.g. 1 King Bed · 1 Bath", "specs": ["5 short features"] } ] },
   "living": { "eyebrow": "", "heading": "", "body": "2 sentences", "pills": ["3 short features"], "cta": "" },
-  "outdoor": { "eyebrow": "", "heading": "", "body": "1-2 sentences", "hotspots": [ {"tag": "2 words", "title": "2-4 words", "text": "max 14 words"}, {} ], "features": [ {"title": "2-4 words", "text": "max 8 words"}, {}, {} ] },
+  "outdoor": { "eyebrow": "", "heading": "", "body": "1-2 sentences about the outdoor spaces; do not mention tapping, clicking or interactive points", "hotspots": [ {"tag": "2 words", "title": "2-4 words", "text": "max 14 words"}, {} ], "features": [ {"title": "2-4 words", "text": "max 8 words"}, {}, {} ] },
   "amenities": { "eyebrow": "", "heading": "", "body": "1 sentence", "items": [ {"icon": "one of: ${LP_ICON_KEYS.join(', ')}", "label": "1-3 words"} ] },
   "testimonials": { "eyebrow": "", "heading": "", "items": [ {"quote": "2 sentences mentioning specific details of this property", "name": "First name + initial", "origin": "City, Country", "stay": "room type name"}, {} ] },
   "audience_section": { "eyebrow": "1-3 words", "heading": "max 7 words, speaks directly to ${p.audience}", "body": "2 sentences on why this property suits ${p.audience}", "cta": "2-4 words", "items": [ {"icon": "one of the icon keys", "title": "2-4 words", "text": "1 sentence, max 18 words"}, {}, {}, {} ] },
