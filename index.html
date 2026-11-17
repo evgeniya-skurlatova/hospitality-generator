@@ -12,46 +12,118 @@
 </script>
 <style>
 :root {
-  --bg: #0c0c0c;
-  --surface: #161616;
-  --surface2: #1e1e1e;
-  --border: #272727;
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --surface2: #1c1c1c;
+  --border: #242424;
+  --border2: #2e2e2e;
   --accent: #c9a96e;
   --accent-dark: #a07840;
   --accent-glow: rgba(201,169,110,0.15);
   --text: #ede8e0;
-  --muted: #777;
-  --muted2: #555;
+  --muted: #6e6e6e;
+  --muted2: #4a4a4a;
   --success: #4caf7d;
   --error: #e05c5c;
-  --radius: 12px;
-  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-sm: 9px;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text); font-family: 'Georgia', serif; min-height: 100vh; }
 
+/* DECORATIVE LINES */
+body::before {
+  content: '';
+  position: fixed; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 50%, transparent 100%);
+  opacity: 0.6; z-index: 100;
+}
+
 /* HEADER */
-.header { padding: 48px 24px 32px; text-align: center; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
-.header::before { content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 400px; height: 200px; background: radial-gradient(ellipse, rgba(201,169,110,0.08) 0%, transparent 70%); pointer-events: none; }
-.header-tag { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); font-family: sans-serif; border: 1px solid rgba(201,169,110,0.3); padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
-.header h1 { font-size: 2rem; color: var(--text); letter-spacing: 0.02em; margin-bottom: 10px; line-height: 1.2; }
+.header {
+  padding: 60px 24px 44px; text-align: center;
+  border-bottom: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.header-bg {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.header-bg-glow {
+  position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 280px;
+  background: radial-gradient(ellipse, rgba(201,169,110,0.07) 0%, transparent 65%);
+}
+.header-bg-lines {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,169,110,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,169,110,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.header-icon {
+  width: 56px; height: 56px; margin: 0 auto 20px;
+  background: rgba(201,169,110,0.08); border: 1px solid rgba(201,169,110,0.2);
+  border-radius: 16px; display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.header-icon svg { width: 26px; height: 26px; }
+.header-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.16em;
+  color: var(--accent); font-family: sans-serif;
+  border: 1px solid rgba(201,169,110,0.25); padding: 5px 14px;
+  border-radius: 20px; margin-bottom: 20px;
+  background: rgba(201,169,110,0.04);
+}
+.header-tag-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); display: inline-block; }
+.header h1 {
+  font-size: 2.4rem; color: var(--text); letter-spacing: 0.01em;
+  margin-bottom: 14px; line-height: 1.15;
+}
 .header h1 span { color: var(--accent); }
-.header p { color: var(--muted); font-size: 0.92rem; font-family: sans-serif; max-width: 480px; margin: 0 auto; line-height: 1.6; }
+.header p {
+  color: var(--muted); font-size: 0.92rem; font-family: sans-serif;
+  max-width: 460px; margin: 0 auto 28px; line-height: 1.65;
+}
+.header-stats {
+  display: inline-flex; gap: 0; border: 1px solid var(--border2);
+  border-radius: 10px; overflow: hidden; background: var(--surface);
+}
+.header-stat {
+  padding: 10px 22px; font-family: sans-serif; font-size: 0.8rem;
+  color: var(--muted); border-right: 1px solid var(--border2);
+}
+.header-stat:last-child { border-right: none; }
+.header-stat strong { display: block; font-size: 1rem; color: var(--text); margin-bottom: 1px; }
 
 /* USAGE BAR */
-.usage-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 12px 24px; display: flex; align-items: center; justify-content: center; gap: 16px; font-family: sans-serif; font-size: 0.8rem; }
-.usage-dots { display: flex; gap: 6px; }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background 0.3s; }
+.usage-bar {
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  padding: 11px 24px; display: flex; align-items: center; justify-content: center;
+  gap: 14px; font-family: sans-serif; font-size: 0.78rem;
+}
+.usage-dots { display: flex; gap: 5px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border2); transition: background 0.3s; }
 .dot.used { background: var(--accent); box-shadow: 0 0 6px rgba(201,169,110,0.4); }
 .usage-text { color: var(--muted); }
 .usage-text span { color: var(--accent); font-weight: 600; }
-.pro-badge { background: var(--accent); color: #0c0c0c; font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 10px; letter-spacing: 0.06em; }
+.pro-badge {
+  background: var(--accent); color: #0a0a0a; font-size: 0.65rem;
+  font-weight: 700; padding: 3px 10px; border-radius: 10px; letter-spacing: 0.06em;
+}
 
 /* MODE SWITCHER */
-.mode-switcher { display: flex; gap: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 28px; }
-.mode-btn { flex: 1; padding: 14px 20px; background: transparent; border: none; color: var(--muted); cursor: pointer; font-family: sans-serif; font-size: 0.88rem; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
-.mode-btn .icon { font-size: 1.1rem; }
+.mode-switcher {
+  display: flex; gap: 0; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 28px;
+}
+.mode-btn {
+  flex: 1; padding: 15px 20px; background: transparent; border: none;
+  color: var(--muted); cursor: pointer; font-family: sans-serif; font-size: 0.88rem;
+  transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 9px;
+}
+.mode-btn .mode-icon { width: 20px; height: 20px; flex-shrink: 0; }
 .mode-btn.active { background: var(--accent-glow); color: var(--accent); font-weight: 600; border-bottom: 2px solid var(--accent); }
 .mode-btn:hover:not(.active) { color: var(--text); background: var(--surface2); }
 
@@ -59,146 +131,221 @@ body { background: var(--bg); color: var(--text); font-family: 'Georgia', serif;
 .container { max-width: 800px; margin: 0 auto; padding: 36px 20px 80px; }
 
 /* CARDS */
-.section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); font-family: sans-serif; margin-bottom: 12px; }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 16px; transition: border-color 0.2s; }
-.card:focus-within { border-color: rgba(201,169,110,0.3); }
+.section-label {
+  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--accent); font-family: sans-serif; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px; margin-bottom: 14px;
+  transition: border-color 0.2s;
+}
+.card:focus-within { border-color: rgba(201,169,110,0.25); }
 
 /* FORM */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 540px) { .grid-2 { grid-template-columns: 1fr; } }
-label { display: block; font-size: 0.78rem; color: var(--muted); font-family: sans-serif; margin-bottom: 7px; letter-spacing: 0.02em; }
+label { display: block; font-size: 0.76rem; color: var(--muted); font-family: sans-serif; margin-bottom: 7px; }
 input, select, textarea {
-  width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text);
-  border-radius: var(--radius-sm); padding: 11px 14px; font-size: 0.88rem; font-family: sans-serif;
-  outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%; background: var(--bg); border: 1px solid var(--border2);
+  color: var(--text); border-radius: var(--radius-sm); padding: 11px 14px;
+  font-size: 0.87rem; font-family: sans-serif; outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
-input:focus, select:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201,169,110,0.08); }
-textarea { resize: vertical; min-height: 90px; line-height: 1.5; }
-select option { background: #161616; }
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201,169,110,0.07);
+}
+textarea { resize: vertical; min-height: 86px; line-height: 1.55; }
+select option { background: #141414; }
 
 .api-row { display: flex; gap: 10px; align-items: flex-start; }
-.api-row input { flex: 1; font-family: monospace; font-size: 0.82rem; letter-spacing: 0.02em; }
+.api-row input { flex: 1; font-family: monospace; font-size: 0.82rem; }
 .btn-secondary {
-  background: transparent; border: 1px solid var(--border); color: var(--muted);
-  padding: 11px 14px; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.8rem;
-  white-space: nowrap; font-family: sans-serif; transition: all 0.2s;
+  background: transparent; border: 1px solid var(--border2); color: var(--muted);
+  padding: 11px 14px; border-radius: var(--radius-sm); cursor: pointer;
+  font-size: 0.8rem; white-space: nowrap; font-family: sans-serif; transition: all 0.2s;
 }
 .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
 /* CHIPS */
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {
-  padding: 7px 16px; border: 1px solid var(--border); border-radius: 20px;
-  font-size: 0.8rem; cursor: pointer; font-family: sans-serif; transition: all 0.15s;
-  user-select: none; color: var(--muted);
+  padding: 8px 16px; border: 1px solid var(--border2); border-radius: 20px;
+  font-size: 0.8rem; cursor: pointer; font-family: sans-serif;
+  transition: all 0.15s; user-select: none; color: var(--muted);
+  display: flex; align-items: center; gap: 7px;
 }
-.chip:hover { border-color: rgba(201,169,110,0.5); color: var(--text); }
-.chip.active { background: rgba(201,169,110,0.12); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.chip .chip-icon { font-size: 0.95rem; }
+.chip:hover { border-color: rgba(201,169,110,0.4); color: var(--text); }
+.chip.active { background: rgba(201,169,110,0.1); border-color: var(--accent); color: var(--accent); font-weight: 500; }
 
 /* GENERATE BUTTON */
 .btn-generate {
-  width: 100%; padding: 18px; background: var(--accent); color: #0c0c0c;
+  width: 100%; padding: 19px; background: var(--accent); color: #0a0a0a;
   border: none; border-radius: var(--radius); font-size: 1rem; font-weight: 700;
-  cursor: pointer; font-family: sans-serif; letter-spacing: 0.04em; transition: all 0.2s;
-  margin-top: 8px; position: relative; overflow: hidden;
+  cursor: pointer; font-family: sans-serif; letter-spacing: 0.04em;
+  transition: all 0.2s; margin-top: 10px; position: relative; overflow: hidden;
 }
-.btn-generate::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); transform: translateX(-100%); transition: transform 0.5s; }
+.btn-generate::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: translateX(-100%); transition: transform 0.5s;
+}
 .btn-generate:hover::after { transform: translateX(100%); }
-.btn-generate:hover { background: #d4b47a; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(201,169,110,0.25); }
+.btn-generate:hover { background: #d4b47a; transform: translateY(-1px); box-shadow: 0 10px 30px rgba(201,169,110,0.2); }
 .btn-generate:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
 
 /* ERROR */
-.error-msg { color: var(--error); font-size: 0.82rem; font-family: sans-serif; margin-top: 10px; padding: 12px 16px; background: rgba(224,92,92,0.08); border: 1px solid rgba(224,92,92,0.2); border-radius: var(--radius-sm); display: none; }
+.error-msg {
+  color: var(--error); font-size: 0.82rem; font-family: sans-serif;
+  margin-top: 10px; padding: 12px 16px;
+  background: rgba(224,92,92,0.07); border: 1px solid rgba(224,92,92,0.18);
+  border-radius: var(--radius-sm); display: none;
+}
 
 /* LOADING */
-.loading { text-align: center; padding: 60px 24px; display: none; }
-.spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 20px; }
+.loading { text-align: center; padding: 64px 24px; display: none; }
+.spinner-wrap { position: relative; width: 50px; height: 50px; margin: 0 auto 24px; }
+.spinner {
+  width: 50px; height: 50px; border: 2px solid var(--border2);
+  border-top-color: var(--accent); border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+.spinner-inner {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 20px; height: 20px; border: 2px solid var(--border);
+  border-bottom-color: rgba(201,169,110,0.4); border-radius: 50%;
+  animation: spin 0.6s linear infinite reverse;
+}
 @keyframes spin { to { transform: rotate(360deg); } }
 .loading p { color: var(--muted); font-family: sans-serif; font-size: 0.88rem; }
-.loading-steps { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; max-width: 280px; margin-left: auto; margin-right: auto; }
-.loading-step { font-size: 0.78rem; color: var(--muted2); font-family: sans-serif; display: flex; align-items: center; gap: 8px; }
+.loading-steps { display: flex; flex-direction: column; gap: 9px; margin-top: 22px; max-width: 260px; margin-left: auto; margin-right: auto; }
+.loading-step { font-size: 0.77rem; color: var(--muted2); font-family: sans-serif; display: flex; align-items: center; gap: 9px; transition: color 0.3s; }
 .loading-step.active { color: var(--accent); }
-.loading-step::before { content: '○'; }
-.loading-step.active::before { content: '◉'; }
+.ls-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border2); transition: background 0.3s; flex-shrink: 0; }
+.loading-step.active .ls-dot { background: var(--accent); box-shadow: 0 0 6px rgba(201,169,110,0.5); }
 
 /* RESULT - BRIEF */
 .result { display: none; }
-.result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
-.result-header h2 { font-size: 1.15rem; color: var(--accent); }
-.result-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-.btn-action {
-  background: transparent; border: 1px solid var(--accent); color: var(--accent);
-  padding: 10px 22px; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.84rem;
-  font-family: sans-serif; transition: all 0.15s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+.result-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 24px; flex-wrap: wrap; gap: 12px; padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
 }
-.btn-action:hover { background: var(--accent); color: #0c0c0c; }
-
-.section-block pre { white-space: pre-wrap; word-break: break-word; font-family: sans-serif; font-size: 0.87rem; line-height: 1.7; color: var(--text); }
+.result-header h2 { font-size: 1.1rem; color: var(--accent); display: flex; align-items: center; gap: 10px; }
+.result-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-action {
+  background: transparent; border: 1px solid var(--border2); color: var(--muted);
+  padding: 9px 20px; border-radius: var(--radius-sm); cursor: pointer;
+  font-size: 0.82rem; font-family: sans-serif; transition: all 0.15s;
+  display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
+}
+.btn-action:hover { border-color: var(--accent); color: var(--accent); }
+.btn-action svg { width: 14px; height: 14px; }
+.section-block pre { white-space: pre-wrap; word-break: break-word; font-family: sans-serif; font-size: 0.86rem; line-height: 1.72; color: var(--text); }
 .seo-grid { display: grid; gap: 14px; }
-.seo-item label { color: var(--accent); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; }
-.seo-item p { font-size: 0.87rem; line-height: 1.55; color: var(--text); }
-
-.regenerate-row { margin-top: 20px; display: flex; gap: 12px; }
-.btn-regen { flex: 1; padding: 13px; background: transparent; border: 1px solid var(--border); color: var(--muted); border-radius: var(--radius); cursor: pointer; font-family: sans-serif; font-size: 0.88rem; transition: all 0.15s; }
+.seo-item label { color: var(--accent); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; }
+.seo-item p { font-size: 0.86rem; line-height: 1.55; color: var(--text); }
+.regenerate-row { margin-top: 18px; display: flex; gap: 12px; }
+.btn-regen {
+  flex: 1; padding: 13px; background: transparent; border: 1px solid var(--border2);
+  color: var(--muted); border-radius: var(--radius); cursor: pointer;
+  font-family: sans-serif; font-size: 0.87rem; transition: all 0.15s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
 .btn-regen:hover { border-color: var(--accent); color: var(--accent); }
 
 /* RESULT - LANDING PAGE */
 .lp-result { display: none; }
-.lp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
-.lp-header h2 { font-size: 1.15rem; color: var(--accent); }
-.iframe-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 20px; }
-.iframe-toolbar { background: var(--surface2); border-bottom: 1px solid var(--border); padding: 10px 16px; display: flex; align-items: center; gap: 8px; }
+.lp-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 20px; flex-wrap: wrap; gap: 12px; padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.lp-header h2 { font-size: 1.1rem; color: var(--accent); display: flex; align-items: center; gap: 10px; }
+.iframe-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 18px; }
+.iframe-toolbar { background: var(--surface2); border-bottom: 1px solid var(--border); padding: 10px 16px; display: flex; align-items: center; gap: 7px; }
 .iframe-dot { width: 10px; height: 10px; border-radius: 50%; }
 .iframe-dot:nth-child(1) { background: #ff5f57; }
 .iframe-dot:nth-child(2) { background: #febc2e; }
 .iframe-dot:nth-child(3) { background: #28c840; }
-.iframe-url { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 5px 12px; font-size: 0.75rem; color: var(--muted); font-family: monospace; margin-left: 8px; }
+.iframe-url { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 5px 12px; font-size: 0.74rem; color: var(--muted); font-family: monospace; margin-left: 8px; }
 #lpFrame { width: 100%; height: 600px; border: none; background: #fff; display: block; }
 
 /* PAYWALL */
-.paywall { display: none; text-align: center; padding: 56px 28px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); margin-top: 24px; position: relative; overflow: hidden; }
-.paywall::before { content: ''; position: absolute; top: -40px; left: 50%; transform: translateX(-50%); width: 300px; height: 200px; background: radial-gradient(ellipse, rgba(201,169,110,0.06) 0%, transparent 70%); pointer-events: none; }
+.paywall {
+  display: none; text-align: center; padding: 60px 28px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); margin-top: 24px; position: relative; overflow: hidden;
+}
+.paywall-bg { position: absolute; inset: 0; pointer-events: none; }
+.paywall-bg-glow { position: absolute; top: -50px; left: 50%; transform: translateX(-50%); width: 400px; height: 250px; background: radial-gradient(ellipse, rgba(201,169,110,0.05) 0%, transparent 65%); }
 .paywall h2 { color: var(--accent); font-size: 1.5rem; margin-bottom: 10px; }
 .paywall > p { color: var(--muted); font-family: sans-serif; font-size: 0.9rem; margin-bottom: 36px; line-height: 1.6; max-width: 420px; margin-left: auto; margin-right: auto; }
-.paywall-plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; margin-bottom: 32px; text-align: left; }
-.plan { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; transition: border-color 0.2s; }
-.plan.featured { border-color: var(--accent); background: rgba(201,169,110,0.04); }
-.plan-name { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-family: sans-serif; margin-bottom: 10px; }
+.paywall-plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-bottom: 32px; text-align: left; }
+.plan { background: var(--bg); border: 1px solid var(--border2); border-radius: var(--radius); padding: 22px; transition: border-color 0.2s; }
+.plan.featured { border-color: var(--accent); background: rgba(201,169,110,0.03); }
+.plan-name { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-family: sans-serif; margin-bottom: 10px; }
 .plan.featured .plan-name { color: var(--accent); }
 .plan-price { font-size: 1.6rem; color: var(--text); margin-bottom: 4px; font-family: sans-serif; }
-.plan-price span { font-size: 0.8rem; color: var(--muted); }
-.plan-features { font-size: 0.8rem; color: var(--muted); font-family: sans-serif; line-height: 1.9; margin-top: 12px; list-style: none; }
+.plan-price span { font-size: 0.78rem; color: var(--muted); }
+.plan-features { font-size: 0.79rem; color: var(--muted); font-family: sans-serif; line-height: 1.9; margin-top: 12px; list-style: none; }
 .plan-features li::before { content: '✓ '; color: var(--accent); }
 .plans-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px; }
-.btn-upgrade { display: inline-block; padding: 13px 26px; background: var(--accent); color: #0c0c0c; border: none; border-radius: var(--radius-sm); font-size: 0.88rem; font-weight: 700; cursor: pointer; font-family: sans-serif; text-decoration: none; transition: all 0.2s; }
+.btn-upgrade { display: inline-block; padding: 13px 26px; background: var(--accent); color: #0a0a0a; border: none; border-radius: var(--radius-sm); font-size: 0.88rem; font-weight: 700; cursor: pointer; font-family: sans-serif; text-decoration: none; transition: all 0.2s; }
 .btn-upgrade:hover { background: #d4b47a; transform: translateY(-1px); }
 .btn-upgrade.secondary { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
-.btn-upgrade.secondary:hover { background: var(--accent); color: #0c0c0c; }
+.btn-upgrade.secondary:hover { background: var(--accent); color: #0a0a0a; }
 .license-row { margin-top: 24px; display: flex; gap: 10px; align-items: center; justify-content: center; }
 .license-row input { max-width: 300px; font-family: monospace; font-size: 0.85rem; }
 .btn-activate { padding: 11px 20px; background: transparent; border: 1px solid var(--accent); color: var(--accent); border-radius: var(--radius-sm); cursor: pointer; font-family: sans-serif; font-size: 0.85rem; white-space: nowrap; transition: all 0.15s; }
-.btn-activate:hover { background: var(--accent); color: #0c0c0c; }
+.btn-activate:hover { background: var(--accent); color: #0a0a0a; }
 
 /* PROMO BLOCK */
-.promo-block { margin-top: 36px; background: linear-gradient(135deg, #15120a 0%, #161616 60%); border: 1px solid rgba(201,169,110,0.25); border-radius: var(--radius); overflow: hidden; }
+.promo-block { margin-top: 32px; background: linear-gradient(135deg, #111008 0%, #141414 50%); border: 1px solid rgba(201,169,110,0.2); border-radius: var(--radius); overflow: hidden; position: relative; }
+.promo-block::before { content: ''; position: absolute; top: 0; right: 0; width: 200px; height: 200px; background: radial-gradient(ellipse at top right, rgba(201,169,110,0.06), transparent 60%); pointer-events: none; }
 .promo-inner { display: grid; grid-template-columns: 1fr auto; gap: 32px; padding: 32px; align-items: center; }
 @media (max-width: 600px) { .promo-inner { grid-template-columns: 1fr; } }
-.promo-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); font-family: sans-serif; margin-bottom: 10px; }
+.promo-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); font-family: sans-serif; margin-bottom: 10px; }
 .promo-text h3 { font-size: 1.15rem; color: var(--text); margin-bottom: 10px; line-height: 1.4; }
-.promo-text p { font-size: 0.84rem; color: var(--muted); font-family: sans-serif; line-height: 1.65; margin-bottom: 14px; }
-.promo-list { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px; }
-.promo-list li { font-size: 0.8rem; color: var(--muted); font-family: sans-serif; padding: 3px 0; }
-.promo-list li::before { content: '✓ '; color: var(--accent); }
+.promo-text p { font-size: 0.83rem; color: var(--muted); font-family: sans-serif; line-height: 1.65; margin-bottom: 14px; }
+.promo-list { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 5px 20px; }
+.promo-list li { font-size: 0.79rem; color: var(--muted); font-family: sans-serif; padding: 3px 0; display: flex; align-items: center; gap: 7px; }
+.promo-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
 .promo-cta { text-align: center; min-width: 190px; }
-.btn-promo { display: inline-block; padding: 15px 28px; background: var(--accent); color: #0c0c0c; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 700; font-family: sans-serif; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
-.btn-promo:hover { background: #d4b47a; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(201,169,110,0.25); }
-.promo-note { font-size: 0.74rem; color: var(--muted2); font-family: sans-serif; margin-top: 10px; line-height: 1.5; }
+.btn-promo { display: inline-block; padding: 15px 28px; background: var(--accent); color: #0a0a0a; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 700; font-family: sans-serif; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+.btn-promo:hover { background: #d4b47a; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(201,169,110,0.2); }
+.promo-note { font-size: 0.72rem; color: var(--muted2); font-family: sans-serif; margin-top: 10px; line-height: 1.6; }
+
+/* FEATURES STRIP */
+.features-strip {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--border); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden; margin-bottom: 28px;
+}
+.feature-item {
+  background: var(--surface); padding: 20px 18px;
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.feature-icon {
+  width: 36px; height: 36px; border-radius: 9px;
+  background: rgba(201,169,110,0.08); border: 1px solid rgba(201,169,110,0.15);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.feature-icon svg { width: 16px; height: 16px; }
+.feature-text { font-family: sans-serif; }
+.feature-text strong { font-size: 0.82rem; color: var(--text); display: block; margin-bottom: 2px; }
+.feature-text span { font-size: 0.75rem; color: var(--muted); line-height: 1.4; }
+@media (max-width: 540px) { .features-strip { grid-template-columns: 1fr; } }
 
 /* PRINT */
 @media print {
   .header, .container > .card, .btn-generate, .error-msg, .loading,
-  .result-actions .btn-action:not(.print-keep), .regenerate-row,
-  .usage-bar, .paywall, .mode-switcher, .promo-block, .lp-result, .iframe-wrap { display: none !important; }
+  .result-actions, .regenerate-row, .usage-bar, .paywall,
+  .mode-switcher, .promo-block, .lp-result, .iframe-wrap,
+  .features-strip, body::before { display: none !important; }
   body { background: #fff; color: #111; }
   .result { display: block !important; }
   .result-header h2 { color: #8a6530; }
@@ -213,10 +360,29 @@ select option { background: #161616; }
 </head>
 <body>
 
+<!-- HEADER -->
 <div class="header">
-  <div class="header-tag">AI-Powered · Hospitality</div>
+  <div class="header-bg">
+    <div class="header-bg-glow"></div>
+    <div class="header-bg-lines"></div>
+  </div>
+  <div class="header-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+      <polyline points="9 22 9 12 15 12 15 22"/>
+    </svg>
+  </div>
+  <div class="header-tag">
+    <span class="header-tag-dot"></span>
+    AI-Powered · Hospitality
+  </div>
   <h1>Hospitality <span>Landing Page</span> Generator</h1>
-  <p>Generate a professional landing page brief or a ready-to-use HTML page in under 10 minutes</p>
+  <p>Generate a professional brief or a ready-to-use HTML landing page for any hotel, villa or resort in minutes</p>
+  <div class="header-stats">
+    <div class="header-stat"><strong>2 min</strong>avg time</div>
+    <div class="header-stat"><strong>8+</strong>languages</div>
+    <div class="header-stat"><strong>GPT‑4o</strong>powered</div>
+  </div>
 </div>
 
 <div class="usage-bar" id="usageBar">
@@ -226,23 +392,66 @@ select option { background: #161616; }
 
 <div class="container">
 
+  <!-- FEATURES STRIP -->
+  <div class="features-strip">
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+        </svg>
+      </div>
+      <div class="feature-text">
+        <strong>Page Brief</strong>
+        <span>Structure, copy, SEO & image guide</span>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+        </svg>
+      </div>
+      <div class="feature-text">
+        <strong>HTML Landing Page</strong>
+        <span>Ready-to-use code, download & launch</span>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
+        </svg>
+      </div>
+      <div class="feature-text">
+        <strong>PDF Export</strong>
+        <span>Download brief or full page as PDF</span>
+      </div>
+    </div>
+  </div>
+
   <!-- API KEY -->
   <div class="card">
     <div class="section-label">OpenAI API Key</div>
     <div class="api-row">
-      <input type="password" id="apiKey" placeholder="sk-..." />
+      <input type="password" id="apiKey" placeholder="sk-proj-…" />
       <button class="btn-secondary" onclick="toggleKey()">Show</button>
     </div>
-    <p style="font-size:0.74rem;color:var(--muted);font-family:sans-serif;margin-top:8px;">Key stays in your browser only. Never stored or shared. · <a href="https://platform.openai.com/api-keys" target="_blank" style="color:var(--accent);text-decoration:none;">Get a free key →</a></p>
+    <p style="font-size:0.73rem;color:var(--muted);font-family:sans-serif;margin-top:9px;">Stored only in your browser — never sent to our servers. &nbsp;·&nbsp; <a href="https://platform.openai.com/api-keys" target="_blank" style="color:var(--accent);text-decoration:none;">Get a free key →</a></p>
   </div>
 
   <!-- MODE SWITCHER -->
   <div class="mode-switcher">
     <button class="mode-btn active" id="modeBrief" onclick="setMode('brief')">
-      <span class="icon">📋</span> Landing Page Brief
+      <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+      </svg>
+      Landing Page Brief
     </button>
     <button class="mode-btn" id="modeLanding" onclick="setMode('landing')">
-      <span class="icon">🌐</span> Ready HTML Landing Page
+      <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+      </svg>
+      Ready HTML Landing Page
     </button>
   </div>
 
@@ -272,27 +481,27 @@ select option { background: #161616; }
         <input type="text" id="propName" placeholder="e.g. Villa Serenova" />
       </div>
       <div>
-        <label>Number of Rooms / Units</label>
+        <label>Rooms / Units</label>
         <input type="text" id="rooms" placeholder="e.g. 8 villas" />
       </div>
     </div>
     <div>
-      <label>Top 3 Unique Selling Points</label>
+      <label>Top Unique Selling Points</label>
       <textarea id="usp" placeholder="e.g. Private infinity pool, Chef-prepared breakfasts, 10 min walk to beach"></textarea>
     </div>
   </div>
 
   <!-- STYLE -->
   <div class="card">
-    <div class="section-label">Style & Vibe</div>
+    <div class="section-label">Style &amp; Vibe</div>
     <div class="chips" id="styleChips">
-      <span class="chip" data-val="luxury">Luxury</span>
-      <span class="chip" data-val="eco / wellness">Eco / Wellness</span>
-      <span class="chip" data-val="family-friendly">Family</span>
-      <span class="chip" data-val="romantic couples">Romantic</span>
-      <span class="chip" data-val="adventure">Adventure</span>
-      <span class="chip" data-val="minimalist design">Minimalist</span>
-      <span class="chip" data-val="boutique artsy">Boutique / Artsy</span>
+      <span class="chip" data-val="luxury"><span class="chip-icon">✦</span>Luxury</span>
+      <span class="chip" data-val="eco / wellness"><span class="chip-icon">🌿</span>Eco / Wellness</span>
+      <span class="chip" data-val="family-friendly"><span class="chip-icon">👨‍👩‍👧</span>Family</span>
+      <span class="chip" data-val="romantic couples"><span class="chip-icon">🕯</span>Romantic</span>
+      <span class="chip" data-val="adventure"><span class="chip-icon">🧭</span>Adventure</span>
+      <span class="chip" data-val="minimalist design"><span class="chip-icon">◻</span>Minimalist</span>
+      <span class="chip" data-val="boutique artsy"><span class="chip-icon">🎨</span>Boutique / Artsy</span>
     </div>
   </div>
 
@@ -300,18 +509,18 @@ select option { background: #161616; }
   <div class="card">
     <div class="section-label">Target Audience</div>
     <div class="chips" id="audienceChips">
-      <span class="chip" data-val="honeymooners">Honeymooners</span>
-      <span class="chip" data-val="families with children">Families</span>
-      <span class="chip" data-val="solo travelers">Solo Travelers</span>
-      <span class="chip" data-val="digital nomads">Digital Nomads</span>
-      <span class="chip" data-val="corporate retreats">Corporate</span>
-      <span class="chip" data-val="wellness seekers">Wellness Seekers</span>
+      <span class="chip" data-val="honeymooners"><span class="chip-icon">💍</span>Honeymooners</span>
+      <span class="chip" data-val="families with children"><span class="chip-icon">🏖</span>Families</span>
+      <span class="chip" data-val="solo travelers"><span class="chip-icon">🧳</span>Solo Travelers</span>
+      <span class="chip" data-val="digital nomads"><span class="chip-icon">💻</span>Digital Nomads</span>
+      <span class="chip" data-val="corporate retreats"><span class="chip-icon">🤝</span>Corporate</span>
+      <span class="chip" data-val="wellness seekers"><span class="chip-icon">🧘</span>Wellness Seekers</span>
     </div>
   </div>
 
   <!-- LANG & CTA -->
   <div class="card">
-    <div class="section-label">Language & Call to Action</div>
+    <div class="section-label">Language &amp; Call to Action</div>
     <div class="grid-2">
       <div>
         <label>Page Language</label>
@@ -344,13 +553,17 @@ select option { background: #161616; }
 
   <!-- LOADING -->
   <div class="loading" id="loading">
-    <div class="spinner"></div>
+    <div class="spinner-wrap">
+      <div class="spinner"></div>
+      <div class="spinner-inner"></div>
+    </div>
     <p id="loadingMsg">Generating your content…</p>
     <div class="loading-steps" id="loadingSteps"></div>
   </div>
 
   <!-- PAYWALL -->
   <div class="paywall" id="paywall">
+    <div class="paywall-bg"><div class="paywall-bg-glow"></div></div>
     <h2>You've used your 3 free generations</h2>
     <p>Upgrade to continue generating unlimited landing page briefs and full HTML pages with PDF export.</p>
     <div class="paywall-plans">
@@ -401,14 +614,25 @@ select option { background: #161616; }
   <div class="result" id="result">
     <div class="print-title" id="printTitle"></div>
     <div class="result-header">
-      <h2>✦ Your Landing Page Brief</h2>
+      <h2>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+        </svg>
+        Landing Page Brief
+      </h2>
       <div class="result-actions">
-        <button class="btn-action" onclick="exportPDF()">↓ Download PDF</button>
-        <button class="btn-action" onclick="copyAll()">⎘ Copy All</button>
+        <button class="btn-action" onclick="exportPDF()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+          Download PDF
+        </button>
+        <button class="btn-action" onclick="copyAll()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copy All
+        </button>
       </div>
     </div>
     <div class="card">
-      <div class="section-label">Page Structure & Sections</div>
+      <div class="section-label">Page Structure &amp; Sections</div>
       <div id="structureOut" class="section-block"><pre></pre></div>
     </div>
     <div class="card">
@@ -424,8 +648,14 @@ select option { background: #161616; }
       <div id="imagesOut" class="section-block"><pre></pre></div>
     </div>
     <div class="regenerate-row">
-      <button class="btn-regen" onclick="generate()">↺ Regenerate</button>
-      <button class="btn-regen" onclick="resetForm()">← Start Over</button>
+      <button class="btn-regen" onclick="generate()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+        Regenerate
+      </button>
+      <button class="btn-regen" onclick="resetForm()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Start Over
+      </button>
     </div>
     <div class="promo-block">
       <div class="promo-inner">
@@ -434,9 +664,9 @@ select option { background: #161616; }
           <h3>Turn this brief into a live website</h3>
           <p>We design and develop custom hospitality websites on WordPress &amp; Elementor — fast-loading, SEO-optimised, and built to convert direct bookings. Hotels, villas and resorts across Southeast Asia.</p>
           <ul class="promo-list">
-            <li>Landing pages & full hotel websites</li>
+            <li>Landing pages &amp; full hotel websites</li>
             <li>Booking engine integration</li>
-            <li>Technical SEO & Core Web Vitals</li>
+            <li>Technical SEO &amp; Core Web Vitals</li>
             <li>Figma-to-WordPress development</li>
           </ul>
         </div>
@@ -451,10 +681,21 @@ select option { background: #161616; }
   <!-- RESULT: LANDING PAGE -->
   <div class="lp-result" id="lpResult">
     <div class="lp-header">
-      <h2>✦ Your HTML Landing Page</h2>
+      <h2>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+        </svg>
+        HTML Landing Page
+      </h2>
       <div class="result-actions">
-        <button class="btn-action" onclick="downloadHTML()">↓ Download HTML</button>
-        <button class="btn-action" onclick="downloadLPPDF()">↓ Download PDF</button>
+        <button class="btn-action" onclick="downloadHTML()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Download HTML
+        </button>
+        <button class="btn-action" onclick="downloadLPPDF()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+          Download PDF
+        </button>
       </div>
     </div>
     <div class="iframe-wrap">
@@ -467,19 +708,25 @@ select option { background: #161616; }
       <iframe id="lpFrame" sandbox="allow-same-origin allow-scripts"></iframe>
     </div>
     <div class="regenerate-row">
-      <button class="btn-regen" onclick="generate()">↺ Regenerate</button>
-      <button class="btn-regen" onclick="resetForm()">← Start Over</button>
+      <button class="btn-regen" onclick="generate()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+        Regenerate
+      </button>
+      <button class="btn-regen" onclick="resetForm()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Start Over
+      </button>
     </div>
     <div class="promo-block">
       <div class="promo-inner">
         <div class="promo-text">
-          <div class="promo-label">Want this hosted & live?</div>
+          <div class="promo-label">Want this hosted &amp; live?</div>
           <h3>We'll launch your website for you</h3>
           <p>Downloaded your landing page HTML? We can host it, connect your booking system, optimise for SEO, and make it production-ready on WordPress or as a standalone page.</p>
           <ul class="promo-list">
-            <li>Landing pages & full hotel websites</li>
+            <li>Landing pages &amp; full hotel websites</li>
             <li>Booking engine integration</li>
-            <li>Technical SEO & Core Web Vitals</li>
+            <li>Technical SEO &amp; Core Web Vitals</li>
             <li>Figma-to-WordPress development</li>
           </ul>
         </div>
@@ -516,7 +763,7 @@ select option { background: #161616; }
     const text = document.getElementById('usageText');
     dots.innerHTML = '';
     if (pro) {
-      bar.innerHTML = '<span class="pro-badge">PRO</span><span style="color:var(--muted);font-family:sans-serif;font-size:0.8rem;margin-left:10px;">Unlimited generations · PDF export enabled</span>';
+      bar.innerHTML = '<span class="pro-badge">PRO</span><span style="color:var(--muted);font-family:sans-serif;font-size:0.78rem;margin-left:10px;">Unlimited generations · PDF export enabled</span>';
       return;
     }
     for (let i = 0; i < FREE_LIMIT; i++) {
@@ -575,7 +822,7 @@ select option { background: #161616; }
 
   function setLoadingSteps(steps) {
     const el = document.getElementById('loadingSteps');
-    el.innerHTML = steps.map((s, i) => `<div class="loading-step ${i === 0 ? 'active' : ''}" id="lstep${i}">${s}</div>`).join('');
+    el.innerHTML = steps.map((s, i) => `<div class="loading-step ${i === 0 ? 'active' : ''}" id="lstep${i}"><div class="ls-dot"></div>${s}</div>`).join('');
   }
   function activateStep(i) {
     document.querySelectorAll('.loading-step').forEach((el, idx) => el.classList.toggle('active', idx === i));
@@ -698,7 +945,6 @@ select option { background: #161616; }
   }
 
   function renderLandingPage(html, propLabel) {
-    // Clean up markdown code fences if GPT wrapped it
     let cleanHTML = html.replace(/^```html\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '').trim();
     generatedHTML = cleanHTML;
     const frame = document.getElementById('lpFrame');
@@ -739,9 +985,8 @@ select option { background: #161616; }
       .map(el => (el.querySelector('label')?.textContent || '') + ': ' + (el.querySelector('p')?.textContent || '')).join('\n');
     const full = 'PAGE STRUCTURE\n' + struct + '\n\nCOPYWRITING\n' + copy + '\n\nSEO BLOCK\n' + seoItems + '\n\nIMAGE RECOMMENDATIONS\n' + images;
     navigator.clipboard.writeText(full).then(() => {
-      const btn = document.querySelector('.result-actions .btn-action:last-child');
-      btn.textContent = '✓ Copied!';
-      setTimeout(() => btn.textContent = '⎘ Copy All', 2000);
+      const btn = [...document.querySelectorAll('.result-actions .btn-action')].find(b => b.textContent.includes('Copy'));
+      if (btn) { btn.textContent = '✓ Copied!'; setTimeout(() => btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy All', 2000); }
     });
   }
 
