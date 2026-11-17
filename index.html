@@ -775,7 +775,36 @@ select option { background: #141414; }
   let generatedHTML = '';
 
   function openCheckout(priceId) {
-    Paddle.Checkout.open({ items: [{ priceId: priceId, quantity: 1 }] });
+    try {
+      if (typeof Paddle === 'undefined' || !Paddle.Checkout) {
+        showPaddleFallback();
+        return;
+      }
+      Paddle.Checkout.open({
+        items: [{ priceId: priceId, quantity: 1 }],
+        settings: {
+          allowLogout: false,
+        }
+      });
+    } catch(e) {
+      showPaddleFallback();
+    }
+  }
+
+  function showPaddleFallback() {
+    const el = document.getElementById('paddleFallback');
+    if (el) { el.style.display = 'block'; return; }
+    const div = document.createElement('div');
+    div.id = 'paddleFallback';
+    div.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
+    div.innerHTML = '<div style="background:#1c1c1c;border:1px solid #2e2e2e;border-radius:16px;padding:40px;max-width:420px;text-align:center;font-family:sans-serif;">' +
+      '<div style="font-size:2rem;margin-bottom:16px;">✦</div>' +
+      '<h3 style="color:#ede8e0;font-size:1.3rem;margin-bottom:12px;">Upgrade to Pro</h3>' +
+      '<p style="color:#6e6e6e;font-size:0.9rem;line-height:1.6;margin-bottom:24px;">Our payment system is currently being set up. To unlock unlimited generations, please contact us directly.</p>' +
+      '<a href="mailto:info@fortune-thailand.com?subject=Hospitality%20Generator%20Pro" style="display:inline-block;background:#c9a96e;color:#0a0a0a;padding:12px 28px;border-radius:9px;text-decoration:none;font-weight:600;font-size:0.9rem;margin-bottom:16px;">Contact for Pro Access →</a>' +
+      '<br><button onclick="document.getElementById(\'paddleFallback\').remove()" style="background:none;border:none;color:#6e6e6e;cursor:pointer;font-size:0.85rem;margin-top:8px;">Close</button>' +
+      '</div>';
+    document.body.appendChild(div);
   }
 
   function getCount() { return parseInt(localStorage.getItem(LS_COUNT) || '0'); }
@@ -893,11 +922,14 @@ select option { background: #141414; }
     } else {
       loadingMsg = 'Building your HTML landing page…';
       loadingSteps = ['Designing layout & sections', 'Writing copy & headlines', 'Styling with CSS', 'Assembling final HTML'];
-      const unsplashQuery = encodeURIComponent(location.split(',')[0] + ' luxury hotel');
-      const heroImg = `https://source.unsplash.com/1600x900/?${unsplashQuery}`;
-      const roomImg1 = `https://source.unsplash.com/800x600/?luxury+hotel+room`;
-      const roomImg2 = `https://source.unsplash.com/800x600/?villa+bedroom`;
-      const roomImg3 = `https://source.unsplash.com/800x600/?resort+suite`;
+      const seed1 = Math.floor(Math.random() * 900) + 100;
+      const seed2 = Math.floor(Math.random() * 900) + 100;
+      const seed3 = Math.floor(Math.random() * 900) + 100;
+      const seed4 = Math.floor(Math.random() * 900) + 100;
+      const heroImg = `https://picsum.photos/seed/${seed1}/1600/900`;
+      const roomImg1 = `https://picsum.photos/seed/${seed2}/800/600`;
+      const roomImg2 = `https://picsum.photos/seed/${seed3}/800/600`;
+      const roomImg3 = `https://picsum.photos/seed/${seed4}/800/600`;
       prompt = `You are a senior front-end developer and luxury hospitality designer. Build a pixel-perfect, production-ready HTML landing page. This must look like a $5,000 custom agency design — not a template.
 
 PROPERTY:
@@ -931,13 +963,17 @@ ROOM IMAGE URLs: ${roomImg1} | ${roomImg2} | ${roomImg3}
    - Concierge: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
    NEVER use icon font characters, Unicode symbols, emoji, or &#x codes for icons.
 
-7. COLOR PALETTE by style:
-   - luxury → bg #0a0f1e, text #f0ebe0, accent #c9a96e, section-alt #111827
-   - eco/wellness → bg #f4f1eb, text #2c2c2c, accent #6b8f71, section-alt #eae5d8
-   - romantic → bg #faf5f0, text #2a1a1a, accent #b87a7a, section-alt #f0e8e0
-   - minimalist → bg #ffffff, text #111111, accent #c8a96d, section-alt #f7f7f5
-   - adventure → bg #0f1a0f, text #e8f0e8, accent #d4a843, section-alt #1a2a1a
-   - boutique/artsy → bg #f2ede4, text #1a1a1a, accent #2d5f5f, section-alt #e8e0d4
+7. ══ COLOR PALETTE — MANDATORY ══
+   The style is "${style}". You MUST use the exact colors below for this style. DO NOT use any other color scheme.
+   - luxury → body background #0a0f1e (very dark navy), main text #f0ebe0 (warm cream), accent/buttons #c9a96e (gold), section alternates #111827 (dark slate)
+   - eco → body background #f4f1eb (warm off-white), main text #2c2c2c (dark charcoal), accent/buttons #6b8f71 (forest green), section alternates #eae5d8 (light taupe)
+   - wellness → body background #f9f6f1 (cream), main text #2c2c2c, accent/buttons #8b7355 (warm brown), section alternates #edf2ed (sage tint)
+   - romantic → body background #faf5f0 (ivory), main text #2a1a1a (deep brown), accent/buttons #b87a7a (dusty rose), section alternates #f0e8e0 (blush)
+   - minimalist → body background #ffffff (pure white), main text #111111 (near black), accent/buttons #2d2d2d (dark), section alternates #f7f7f5 (off-white)
+   - adventure → body background #0f1a0f (dark forest), main text #e8f0e8 (pale green-white), accent/buttons #d4a843 (amber), section alternates #1a2a1a (dark green)
+   - boutique → body background #f2ede4 (warm sand), main text #1a1a1a (black), accent/buttons #2d5f5f (teal), section alternates #e8e0d4 (pale sand)
+   - artsy → body background #1a1218 (dark plum), main text #f5f0eb (pale cream), accent/buttons #c47b5a (terracotta), section alternates #231820 (dark mauve)
+   CRITICAL: The current style is "${style}". If style is eco, wellness, romantic, minimalist, or boutique — use a LIGHT background (not dark navy). Only luxury, adventure, artsy use dark backgrounds.
 
 8. SECTIONS — build all 8 in this order:
    a) NAV — sticky, transparent on hero with property name left, CTA button right, blur backdrop on scroll (use JS scroll listener + class)
@@ -984,7 +1020,7 @@ Output ONLY the complete HTML document starting with <!DOCTYPE html>. Nothing el
         body: JSON.stringify({
           model: 'gpt-4o-mini',
           messages: [{ role: 'user', content: prompt }],
-          max_tokens: currentMode === 'landing' ? 4000 : 2500,
+          max_tokens: currentMode === 'landing' ? 6000 : 2500,
           temperature: 0.75
         })
       });
@@ -1046,6 +1082,8 @@ Output ONLY the complete HTML document starting with <!DOCTYPE html>. Nothing el
     let cleanHTML = html.replace(/^```html\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '').trim();
     generatedHTML = cleanHTML;
     const frame = document.getElementById('lpFrame');
+    frame.removeAttribute('srcdoc');
+    void frame.offsetHeight;
     frame.srcdoc = cleanHTML;
     document.getElementById('iframeUrl').textContent = propLabel + ' · preview';
     document.getElementById('lpResult').style.display = 'block';
