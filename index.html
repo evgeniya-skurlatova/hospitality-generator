@@ -1020,6 +1020,8 @@ D) FEATURES — background:var(--bg2). eyebrow + h2 centered, then 3-column card
    Each card: background:var(--bg), border:1px solid rgba(128,128,128,0.15), border-radius:12px, padding:32px. At top: a div (width:48px, height:48px, border-radius:50%, background:color-mix(in srgb, var(--accent) 15%, transparent), display:flex, align-items:center, justify-content:center) containing the SVG icon in accent color. Then bold title (1.1rem, Playfair Display), then 2-sentence description in muted color.
    Hover: translateY(-6px), box-shadow:0 12px 32px rgba(0,0,0,0.12), transition:0.3s.
    CRITICAL: The icon div must contain the full SVG element from RULE 4 — not a Unicode character, not an emoji, not a background image. Set stroke="var(--accent)" on the SVG element.
+   EXACT HTML PATTERN for the icon wrapper (copy this):
+   <div style="width:48px;height:48px;border-radius:50%;background:color-mix(in srgb,var(--accent) 15%,transparent);display:flex;align-items:center;justify-content:center;margin-bottom:20px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">...(path data from RULE 4)...</svg></div>
    Feature titles and descriptions must reflect the actual USPs, not generic "luxury experience" copy.
 
 E) ROOMS — background:var(--bg2), padding:110px 0. eyebrow + h2 centered, then display:grid, grid-template-columns:repeat(3,1fr), gap:32px, max-width:1200px, margin:0 auto. At ≤768px: grid-template-columns:1fr.
@@ -1029,8 +1031,10 @@ E) ROOMS — background:var(--bg2), padding:110px 0. eyebrow + h2 centered, then
    Badge on first card: position:absolute, top:16px, left:16px, background:var(--accent), color:var(--bg), padding:4px 12px, border-radius:20px, font-size:0.75rem, font-weight:600, z-index:2.
    Card body: padding:24px. Room name: Playfair Display, 1.3rem, font-weight:600. Description: 2 lines, color:var(--muted), font-size:0.9rem. Price: "from $X / night", color:var(--accent), font-weight:600, font-size:1rem, margin:12px 0. CTA button: width:100%, padding:10px, border:1.5px solid var(--accent), background:transparent, color:var(--accent), border-radius:6px, cursor:pointer, font-family:Inter.
 
-F) PHOTO STRIP — full-width section, padding:0, margin:0, height:340px, overflow:hidden, display:grid, grid-template-columns:repeat(4,1fr), gap:0.
+F) PHOTO STRIP — full-width section, width:100%, padding:0, margin:0, height:340px, overflow:hidden.
    CRITICAL: This section must have NO text, NO headings, NO labels — only images. It is purely visual.
+   CRITICAL: Do NOT wrap content in a max-width container. The grid must be a direct child of the section and span the full viewport width.
+   The section itself: display:grid, grid-template-columns:repeat(4,1fr), gap:0, width:100%.
    Each cell: overflow:hidden, height:340px. Inside each cell: <img> with width:100%, height:100%, object-fit:cover, display:block.
    Use these 4 img src values: ${heroImg} (object-position:center top), ${roomImg1} (object-position:center), ${roomImg2} (object-position:center bottom), ${roomImg3} (object-position:center).
    The AMENITIES section that follows must start AFTER this strip with its own background:var(--bg) and padding-top:110px. They must NOT overlap.
@@ -1038,7 +1042,9 @@ F) PHOTO STRIP — full-width section, padding:0, margin:0, height:340px, overfl
 
 G) AMENITIES — background:var(--bg), padding:110px 0. eyebrow + h2 centered (margin-bottom:60px), then icon grid: display:grid, grid-template-columns:repeat(5,1fr), gap:40px, max-width:900px, margin:0 auto. At ≤768px: grid-template-columns:repeat(3,1fr).
    Each item: text-align:center. First: a circle div (width:64px, height:64px, border-radius:50%, background:color-mix(in srgb, var(--accent) 12%, var(--bg)), display:flex, align-items:center, justify-content:center, margin:0 auto 12px). Inside the circle: the full SVG icon from RULE 4 with stroke="var(--accent)", width=28, height=28.
-   CRITICAL: The circle must contain a real SVG element — not a Unicode symbol, not text, not an emoji.
+   CRITICAL: The circle must contain a real SVG element from RULE 4 — not a Unicode symbol, not text, not an emoji, not &#x; entities.
+   EXACT HTML PATTERN for each amenity item (copy this structure):
+   <div style="text-align:center"><div style="width:64px;height:64px;border-radius:50%;background:color-mix(in srgb,var(--accent) 12%,var(--bg));display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">...(path data)...</svg></div><span style="font-size:0.85rem;font-weight:500;color:var(--text)">Amenity Name</span></div>
    Below circle: amenity name in font-size:0.85rem, font-weight:500, color:var(--text).
    Use 10 amenities specific to the property's USPs.
 
@@ -1056,8 +1062,9 @@ J) FOOTER — background:var(--bg), border-top:1px solid rgba(128,128,128,0.15),
    display:grid, grid-template-columns:1fr 1fr 1fr, gap:40px, max-width:1200px, margin:0 auto.
    At ≤768px: grid-template-columns:1fr, gap:32px.
    Col 1: property name (Playfair Display, 1.3rem), tagline (muted, 0.9rem), location (muted, 0.85rem).
-   Col 2: small eyebrow "Navigation", then 3–4 links as <a> tags (display:block, color:var(--muted), text-decoration:none, margin-bottom:8px, font-size:0.9rem).
-   Col 3: small eyebrow "Follow Us", then 3 social names (Instagram, Facebook, TripAdvisor) as <a> tags same style.
+   Col 2: small eyebrow "Navigation", then 3–4 links as SEPARATE <a> tags — each on its own line, display:block, color:var(--muted), text-decoration:none, margin-bottom:8px, font-size:0.9rem. NEVER put multiple links in a single <a> tag or concatenate link text without spaces.
+   Col 3: small eyebrow "Follow Us", then Instagram, Facebook, TripAdvisor as 3 SEPARATE <a> tags — each display:block, same style as col 2. NEVER concatenate them into one line of text.
+   CRITICAL: Each navigation link and social link must be a separate <a> element with display:block so they appear on separate lines. Example: <a href="#" style="display:block;...">Instagram</a><a href="#" style="display:block;...">Facebook</a>
    CRITICAL: NO year, NO "All rights reserved", NO ©, NO copyright symbol anywhere in footer.
 
 ════════════════════════════════
@@ -1120,6 +1127,8 @@ Before writing the final HTML, confirm ALL of these:
 ☑ Feature and Amenity icons are <svg> elements (not Unicode, not emoji, not &#x; codes)
 ☑ BOOKING CTA content is centered (text-align:center, button is display:inline-block inside centered parent)
 ☑ FOOTER has 3 columns in a CSS grid (not stacked in one column)
+☑ Footer links: each nav link and social link is a SEPARATE <a> tag with display:block — not concatenated
+☑ PHOTO STRIP section: grid is a direct child of section with width:100% — no max-width container wrapping it
 ☑ Footer has NO year, NO copyright, NO "All rights reserved"
 
 Output ONLY the complete HTML document. First character: <. Last character: >.`;
