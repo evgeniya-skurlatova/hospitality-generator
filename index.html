@@ -3,7 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hospitality Landing Page Generator</title>
+<title>Hospitality Landing Page Generator — AI-Powered for Hotels & Villas</title>
+<meta name="description" content="Generate a professional landing page brief or ready-to-use HTML page for any hotel, villa or resort in minutes. Powered by GPT-4o. Free to try.">
+<meta name="keywords" content="hospitality landing page generator, hotel website builder, villa landing page, resort marketing, AI hotel page, GPT hospitality">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hospitality-generator.vercel.app/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hospitality-generator.vercel.app/">
+<meta property="og:title" content="Hospitality Landing Page Generator — AI-Powered for Hotels & Villas">
+<meta property="og:description" content="Generate a professional landing page brief or ready-to-use HTML page for any hotel, villa or resort in minutes. Powered by GPT-4o.">
+<meta property="og:image" content="https://hospitality-generator.vercel.app/og-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hospitality Landing Page Generator — AI-Powered">
+<meta name="twitter:description" content="Generate a professional landing page brief or ready-to-use HTML page for any hotel, villa or resort in minutes.">
+<meta name="twitter:image" content="https://hospitality-generator.vercel.app/og-image.png">
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js" onload="initPaddle()"></script>
 <script>
   function initPaddle() {
@@ -876,7 +893,78 @@ select option { background: #141414; }
     } else {
       loadingMsg = 'Building your HTML landing page…';
       loadingSteps = ['Designing layout & sections', 'Writing copy & headlines', 'Styling with CSS', 'Assembling final HTML'];
-      prompt = `You are a world-class luxury hospitality web designer. Create a stunning, elegant, production-ready HTML landing page for this property. The result must look like it was designed by a premium agency — refined typography, subtle gradients, tasteful spacing.\n\nPROPERTY:\n- Type: ${propType}\n- Name: ${propLabel}\n- Location: ${location}\n- Rooms/Units: ${rooms || 'not specified'}\n- Style/Vibe: ${style}\n- Target audience: ${audience}\n- USPs: ${usp}\n- Primary CTA: ${cta}\n- Language: ${lang}\n\nDESIGN RULES (follow precisely):\n1. Output ONLY valid HTML starting with <!DOCTYPE html> — no markdown, no explanation, no code fences\n2. All CSS inside a single <style> tag in <head>\n3. No external dependencies — no CDN, no Google Fonts. Use: font-family: 'Georgia', serif for headings; system-ui, sans-serif for body\n4. COLOR PALETTE based on style:\n   - luxury → background #0d0d0d or deep navy #0a1628, text #f0ebe0, accents gold #c9a96e\n   - eco/wellness → background #f7f4ee, text #2c2c2c, accents sage #7a9e7e or terracotta #c17f5a\n   - romantic → background #faf6f1, text #2a2020, accents dusty rose #c4877a or blush #e8b4b0\n   - minimalist → background #ffffff, text #111111, accents #888 or warm sand\n   - adventure → background #111c14, text #edf2ed, accents amber #d4a843\n   - boutique/artsy → background #f5f0e8, text #1a1a1a, accents deep teal #2d5f5f\n   - default fallback → dark elegant: #0a0a0a background, #ede8e0 text, #c9a96e accent\n5. SECTIONS (in this order):\n   a) Hero — full-height section with large heading, elegant subtitle, CTA button. Use CSS gradient background (2–3 color stops matching the palette). Absolutely NO placeholder image URLs.\n   b) About / Story — 2-col layout: decorative quote or large number on left, text on right\n   c) Key Features — 3-col grid, each with an inline SVG icon (simple 24x24 stroke icon: bed, sun, map-pin, leaf, wifi, star, etc.), short title, 1-line description\n   d) Rooms / Villas — 2 or 3 cards with gradient placeholder (CSS only, no images), room name, brief description, price hint\n   e) Amenities — icon grid (SVG icons inline), clean layout\n   f) Testimonials — 2 elegant quote cards with guest name, country, star rating (★★★★★)\n   g) Location — text-based, elegant map-pin icon, address, how to get there\n   h) Contact / Booking CTA — centered, large heading, CTA button\n   i) Footer — property name, tagline, social links as text. NO copyright year, NO "All rights reserved"\n6. TYPOGRAPHY: large elegant headings (2.5–4rem for hero), generous line-height (1.6–1.8), letter-spacing on headings\n7. SPACING: generous padding (80–120px sections), breathable layout — never cramped\n8. SVG ICONS: use simple inline SVG (stroke, no fill) for feature icons and amenities — draw them directly, never use external icon libraries\n9. BUTTONS: elegant, with hover effect defined in CSS (:hover). Rounded corners (4–8px), uppercase or small-caps for luxury styles\n10. MOBILE: responsive with CSS Grid and Flexbox, media query at 768px\n11. All text in ${lang}. CTA buttons say "${cta}"\n12. NO year in footer. NO "All rights reserved". NO generic template look.\n\nOutput ONLY the complete HTML document, nothing else.`;
+      const unsplashQuery = encodeURIComponent(location.split(',')[0] + ' luxury hotel');
+      const heroImg = `https://source.unsplash.com/1600x900/?${unsplashQuery}`;
+      const roomImg1 = `https://source.unsplash.com/800x600/?luxury+hotel+room`;
+      const roomImg2 = `https://source.unsplash.com/800x600/?villa+bedroom`;
+      const roomImg3 = `https://source.unsplash.com/800x600/?resort+suite`;
+      prompt = `You are a senior front-end developer and luxury hospitality designer. Build a pixel-perfect, production-ready HTML landing page. This must look like a $5,000 custom agency design — not a template.
+
+PROPERTY:
+- Type: ${propType}
+- Name: ${propLabel}
+- Location: ${location}
+- Rooms/Units: ${rooms || 'not specified'}
+- Style/Vibe: ${style}
+- Target audience: ${audience}
+- USPs: ${usp}
+- Primary CTA: ${cta}
+- Language: ${lang}
+
+HERO IMAGE URL (use this exact src): ${heroImg}
+ROOM IMAGE URLs: ${roomImg1} | ${roomImg2} | ${roomImg3}
+
+═══ HARD RULES — NEVER VIOLATE ═══
+1. Output ONLY raw HTML starting with <!DOCTYPE html>. Zero markdown. Zero code fences. Zero explanation.
+2. All CSS in one <style> block in <head>. No external CSS. No CDN.
+3. Google Fonts allowed: add ONE @import in <style> — use "Playfair Display" for headings and "Inter" for body.
+4. Hero section MUST use a real <img> tag with src="${heroImg}" covering full viewport (object-fit:cover, position:absolute, width:100%, height:100%). Overlay with semi-transparent gradient on top of the image.
+5. Room cards MUST use real <img> tags with the room image URLs above.
+6. SVG ICONS — CRITICAL: every icon must be a self-contained <svg> element written directly in HTML. Use ONLY these exact safe icons (copy verbatim):
+   - Bed: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20v-8a2 2 0 012-2h16a2 2 0 012 2v8"/><path d="M2 14h20"/><path d="M6 14V9a1 1 0 011-1h4a1 1 0 011 1v5"/></svg>
+   - Pool: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h20M2 17c2-2 4 2 6 0s4-2 6 0 4 2 6 0"/><circle cx="12" cy="7" r="3"/></svg>
+   - Location: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+   - Wifi: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
+   - Spa: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s-8-5.4-8-11a8 8 0 0116 0c0 5.6-8 11-8 11z"/><path d="M12 11c0-2 1.5-4 4-5-1 3-2 4-4 5z"/><path d="M12 11c0-2-1.5-4-4-5 1 3 2 4 4 5z"/></svg>
+   - Star: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+   - Coffee: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+   - Concierge: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+   NEVER use icon font characters, Unicode symbols, emoji, or &#x codes for icons.
+
+7. COLOR PALETTE by style:
+   - luxury → bg #0a0f1e, text #f0ebe0, accent #c9a96e, section-alt #111827
+   - eco/wellness → bg #f4f1eb, text #2c2c2c, accent #6b8f71, section-alt #eae5d8
+   - romantic → bg #faf5f0, text #2a1a1a, accent #b87a7a, section-alt #f0e8e0
+   - minimalist → bg #ffffff, text #111111, accent #c8a96d, section-alt #f7f7f5
+   - adventure → bg #0f1a0f, text #e8f0e8, accent #d4a843, section-alt #1a2a1a
+   - boutique/artsy → bg #f2ede4, text #1a1a1a, accent #2d5f5f, section-alt #e8e0d4
+
+8. SECTIONS — build all 8 in this order:
+   a) NAV — sticky, transparent on hero with property name left, CTA button right, blur backdrop on scroll (use JS scroll listener + class)
+   b) HERO — full viewport height. <img> tag as background (position:absolute, inset:0, w:100%, h:100%, object-fit:cover). Gradient overlay. Large centered heading (3.5–4.5rem), elegant subtitle, CTA button. Add a subtle down-arrow animation.
+   c) ABOUT — 2-column: left side has large decorative number or quote mark + stat, right side has heading + 2 paragraphs of story copy. Max-width 1100px centered.
+   d) FEATURES — 3-column grid. Each card: SVG icon (from list above) + bold title + short description. Subtle card border or shadow.
+   e) ROOMS — 2 or 3 cards. Each card has <img> (from room URLs), room name, description, "from $X/night", CTA button. Cards in a responsive grid.
+   f) AMENITIES — icon grid 4-col or 5-col. Each item: SVG icon + label. Clean, airy layout.
+   g) TESTIMONIALS — 2 quote cards. Large opening quote mark ("), guest quote, name, country, ★★★★★. Subtle card styling.
+   h) LOCATION — map-pin SVG + address text. Brief paragraph on how to reach the property.
+   i) BOOKING CTA — full-width section, large heading, subtext, prominent button. Dark or accent background.
+   j) FOOTER — property name, tagline, 3 social links as plain text. NO copyright year. NO "All rights reserved".
+
+9. TYPOGRAPHY:
+   - Headings: "Playfair Display", Georgia, serif — 2.5rem to 4.5rem
+   - Body: "Inter", system-ui, sans-serif — 1rem, line-height 1.75
+   - Letter-spacing on section labels: 0.15em uppercase, font-size 0.75rem
+   - Section labels styled as small gold/accent uppercase tags above headings
+
+10. SPACING: section padding 100px top/bottom. Card gaps 32px. Max content width 1200px centered.
+11. ANIMATIONS: CSS transitions on buttons (0.3s), card hover (translateY -4px + shadow). JS scroll class for nav only.
+12. MOBILE: full responsive. At 768px: single column. Hero heading 2.2rem. Nav collapses gracefully.
+13. All text, headings, and copy in ${lang}. CTA buttons say "${cta}".
+14. Footer: NO year, NO "All rights reserved", NO copyright symbol.
+15. Write real, evocative copy based on the property details — not placeholder text.
+
+Output ONLY the complete HTML document starting with <!DOCTYPE html>. Nothing else.`;
     }
 
     document.getElementById('loadingMsg').textContent = loadingMsg;
