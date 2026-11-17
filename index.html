@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hospitality Landing Page Generator — AI-Powered for Hotels & Villas</title>
-<meta name="description" content="Generate a professional landing page brief or ready-to-use HTML page for any hotel, villa or resort in minutes. Powered by GPT-4o. Free to try.">
+<meta name="description" content="Generate a professional landing page brief or ready-to-use HTML page for any hotel, villa or resort in minutes. AI-powered. Free to try.">
 <meta name="keywords" content="hospitality landing page generator, hotel website builder, villa landing page, resort marketing, AI hotel page, GPT hospitality">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://hospitality-generator.vercel.app/">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0a0a'/%3E%3Cpath d='M8 22v-7a2 2 0 012-2h12a2 2 0 012 2v7' stroke='%23c9a96e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M8 16h16' stroke='%23c9a96e' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M12 16v-4a1 1 0 011-1h3a1 1 0 011 1v4' stroke='%23c9a96e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M16 10 L16 8' stroke='%23c9a96e' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%230a0a0a'/%3E%3Cpath d='M40 130v-45a12 12 0 0112-12h76a12 12 0 0112 12v45' stroke='%23c9a96e' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M40 96h100' stroke='%23c9a96e' stroke-width='8' stroke-linecap='round'/%3E%3Cpath d='M72 96V72a6 6 0 016-6h24a6 6 0 016 6v24' stroke='%23c9a96e' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M90 60 L90 48' stroke='%23c9a96e' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAzMiAzMic+PHJlY3Qgd2lkdGg9JzMyJyBoZWlnaHQ9JzMyJyByeD0nOCcgZmlsbD0nIzBhMGEwYScvPjxwYXRoIGQ9J004IDIydi03YTIgMiAwIDAxMi0yaDE2YTIgMiAwIDAxMiAydjcnIHN0cm9rZT0nI2M5YTk2ZScgc3Ryb2tlLXdpZHRoPScxLjUnIGZpbGw9J25vbmUnIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcvPjxwYXRoIGQ9J004IDE2aDE2JyBzdHJva2U9JyNjOWE5NmUnIHN0cm9rZS13aWR0aD0nMS41JyBzdHJva2UtbGluZWNhcD0ncm91bmQnLz48cGF0aCBkPSdNMTIgMTZ2LTRhMSAxIDAgMDExLTFoM2ExIDEgMCAwMTEgMXY0JyBzdHJva2U9JyNjOWE5NmUnIHN0cm9rZS13aWR0aD0nMS41JyBmaWxsPSdub25lJyBzdHJva2UtbGluZWNhcD0ncm91bmQnLz48cGF0aCBkPSdNMTYgMTAgTDE2IDgnIHN0cm9rZT0nI2M5YTk2ZScgc3Ryb2tlLXdpZHRoPScxLjUnIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcvPjwvc3ZnPg==">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hospitality-generator.vercel.app/">
 <meta property="og:title" content="Hospitality Landing Page Generator — AI-Powered for Hotels & Villas">
-<meta property="og:description" content="Generate a professional landing page brief or ready-to-use HTML page for any hotel, villa or resort in minutes. Powered by GPT-4o.">
+<meta property="og:description" content="Generate a professional landing page brief or ready-to-use HTML page for any hotel, villa or resort in minutes. AI-powered.">
 <meta property="og:image" content="https://hospitality-generator.vercel.app/og-image.png">
 
 <!-- Twitter Card -->
@@ -409,7 +409,7 @@ select option { background: #141414; }
   <div class="header-stats">
     <div class="header-stat"><strong>2 min</strong>avg time</div>
     <div class="header-stat"><strong>6</strong>languages</div>
-    <div class="header-stat"><strong>GPT‑4o</strong>powered</div>
+    <div class="header-stat"><strong>AI</strong>powered</div>
   </div>
 </div>
 
@@ -488,7 +488,7 @@ select option { background: #141414; }
     <div class="section-label">Property Details</div>
     <div class="grid-2" style="margin-bottom:16px;">
       <div>
-        <label>Property Type</label>
+        <label for="propType">Property Type</label>
         <select id="propType">
           <option value="boutique hotel">Boutique Hotel</option>
           <option value="private villa">Private Villa</option>
@@ -522,27 +522,27 @@ select option { background: #141414; }
   <!-- STYLE -->
   <div class="card">
     <div class="section-label">Style &amp; Vibe</div>
-    <div class="chips" id="styleChips">
-      <span class="chip" data-val="luxury">Luxury</span>
-      <span class="chip" data-val="eco / wellness">Eco / Wellness</span>
-      <span class="chip" data-val="family-friendly">Family</span>
-      <span class="chip" data-val="romantic couples">Romantic</span>
-      <span class="chip" data-val="adventure">Adventure</span>
-      <span class="chip" data-val="minimalist design">Minimalist</span>
-      <span class="chip" data-val="boutique artsy">Boutique / Artsy</span>
+    <div class="chips" id="styleChips" role="group" aria-label="Style &amp; Vibe">
+      <span class="chip" data-val="luxury" role="button" tabindex="0" aria-pressed="false">Luxury</span>
+      <span class="chip" data-val="eco / wellness" role="button" tabindex="0" aria-pressed="false">Eco / Wellness</span>
+      <span class="chip" data-val="family-friendly" role="button" tabindex="0" aria-pressed="false">Family</span>
+      <span class="chip" data-val="romantic couples" role="button" tabindex="0" aria-pressed="false">Romantic</span>
+      <span class="chip" data-val="adventure" role="button" tabindex="0" aria-pressed="false">Adventure</span>
+      <span class="chip" data-val="minimalist design" role="button" tabindex="0" aria-pressed="false">Minimalist</span>
+      <span class="chip" data-val="boutique artsy" role="button" tabindex="0" aria-pressed="false">Boutique / Artsy</span>
     </div>
   </div>
 
   <!-- AUDIENCE -->
   <div class="card">
     <div class="section-label">Target Audience</div>
-    <div class="chips" id="audienceChips">
-      <span class="chip" data-val="honeymooners">Honeymooners</span>
-      <span class="chip" data-val="families with children">Families</span>
-      <span class="chip" data-val="solo travelers">Solo Travelers</span>
-      <span class="chip" data-val="digital nomads">Digital Nomads</span>
-      <span class="chip" data-val="corporate retreats">Corporate</span>
-      <span class="chip" data-val="wellness seekers">Wellness Seekers</span>
+    <div class="chips" id="audienceChips" role="group" aria-label="Target Audience">
+      <span class="chip" data-val="honeymooners" role="button" tabindex="0" aria-pressed="false">Honeymooners</span>
+      <span class="chip" data-val="families with children" role="button" tabindex="0" aria-pressed="false">Families</span>
+      <span class="chip" data-val="solo travelers" role="button" tabindex="0" aria-pressed="false">Solo Travelers</span>
+      <span class="chip" data-val="digital nomads" role="button" tabindex="0" aria-pressed="false">Digital Nomads</span>
+      <span class="chip" data-val="corporate retreats" role="button" tabindex="0" aria-pressed="false">Corporate</span>
+      <span class="chip" data-val="wellness seekers" role="button" tabindex="0" aria-pressed="false">Wellness Seekers</span>
     </div>
   </div>
 
@@ -551,7 +551,7 @@ select option { background: #141414; }
     <div class="section-label">Language &amp; Call to Action</div>
     <div class="grid-2">
       <div>
-        <label>Page Language</label>
+        <label for="lang">Page Language</label>
         <select id="lang">
           <option value="English">English</option>
           <option value="German">German</option>
@@ -562,7 +562,7 @@ select option { background: #141414; }
         </select>
       </div>
       <div>
-        <label>Primary CTA</label>
+        <label for="cta">Primary CTA</label>
         <select id="cta">
           <option value="Book Now">Book Now</option>
           <option value="Check Availability">Check Availability</option>
@@ -690,7 +690,7 @@ select option { background: #141414; }
         <div class="promo-text">
           <div class="promo-label">Need a full landing page built?</div>
           <h3>Turn this brief into a live website</h3>
-          <p>We design and develop custom hospitality websites on WordPress &amp; Elementor — fast-loading, SEO-optimised, and built to convert direct bookings. Hotels, villas and resorts across Southeast Asia.</p>
+          <p>We design and develop custom hospitality websites on WordPress &amp; Elementor — fast-loading, SEO-optimised, and built to convert direct bookings. Hotels, villas and resorts worldwide.</p>
           <ul class="promo-list">
             <li>Landing pages &amp; full hotel websites</li>
             <li>Booking engine integration</li>
@@ -855,10 +855,13 @@ select option { background: #141414; }
 
   document.querySelectorAll('.chips').forEach(group => {
     group.querySelectorAll('.chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        group.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      const activate = () => {
+        group.querySelectorAll('.chip').forEach(c => { c.classList.remove('active'); c.setAttribute('aria-pressed', 'false'); });
         chip.classList.toggle('active');
-      });
+        chip.setAttribute('aria-pressed', chip.classList.contains('active') ? 'true' : 'false');
+      };
+      chip.addEventListener('click', activate);
+      chip.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
     });
   });
 
@@ -1009,38 +1012,68 @@ B) HERO — height:100vh, position:relative, overflow:hidden.
    Bottom: animated scroll indicator (bouncing chevron-down SVG).
    HERO STATS BAR — just below hero content, 3 stats side by side separated by thin vertical lines: e.g. "15 Years of Excellence · 48 Suites · 4.9★ Rating". Use numbers from the property data.
 
-C) ABOUT — 2-column asymmetric layout, max-width:1100px, centered, padding 100px 0.
-   Left col (40%): huge decorative numeral or " quote mark in accent color (font-size:12rem, opacity:0.15 as background element) overlaid with a key stat (e.g. "Est. 2009" or "60 Rooms") in bold and 2-line description.
-   Right col (60%): eyebrow label, Playfair Display h2, 2 paragraphs of genuine story copy about the property's history, philosophy, and what makes it special. Write based on the USPs provided — not generic filler.
+C) ABOUT — 2-column asymmetric layout, max-width:1100px, centered, padding 100px 0. background: var(--bg). CRITICAL: every element must have an explicit background color — no transparency that lets photos bleed through.
+   Left col (40%): position:relative. Inside: a decorative large character (font-size:8rem, color:var(--accent), opacity:0.12, position:absolute, top:0, left:0, z-index:0, pointer-events:none, user-select:none, line-height:1). Then a stat block (position:relative, z-index:1): "Est. XXXX" or key number in bold 2rem + 2-line description in muted color.
+   Right col (60%): position:relative, z-index:1, background:var(--bg). eyebrow label, Playfair Display h2, 2 paragraphs of genuine story copy about the property's history, philosophy, and what makes it special. Write based on the USPs provided — not generic filler.
 
-D) FEATURES — eyebrow + h2 centered, then 3-column card grid (gap:28px).
-   Each card: accent-colored SVG icon (40px container), bold title, 2-sentence description.
-   Cards have subtle border (1px solid rgba(accent,0.2)), border-radius:12px, padding:32px, hover: translateY(-6px) + stronger shadow (transition:0.3s).
+D) FEATURES — background:var(--bg2). eyebrow + h2 centered, then 3-column card grid (gap:28px).
+   Each card: background:var(--bg), border:1px solid rgba(128,128,128,0.15), border-radius:12px, padding:32px. At top: a div (width:48px, height:48px, border-radius:50%, background:color-mix(in srgb, var(--accent) 15%, transparent), display:flex, align-items:center, justify-content:center) containing the SVG icon in accent color. Then bold title (1.1rem, Playfair Display), then 2-sentence description in muted color.
+   Hover: translateY(-6px), box-shadow:0 12px 32px rgba(0,0,0,0.12), transition:0.3s.
+   CRITICAL: The icon div must contain the full SVG element from RULE 4 — not a Unicode character, not an emoji, not a background image. Set stroke="var(--accent)" on the SVG element.
    Feature titles and descriptions must reflect the actual USPs, not generic "luxury experience" copy.
 
-E) ROOMS — eyebrow + h2 centered, then 3-column card grid.
-   Card structure: image wrapper (height:260px, overflow:hidden, border-radius:12px 12px 0 0) → <img src="ROOM_URL" style="width:100%;height:100%;object-fit:cover;transition:transform 0.6s"> card hover zooms image (transform:scale(1.05)).
-   Below image: padding:24px. Room name (Playfair Display, 1.3rem). 2-line description. Price "from $X / night" in accent color. CTA button full-width.
-   Add a badge on one card: position:absolute top:16px left:16px, background:accent, color:bg, text "Most Popular" or "Sea View" — relevant to the property.
+E) ROOMS — background:var(--bg2), padding:110px 0. eyebrow + h2 centered, then display:grid, grid-template-columns:repeat(3,1fr), gap:32px, max-width:1200px, margin:0 auto. At ≤768px: grid-template-columns:1fr.
+   Each card: background:var(--bg), border-radius:12px, overflow:hidden, box-shadow:0 2px 16px rgba(0,0,0,0.08).
+   Image wrapper: height:260px, overflow:hidden, position:relative. Inside: <img> with src set to one of the room image URLs, style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s ease". Card hover: img transform:scale(1.05).
+   CRITICAL FOR IMAGES: The three room image URLs are ${roomImg1}, ${roomImg2}, ${roomImg3}. Use each one as a literal src attribute value. Do NOT use placeholder text, do NOT use CSS background-image — use real <img src="..."> tags.
+   Badge on first card: position:absolute, top:16px, left:16px, background:var(--accent), color:var(--bg), padding:4px 12px, border-radius:20px, font-size:0.75rem, font-weight:600, z-index:2.
+   Card body: padding:24px. Room name: Playfair Display, 1.3rem, font-weight:600. Description: 2 lines, color:var(--muted), font-size:0.9rem. Price: "from $X / night", color:var(--accent), font-weight:600, font-size:1rem, margin:12px 0. CTA button: width:100%, padding:10px, border:1.5px solid var(--accent), background:transparent, color:var(--accent), border-radius:6px, cursor:pointer, font-family:Inter.
 
-F) PHOTO STRIP — full-width section, no padding top/bottom, height:340px.
-   CSS grid: 4 columns. Each cell: overflow:hidden. <img> fills each cell (width:100%, height:100%, object-fit:cover).
-   Use: ${heroImg}, ${roomImg1}, ${roomImg2}, ${roomImg3} — same images, different crops via object-position.
-   On mobile: 2 columns, height:220px.
+F) PHOTO STRIP — full-width section, padding:0, margin:0, height:340px, overflow:hidden, display:grid, grid-template-columns:repeat(4,1fr), gap:0.
+   CRITICAL: This section must have NO text, NO headings, NO labels — only images. It is purely visual.
+   Each cell: overflow:hidden, height:340px. Inside each cell: <img> with width:100%, height:100%, object-fit:cover, display:block.
+   Use these 4 img src values: ${heroImg} (object-position:center top), ${roomImg1} (object-position:center), ${roomImg2} (object-position:center bottom), ${roomImg3} (object-position:center).
+   The AMENITIES section that follows must start AFTER this strip with its own background:var(--bg) and padding-top:110px. They must NOT overlap.
+   On mobile (≤768px): grid-template-columns:repeat(2,1fr), height:220px. Each cell height:220px.
 
-G) AMENITIES — eyebrow + h2 centered, then icon grid 5-col desktop / 3-col tablet / 2-col mobile.
-   Each item: SVG icon (from list above) in a 48px accent-tinted circle bg, label below. Use 10 amenities relevant to the property type and USPs.
+G) AMENITIES — background:var(--bg), padding:110px 0. eyebrow + h2 centered (margin-bottom:60px), then icon grid: display:grid, grid-template-columns:repeat(5,1fr), gap:40px, max-width:900px, margin:0 auto. At ≤768px: grid-template-columns:repeat(3,1fr).
+   Each item: text-align:center. First: a circle div (width:64px, height:64px, border-radius:50%, background:color-mix(in srgb, var(--accent) 12%, var(--bg)), display:flex, align-items:center, justify-content:center, margin:0 auto 12px). Inside the circle: the full SVG icon from RULE 4 with stroke="var(--accent)", width=28, height=28.
+   CRITICAL: The circle must contain a real SVG element — not a Unicode symbol, not text, not an emoji.
+   Below circle: amenity name in font-size:0.85rem, font-weight:500, color:var(--text).
+   Use 10 amenities specific to the property's USPs.
 
 H) TESTIMONIALS — eyebrow + h2 centered, 2-column card layout.
    Each card: large " in accent (font-size:4rem, line-height:1), guest quote (2-3 sentences, specific, authentic-sounding), guest name + country, 5 filled star SVGs. Card bg: var(--bg2), border-radius:16px, padding:40px.
 
-I) BOOKING CTA — full-bleed section, background: var(--accent) or accent gradient.
-   Large centered heading (Playfair Display italic), 1-line subtext, oversized CTA button with contrasting colors. Add subtle texture via CSS (repeating-linear-gradient or box-shadow layering).
+I) BOOKING CTA — full-bleed section, background: var(--accent), padding:100px 48px. text-align:center.
+   Inner div: max-width:700px, margin:0 auto.
+   Large h2: Playfair Display italic, font-size:3rem, color: white or var(--bg) (whichever contrasts with accent), margin-bottom:16px.
+   Subtext: 1 line, font-size:1.1rem, opacity:0.85, margin-bottom:40px.
+   CTA button: display:inline-block, padding:16px 48px, background:var(--bg), color:var(--accent), border:none, border-radius:4px, font-family:Inter, font-size:1rem, font-weight:600, cursor:pointer, letter-spacing:0.05em.
+   CRITICAL: The button and all text must be centered (text-align:center on parent). No floats.
 
-J) FOOTER — 3-column layout: left (property name + tagline + location), center (3–4 nav links as plain text), right (3 social platform names as styled text links). Thin top border. NO year, NO "All rights reserved", NO ©.
+J) FOOTER — background:var(--bg), border-top:1px solid rgba(128,128,128,0.15), padding:60px 48px 40px.
+   display:grid, grid-template-columns:1fr 1fr 1fr, gap:40px, max-width:1200px, margin:0 auto.
+   At ≤768px: grid-template-columns:1fr, gap:32px.
+   Col 1: property name (Playfair Display, 1.3rem), tagline (muted, 0.9rem), location (muted, 0.85rem).
+   Col 2: small eyebrow "Navigation", then 3–4 links as <a> tags (display:block, color:var(--muted), text-decoration:none, margin-bottom:8px, font-size:0.9rem).
+   Col 3: small eyebrow "Follow Us", then 3 social names (Instagram, Facebook, TripAdvisor) as <a> tags same style.
+   CRITICAL: NO year, NO "All rights reserved", NO ©, NO copyright symbol anywhere in footer.
 
 ════════════════════════════════
-RULE 6 — SCROLL ANIMATIONS
+RULE 6 — BACKGROUNDS (CRITICAL — prevents photo bleed-through)
+════════════════════════════════
+Every section MUST have an explicit background color set:
+- Odd sections (NAV, ABOUT, AMENITIES, BOOKING CTA): background:var(--bg)
+- Even sections (FEATURES, ROOMS, TESTIMONIALS): background:var(--bg2)
+- PHOTO STRIP: no background needed (it is fully covered by images)
+- FOOTER: background:var(--bg)
+NEVER leave a section with no background — this causes the photo strip images to show through the text sections below it.
+Every section must be: position:relative, z-index:1 (or higher than 0).
+The body element: background:var(--bg), color:var(--text), margin:0, padding:0.
+
+════════════════════════════════
+RULE 8 — SCROLL ANIMATIONS
 ════════════════════════════════
 Add IntersectionObserver in a <script> at bottom of body:
 - All section headings, cards, and stat items get class .reveal
@@ -1050,7 +1083,7 @@ Add IntersectionObserver in a <script> at bottom of body:
 - Stagger cards with transition-delay: 0s, 0.1s, 0.2s using nth-child
 
 ════════════════════════════════
-RULE 7 — SPACING & LAYOUT
+RULE 10 — SPACING & LAYOUT
 ════════════════════════════════
 - Section padding: 110px top/bottom
 - Max content width: 1200px, margin:0 auto, padding:0 48px
@@ -1058,7 +1091,7 @@ RULE 7 — SPACING & LAYOUT
 - Mobile (≤768px): single column, section padding 60px, hero heading 2.4rem, padding:0 20px
 
 ════════════════════════════════
-RULE 8 — COPY QUALITY (CRITICAL)
+RULE 11 — COPY QUALITY (CRITICAL)
 ════════════════════════════════
 Every word of copy must be specific to THIS property. Use the property name "${propLabel}", location "${location}", style "${style}", audience "${audience}", and USPs "${usp}" throughout.
 - NO generic phrases like "Welcome to our hotel", "Luxury experience awaits", "Your home away from home"
@@ -1067,7 +1100,7 @@ Every word of copy must be specific to THIS property. Use the property name "${p
 - All copy, all labels, all buttons in ${lang}
 
 ════════════════════════════════
-RULE 9 — TECHNICAL QUALITY
+RULE 12 — TECHNICAL QUALITY
 ════════════════════════════════
 - All images: loading="lazy" except hero (loading="eager")
 - All buttons: cursor:pointer, transition:all 0.3s, no outline on focus (add custom focus-visible style)
@@ -1075,6 +1108,19 @@ RULE 9 — TECHNICAL QUALITY
 - Nav active scroll JS: window.addEventListener('scroll', () => document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 60))
 - NO inline event handlers (onclick="...") — use addEventListener in script block
 - NO placeholder comments like <!-- Add content here -->
+
+════════════════════════════════
+FINAL CHECKLIST — verify before outputting
+════════════════════════════════
+Before writing the final HTML, confirm ALL of these:
+☑ Every <section> has background:var(--bg) or background:var(--bg2) — no transparent sections
+☑ PHOTO STRIP section has zero text, only 4 <img> tags in a CSS grid
+☑ AMENITIES section starts with its own solid background, NOT overlapping the photo strip
+☑ All 3 room cards have real <img src="..."> tags with the picsum URLs
+☑ Feature and Amenity icons are <svg> elements (not Unicode, not emoji, not &#x; codes)
+☑ BOOKING CTA content is centered (text-align:center, button is display:inline-block inside centered parent)
+☑ FOOTER has 3 columns in a CSS grid (not stacked in one column)
+☑ Footer has NO year, NO copyright, NO "All rights reserved"
 
 Output ONLY the complete HTML document. First character: <. Last character: >.`;
     }
