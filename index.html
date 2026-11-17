@@ -495,13 +495,13 @@ select option { background: #141414; }
   <div class="card">
     <div class="section-label">Style &amp; Vibe</div>
     <div class="chips" id="styleChips">
-      <span class="chip" data-val="luxury"><span class="chip-icon">✦</span>Luxury</span>
-      <span class="chip" data-val="eco / wellness"><span class="chip-icon">🌿</span>Eco / Wellness</span>
-      <span class="chip" data-val="family-friendly"><span class="chip-icon">👨‍👩‍👧</span>Family</span>
-      <span class="chip" data-val="romantic couples"><span class="chip-icon">🕯</span>Romantic</span>
-      <span class="chip" data-val="adventure"><span class="chip-icon">🧭</span>Adventure</span>
-      <span class="chip" data-val="minimalist design"><span class="chip-icon">◻</span>Minimalist</span>
-      <span class="chip" data-val="boutique artsy"><span class="chip-icon">🎨</span>Boutique / Artsy</span>
+      <span class="chip" data-val="luxury">Luxury</span>
+      <span class="chip" data-val="eco / wellness">Eco / Wellness</span>
+      <span class="chip" data-val="family-friendly">Family</span>
+      <span class="chip" data-val="romantic couples">Romantic</span>
+      <span class="chip" data-val="adventure">Adventure</span>
+      <span class="chip" data-val="minimalist design">Minimalist</span>
+      <span class="chip" data-val="boutique artsy">Boutique / Artsy</span>
     </div>
   </div>
 
@@ -509,12 +509,12 @@ select option { background: #141414; }
   <div class="card">
     <div class="section-label">Target Audience</div>
     <div class="chips" id="audienceChips">
-      <span class="chip" data-val="honeymooners"><span class="chip-icon">💍</span>Honeymooners</span>
-      <span class="chip" data-val="families with children"><span class="chip-icon">🏖</span>Families</span>
-      <span class="chip" data-val="solo travelers"><span class="chip-icon">🧳</span>Solo Travelers</span>
-      <span class="chip" data-val="digital nomads"><span class="chip-icon">💻</span>Digital Nomads</span>
-      <span class="chip" data-val="corporate retreats"><span class="chip-icon">🤝</span>Corporate</span>
-      <span class="chip" data-val="wellness seekers"><span class="chip-icon">🧘</span>Wellness Seekers</span>
+      <span class="chip" data-val="honeymooners">Honeymooners</span>
+      <span class="chip" data-val="families with children">Families</span>
+      <span class="chip" data-val="solo travelers">Solo Travelers</span>
+      <span class="chip" data-val="digital nomads">Digital Nomads</span>
+      <span class="chip" data-val="corporate retreats">Corporate</span>
+      <span class="chip" data-val="wellness seekers">Wellness Seekers</span>
     </div>
   </div>
 
@@ -866,7 +866,7 @@ select option { background: #141414; }
     } else {
       loadingMsg = 'Building your HTML landing page…';
       loadingSteps = ['Designing layout & sections', 'Writing copy & headlines', 'Styling with CSS', 'Assembling final HTML'];
-      prompt = `You are an expert hospitality web designer and copywriter. Create a complete, beautiful, production-ready HTML landing page for the following property.\n\nPROPERTY:\n- Type: ${propType}\n- Name: ${propLabel}\n- Location: ${location}\n- Rooms/Units: ${rooms || 'not specified'}\n- Style/Vibe: ${style}\n- Target audience: ${audience}\n- USPs: ${usp}\n- Primary CTA: ${cta}\n- Language: ${lang}\n\nRULES:\n1. Output ONLY valid HTML — start with <!DOCTYPE html>, no markdown, no explanation\n2. All CSS must be inline in a <style> tag in <head>\n3. No external dependencies — no CDN links, no Google Fonts (use system fonts)\n4. Include these sections: Hero with headline + CTA button, About/Story, Key Features (3-column grid), Rooms/Villas showcase, Amenities, Testimonials (2-3 fake but realistic), Location/How to get there, Contact/Booking CTA, Footer\n5. Design style: ${style} — use appropriate color palette (e.g. luxury = dark navy/gold, eco = greens/earth tones, romantic = warm blush/rose)\n6. Mobile responsive using CSS flexbox/grid\n7. Hero should have a gradient background that fits the style (no images needed)\n8. All text must be in ${lang}\n9. CTA buttons should say "${cta}"\n10. Make it look like a real premium hotel website — not a template\n11. Add proper meta tags for SEO\n\nOutput ONLY the complete HTML document, nothing else.`;
+      prompt = `You are a world-class luxury hospitality web designer. Create a stunning, elegant, production-ready HTML landing page for this property. The result must look like it was designed by a premium agency — refined typography, subtle gradients, tasteful spacing.\n\nPROPERTY:\n- Type: ${propType}\n- Name: ${propLabel}\n- Location: ${location}\n- Rooms/Units: ${rooms || 'not specified'}\n- Style/Vibe: ${style}\n- Target audience: ${audience}\n- USPs: ${usp}\n- Primary CTA: ${cta}\n- Language: ${lang}\n\nDESIGN RULES (follow precisely):\n1. Output ONLY valid HTML starting with <!DOCTYPE html> — no markdown, no explanation, no code fences\n2. All CSS inside a single <style> tag in <head>\n3. No external dependencies — no CDN, no Google Fonts. Use: font-family: 'Georgia', serif for headings; system-ui, sans-serif for body\n4. COLOR PALETTE based on style:\n   - luxury → background #0d0d0d or deep navy #0a1628, text #f0ebe0, accents gold #c9a96e\n   - eco/wellness → background #f7f4ee, text #2c2c2c, accents sage #7a9e7e or terracotta #c17f5a\n   - romantic → background #faf6f1, text #2a2020, accents dusty rose #c4877a or blush #e8b4b0\n   - minimalist → background #ffffff, text #111111, accents #888 or warm sand\n   - adventure → background #111c14, text #edf2ed, accents amber #d4a843\n   - boutique/artsy → background #f5f0e8, text #1a1a1a, accents deep teal #2d5f5f\n   - default fallback → dark elegant: #0a0a0a background, #ede8e0 text, #c9a96e accent\n5. SECTIONS (in this order):\n   a) Hero — full-height section with large heading, elegant subtitle, CTA button. Use CSS gradient background (2–3 color stops matching the palette). Absolutely NO placeholder image URLs.\n   b) About / Story — 2-col layout: decorative quote or large number on left, text on right\n   c) Key Features — 3-col grid, each with an inline SVG icon (simple 24x24 stroke icon: bed, sun, map-pin, leaf, wifi, star, etc.), short title, 1-line description\n   d) Rooms / Villas — 2 or 3 cards with gradient placeholder (CSS only, no images), room name, brief description, price hint\n   e) Amenities — icon grid (SVG icons inline), clean layout\n   f) Testimonials — 2 elegant quote cards with guest name, country, star rating (★★★★★)\n   g) Location — text-based, elegant map-pin icon, address, how to get there\n   h) Contact / Booking CTA — centered, large heading, CTA button\n   i) Footer — property name, tagline, social links as text. NO copyright year, NO "All rights reserved"\n6. TYPOGRAPHY: large elegant headings (2.5–4rem for hero), generous line-height (1.6–1.8), letter-spacing on headings\n7. SPACING: generous padding (80–120px sections), breathable layout — never cramped\n8. SVG ICONS: use simple inline SVG (stroke, no fill) for feature icons and amenities — draw them directly, never use external icon libraries\n9. BUTTONS: elegant, with hover effect defined in CSS (:hover). Rounded corners (4–8px), uppercase or small-caps for luxury styles\n10. MOBILE: responsive with CSS Grid and Flexbox, media query at 768px\n11. All text in ${lang}. CTA buttons say "${cta}"\n12. NO year in footer. NO "All rights reserved". NO generic template look.\n\nOutput ONLY the complete HTML document, nothing else.`;
     }
 
     document.getElementById('loadingMsg').textContent = loadingMsg;
