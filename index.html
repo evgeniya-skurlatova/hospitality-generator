@@ -154,6 +154,15 @@ input, select, textarea {
   font-size: 0.87rem; font-family: sans-serif; outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
+select {
+  padding-right: 40px;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a96e' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+}
 input:focus, select:focus, textarea:focus {
   border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201,169,110,0.07);
 }
@@ -186,7 +195,7 @@ select option { background: #141414; }
   width: 100%; padding: 19px; background: var(--accent); color: #0a0a0a;
   border: none; border-radius: var(--radius); font-size: 1rem; font-weight: 700;
   cursor: pointer; font-family: sans-serif; letter-spacing: 0.04em;
-  transition: all 0.2s; margin-top: 10px; position: relative; overflow: hidden;
+  transition: all 0.2s; margin-top: 18px; position: relative; overflow: hidden;
 }
 .btn-generate::after {
   content: ''; position: absolute; inset: 0;
@@ -231,7 +240,7 @@ select option { background: #141414; }
 .result { display: none; }
 .result-header {
   display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 24px; flex-wrap: wrap; gap: 12px; padding-bottom: 20px;
+  margin-bottom: 28px; flex-wrap: wrap; gap: 16px; padding-bottom: 24px;
   border-bottom: 1px solid var(--border);
 }
 .result-header h2 { font-size: 1.1rem; color: var(--accent); display: flex; align-items: center; gap: 10px; }
@@ -261,7 +270,7 @@ select option { background: #141414; }
 .lp-result { display: none; }
 .lp-header {
   display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 20px; flex-wrap: wrap; gap: 12px; padding-bottom: 20px;
+  margin-bottom: 28px; flex-wrap: wrap; gap: 16px; padding-bottom: 24px;
   border-bottom: 1px solid var(--border);
 }
 .lp-header h2 { font-size: 1.1rem; color: var(--accent); display: flex; align-items: center; gap: 10px; }
