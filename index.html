@@ -7,153 +7,216 @@
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js" onload="initPaddle()"></script>
 <script>
   function initPaddle() {
-    Paddle.Initialize({
-      token: 'live_3506df6f6808f630825c1d97468'
-    });
+    Paddle.Initialize({ token: 'live_3506df6f6808f630825c1d97468' });
   }
 </script>
 <style>
-  :root {
-    --bg: #0f0f0f;
-    --surface: #1a1a1a;
-    --border: #2a2a2a;
-    --accent: #c9a96e;
-    --accent-dark: #a07840;
-    --text: #e8e3db;
-    --muted: #888;
-    --success: #4caf7d;
-    --error: #e05c5c;
-    --radius: 10px;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Georgia', serif; min-height: 100vh; }
+:root {
+  --bg: #0c0c0c;
+  --surface: #161616;
+  --surface2: #1e1e1e;
+  --border: #272727;
+  --accent: #c9a96e;
+  --accent-dark: #a07840;
+  --accent-glow: rgba(201,169,110,0.15);
+  --text: #ede8e0;
+  --muted: #777;
+  --muted2: #555;
+  --success: #4caf7d;
+  --error: #e05c5c;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'Georgia', serif; min-height: 100vh; }
 
-  .header { padding: 32px 24px 20px; border-bottom: 1px solid var(--border); text-align: center; }
-  .header h1 { font-size: 1.6rem; color: var(--accent); letter-spacing: 0.03em; margin-bottom: 6px; }
-  .header p { color: var(--muted); font-size: 0.88rem; font-family: sans-serif; }
+/* HEADER */
+.header { padding: 48px 24px 32px; text-align: center; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+.header::before { content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 400px; height: 200px; background: radial-gradient(ellipse, rgba(201,169,110,0.08) 0%, transparent 70%); pointer-events: none; }
+.header-tag { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); font-family: sans-serif; border: 1px solid rgba(201,169,110,0.3); padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+.header h1 { font-size: 2rem; color: var(--text); letter-spacing: 0.02em; margin-bottom: 10px; line-height: 1.2; }
+.header h1 span { color: var(--accent); }
+.header p { color: var(--muted); font-size: 0.92rem; font-family: sans-serif; max-width: 480px; margin: 0 auto; line-height: 1.6; }
 
-  .usage-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 10px 24px; display: flex; align-items: center; justify-content: center; gap: 16px; font-family: sans-serif; font-size: 0.8rem; }
-  .usage-dots { display: flex; gap: 6px; }
-  .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
-  .dot.used { background: var(--accent); }
-  .usage-text { color: var(--muted); }
-  .usage-text span { color: var(--accent); font-weight: 600; }
-  .pro-badge { background: var(--accent); color: #0f0f0f; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; letter-spacing: 0.05em; }
+/* USAGE BAR */
+.usage-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 12px 24px; display: flex; align-items: center; justify-content: center; gap: 16px; font-family: sans-serif; font-size: 0.8rem; }
+.usage-dots { display: flex; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background 0.3s; }
+.dot.used { background: var(--accent); box-shadow: 0 0 6px rgba(201,169,110,0.4); }
+.usage-text { color: var(--muted); }
+.usage-text span { color: var(--accent); font-weight: 600; }
+.pro-badge { background: var(--accent); color: #0c0c0c; font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 10px; letter-spacing: 0.06em; }
 
-  .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 60px; }
+/* MODE SWITCHER */
+.mode-switcher { display: flex; gap: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 28px; }
+.mode-btn { flex: 1; padding: 14px 20px; background: transparent; border: none; color: var(--muted); cursor: pointer; font-family: sans-serif; font-size: 0.88rem; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.mode-btn .icon { font-size: 1.1rem; }
+.mode-btn.active { background: var(--accent-glow); color: var(--accent); font-weight: 600; border-bottom: 2px solid var(--accent); }
+.mode-btn:hover:not(.active) { color: var(--text); background: var(--surface2); }
 
-  .section-title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); font-family: sans-serif; margin-bottom: 14px; }
+/* CONTAINER */
+.container { max-width: 800px; margin: 0 auto; padding: 36px 20px 80px; }
 
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; }
+/* CARDS */
+.section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); font-family: sans-serif; margin-bottom: 12px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 16px; transition: border-color 0.2s; }
+.card:focus-within { border-color: rgba(201,169,110,0.3); }
 
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media (max-width: 540px) { .grid-2 { grid-template-columns: 1fr; } }
+/* FORM */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 540px) { .grid-2 { grid-template-columns: 1fr; } }
+label { display: block; font-size: 0.78rem; color: var(--muted); font-family: sans-serif; margin-bottom: 7px; letter-spacing: 0.02em; }
+input, select, textarea {
+  width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text);
+  border-radius: var(--radius-sm); padding: 11px 14px; font-size: 0.88rem; font-family: sans-serif;
+  outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201,169,110,0.08); }
+textarea { resize: vertical; min-height: 90px; line-height: 1.5; }
+select option { background: #161616; }
 
-  label { display: block; font-size: 0.8rem; color: var(--muted); font-family: sans-serif; margin-bottom: 6px; }
-  input, select, textarea {
-    width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text);
-    border-radius: 6px; padding: 10px 12px; font-size: 0.9rem; font-family: sans-serif;
-    outline: none; transition: border-color 0.2s;
-  }
-  input:focus, select:focus, textarea:focus { border-color: var(--accent); }
-  textarea { resize: vertical; min-height: 80px; }
-  select option { background: #1a1a1a; }
+.api-row { display: flex; gap: 10px; align-items: flex-start; }
+.api-row input { flex: 1; font-family: monospace; font-size: 0.82rem; letter-spacing: 0.02em; }
+.btn-secondary {
+  background: transparent; border: 1px solid var(--border); color: var(--muted);
+  padding: 11px 14px; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.8rem;
+  white-space: nowrap; font-family: sans-serif; transition: all 0.2s;
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
-  .api-row { display: flex; gap: 10px; align-items: flex-start; }
-  .api-row input { flex: 1; font-family: monospace; font-size: 0.82rem; }
-  .btn-secondary {
-    background: transparent; border: 1px solid var(--border); color: var(--muted);
-    padding: 10px 14px; border-radius: 6px; cursor: pointer; font-size: 0.8rem;
-    white-space: nowrap; font-family: sans-serif; transition: border-color 0.2s, color 0.2s;
-  }
-  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+/* CHIPS */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  padding: 7px 16px; border: 1px solid var(--border); border-radius: 20px;
+  font-size: 0.8rem; cursor: pointer; font-family: sans-serif; transition: all 0.15s;
+  user-select: none; color: var(--muted);
+}
+.chip:hover { border-color: rgba(201,169,110,0.5); color: var(--text); }
+.chip.active { background: rgba(201,169,110,0.12); border-color: var(--accent); color: var(--accent); font-weight: 600; }
 
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip {
-    padding: 6px 14px; border: 1px solid var(--border); border-radius: 20px;
-    font-size: 0.8rem; cursor: pointer; font-family: sans-serif; transition: all 0.15s;
-    user-select: none;
-  }
-  .chip:hover { border-color: var(--accent); color: var(--accent); }
-  .chip.active { background: var(--accent); border-color: var(--accent); color: #0f0f0f; font-weight: 600; }
+/* GENERATE BUTTON */
+.btn-generate {
+  width: 100%; padding: 18px; background: var(--accent); color: #0c0c0c;
+  border: none; border-radius: var(--radius); font-size: 1rem; font-weight: 700;
+  cursor: pointer; font-family: sans-serif; letter-spacing: 0.04em; transition: all 0.2s;
+  margin-top: 8px; position: relative; overflow: hidden;
+}
+.btn-generate::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); transform: translateX(-100%); transition: transform 0.5s; }
+.btn-generate:hover::after { transform: translateX(100%); }
+.btn-generate:hover { background: #d4b47a; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(201,169,110,0.25); }
+.btn-generate:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
 
-  .btn-generate {
-    width: 100%; padding: 16px; background: var(--accent); color: #0f0f0f;
-    border: none; border-radius: var(--radius); font-size: 1rem; font-weight: 700;
-    cursor: pointer; font-family: sans-serif; letter-spacing: 0.04em; transition: background 0.2s;
-    margin-top: 8px;
-  }
-  .btn-generate:hover { background: var(--accent-dark); }
-  .btn-generate:disabled { opacity: 0.5; cursor: not-allowed; }
+/* ERROR */
+.error-msg { color: var(--error); font-size: 0.82rem; font-family: sans-serif; margin-top: 10px; padding: 12px 16px; background: rgba(224,92,92,0.08); border: 1px solid rgba(224,92,92,0.2); border-radius: var(--radius-sm); display: none; }
 
-  .error-msg { color: var(--error); font-size: 0.82rem; font-family: sans-serif; margin-top: 10px; padding: 10px 14px; background: rgba(224,92,92,0.08); border-radius: 6px; display: none; }
+/* LOADING */
+.loading { text-align: center; padding: 60px 24px; display: none; }
+.spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 20px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading p { color: var(--muted); font-family: sans-serif; font-size: 0.88rem; }
+.loading-steps { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; max-width: 280px; margin-left: auto; margin-right: auto; }
+.loading-step { font-size: 0.78rem; color: var(--muted2); font-family: sans-serif; display: flex; align-items: center; gap: 8px; }
+.loading-step.active { color: var(--accent); }
+.loading-step::before { content: '○'; }
+.loading-step.active::before { content: '◉'; }
 
-  .loading { text-align: center; padding: 48px 24px; display: none; }
-  .spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .loading p { color: var(--muted); font-family: sans-serif; font-size: 0.88rem; }
+/* RESULT - BRIEF */
+.result { display: none; }
+.result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.result-header h2 { font-size: 1.15rem; color: var(--accent); }
+.result-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-action {
+  background: transparent; border: 1px solid var(--accent); color: var(--accent);
+  padding: 10px 22px; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.84rem;
+  font-family: sans-serif; transition: all 0.15s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-action:hover { background: var(--accent); color: #0c0c0c; }
 
-  .result { display: none; }
-  .result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
-  .result-header h2 { font-size: 1.1rem; color: var(--accent); }
-  .result-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-  .btn-copy, .btn-pdf {
-    background: transparent; border: 1px solid var(--accent); color: var(--accent);
-    padding: 8px 18px; border-radius: 6px; cursor: pointer; font-size: 0.82rem;
-    font-family: sans-serif; transition: all 0.15s;
-  }
-  .btn-copy:hover, .btn-pdf:hover { background: var(--accent); color: #0f0f0f; }
+.section-block pre { white-space: pre-wrap; word-break: break-word; font-family: sans-serif; font-size: 0.87rem; line-height: 1.7; color: var(--text); }
+.seo-grid { display: grid; gap: 14px; }
+.seo-item label { color: var(--accent); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; }
+.seo-item p { font-size: 0.87rem; line-height: 1.55; color: var(--text); }
 
-  .section-block { margin-bottom: 24px; }
-  .section-block pre { white-space: pre-wrap; word-break: break-word; font-family: sans-serif; font-size: 0.88rem; line-height: 1.65; color: var(--text); }
+.regenerate-row { margin-top: 20px; display: flex; gap: 12px; }
+.btn-regen { flex: 1; padding: 13px; background: transparent; border: 1px solid var(--border); color: var(--muted); border-radius: var(--radius); cursor: pointer; font-family: sans-serif; font-size: 0.88rem; transition: all 0.15s; }
+.btn-regen:hover { border-color: var(--accent); color: var(--accent); }
 
-  .seo-grid { display: grid; gap: 12px; }
-  .seo-item label { color: var(--accent); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
-  .seo-item p { font-size: 0.88rem; line-height: 1.5; }
+/* RESULT - LANDING PAGE */
+.lp-result { display: none; }
+.lp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.lp-header h2 { font-size: 1.15rem; color: var(--accent); }
+.iframe-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 20px; }
+.iframe-toolbar { background: var(--surface2); border-bottom: 1px solid var(--border); padding: 10px 16px; display: flex; align-items: center; gap: 8px; }
+.iframe-dot { width: 10px; height: 10px; border-radius: 50%; }
+.iframe-dot:nth-child(1) { background: #ff5f57; }
+.iframe-dot:nth-child(2) { background: #febc2e; }
+.iframe-dot:nth-child(3) { background: #28c840; }
+.iframe-url { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 5px 12px; font-size: 0.75rem; color: var(--muted); font-family: monospace; margin-left: 8px; }
+#lpFrame { width: 100%; height: 600px; border: none; background: #fff; display: block; }
 
-  .regenerate-row { margin-top: 24px; display: flex; gap: 12px; }
-  .btn-regen { flex: 1; padding: 12px; background: transparent; border: 1px solid var(--border); color: var(--muted); border-radius: var(--radius); cursor: pointer; font-family: sans-serif; font-size: 0.88rem; transition: all 0.15s; }
-  .btn-regen:hover { border-color: var(--accent); color: var(--accent); }
+/* PAYWALL */
+.paywall { display: none; text-align: center; padding: 56px 28px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); margin-top: 24px; position: relative; overflow: hidden; }
+.paywall::before { content: ''; position: absolute; top: -40px; left: 50%; transform: translateX(-50%); width: 300px; height: 200px; background: radial-gradient(ellipse, rgba(201,169,110,0.06) 0%, transparent 70%); pointer-events: none; }
+.paywall h2 { color: var(--accent); font-size: 1.5rem; margin-bottom: 10px; }
+.paywall > p { color: var(--muted); font-family: sans-serif; font-size: 0.9rem; margin-bottom: 36px; line-height: 1.6; max-width: 420px; margin-left: auto; margin-right: auto; }
+.paywall-plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; margin-bottom: 32px; text-align: left; }
+.plan { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; transition: border-color 0.2s; }
+.plan.featured { border-color: var(--accent); background: rgba(201,169,110,0.04); }
+.plan-name { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-family: sans-serif; margin-bottom: 10px; }
+.plan.featured .plan-name { color: var(--accent); }
+.plan-price { font-size: 1.6rem; color: var(--text); margin-bottom: 4px; font-family: sans-serif; }
+.plan-price span { font-size: 0.8rem; color: var(--muted); }
+.plan-features { font-size: 0.8rem; color: var(--muted); font-family: sans-serif; line-height: 1.9; margin-top: 12px; list-style: none; }
+.plan-features li::before { content: '✓ '; color: var(--accent); }
+.plans-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px; }
+.btn-upgrade { display: inline-block; padding: 13px 26px; background: var(--accent); color: #0c0c0c; border: none; border-radius: var(--radius-sm); font-size: 0.88rem; font-weight: 700; cursor: pointer; font-family: sans-serif; text-decoration: none; transition: all 0.2s; }
+.btn-upgrade:hover { background: #d4b47a; transform: translateY(-1px); }
+.btn-upgrade.secondary { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+.btn-upgrade.secondary:hover { background: var(--accent); color: #0c0c0c; }
+.license-row { margin-top: 24px; display: flex; gap: 10px; align-items: center; justify-content: center; }
+.license-row input { max-width: 300px; font-family: monospace; font-size: 0.85rem; }
+.btn-activate { padding: 11px 20px; background: transparent; border: 1px solid var(--accent); color: var(--accent); border-radius: var(--radius-sm); cursor: pointer; font-family: sans-serif; font-size: 0.85rem; white-space: nowrap; transition: all 0.15s; }
+.btn-activate:hover { background: var(--accent); color: #0c0c0c; }
 
-  .paywall { display: none; text-align: center; padding: 48px 24px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); margin-top: 24px; }
-  .paywall h2 { color: var(--accent); font-size: 1.3rem; margin-bottom: 12px; }
-  .paywall p { color: var(--muted); font-family: sans-serif; font-size: 0.9rem; margin-bottom: 28px; line-height: 1.6; }
-  .paywall-plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 28px; }
-  .plan { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: left; }
-  .plan.featured { border-color: var(--accent); }
-  .plan-name { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-family: sans-serif; margin-bottom: 8px; }
-  .plan-price { font-size: 1.5rem; color: var(--text); margin-bottom: 4px; }
-  .plan-price span { font-size: 0.8rem; color: var(--muted); font-family: sans-serif; }
-  .plan-features { font-size: 0.8rem; color: var(--muted); font-family: sans-serif; line-height: 1.8; margin-top: 10px; }
-  .plan-features li { list-style: none; }
-  .plan-features li::before { content: '✓ '; color: var(--accent); }
-  .btn-upgrade { display: inline-block; padding: 14px 32px; background: var(--accent); color: #0f0f0f; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer; font-family: sans-serif; text-decoration: none; transition: background 0.2s; }
-  .btn-upgrade:hover { background: var(--accent-dark); }
-  .license-row { margin-top: 20px; display: flex; gap: 10px; align-items: center; justify-content: center; }
-  .license-row input { max-width: 300px; font-family: monospace; font-size: 0.85rem; }
-  .btn-activate { padding: 10px 18px; background: transparent; border: 1px solid var(--accent); color: var(--accent); border-radius: 6px; cursor: pointer; font-family: sans-serif; font-size: 0.85rem; white-space: nowrap; transition: all 0.15s; }
-  .btn-activate:hover { background: var(--accent); color: #0f0f0f; }
+/* PROMO BLOCK */
+.promo-block { margin-top: 36px; background: linear-gradient(135deg, #15120a 0%, #161616 60%); border: 1px solid rgba(201,169,110,0.25); border-radius: var(--radius); overflow: hidden; }
+.promo-inner { display: grid; grid-template-columns: 1fr auto; gap: 32px; padding: 32px; align-items: center; }
+@media (max-width: 600px) { .promo-inner { grid-template-columns: 1fr; } }
+.promo-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); font-family: sans-serif; margin-bottom: 10px; }
+.promo-text h3 { font-size: 1.15rem; color: var(--text); margin-bottom: 10px; line-height: 1.4; }
+.promo-text p { font-size: 0.84rem; color: var(--muted); font-family: sans-serif; line-height: 1.65; margin-bottom: 14px; }
+.promo-list { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px; }
+.promo-list li { font-size: 0.8rem; color: var(--muted); font-family: sans-serif; padding: 3px 0; }
+.promo-list li::before { content: '✓ '; color: var(--accent); }
+.promo-cta { text-align: center; min-width: 190px; }
+.btn-promo { display: inline-block; padding: 15px 28px; background: var(--accent); color: #0c0c0c; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 700; font-family: sans-serif; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+.btn-promo:hover { background: #d4b47a; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(201,169,110,0.25); }
+.promo-note { font-size: 0.74rem; color: var(--muted2); font-family: sans-serif; margin-top: 10px; line-height: 1.5; }
 
-  @media print {
-    .header, .container > .card, .btn-generate, .error-msg, .loading, .result-actions, .regenerate-row, .usage-bar, .paywall { display: none !important; }
-    body { background: #fff; color: #111; }
-    .result { display: block !important; }
-    .result-header h2 { color: #8a6530; }
-    .card { border: 1px solid #ddd; background: #fff; break-inside: avoid; }
-    .section-title { color: #8a6530; }
-    .seo-item label { color: #8a6530; }
-    .seo-item p { color: #333; }
-    .section-block pre { color: #222; }
-    .print-title { display: block !important; }
-  }
-  .print-title { display: none; font-family: sans-serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 20px; color: #8a6530; }
+/* PRINT */
+@media print {
+  .header, .container > .card, .btn-generate, .error-msg, .loading,
+  .result-actions .btn-action:not(.print-keep), .regenerate-row,
+  .usage-bar, .paywall, .mode-switcher, .promo-block, .lp-result, .iframe-wrap { display: none !important; }
+  body { background: #fff; color: #111; }
+  .result { display: block !important; }
+  .result-header h2 { color: #8a6530; }
+  .card { border: 1px solid #ddd; background: #fff; break-inside: avoid; }
+  .section-label { color: #8a6530; }
+  .seo-item label { color: #8a6530; }
+  .seo-item p, .section-block pre { color: #222; }
+  .print-title { display: block !important; }
+}
+.print-title { display: none; font-family: sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; color: #8a6530; }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>Hospitality Landing Page Generator</h1>
-  <p>Generate a professional landing page brief in under 10 minutes</p>
+  <div class="header-tag">AI-Powered · Hospitality</div>
+  <h1>Hospitality <span>Landing Page</span> Generator</h1>
+  <p>Generate a professional landing page brief or a ready-to-use HTML page in under 10 minutes</p>
 </div>
 
 <div class="usage-bar" id="usageBar">
@@ -163,17 +226,29 @@
 
 <div class="container">
 
+  <!-- API KEY -->
   <div class="card">
-    <div class="section-title">OpenAI API Key</div>
+    <div class="section-label">OpenAI API Key</div>
     <div class="api-row">
       <input type="password" id="apiKey" placeholder="sk-..." />
       <button class="btn-secondary" onclick="toggleKey()">Show</button>
     </div>
-    <p style="font-size:0.75rem;color:var(--muted);font-family:sans-serif;margin-top:8px;">Key stays in your browser only. Never stored or shared. · <a href="https://platform.openai.com/api-keys" target="_blank" style="color:var(--accent);text-decoration:none;">Get a free key →</a></p>
+    <p style="font-size:0.74rem;color:var(--muted);font-family:sans-serif;margin-top:8px;">Key stays in your browser only. Never stored or shared. · <a href="https://platform.openai.com/api-keys" target="_blank" style="color:var(--accent);text-decoration:none;">Get a free key →</a></p>
   </div>
 
+  <!-- MODE SWITCHER -->
+  <div class="mode-switcher">
+    <button class="mode-btn active" id="modeBrief" onclick="setMode('brief')">
+      <span class="icon">📋</span> Landing Page Brief
+    </button>
+    <button class="mode-btn" id="modeLanding" onclick="setMode('landing')">
+      <span class="icon">🌐</span> Ready HTML Landing Page
+    </button>
+  </div>
+
+  <!-- PROPERTY DETAILS -->
   <div class="card">
-    <div class="section-title">Property Details</div>
+    <div class="section-label">Property Details</div>
     <div class="grid-2" style="margin-bottom:16px;">
       <div>
         <label>Property Type</label>
@@ -207,8 +282,9 @@
     </div>
   </div>
 
+  <!-- STYLE -->
   <div class="card">
-    <div class="section-title">Style & Vibe</div>
+    <div class="section-label">Style & Vibe</div>
     <div class="chips" id="styleChips">
       <span class="chip" data-val="luxury">Luxury</span>
       <span class="chip" data-val="eco / wellness">Eco / Wellness</span>
@@ -220,8 +296,9 @@
     </div>
   </div>
 
+  <!-- AUDIENCE -->
   <div class="card">
-    <div class="section-title">Target Audience</div>
+    <div class="section-label">Target Audience</div>
     <div class="chips" id="audienceChips">
       <span class="chip" data-val="honeymooners">Honeymooners</span>
       <span class="chip" data-val="families with children">Families</span>
@@ -232,8 +309,9 @@
     </div>
   </div>
 
+  <!-- LANG & CTA -->
   <div class="card">
-    <div class="section-title">Language & Call to Action</div>
+    <div class="section-label">Language & Call to Action</div>
     <div class="grid-2">
       <div>
         <label>Page Language</label>
@@ -260,22 +338,28 @@
   </div>
 
   <div id="errorMsg" class="error-msg"></div>
-  <button class="btn-generate" id="generateBtn" onclick="generate()">Generate Landing Page Brief</button>
+  <button class="btn-generate" id="generateBtn" onclick="generate()">
+    <span id="generateBtnText">✦ Generate Landing Page Brief</span>
+  </button>
 
+  <!-- LOADING -->
   <div class="loading" id="loading">
     <div class="spinner"></div>
-    <p>Generating your landing page brief…</p>
+    <p id="loadingMsg">Generating your content…</p>
+    <div class="loading-steps" id="loadingSteps"></div>
   </div>
 
+  <!-- PAYWALL -->
   <div class="paywall" id="paywall">
     <h2>You've used your 3 free generations</h2>
-    <p>Upgrade to Pro for unlimited briefs, PDF export,<br>multilingual generation and saved history.</p>
+    <p>Upgrade to continue generating unlimited landing page briefs and full HTML pages with PDF export.</p>
     <div class="paywall-plans">
       <div class="plan">
         <div class="plan-name">Starter</div>
         <div class="plan-price">$19 <span>/mo</span></div>
         <ul class="plan-features">
           <li>30 generations/month</li>
+          <li>Brief + HTML page</li>
           <li>PDF export</li>
           <li>All languages</li>
         </ul>
@@ -285,6 +369,7 @@
         <div class="plan-price">$49 <span>/mo</span></div>
         <ul class="plan-features">
           <li>Unlimited generations</li>
+          <li>Brief + HTML page</li>
           <li>PDF export</li>
           <li>All languages</li>
           <li>Saved history</li>
@@ -296,15 +381,15 @@
         <ul class="plan-features">
           <li>Unlimited + 5 properties</li>
           <li>White-label</li>
-          <li>PDF export</li>
+          <li>Brief + HTML page</li>
           <li>Priority support</li>
         </ul>
       </div>
     </div>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;">
-      <button onclick="openCheckout('pri_01m7kxr0g1d4akp00xtpbfrq2z')" class="btn-upgrade" style="font-size:0.82rem;padding:11px 22px;border:none;cursor:pointer;">Starter $19/mo →</button>
-      <button onclick="openCheckout('pri_01m7kxw9p15jxevpa58h1xs1fc')" class="btn-upgrade" style="font-size:0.82rem;padding:11px 22px;border:none;cursor:pointer;">Pro $49/mo →</button>
-      <button onclick="openCheckout('pri_01m7kxz0m9tmc8dyv8x97kgwrw')" class="btn-upgrade" style="font-size:0.82rem;padding:11px 22px;border:none;cursor:pointer;">Agency $99/mo →</button>
+    <div class="plans-cta">
+      <button onclick="openCheckout('pri_01m7kxr0g1d4akp00xtpbfrq2z')" class="btn-upgrade secondary">Starter $19/mo</button>
+      <button onclick="openCheckout('pri_01m7kxw9p15jxevpa58h1xs1fc')" class="btn-upgrade">Pro $49/mo ✦</button>
+      <button onclick="openCheckout('pri_01m7kxz0m9tmc8dyv8x97kgwrw')" class="btn-upgrade secondary">Agency $99/mo</button>
     </div>
     <div class="license-row">
       <input type="text" id="licenseKey" placeholder="Have a license key? Enter it here…" />
@@ -312,69 +397,126 @@
     </div>
   </div>
 
+  <!-- RESULT: BRIEF -->
   <div class="result" id="result">
     <div class="print-title" id="printTitle"></div>
     <div class="result-header">
-      <h2>Your Landing Page Brief</h2>
+      <h2>✦ Your Landing Page Brief</h2>
       <div class="result-actions">
-        <button class="btn-pdf" onclick="exportPDF()">↓ Download PDF</button>
-        <button class="btn-copy" onclick="copyAll()">Copy All</button>
+        <button class="btn-action" onclick="exportPDF()">↓ Download PDF</button>
+        <button class="btn-action" onclick="copyAll()">⎘ Copy All</button>
       </div>
     </div>
-
     <div class="card">
-      <div class="section-title">Page Structure & Sections</div>
+      <div class="section-label">Page Structure & Sections</div>
       <div id="structureOut" class="section-block"><pre></pre></div>
     </div>
-
     <div class="card">
-      <div class="section-title">Copywriting</div>
+      <div class="section-label">Copywriting</div>
       <div id="copyOut" class="section-block"><pre></pre></div>
     </div>
-
     <div class="card">
-      <div class="section-title">SEO Block</div>
+      <div class="section-label">SEO Block</div>
       <div class="seo-grid" id="seoOut"></div>
     </div>
-
     <div class="card">
-      <div class="section-title">Image Recommendations</div>
+      <div class="section-label">Image Recommendations</div>
       <div id="imagesOut" class="section-block"><pre></pre></div>
     </div>
-
     <div class="regenerate-row">
       <button class="btn-regen" onclick="generate()">↺ Regenerate</button>
       <button class="btn-regen" onclick="resetForm()">← Start Over</button>
+    </div>
+    <div class="promo-block">
+      <div class="promo-inner">
+        <div class="promo-text">
+          <div class="promo-label">Need a full landing page built?</div>
+          <h3>Turn this brief into a live website</h3>
+          <p>We design and develop custom hospitality websites on WordPress &amp; Elementor — fast-loading, SEO-optimised, and built to convert direct bookings. Hotels, villas and resorts across Southeast Asia.</p>
+          <ul class="promo-list">
+            <li>Landing pages & full hotel websites</li>
+            <li>Booking engine integration</li>
+            <li>Technical SEO & Core Web Vitals</li>
+            <li>Figma-to-WordPress development</li>
+          </ul>
+        </div>
+        <div class="promo-cta">
+          <a href="https://fortune-thailand.com/" target="_blank" class="btn-promo">Get a Custom Website →</a>
+          <p class="promo-note">Fortune International Thailand<br>Web development agency · Phuket</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULT: LANDING PAGE -->
+  <div class="lp-result" id="lpResult">
+    <div class="lp-header">
+      <h2>✦ Your HTML Landing Page</h2>
+      <div class="result-actions">
+        <button class="btn-action" onclick="downloadHTML()">↓ Download HTML</button>
+        <button class="btn-action" onclick="downloadLPPDF()">↓ Download PDF</button>
+      </div>
+    </div>
+    <div class="iframe-wrap">
+      <div class="iframe-toolbar">
+        <div class="iframe-dot"></div>
+        <div class="iframe-dot"></div>
+        <div class="iframe-dot"></div>
+        <div class="iframe-url" id="iframeUrl">hospitality-generator.vercel.app · preview</div>
+      </div>
+      <iframe id="lpFrame" sandbox="allow-same-origin allow-scripts"></iframe>
+    </div>
+    <div class="regenerate-row">
+      <button class="btn-regen" onclick="generate()">↺ Regenerate</button>
+      <button class="btn-regen" onclick="resetForm()">← Start Over</button>
+    </div>
+    <div class="promo-block">
+      <div class="promo-inner">
+        <div class="promo-text">
+          <div class="promo-label">Want this hosted & live?</div>
+          <h3>We'll launch your website for you</h3>
+          <p>Downloaded your landing page HTML? We can host it, connect your booking system, optimise for SEO, and make it production-ready on WordPress or as a standalone page.</p>
+          <ul class="promo-list">
+            <li>Landing pages & full hotel websites</li>
+            <li>Booking engine integration</li>
+            <li>Technical SEO & Core Web Vitals</li>
+            <li>Figma-to-WordPress development</li>
+          </ul>
+        </div>
+        <div class="promo-cta">
+          <a href="https://fortune-thailand.com/" target="_blank" class="btn-promo">Get a Custom Website →</a>
+          <p class="promo-note">Fortune International Thailand<br>Web development agency · Phuket</p>
+        </div>
+      </div>
     </div>
   </div>
 
 </div>
 
 <script>
-  function openCheckout(priceId) {
-    Paddle.Checkout.open({
-      items: [{ priceId: priceId, quantity: 1 }]
-    });
-  }
-
   const FREE_LIMIT = 3;
   const LS_COUNT = 'hlpg_count';
   const LS_PRO = 'hlpg_pro';
   const VALID_KEYS = ['PRO-DEMO-2024', 'STARTER-TEST-01', 'AGENCY-PREVIEW'];
+  let currentMode = 'brief';
+  let generatedHTML = '';
+
+  function openCheckout(priceId) {
+    Paddle.Checkout.open({ items: [{ priceId: priceId, quantity: 1 }] });
+  }
 
   function getCount() { return parseInt(localStorage.getItem(LS_COUNT) || '0'); }
   function isPro() { return localStorage.getItem(LS_PRO) === '1'; }
   function incrementCount() { localStorage.setItem(LS_COUNT, getCount() + 1); }
 
   function updateUsageBar() {
-    const count = getCount();
-    const pro = isPro();
+    const count = getCount(), pro = isPro();
     const bar = document.getElementById('usageBar');
     const dots = document.getElementById('usageDots');
     const text = document.getElementById('usageText');
     dots.innerHTML = '';
     if (pro) {
-      bar.innerHTML = '<span class="pro-badge">PRO</span><span style="color:var(--muted);font-family:sans-serif;font-size:0.8rem;margin-left:8px;">Unlimited generations · PDF export enabled</span>';
+      bar.innerHTML = '<span class="pro-badge">PRO</span><span style="color:var(--muted);font-family:sans-serif;font-size:0.8rem;margin-left:10px;">Unlimited generations · PDF export enabled</span>';
       return;
     }
     for (let i = 0; i < FREE_LIMIT; i++) {
@@ -384,6 +526,14 @@
     }
     const left = Math.max(0, FREE_LIMIT - count);
     text.innerHTML = `<span>${left}</span> free generation${left !== 1 ? 's' : ''} remaining`;
+  }
+
+  function setMode(mode) {
+    currentMode = mode;
+    document.getElementById('modeBrief').classList.toggle('active', mode === 'brief');
+    document.getElementById('modeLanding').classList.toggle('active', mode === 'landing');
+    const btn = document.getElementById('generateBtnText');
+    btn.textContent = mode === 'brief' ? '✦ Generate Landing Page Brief' : '✦ Generate HTML Landing Page';
   }
 
   function activateLicense() {
@@ -411,8 +561,8 @@
   function toggleKey() {
     const inp = document.getElementById('apiKey');
     const btn = event.target;
-    if (inp.type === 'password') { inp.type = 'text'; btn.textContent = 'Hide'; }
-    else { inp.type = 'password'; btn.textContent = 'Show'; }
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+    btn.textContent = inp.type === 'password' ? 'Show' : 'Hide';
   }
 
   function getVal(id) { return document.getElementById(id).value.trim(); }
@@ -420,46 +570,67 @@
     const active = document.getElementById(groupId).querySelector('.chip.active');
     return active ? active.dataset.val : null;
   }
-
-  function showError(msg) {
-    const el = document.getElementById('errorMsg');
-    el.textContent = msg;
-    el.style.display = 'block';
-  }
+  function showError(msg) { const el = document.getElementById('errorMsg'); el.textContent = msg; el.style.display = 'block'; }
   function hideError() { document.getElementById('errorMsg').style.display = 'none'; }
+
+  function setLoadingSteps(steps) {
+    const el = document.getElementById('loadingSteps');
+    el.innerHTML = steps.map((s, i) => `<div class="loading-step ${i === 0 ? 'active' : ''}" id="lstep${i}">${s}</div>`).join('');
+  }
+  function activateStep(i) {
+    document.querySelectorAll('.loading-step').forEach((el, idx) => el.classList.toggle('active', idx === i));
+  }
 
   async function generate() {
     hideError();
-
     if (!isPro() && getCount() >= FREE_LIMIT) {
       document.getElementById('paywall').style.display = 'block';
       document.getElementById('paywall').scrollIntoView({ behavior: 'smooth' });
       return;
     }
-
     const apiKey = getVal('apiKey');
     const propType = getVal('propType');
     const location = getVal('location');
     const propName = getVal('propName');
     const rooms = getVal('rooms');
     const usp = getVal('usp');
-    const style = getChip('styleChips') || 'boutique';
+    const style = getChip('styleChips') || 'luxury';
     const audience = getChip('audienceChips') || 'travelers';
     const lang = getVal('lang');
     const cta = getVal('cta');
+    const propLabel = propName || ('a ' + propType);
 
     if (!apiKey) { showError('Please enter your OpenAI API key to generate.'); return; }
     if (!location) { showError('Please enter the property location.'); return; }
     if (!usp) { showError('Please describe at least one unique selling point.'); return; }
 
-    const propLabel = propName || ('a ' + propType);
-
-    const prompt = 'You are an expert hospitality copywriter and UX strategist. Create a complete landing page brief for the following property.\n\nPROPERTY:\n- Type: ' + propType + '\n- Name: ' + propLabel + '\n- Location: ' + location + '\n- Rooms/Units: ' + (rooms || 'not specified') + '\n- Style/Vibe: ' + style + '\n- Target audience: ' + audience + '\n- USPs: ' + usp + '\n- Primary CTA: ' + cta + '\n- Page language: ' + lang + '\n\nProduce the following in ' + lang + ':\n\n## 1. PAGE STRUCTURE\nList 7-9 page sections with section name, purpose (1 sentence), and suggested layout hint (e.g. full-width hero, 3-column grid).\n\n## 2. COPYWRITING\nFor each section write:\n- Headline\n- Subheadline or body copy (2-4 sentences)\n- CTA button text where applicable\nMake the copy evocative, specific to this property, and avoid generic clichés.\n\n## 3. SEO BLOCK\n- Page Title (55-60 chars)\n- Meta Description (145-155 chars)\n- H1 Tag\n- 5 focus keywords (comma-separated)\n- Schema type recommendation\n\n## 4. IMAGE RECOMMENDATIONS\nFor each major section, suggest the ideal photo: subject, mood, composition, and what it should convey to the visitor. Be specific.\n\nWrite in professional ' + lang + '. Be specific, not generic. No filler text.';
-
     document.getElementById('generateBtn').disabled = true;
     document.getElementById('loading').style.display = 'block';
     document.getElementById('result').style.display = 'none';
+    document.getElementById('lpResult').style.display = 'none';
     document.getElementById('paywall').style.display = 'none';
+
+    let prompt, loadingSteps, loadingMsg;
+
+    if (currentMode === 'brief') {
+      loadingMsg = 'Creating your landing page brief…';
+      loadingSteps = ['Analysing property details', 'Writing page structure', 'Crafting copy & SEO', 'Finalising recommendations'];
+      prompt = `You are an expert hospitality copywriter and UX strategist. Create a complete landing page brief for the following property.\n\nPROPERTY:\n- Type: ${propType}\n- Name: ${propLabel}\n- Location: ${location}\n- Rooms/Units: ${rooms || 'not specified'}\n- Style/Vibe: ${style}\n- Target audience: ${audience}\n- USPs: ${usp}\n- Primary CTA: ${cta}\n- Page language: ${lang}\n\nProduce the following in ${lang}:\n\n## 1. PAGE STRUCTURE\nList 7-9 page sections with section name, purpose (1 sentence), and suggested layout hint.\n\n## 2. COPYWRITING\nFor each section write:\n- Headline\n- Subheadline or body copy (2-4 sentences)\n- CTA button text where applicable\nMake the copy evocative and specific to this property.\n\n## 3. SEO BLOCK\n- Page Title (55-60 chars)\n- Meta Description (145-155 chars)\n- H1 Tag\n- 5 focus keywords (comma-separated)\n- Schema type recommendation\n\n## 4. IMAGE RECOMMENDATIONS\nFor each major section, suggest the ideal photo: subject, mood, composition. Be specific.\n\nWrite in professional ${lang}. Be specific, not generic.`;
+    } else {
+      loadingMsg = 'Building your HTML landing page…';
+      loadingSteps = ['Designing layout & sections', 'Writing copy & headlines', 'Styling with CSS', 'Assembling final HTML'];
+      prompt = `You are an expert hospitality web designer and copywriter. Create a complete, beautiful, production-ready HTML landing page for the following property.\n\nPROPERTY:\n- Type: ${propType}\n- Name: ${propLabel}\n- Location: ${location}\n- Rooms/Units: ${rooms || 'not specified'}\n- Style/Vibe: ${style}\n- Target audience: ${audience}\n- USPs: ${usp}\n- Primary CTA: ${cta}\n- Language: ${lang}\n\nRULES:\n1. Output ONLY valid HTML — start with <!DOCTYPE html>, no markdown, no explanation\n2. All CSS must be inline in a <style> tag in <head>\n3. No external dependencies — no CDN links, no Google Fonts (use system fonts)\n4. Include these sections: Hero with headline + CTA button, About/Story, Key Features (3-column grid), Rooms/Villas showcase, Amenities, Testimonials (2-3 fake but realistic), Location/How to get there, Contact/Booking CTA, Footer\n5. Design style: ${style} — use appropriate color palette (e.g. luxury = dark navy/gold, eco = greens/earth tones, romantic = warm blush/rose)\n6. Mobile responsive using CSS flexbox/grid\n7. Hero should have a gradient background that fits the style (no images needed)\n8. All text must be in ${lang}\n9. CTA buttons should say "${cta}"\n10. Make it look like a real premium hotel website — not a template\n11. Add proper meta tags for SEO\n\nOutput ONLY the complete HTML document, nothing else.`;
+    }
+
+    document.getElementById('loadingMsg').textContent = loadingMsg;
+    setLoadingSteps(loadingSteps);
+
+    const stepTimer = setInterval(() => {
+      const steps = document.querySelectorAll('.loading-step');
+      let current = 0;
+      steps.forEach((s, i) => { if (s.classList.contains('active')) current = i; });
+      if (current < steps.length - 1) activateStep(current + 1);
+    }, 2200);
 
     try {
       const res = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -468,24 +639,26 @@
         body: JSON.stringify({
           model: 'gpt-4o-mini',
           messages: [{ role: 'user', content: prompt }],
-          max_tokens: 2500,
+          max_tokens: currentMode === 'landing' ? 4000 : 2500,
           temperature: 0.75
         })
       });
-
+      clearInterval(stepTimer);
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
         throw new Error(err.error?.message || ('API error ' + res.status));
       }
-
       const data = await res.json();
       const text = data.choices?.[0]?.message?.content || '';
-
       incrementCount();
       updateUsageBar();
-      parseAndRender(text, propLabel, location);
-
+      if (currentMode === 'brief') {
+        parseAndRenderBrief(text, propLabel, location);
+      } else {
+        renderLandingPage(text, propLabel);
+      }
     } catch (e) {
+      clearInterval(stepTimer);
       showError('Error: ' + e.message);
     } finally {
       document.getElementById('generateBtn').disabled = false;
@@ -493,7 +666,7 @@
     }
   }
 
-  function parseAndRender(text, propLabel, location) {
+  function parseAndRenderBrief(text, propLabel, location) {
     const sections = { structure: '', copy: '', seo: '', images: '' };
     const parts = text.split(/^##\s+\d+\.\s+/m);
     parts.forEach(part => {
@@ -503,35 +676,54 @@
       else if (lower.startsWith('seo block')) sections.seo = part.replace(/^seo block\n?/i, '');
       else if (lower.startsWith('image')) sections.images = part.replace(/^image recommendations\n?/i, '');
     });
-
     document.getElementById('structureOut').querySelector('pre').textContent = sections.structure || text.substring(0, 600);
     document.getElementById('copyOut').querySelector('pre').textContent = sections.copy || '';
-
     const seoEl = document.getElementById('seoOut');
     seoEl.innerHTML = '';
-    const seoLines = sections.seo.split('\n').filter(l => l.trim());
-    seoLines.forEach(line => {
-      const colonIdx = line.indexOf(':');
-      if (colonIdx > -1) {
-        const key = line.substring(0, colonIdx).replace(/^[-*]\s*/, '').trim();
-        const val = line.substring(colonIdx + 1).trim();
+    sections.seo.split('\n').filter(l => l.trim()).forEach(line => {
+      const ci = line.indexOf(':');
+      if (ci > -1) {
+        const key = line.substring(0, ci).replace(/^[-*]\s*/, '').trim();
+        const val = line.substring(ci + 1).trim();
         const div = document.createElement('div');
         div.className = 'seo-item';
         div.innerHTML = '<label>' + key + '</label><p>' + val + '</p>';
         seoEl.appendChild(div);
-      } else if (line.trim()) {
-        const div = document.createElement('div');
-        div.className = 'seo-item';
-        div.innerHTML = '<p>' + line + '</p>';
-        seoEl.appendChild(div);
       }
     });
-
     document.getElementById('imagesOut').querySelector('pre').textContent = sections.images || '';
     document.getElementById('printTitle').textContent = 'Landing Page Brief — ' + propLabel + ', ' + location;
-
     document.getElementById('result').style.display = 'block';
     document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function renderLandingPage(html, propLabel) {
+    // Clean up markdown code fences if GPT wrapped it
+    let cleanHTML = html.replace(/^```html\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '').trim();
+    generatedHTML = cleanHTML;
+    const frame = document.getElementById('lpFrame');
+    frame.srcdoc = cleanHTML;
+    document.getElementById('iframeUrl').textContent = propLabel + ' · preview';
+    document.getElementById('lpResult').style.display = 'block';
+    document.getElementById('lpResult').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function downloadHTML() {
+    if (!generatedHTML) return;
+    const blob = new Blob([generatedHTML], { type: 'text/html' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'landing-page.html';
+    a.click();
+  }
+
+  function downloadLPPDF() {
+    if (!generatedHTML) return;
+    const win = window.open('', '_blank');
+    win.document.write(generatedHTML);
+    win.document.close();
+    win.focus();
+    setTimeout(() => { win.print(); }, 800);
   }
 
   function exportPDF() {
@@ -547,20 +739,22 @@
       .map(el => (el.querySelector('label')?.textContent || '') + ': ' + (el.querySelector('p')?.textContent || '')).join('\n');
     const full = 'PAGE STRUCTURE\n' + struct + '\n\nCOPYWRITING\n' + copy + '\n\nSEO BLOCK\n' + seoItems + '\n\nIMAGE RECOMMENDATIONS\n' + images;
     navigator.clipboard.writeText(full).then(() => {
-      const btn = document.querySelector('.btn-copy');
-      btn.textContent = 'Copied ✓';
-      setTimeout(() => btn.textContent = 'Copy All', 2000);
+      const btn = document.querySelector('.result-actions .btn-action:last-child');
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => btn.textContent = '⎘ Copy All', 2000);
     });
   }
 
   function resetForm() {
     document.getElementById('result').style.display = 'none';
+    document.getElementById('lpResult').style.display = 'none';
     document.getElementById('paywall').style.display = 'none';
     document.getElementById('propName').value = '';
     document.getElementById('location').value = '';
     document.getElementById('rooms').value = '';
     document.getElementById('usp').value = '';
     document.querySelectorAll('.chip.active').forEach(c => c.classList.remove('active'));
+    generatedHTML = '';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
