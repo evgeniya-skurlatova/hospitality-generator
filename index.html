@@ -442,7 +442,7 @@ select option { background: #141414; }
   <div class="card">
     <div class="section-label">OpenAI API Key</div>
     <div class="api-row">
-      <input type="password" id="apiKey" placeholder="sk-proj-…" />
+      <input type="password" id="apiKey" placeholder="Paste your OpenAI API key here" />
       <button class="btn-secondary" onclick="toggleKey()">Show</button>
     </div>
     <p style="font-size:0.73rem;color:var(--muted);font-family:sans-serif;margin-top:9px;">Stored only in your browser — never sent to our servers. &nbsp;·&nbsp; <a href="https://platform.openai.com/api-keys" target="_blank" style="color:var(--accent);text-decoration:none;">Get a free key →</a></p>
@@ -857,6 +857,7 @@ select option { background: #141414; }
     const propLabel = propName || ('a ' + propType);
 
     if (!apiKey) { showError('Please enter your OpenAI API key to generate.'); return; }
+    if (!apiKey.startsWith('sk-')) { showError('Invalid API key format. OpenAI keys start with "sk-".'); return; }
     if (!location) { showError('Please enter the property location.'); return; }
     if (!usp) { showError('Please describe at least one unique selling point.'); return; }
 
