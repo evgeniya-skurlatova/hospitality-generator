@@ -893,34 +893,115 @@ select option { background: #141414; }
 
   const LP_STYLES = {
     luxury: {
-      mode: 'dark',
-      colors: { brand: '#0b0f1a', surface: '#121826', elevated: '#1a2233', txt: '#f2ede3', muted: '#a39a8a', accent: '#c9a96e', accentHover: '#d9bc86', onAccent: '#0b0f1a' },
       serif: 'Cormorant Garamond', sans: 'Plus Jakarta Sans',
       fontHref: 'family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600',
-      head: 'font-normal tracking-tight',
+      head: 'font-normal tracking-tight', quote: 'italic',
       card: 'rounded-3xl', big: 'rounded-[32px]', input: 'rounded-xl', btn: 'rounded-full',
       btnText: 'text-xs uppercase tracking-[0.18em] font-semibold',
       eyebrow: 'text-xs uppercase tracking-[0.22em] font-medium',
-      heroOverlays: ['bg-gradient-to-t from-brand via-brand/45 to-brand/70', 'bg-gradient-to-r from-brand/75 via-brand/25 to-transparent'],
-      ctaOverlay: 'bg-brand/80',
-      shadowSoft: '0 24px 60px -15px rgba(0,0,0,0.45)', shadowFloat: '0 32px 80px -12px rgba(0,0,0,0.6)', glow: '0 0 30px rgba(201,169,110,0.25)'
+      palettes: [
+        { mode: 'dark', colors: { brand: '#0b0f1a', surface: '#121826', elevated: '#1a2233', txt: '#f2ede3', muted: '#a39a8a', accent: '#c9a96e', accentHover: '#d9bc86', onAccent: '#0b0f1a' } },
+        { mode: 'light', colors: { brand: '#f7f3ec', surface: '#eee7da', elevated: '#fffdf9', txt: '#1d1a16', muted: '#6b6257', accent: '#7d5f37', accentHover: '#664d2c', onAccent: '#fbf8f2' } },
+        { mode: 'dark', colors: { brand: '#0a1714', surface: '#10221d', elevated: '#173029', txt: '#eef2ec', muted: '#9fb1a7', accent: '#c8a66a', accentHover: '#d8b97f', onAccent: '#0a1714' } }
+      ],
+      layouts: { hero: ['full', 'center', 'split'], rooms: ['grid', 'feature', 'alternating'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'] }
     },
     eco: {
-      mode: 'light',
-      colors: { brand: '#f6f2e9', surface: '#ece6d8', elevated: '#fffdf8', txt: '#22271f', muted: '#5f6658', accent: '#4d6b50', accentHover: '#3d5840', onAccent: '#f7f4ec' },
       serif: 'Fraunces', sans: 'Inter',
       fontHref: 'family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600',
-      head: 'font-light tracking-tight',
+      head: 'font-light tracking-tight', quote: 'italic',
       card: 'rounded-2xl', big: 'rounded-3xl', input: 'rounded-lg', btn: 'rounded-full',
       btnText: 'text-sm font-medium tracking-wide',
       eyebrow: 'text-xs uppercase tracking-[0.18em] font-semibold',
-      heroOverlays: ['bg-gradient-to-r from-brand/95 via-brand/75 to-brand/0', 'bg-gradient-to-t from-brand/85 via-transparent to-transparent'],
-      ctaOverlay: 'bg-brand/85',
-      shadowSoft: '0 20px 50px -20px rgba(34,39,31,0.18)', shadowFloat: '0 30px 70px -20px rgba(34,39,31,0.28)', glow: '0 12px 30px -10px rgba(77,107,80,0.5)'
+      palettes: [
+        { mode: 'light', colors: { brand: '#f6f2e9', surface: '#ece6d8', elevated: '#fffdf8', txt: '#22271f', muted: '#5f6658', accent: '#4d6b50', accentHover: '#3d5840', onAccent: '#f7f4ec' } },
+        { mode: 'dark', colors: { brand: '#121a14', surface: '#18231b', elevated: '#203024', txt: '#eef1e8', muted: '#a4ae9c', accent: '#a9c08f', accentHover: '#bcd0a5', onAccent: '#121a14' } },
+        { mode: 'light', colors: { brand: '#f5efe6', surface: '#ebe1d2', elevated: '#fffaf3', txt: '#2b231c', muted: '#6e6153', accent: '#8d4f32', accentHover: '#763f26', onAccent: '#fbf6ef' } }
+      ],
+      layouts: { hero: ['full', 'split'], rooms: ['grid', 'feature', 'alternating'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'] }
+    },
+    family: {
+      serif: 'DM Serif Display', sans: 'Nunito Sans',
+      fontHref: 'family=DM+Serif+Display:ital@0;1&family=Nunito+Sans:wght@300;400;600;700',
+      head: 'font-normal', quote: 'italic',
+      card: 'rounded-[28px]', big: 'rounded-[36px]', input: 'rounded-2xl', btn: 'rounded-full',
+      btnText: 'text-sm font-bold',
+      eyebrow: 'text-xs uppercase tracking-[0.16em] font-bold',
+      palettes: [
+        { mode: 'light', colors: { brand: '#fffaf2', surface: '#fdf0dc', elevated: '#ffffff', txt: '#1f2a37', muted: '#5b6573', accent: '#ad4816', accentHover: '#943c11', onAccent: '#ffffff' } },
+        { mode: 'light', colors: { brand: '#f3fafa', surface: '#e3f2f1', elevated: '#ffffff', txt: '#14303a', muted: '#4f6b73', accent: '#0c6c75', accentHover: '#095961', onAccent: '#ffffff' } }
+      ],
+      layouts: { hero: ['full', 'split'], rooms: ['grid', 'feature'], testimonials: ['cards'], amenities: ['cards'] }
+    },
+    romantic: {
+      serif: 'Playfair Display', sans: 'Lato',
+      fontHref: 'family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Lato:wght@300;400;700',
+      head: 'font-normal', quote: 'italic',
+      card: 'rounded-[28px]', big: 'rounded-[40px]', input: 'rounded-xl', btn: 'rounded-full',
+      btnText: 'text-xs uppercase tracking-[0.2em] font-bold',
+      eyebrow: 'text-xs uppercase tracking-[0.2em] font-bold',
+      palettes: [
+        { mode: 'light', colors: { brand: '#fbf5f2', surface: '#f3e6e0', elevated: '#fffbf9', txt: '#2e1d1d', muted: '#7a5f5c', accent: '#944852', accentHover: '#7d3b44', onAccent: '#fff8f6' } },
+        { mode: 'dark', colors: { brand: '#1a0f12', surface: '#24151a', elevated: '#2f1c22', txt: '#f6ece8', muted: '#b59e9a', accent: '#e0a3a3', accentHover: '#ebb8b8', onAccent: '#1a0f12' } }
+      ],
+      layouts: { hero: ['center', 'full', 'split'], rooms: ['alternating', 'grid', 'feature'], testimonials: ['single', 'cards'], amenities: ['cards', 'list'] }
+    },
+    adventure: {
+      serif: 'Barlow Condensed', sans: 'Barlow',
+      fontHref: 'family=Barlow+Condensed:ital,wght@0,500;0,600;1,500&family=Barlow:wght@300;400;500;600',
+      head: 'font-semibold uppercase tracking-wide', quote: 'italic',
+      card: 'rounded-xl', big: 'rounded-2xl', input: 'rounded-md', btn: 'rounded-md',
+      btnText: 'text-sm uppercase tracking-[0.12em] font-semibold',
+      eyebrow: 'text-xs uppercase tracking-[0.25em] font-semibold',
+      palettes: [
+        { mode: 'dark', colors: { brand: '#0e140f', surface: '#152017', elevated: '#1d2b20', txt: '#edf2e9', muted: '#9aaa95', accent: '#e3a33b', accentHover: '#efb658', onAccent: '#0e140f' } },
+        { mode: 'dark', colors: { brand: '#17110d', surface: '#211812', elevated: '#2c2018', txt: '#f4ece4', muted: '#b3a291', accent: '#e2753a', accentHover: '#ec8b55', onAccent: '#17110d' } }
+      ],
+      layouts: { hero: ['full', 'center'], rooms: ['feature', 'grid'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'] }
+    },
+    minimalist: {
+      serif: 'Inter Tight', sans: 'Inter',
+      fontHref: 'family=Inter+Tight:wght@400;500;600&family=Inter:wght@300;400;500;600',
+      head: 'font-medium tracking-[-0.03em]', quote: '',
+      card: 'rounded-none', big: 'rounded-none', input: 'rounded-none', btn: 'rounded-none',
+      btnText: 'text-xs uppercase tracking-[0.16em] font-medium',
+      eyebrow: 'text-[11px] uppercase tracking-[0.24em] font-medium',
+      palettes: [
+        { mode: 'light', colors: { brand: '#ffffff', surface: '#f4f4f2', elevated: '#ffffff', txt: '#111111', muted: '#5f5f5f', accent: '#111111', accentHover: '#333333', onAccent: '#ffffff' } },
+        { mode: 'light', colors: { brand: '#efeeeb', surface: '#e4e2de', elevated: '#f8f7f5', txt: '#1a1a1a', muted: '#5e5c5b', accent: '#2f3b45', accentHover: '#1f2830', onAccent: '#f8f7f5' } },
+        { mode: 'dark', colors: { brand: '#0e0e0e', surface: '#161616', elevated: '#1e1e1e', txt: '#f2f2f0', muted: '#9a9a96', accent: '#f2f2f0', accentHover: '#ffffff', onAccent: '#0e0e0e' } }
+      ],
+      layouts: { hero: ['split', 'center'], rooms: ['alternating', 'grid'], testimonials: ['single'], amenities: ['list'] }
+    },
+    boutique: {
+      serif: 'Instrument Serif', sans: 'Space Grotesk',
+      fontHref: 'family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600',
+      head: 'font-normal', quote: 'italic',
+      card: 'rounded-2xl', big: 'rounded-[28px]', input: 'rounded-lg', btn: 'rounded-full',
+      btnText: 'text-xs uppercase tracking-[0.14em] font-medium',
+      eyebrow: 'text-xs uppercase tracking-[0.2em] font-medium',
+      palettes: [
+        { mode: 'light', colors: { brand: '#f2ede4', surface: '#e7dfd2', elevated: '#fbf8f2', txt: '#1b1b1b', muted: '#625b52', accent: '#1f5c5c', accentHover: '#164848', onAccent: '#f7f3ec' } },
+        { mode: 'dark', colors: { brand: '#1a1218', surface: '#241a22', elevated: '#2e222b', txt: '#f5f0eb', muted: '#b3a39d', accent: '#d9825b', accentHover: '#e5976f', onAccent: '#1a1218' } }
+      ],
+      layouts: { hero: ['split', 'full', 'center'], rooms: ['alternating', 'feature', 'grid'], testimonials: ['single', 'cards'], amenities: ['list', 'cards'] }
     }
   };
 
-  const LP_STYLE_MAP = { 'luxury': 'luxury', 'eco / wellness': 'eco' };
+  const LP_STYLE_MAP = {
+    'luxury': 'luxury', 'eco / wellness': 'eco', 'family-friendly': 'family', 'romantic couples': 'romantic',
+    'adventure': 'adventure', 'minimalist design': 'minimalist', 'boutique artsy': 'boutique'
+  };
+
+  function lpPickVariant(styleKey) {
+    const S = LP_STYLES[styleKey] || LP_STYLES.luxury;
+    const pick = (a) => a[Math.floor(Math.random() * a.length)];
+    return {
+      palette: Math.floor(Math.random() * S.palettes.length),
+      hero: pick(S.layouts.hero), rooms: pick(S.layouts.rooms),
+      testimonials: pick(S.layouts.testimonials), amenities: pick(S.layouts.amenities)
+    };
+  }
 
   const LP_ICONS = {
     pool: '<path d="M3 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2M3 19c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2M8 11V6a2 2 0 114 0v5m4 0V7a2 2 0 114 0v4"/>',
@@ -945,6 +1026,8 @@ select option { background: #141414; }
   const LP_ICON_KEYS = Object.keys(LP_ICONS);
 
   const LP_STAR = '<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+  const LP_CHEV_L = '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>';
+  const LP_CHEV_R = '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>';
 
   const LP_IMG = (id, w) => 'https://images.unsplash.com/photo-' + id + '?auto=format&fit=crop&w=' + w + '&q=85';
   const LP_PHOTOS = {
@@ -967,6 +1050,11 @@ select option { background: #141414; }
     return out;
   }
 
+  function lpRgb(hex) {
+    const h = hex.replace('#', '');
+    return [0, 2, 4].map((i) => parseInt(h.substr(i, 2), 16)).join(',');
+  }
+
   function lpNormalize(c, ctx) {
     c = c && typeof c === 'object' ? c : {};
     const o = (k) => (c[k] && typeof c[k] === 'object' ? c[k] : {});
@@ -976,6 +1064,7 @@ select option { background: #141414; }
     return {
       ui: {
         nav: lpArr(ui.nav, 5, (i) => ['Overview', 'Suites', 'Outdoors', 'Amenities', 'Reviews'][i]),
+        typeLabel: ui.property_type || ctx.propTypeLabel,
         reserve: ui.reserve || 'Reserve', checkIn: ui.check_in || 'Check-In', checkOut: ui.check_out || 'Check-Out',
         guests: ui.guests || 'Guests', guestOptions: lpArr(ui.guest_options, 4, (i) => ['1 Guest', '2 Guests', '3 Guests', '4+ Guests'][i]),
         checkAvailability: ui.check_availability || 'Check Availability', details: ui.details || 'Details',
@@ -1027,46 +1116,55 @@ select option { background: #141414; }
 
   function buildLandingHTML(raw, ctx) {
     const S = LP_STYLES[ctx.styleKey] || LP_STYLES.luxury;
+    const V = ctx.variant || lpPickVariant(ctx.styleKey);
+    const P = S.palettes[V.palette] || S.palettes[0];
+    const dark = P.mode === 'dark';
+    const C = P.colors;
     const c = lpNormalize(raw, ctx);
     const e = lpEsc;
-    const dark = S.mode === 'dark';
     const name = ctx.name;
     const mono = (name.trim()[0] || 'H').toUpperCase();
     const ids = ['overview', 'accommodations', 'outdoor', 'amenities', 'testimonials'];
+    const shadowSoft = dark ? '0 24px 60px -15px rgba(0,0,0,0.45)' : '0 20px 50px -20px rgba(' + lpRgb(C.txt) + ',0.18)';
+    const shadowFloat = dark ? '0 32px 80px -12px rgba(0,0,0,0.6)' : '0 30px 70px -20px rgba(' + lpRgb(C.txt) + ',0.28)';
+    const glow = dark ? '0 0 30px rgba(' + lpRgb(C.accent) + ',0.25)' : '0 12px 30px -10px rgba(' + lpRgb(C.accent) + ',0.5)';
 
     const btnPrimary = 'bg-accent hover:bg-accentHover text-onAccent ' + S.btn + ' ' + S.btnText + ' transition-all duration-300';
     const btnGhost = 'border border-txt/25 hover:border-accent text-txt hover:text-accent bg-brand/35 backdrop-blur-md ' + S.btn + ' ' + S.btnText + ' transition-all duration-300';
-    const field = 'w-full bg-elevated/90 text-txt text-sm ' + S.input + ' border border-txt/15 focus:border-accent focus:outline-none px-4 py-3 transition-colors';
-    const eyebrow = (t) => t ? '<div class="' + S.eyebrow + ' text-accent mb-3">' + e(t) + '</div>' : '';
+    const fieldBase = 'w-full text-txt text-sm ' + S.input + ' border border-txt/15 focus:border-accent focus:outline-none px-4 py-3 transition-colors';
+    const field = 'bg-elevated/90 ' + fieldBase;
+    const fieldModal = 'bg-brand ' + fieldBase;
+    const label = 'block text-[11px] uppercase tracking-[0.18em] text-muted mb-2';
     const num = (i) => String(i + 1).padStart(2, '0');
-    const eb = (i, t) => eyebrow(num(i) + ' · ' + t);
+    const eb = (i, t) => '<div class="' + S.eyebrow + ' text-accent mb-3">' + num(i) + ' · ' + e(t) + '</div>';
+    const h2 = (t, size) => '<h2 class="serif ' + (size || 'text-4xl sm:text-5xl') + ' ' + S.head + ' leading-[1.1] text-txt">' + e(t) + '</h2>';
+    const reveal = 'reveal';
 
     let headline = e(c.hero.headline);
     const acc = e(c.hero.accent);
-    if (acc && headline.indexOf(acc) > -1) headline = headline.replace(acc, '<span class="italic text-accent">' + acc + '</span>');
+    if (acc && headline.indexOf(acc) > -1) headline = headline.replace(acc, '<span class="' + (S.quote || '') + ' text-accent">' + acc + '</span>');
 
     const rooms = c.rooms.items.map((r, i) => ({
       name: r.name || ('Suite ' + (i + 1)), badge: r.badge || '', size: r.size || '', price: r.price || '',
       description: r.description || '', beds: r.beds || '', long: r.long_description || r.description || '',
       specs: lpArr(r.specs, 5, () => '').filter(Boolean), img: LP_IMG(LP_PHOTOS.rooms[i % 4], 1200)
     }));
+    const priceLine = (r) => [r.size, r.price ? r.price + ' ' + c.ui.perNight : ''].filter(Boolean).join(' · ');
     const suiteData = {};
     rooms.forEach((r) => {
       suiteData[r.name] = { img: r.img, badge: [r.badge, r.size].filter(Boolean).join(' · '), price: r.price ? r.price + ' ' + c.ui.perNight : '', desc: r.long, specs: r.specs };
     });
-    const slides = c.overview.slides.map((s, i) => ({
-      src: LP_IMG(LP_PHOTOS.slides[i], 1400),
-      tag: num(i) + ' / 03' + (s.tag ? ' · ' + s.tag : ''),
-      caption: s.caption || ''
-    }));
+    const slides = c.overview.slides.map((s, i) => ({ src: LP_IMG(LP_PHOTOS.slides[i], 1400), tag: num(i) + ' / 03' + (s.tag ? ' · ' + s.tag : ''), caption: s.caption || '' }));
     const safeJSON = (v) => JSON.stringify(v).replace(/</g, '\\u003c');
+    const onSuite = (n) => "onclick='openSuiteDetail(" + e(JSON.stringify(n)) + ")'";
+    const onBook = (n) => "onclick='openBookingModal(" + e(JSON.stringify(n)) + ")'";
 
     const usedIcons = {};
-    const amenityIcon = (k) => {
+    const amenityIcon = (k, size) => {
       let key = LP_ICONS[k] ? k : 'sparkle';
       if (usedIcons[key]) key = LP_ICON_KEYS.find((x) => !usedIcons[x]) || key;
       usedIcons[key] = true;
-      return '<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">' + LP_ICONS[key] + '</svg>';
+      return '<svg class="' + (size || 'w-6 h-6') + '" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">' + LP_ICONS[key] + '</svg>';
     };
 
     const schema = {
@@ -1083,9 +1181,9 @@ select option { background: #141414; }
     const twConfig = {
       theme: {
         extend: {
-          colors: S.colors,
+          colors: C,
           fontFamily: { serif: ['"' + S.serif + '"', 'Georgia', 'serif'], sans: ['"' + S.sans + '"', 'system-ui', 'sans-serif'] },
-          boxShadow: { soft: S.shadowSoft, floating: S.shadowFloat, glow: S.glow }
+          boxShadow: { soft: shadowSoft, floating: shadowFloat, glow: glow }
         }
       }
     };
@@ -1093,13 +1191,153 @@ select option { background: #141414; }
     const navLinks = c.ui.nav.map((t, i) => '<a href="#' + ids[i] + '" class="hover:text-accent transition-colors">' + e(t) + '</a>').join('');
     const mobileLinks = c.ui.nav.map((t, i) => '<a href="#' + ids[i] + '" class="mobile-link block text-base text-txt/90 hover:text-accent py-1">' + e(t) + '</a>').join('');
 
+    const pill = '<div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-brand/70 backdrop-blur-md border border-txt/10 mb-6"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span><span class="text-[11px] uppercase tracking-[0.25em] text-accent font-medium">' + e(c.hero.eyebrow) + '</span></div>';
+    const heroButtons = (center) => '<div class="flex flex-wrap items-center gap-4 mt-9' + (center ? ' justify-center' : '') + '"><button type="button" onclick="openBookingModal(LP_FIRST)" class="' + btnPrimary + ' px-8 py-4 shadow-glow">' + e(c.hero.primary) + '</button><a href="#accommodations" class="' + btnGhost + ' px-7 py-4">' + e(c.hero.secondary) + '</a></div>';
+    const heroSub = (cls) => c.hero.subtitle ? '<p class="serif ' + S.quote + ' text-xl sm:text-2xl text-txt/90 mt-5 leading-relaxed ' + (cls || 'max-w-xl') + '">' + e(c.hero.subtitle) + '</p>' : '';
+    const bookingFields = (cols) => '<div class="grid grid-cols-1 sm:grid-cols-2 ' + cols + ' gap-4 lg:gap-5 items-end">' +
+      '<div><label for="heroIn" class="' + label + '">' + e(c.ui.checkIn) + '</label><input type="date" id="heroIn" class="' + field + '"></div>' +
+      '<div><label for="heroOut" class="' + label + '">' + e(c.ui.checkOut) + '</label><input type="date" id="heroOut" class="' + field + '"></div>' +
+      '<div><label for="heroGuests" class="' + label + '">' + e(c.ui.guests) + '</label><select id="heroGuests" class="' + field + '">' + c.ui.guestOptions.map((g, i) => '<option' + (i === 1 ? ' selected' : '') + '>' + e(g) + '</option>').join('') + '</select></div>' +
+      '<button type="button" onclick="syncAndBook()" class="w-full h-[46px] px-4 bg-accent hover:bg-accentHover text-onAccent ' + S.input + ' ' + S.btnText + ' transition-all">' + e(c.ui.checkAvailability) + '</button></div>';
+    const bookingBar = '<div class="bg-brand/90 backdrop-blur-xl border border-txt/10 shadow-floating p-5 lg:p-6 ' + S.card + '">' + bookingFields('lg:grid-cols-4') + '</div>';
+    const h1 = (size) => '<h1 class="serif ' + (size || 'text-5xl sm:text-6xl lg:text-[4.6rem]') + ' ' + S.head + ' leading-[1.06] text-txt">' + headline + '</h1>';
+    const heroImgTag = '<img src="' + e(ctx.heroImg) + '" loading="eager" alt="' + e(name + ', ' + ctx.location) + '" class="absolute inset-0 w-full h-full object-cover">';
+
+    const heroVariants = {
+      full: () => `<section class="relative min-h-screen flex flex-col justify-between overflow-hidden">
+  ${heroImgTag}
+  <div class="absolute inset-0 ${dark ? 'bg-gradient-to-t from-brand via-brand/45 to-brand/70' : 'bg-gradient-to-r from-brand/95 via-brand/75 to-brand/0'}"></div>
+  <div class="absolute inset-0 ${dark ? 'bg-gradient-to-r from-brand/75 via-brand/25 to-transparent' : 'bg-gradient-to-t from-brand/85 via-transparent to-transparent'}"></div>
+  <div class="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-10 pt-36 lg:pt-44 pb-12">
+    <div class="max-w-2xl">${pill}${h1()}${heroSub()}${heroButtons(false)}</div>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-10 pb-8 lg:pb-12">${bookingBar}</div>
+</section>`,
+      center: () => `<section class="relative min-h-screen flex flex-col items-center justify-between overflow-hidden text-center">
+  ${heroImgTag}
+  <div class="absolute inset-0 ${dark ? 'bg-brand/55' : 'bg-brand/70'}"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-brand via-transparent to-brand/40"></div>
+  <div class="relative z-10 max-w-3xl mx-auto w-full px-6 pt-40 lg:pt-52 pb-12 flex flex-col items-center">
+    ${pill}${h1('text-5xl sm:text-6xl lg:text-[5.2rem]')}${heroSub('max-w-2xl mx-auto')}${heroButtons(true)}
+  </div>
+  <div class="relative z-10 max-w-5xl mx-auto w-full px-6 pb-10 lg:pb-14 text-left">${bookingBar}</div>
+</section>`,
+      split: () => `<section class="relative min-h-screen bg-brand grid grid-cols-1 lg:grid-cols-2">
+  <div class="flex flex-col justify-center px-6 sm:px-10 lg:px-16 xl:px-24 pt-32 pb-12 lg:py-32">
+    <div class="max-w-xl">${pill}${h1('text-5xl sm:text-6xl lg:text-[4.2rem]')}${heroSub()}${heroButtons(false)}
+      <div class="mt-12 bg-surface border border-txt/10 p-5 ${S.card}">${bookingFields('')}</div>
+    </div>
+  </div>
+  <div class="relative min-h-[60vh] lg:min-h-0 mx-4 mb-4 lg:m-5 lg:ml-0 ${S.big} overflow-hidden">
+    ${heroImgTag}
+    <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
+    ${c.overview.stats[0] && c.overview.stats[0].value ? '<div class="absolute bottom-6 left-6 bg-brand/85 backdrop-blur-xl border border-txt/10 ' + S.card + ' px-6 py-4 shadow-floating"><div class="serif text-4xl text-accent leading-none">' + e(c.overview.stats[0].value) + '</div><div class="text-[11px] uppercase tracking-[0.18em] text-muted mt-1.5">' + e(c.overview.stats[0].label) + '</div></div>' : ''}
+  </div>
+</section>`
+    };
+
+    const roomBadge = (r) => r.badge ? '<span class="absolute top-4 left-4 bg-brand/85 backdrop-blur-md text-accent border border-accent/30 text-[11px] uppercase tracking-[0.16em] px-3.5 py-1.5 rounded-full">' + e(r.badge) + '</span>' : '';
+    const roomPriceTag = (r) => priceLine(r) ? '<span class="absolute bottom-4 right-4 bg-brand/85 backdrop-blur-md text-txt text-xs px-3 py-1 rounded-full">' + e(priceLine(r)) + '</span>' : '';
+    const detailsLink = '<span class="text-xs uppercase tracking-[0.16em] text-accent font-medium whitespace-nowrap group-hover:translate-x-1 transition-transform">' + e(c.ui.details) + ' →</span>';
+    const roomCard = (r, aspect, nameSize) => `<article ${onSuite(r.name)} class="bg-surface ${S.card} overflow-hidden shadow-soft border border-txt/5 group cursor-pointer reveal flex flex-col">
+        <div class="relative ${aspect} overflow-hidden">
+          <img src="${r.img}" alt="${e(r.name)}" loading="lazy" class="w-full h-full object-cover img-zoom">
+          ${roomBadge(r)}${roomPriceTag(r)}
+        </div>
+        <div class="p-7 lg:p-8 flex-1 flex flex-col justify-between">
+          <div><h3 class="serif ${nameSize} ${S.head} text-txt group-hover:text-accent transition-colors">${e(r.name)}</h3>
+          <p class="text-sm text-muted mt-2.5 leading-relaxed">${e(r.description)}</p></div>
+          <div class="border-t border-txt/10 mt-6 pt-5 flex items-center justify-between gap-4"><span class="text-xs text-muted tracking-wide">${e(r.beds)}</span>${detailsLink}</div>
+        </div>
+      </article>`;
+    const specPills = (r, n) => r.specs.slice(0, n).map((s) => '<span class="rounded-full bg-brand border border-txt/10 px-3 py-1 text-xs text-txt/85">' + e(s) + '</span>').join('');
+
+    const roomsHeader = (center) => center
+      ? `<div class="text-center max-w-2xl mx-auto mb-14 ${reveal}">${eb(1, c.rooms.eyebrow)}${h2(c.rooms.heading)}<p class="mt-3 text-muted">${e(c.rooms.body)}</p></div>`
+      : `<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 ${reveal}"><div>${eb(1, c.rooms.eyebrow)}${h2(c.rooms.heading)}<p class="mt-3 text-muted max-w-xl">${e(c.rooms.body)}</p></div>
+      <button type="button" onclick="openBookingModal(LP_FIRST)" class="self-start md:self-auto text-xs uppercase tracking-[0.18em] text-accent hover:text-accentHover border-b border-accent/40 pb-1.5 transition-colors">${e(c.rooms.link)} →</button></div>`;
+
+    const roomsVariants = {
+      grid: () => roomsHeader(false) + '<div class="grid grid-cols-1 md:grid-cols-2 gap-8">' + rooms.map((r) => roomCard(r, 'aspect-[16/10]', 'text-3xl')).join('') + '</div>',
+      feature: () => {
+        const f = rooms[0];
+        return roomsHeader(false) + `<article ${onSuite(f.name)} class="grid grid-cols-1 lg:grid-cols-12 bg-surface ${S.card} overflow-hidden shadow-soft border border-txt/5 group cursor-pointer ${reveal}">
+        <div class="relative lg:col-span-7 aspect-[16/10] lg:aspect-auto lg:min-h-[440px] overflow-hidden">
+          <img src="${f.img}" alt="${e(f.name)}" loading="lazy" class="absolute inset-0 w-full h-full object-cover img-zoom">${roomBadge(f)}
+        </div>
+        <div class="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center">
+          ${priceLine(f) ? '<div class="text-xs uppercase tracking-[0.18em] text-accent">' + e(priceLine(f)) + '</div>' : ''}
+          <h3 class="serif text-4xl lg:text-5xl ${S.head} text-txt mt-3 group-hover:text-accent transition-colors">${e(f.name)}</h3>
+          <p class="text-muted mt-4 leading-relaxed">${e(f.long)}</p>
+          <div class="flex flex-wrap gap-2 mt-6">${specPills(f, 4)}</div>
+          <div class="border-t border-txt/10 mt-8 pt-5 flex items-center justify-between gap-4"><span class="text-xs text-muted tracking-wide">${e(f.beds)}</span>${detailsLink}</div>
+        </div>
+      </article>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">${rooms.slice(1).map((r) => roomCard(r, 'aspect-[4/3]', 'text-2xl')).join('')}</div>`;
+      },
+      alternating: () => roomsHeader(true) + '<div class="space-y-16 lg:space-y-24">' + rooms.map((r, i) => `<article class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center ${reveal}">
+        <div ${onSuite(r.name)} class="relative lg:col-span-7 ${i % 2 ? 'lg:order-2' : ''} aspect-[4/3] ${S.card} overflow-hidden shadow-soft group cursor-pointer">
+          <img src="${r.img}" alt="${e(r.name)}" loading="lazy" class="w-full h-full object-cover img-zoom">${roomBadge(r)}
+        </div>
+        <div class="lg:col-span-5 ${i % 2 ? 'lg:order-1' : ''}">
+          <div class="${S.eyebrow} text-accent">${num(i)}${priceLine(r) ? ' · ' + e(priceLine(r)) : ''}</div>
+          <h3 class="serif text-4xl lg:text-5xl ${S.head} text-txt mt-3">${e(r.name)}</h3>
+          <p class="text-muted mt-4 leading-relaxed">${e(r.long)}</p>
+          <div class="text-sm text-txt/80 mt-4">${e(r.beds)}</div>
+          <div class="flex flex-wrap gap-2 mt-5">${specPills(r, 4)}</div>
+          <div class="flex flex-wrap gap-3 mt-8">
+            <button type="button" ${onBook(r.name)} class="${btnPrimary} px-7 py-3">${e(c.ui.reserve)}</button>
+            <button type="button" ${onSuite(r.name)} class="border border-txt/20 hover:border-accent text-txt hover:text-accent px-7 py-3 ${S.btn} ${S.btnText} transition-all">${e(c.ui.details)}</button>
+          </div>
+        </div>
+      </article>`).join('') + '</div>'
+    };
+
+    const tAvatar = (t) => '<div class="w-11 h-11 rounded-full bg-accent text-onAccent flex items-center justify-center serif font-semibold text-lg">' + e((String(t.name || 'G').trim()[0] || 'G').toUpperCase()) + '</div>';
+    const tMeta = (t) => '<div><div class="text-sm font-semibold text-txt">' + e(t.name) + '</div><div class="text-xs text-muted">' + e([t.origin, t.stay].filter(Boolean).join(' · ')) + '</div></div>';
+    const stars = '<div class="flex items-center gap-1 text-accent" aria-label="5/5">' + LP_STAR.repeat(5) + '</div>';
+    const testiHeader = `<div class="text-center max-w-xl mx-auto mb-16 ${reveal}">${eb(5, c.testimonials.eyebrow)}${h2(c.testimonials.heading)}</div>`;
+    const testiVariants = {
+      cards: () => testiHeader + '<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 ' + reveal + '">' + c.testimonials.items.map((t) => `<figure class="bg-brand border border-txt/10 ${S.card} p-8 sm:p-11 shadow-soft flex flex-col justify-between">
+        <div><div class="serif text-6xl text-accent leading-none select-none" aria-hidden="true">&ldquo;</div>
+        <blockquote class="serif ${S.quote} text-2xl sm:text-[1.75rem] text-txt leading-relaxed mt-2">${e(t.quote)}</blockquote></div>
+        <figcaption class="flex items-center justify-between gap-4 mt-8 pt-6 border-t border-txt/10"><div class="flex items-center gap-3.5">${tAvatar(t)}${tMeta(t)}</div>${stars}</figcaption>
+      </figure>`).join('') + '</div>',
+      single: () => testiHeader + `<div class="max-w-4xl mx-auto text-center ${reveal}">
+        ${c.testimonials.items.map((t, i) => `<figure class="t-item ${i ? 'hidden' : ''}">
+          <div class="flex justify-center">${stars}</div>
+          <blockquote class="serif ${S.quote} text-3xl sm:text-4xl lg:text-[2.6rem] ${S.head.indexOf('uppercase') > -1 ? '' : ''} text-txt leading-snug mt-8">&ldquo;${e(t.quote)}&rdquo;</blockquote>
+          <figcaption class="flex items-center justify-center gap-3.5 mt-10 text-left">${tAvatar(t)}${tMeta(t)}</figcaption>
+        </figure>`).join('')}
+        <div class="flex items-center justify-center gap-4 mt-10">
+          <button type="button" onclick="tShow(tIdx-1)" aria-label="Previous" class="w-11 h-11 rounded-full border border-txt/20 hover:border-accent hover:text-accent text-txt flex items-center justify-center transition-colors">${LP_CHEV_L}</button>
+          <div class="flex items-center gap-2.5">${c.testimonials.items.map((t, i) => '<button type="button" onclick="tShow(' + i + ')" aria-label="' + (i + 1) + '" class="t-dot ' + (i ? 'w-2.5 h-2 rounded-full bg-muted/40' : 'w-8 h-2 rounded-full bg-accent') + ' transition-all"></button>').join('')}</div>
+          <button type="button" onclick="tShow(tIdx+1)" aria-label="Next" class="w-11 h-11 rounded-full border border-txt/20 hover:border-accent hover:text-accent text-txt flex items-center justify-center transition-colors">${LP_CHEV_R}</button>
+        </div>
+      </div>`
+    };
+
+    const amenVariants = {
+      cards: () => `<div class="text-center max-w-xl mx-auto mb-16 ${reveal}">${eb(4, c.amenities.eyebrow)}${h2(c.amenities.heading)}<p class="text-muted text-sm mt-3">${e(c.amenities.body)}</p></div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8 ${reveal}">
+      ${c.amenities.items.map((a) => '<div class="bg-surface/60 border border-txt/5 hover:border-accent/40 ' + S.input + ' p-6 text-center transition-all group"><div class="w-14 h-14 rounded-full bg-accent/10 group-hover:bg-accent/20 flex items-center justify-center mx-auto mb-4 text-accent transition-colors">' + amenityIcon(a.icon) + '</div><div class="text-xs uppercase tracking-[0.16em] text-txt/90 font-medium">' + e(a.label) + '</div></div>').join('')}
+    </div>`,
+      list: () => `<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+      <div class="lg:col-span-4 lg:sticky lg:top-28 self-start ${reveal}">${eb(4, c.amenities.eyebrow)}${h2(c.amenities.heading)}<p class="text-muted mt-4 leading-relaxed">${e(c.amenities.body)}</p>
+        <button type="button" onclick="openBookingModal(LP_FIRST)" class="mt-8 ${btnPrimary} px-7 py-3">${e(c.ui.reserve)}</button></div>
+      <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 border-t border-txt/10 ${reveal}">
+        ${c.amenities.items.map((a) => '<div class="flex items-center gap-4 py-5 border-b border-txt/10"><div class="w-12 h-12 shrink-0 rounded-full bg-accent/10 flex items-center justify-center text-accent">' + amenityIcon(a.icon, 'w-5 h-5') + '</div><div class="text-base text-txt">' + e(a.label) + '</div></div>').join('')}
+      </div>
+    </div>`
+    };
+
     const pageScript = [
       'var LP_SLIDES=' + safeJSON(slides) + ';',
       'var LP_SUITES=' + safeJSON(suiteData) + ';',
       'var LP_FIRST=' + safeJSON(rooms[0].name) + ';',
+      'var NAV_T=' + (dark ? 40 : -1) + ';',
       'var nav=document.getElementById("navbar");',
       'var navOn=["bg-brand/90","backdrop-blur-xl","border-txt/10","shadow-soft"];',
-      'var NAV_T=' + (dark ? 40 : -1) + ';',
       'function navState(){if(window.scrollY>NAV_T){navOn.forEach(function(c){nav.classList.add(c)});nav.classList.remove("border-transparent")}else{navOn.forEach(function(c){nav.classList.remove(c)});nav.classList.add("border-transparent")}}',
       'window.addEventListener("scroll",navState);navState();',
       'var mBtn=document.getElementById("mobileMenuBtn"),mMenu=document.getElementById("mobileMenu");',
@@ -1110,6 +1348,8 @@ select option { background: #141414; }
       'function renderSlide(){var img=document.getElementById("ovImg"),s=LP_SLIDES[slideIdx];img.style.opacity="0.35";setTimeout(function(){img.src=s.src;document.getElementById("ovTag").textContent=s.tag;document.getElementById("ovCap").textContent=s.caption;img.style.opacity="1"},180);Array.prototype.forEach.call(document.getElementById("ovDots").children,function(d,i){d.className=i===slideIdx?"w-8 h-2 rounded-full bg-accent transition-all":"w-2.5 h-2 rounded-full bg-muted/40 hover:bg-muted transition-all"})}',
       'function changeSlide(d){slideIdx=(slideIdx+d+LP_SLIDES.length)%LP_SLIDES.length;renderSlide()}',
       'function setSlide(i){slideIdx=i;renderSlide()}',
+      'var tIdx=0;',
+      'function tShow(i){var items=document.querySelectorAll(".t-item");if(!items.length)return;tIdx=(i+items.length)%items.length;Array.prototype.forEach.call(items,function(el,k){el.classList.toggle("hidden",k!==tIdx)});Array.prototype.forEach.call(document.querySelectorAll(".t-dot"),function(d,k){d.className="t-dot "+(k===tIdx?"w-8 h-2 rounded-full bg-accent":"w-2.5 h-2 rounded-full bg-muted/40")+" transition-all"})}',
       'function toggleHotspot(i){document.getElementById("hs-card-"+i).classList.toggle("hidden")}',
       'function showModal(id){var m=document.getElementById(id);m.classList.remove("hidden");m.classList.add("flex")}',
       'function hideModal(id){var m=document.getElementById(id);m.classList.add("hidden");m.classList.remove("flex")}',
@@ -1152,7 +1392,7 @@ select option { background: #141414; }
 @keyframes hotspotPulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(2.1);opacity:0}}
 .hotspot-ring{animation:hotspotPulse 2.6s infinite ease-out}
 ${dark ? 'input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.85);cursor:pointer}' : ''}
-::-webkit-scrollbar{width:8px}::-webkit-scrollbar-thumb{background:${S.colors.accent};border-radius:4px}::-webkit-scrollbar-track{background:${S.colors.brand}}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-thumb{background:${C.accent};border-radius:4px}::-webkit-scrollbar-track{background:${C.brand}}
 </style>
 <script type="application/ld+json">${safeJSON(schema)}<\/script>
 </head>
@@ -1164,7 +1404,7 @@ ${dark ? 'input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.8
       <div class="w-10 h-10 rounded-full border border-accent/80 flex items-center justify-center serif text-lg text-accent group-hover:bg-accent group-hover:text-onAccent transition-colors">${e(mono)}</div>
       <div class="flex flex-col">
         <span class="serif text-2xl leading-none text-txt">${e(name)}</span>
-        <span class="text-[10px] uppercase tracking-[0.22em] text-muted mt-1">${e(ctx.propTypeLabel)}</span>
+        <span class="text-[10px] uppercase tracking-[0.22em] text-muted mt-1">${e(c.ui.typeLabel)}</span>
       </div>
     </a>
     <nav class="hidden md:flex items-center gap-8 text-sm tracking-wide text-txt/85" aria-label="Primary">${navLinks}</nav>
@@ -1181,42 +1421,14 @@ ${dark ? 'input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.8
   </div>
 </header>
 
-<section class="relative min-h-screen flex flex-col justify-between overflow-hidden">
-  <img src="${e(ctx.heroImg)}" loading="eager" alt="${e(name + ', ' + ctx.location)}" class="absolute inset-0 w-full h-full object-cover">
-  <div class="absolute inset-0 ${S.heroOverlays[0]}"></div>
-  <div class="absolute inset-0 ${S.heroOverlays[1]}"></div>
-  <div class="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-10 pt-36 lg:pt-44 pb-12">
-    <div class="max-w-2xl">
-      <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-brand/70 backdrop-blur-md border border-txt/10 mb-6">
-        <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-        <span class="text-[11px] uppercase tracking-[0.25em] text-accent font-medium">${e(c.hero.eyebrow)}</span>
-      </div>
-      <h1 class="serif text-5xl sm:text-6xl lg:text-[4.6rem] ${S.head} leading-[1.06] text-txt">${headline}</h1>
-      ${c.hero.subtitle ? '<p class="serif italic text-xl sm:text-2xl text-txt/90 mt-5 leading-relaxed max-w-xl">' + e(c.hero.subtitle) + '</p>' : ''}
-      <div class="flex flex-wrap items-center gap-4 mt-9">
-        <button type="button" onclick="openBookingModal(LP_FIRST)" class="${btnPrimary} px-8 py-4 shadow-glow">${e(c.hero.primary)}</button>
-        <a href="#accommodations" class="${btnGhost} px-7 py-4">${e(c.hero.secondary)}</a>
-      </div>
-    </div>
-  </div>
-  <div class="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-10 pb-8 lg:pb-12">
-    <div class="bg-brand/90 backdrop-blur-xl border border-txt/10 shadow-floating p-5 lg:p-6 ${S.card}">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 items-end">
-        <div><label for="heroIn" class="block text-[11px] uppercase tracking-[0.18em] text-muted mb-2">${e(c.ui.checkIn)}</label><input type="date" id="heroIn" class="${field}"></div>
-        <div><label for="heroOut" class="block text-[11px] uppercase tracking-[0.18em] text-muted mb-2">${e(c.ui.checkOut)}</label><input type="date" id="heroOut" class="${field}"></div>
-        <div><label for="heroGuests" class="block text-[11px] uppercase tracking-[0.18em] text-muted mb-2">${e(c.ui.guests)}</label><select id="heroGuests" class="${field}">${c.ui.guestOptions.map((g, i) => '<option' + (i === 1 ? ' selected' : '') + '>' + e(g) + '</option>').join('')}</select></div>
-        <button type="button" onclick="syncAndBook()" class="w-full h-[46px] ${btnPrimary.replace(S.btn, S.input)}">${e(c.ui.checkAvailability)}</button>
-      </div>
-    </div>
-  </div>
-</section>
+${(heroVariants[V.hero] || heroVariants.full)()}
 
 <section id="overview" class="py-24 lg:py-36 bg-surface">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
       <div class="lg:col-span-5 reveal">
         ${eb(0, c.overview.eyebrow)}
-        <h2 class="serif text-4xl sm:text-5xl lg:text-[3.25rem] ${S.head} leading-[1.1] text-txt">${e(c.overview.heading)}</h2>
+        ${h2(c.overview.heading, 'text-4xl sm:text-5xl lg:text-[3.25rem]')}
         <p class="mt-6 text-muted leading-relaxed">${e(c.overview.body)}</p>
         <div class="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-txt/10">
           ${c.overview.stats.map((s) => '<div><div class="text-3xl sm:text-4xl serif text-accent">' + e(s.value) + '</div><div class="text-xs uppercase tracking-wider text-muted mt-1">' + e(s.label) + '</div></div>').join('')}
@@ -1233,8 +1445,8 @@ ${dark ? 'input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.8
               <p id="ovCap" class="serif text-2xl text-white mt-1">${e(slides[0].caption)}</p>
             </div>
             <div class="flex items-center gap-2.5 shrink-0">
-              <button type="button" onclick="changeSlide(-1)" aria-label="Previous" class="w-11 h-11 rounded-full bg-black/40 hover:bg-accent text-white hover:text-onAccent border border-white/20 backdrop-blur-md flex items-center justify-center transition-colors"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg></button>
-              <button type="button" onclick="changeSlide(1)" aria-label="Next" class="w-11 h-11 rounded-full bg-black/40 hover:bg-accent text-white hover:text-onAccent border border-white/20 backdrop-blur-md flex items-center justify-center transition-colors"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg></button>
+              <button type="button" onclick="changeSlide(-1)" aria-label="Previous" class="w-11 h-11 rounded-full bg-black/40 hover:bg-accent text-white hover:text-onAccent border border-white/20 backdrop-blur-md flex items-center justify-center transition-colors">${LP_CHEV_L}</button>
+              <button type="button" onclick="changeSlide(1)" aria-label="Next" class="w-11 h-11 rounded-full bg-black/40 hover:bg-accent text-white hover:text-onAccent border border-white/20 backdrop-blur-md flex items-center justify-center transition-colors">${LP_CHEV_R}</button>
             </div>
           </div>
         </div>
@@ -1248,33 +1460,7 @@ ${dark ? 'input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.8
 
 <section id="accommodations" class="bg-brand py-24 lg:py-36">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 reveal">
-      <div>
-        ${eb(1, c.rooms.eyebrow)}
-        <h2 class="serif text-4xl sm:text-5xl ${S.head} text-txt">${e(c.rooms.heading)}</h2>
-        <p class="mt-3 text-muted max-w-xl">${e(c.rooms.body)}</p>
-      </div>
-      <button type="button" onclick="openBookingModal(LP_FIRST)" class="self-start md:self-auto text-xs uppercase tracking-[0.18em] text-accent hover:text-accentHover border-b border-accent/40 pb-1.5 transition-colors">${e(c.rooms.link)} →</button>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      ${rooms.map((r) => `<article onclick='openSuiteDetail(${e(JSON.stringify(r.name))})' class="bg-surface ${S.card} overflow-hidden shadow-soft border border-txt/5 group cursor-pointer reveal flex flex-col">
-        <div class="relative aspect-[16/10] overflow-hidden">
-          <img src="${r.img}" alt="${e(r.name)}" loading="lazy" class="w-full h-full object-cover img-zoom">
-          ${r.badge ? '<span class="absolute top-4 left-4 bg-brand/85 backdrop-blur-md text-accent border border-accent/30 text-[11px] uppercase tracking-[0.16em] px-3.5 py-1.5 rounded-full">' + e(r.badge) + '</span>' : ''}
-          ${r.size || r.price ? '<span class="absolute bottom-4 right-4 bg-brand/85 backdrop-blur-md text-txt text-xs px-3 py-1 rounded-full">' + e([r.size, r.price ? r.price + ' ' + c.ui.perNight : ''].filter(Boolean).join(' · ')) + '</span>' : ''}
-        </div>
-        <div class="p-7 lg:p-9 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="serif text-3xl ${S.head} text-txt group-hover:text-accent transition-colors">${e(r.name)}</h3>
-            <p class="text-sm text-muted mt-2.5 leading-relaxed">${e(r.description)}</p>
-          </div>
-          <div class="border-t border-txt/10 mt-6 pt-5 flex items-center justify-between gap-4">
-            <span class="text-xs text-muted tracking-wide">${e(r.beds)}</span>
-            <span class="text-xs uppercase tracking-[0.16em] text-accent font-medium whitespace-nowrap group-hover:translate-x-1 transition-transform">${e(c.ui.details)} →</span>
-          </div>
-        </div>
-      </article>`).join('\n      ')}
-    </div>
+    ${(roomsVariants[V.rooms] || roomsVariants.grid)()}
   </div>
 </section>
 
@@ -1285,7 +1471,7 @@ ${dark ? 'input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.8
       <div class="absolute inset-0 bg-gradient-to-t from-brand/80 via-brand/10 to-transparent"></div>
       <div class="relative z-10 m-6 sm:m-10 lg:m-12 max-w-md bg-brand/90 backdrop-blur-xl border border-txt/10 ${S.card} p-8 lg:p-10 shadow-soft">
         ${eb(2, c.living.eyebrow)}
-        <h2 class="serif text-3xl sm:text-4xl ${S.head} text-txt leading-tight">${e(c.living.heading)}</h2>
+        ${h2(c.living.heading, 'text-3xl sm:text-4xl')}
         <p class="text-sm text-muted mt-3.5 leading-relaxed">${e(c.living.body)}</p>
         <div class="flex flex-wrap gap-2 mt-5">${c.living.pills.filter(Boolean).map((p) => '<span class="rounded-full bg-surface border border-txt/10 px-3.5 py-1.5 text-xs text-txt/90">' + e(p) + '</span>').join('')}</div>
         <button type="button" onclick="openBookingModal(LP_FIRST)" class="mt-7 ${btnPrimary} px-7 py-3">${e(c.living.cta)}</button>
@@ -1298,7 +1484,7 @@ ${dark ? 'input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.8
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
     <div class="text-center max-w-2xl mx-auto mb-14 reveal">
       ${eb(3, c.outdoor.eyebrow)}
-      <h2 class="serif text-4xl sm:text-5xl ${S.head} text-txt">${e(c.outdoor.heading)}</h2>
+      ${h2(c.outdoor.heading)}
       <p class="text-muted mt-4 leading-relaxed">${e(c.outdoor.body)}</p>
     </div>
     <div class="${S.card} overflow-hidden relative aspect-[4/5] sm:aspect-[16/9] shadow-floating border border-txt/10 reveal">
@@ -1323,48 +1509,23 @@ ${dark ? 'input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.8
 </section>
 
 <section id="amenities" class="bg-brand py-24 lg:py-36">
-  <div class="max-w-6xl mx-auto px-6 lg:px-10">
-    <div class="text-center max-w-xl mx-auto mb-16 reveal">
-      ${eb(4, c.amenities.eyebrow)}
-      <h2 class="serif text-4xl sm:text-5xl ${S.head} text-txt">${e(c.amenities.heading)}</h2>
-      <p class="text-muted text-sm mt-3">${e(c.amenities.body)}</p>
-    </div>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8 reveal">
-      ${c.amenities.items.map((a) => '<div class="bg-surface/60 border border-txt/5 hover:border-accent/40 ' + S.input + ' p-6 text-center transition-all group"><div class="w-14 h-14 rounded-full bg-accent/10 group-hover:bg-accent/20 flex items-center justify-center mx-auto mb-4 text-accent transition-colors">' + amenityIcon(a.icon) + '</div><div class="text-xs uppercase tracking-[0.16em] text-txt/90 font-medium">' + e(a.label) + '</div></div>').join('\n      ')}
-    </div>
+  <div class="${V.amenities === 'list' ? 'max-w-7xl' : 'max-w-6xl'} mx-auto px-6 lg:px-10">
+    ${(amenVariants[V.amenities] || amenVariants.cards)()}
   </div>
 </section>
 
 <section id="testimonials" class="bg-surface py-24 lg:py-36">
   <div class="max-w-6xl mx-auto px-6 lg:px-10">
-    <div class="text-center max-w-xl mx-auto mb-16 reveal">
-      ${eb(5, c.testimonials.eyebrow)}
-      <h2 class="serif text-4xl sm:text-5xl ${S.head} text-txt">${e(c.testimonials.heading)}</h2>
-    </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 reveal">
-      ${c.testimonials.items.map((t) => `<figure class="bg-brand border border-txt/10 ${S.card} p-8 sm:p-11 shadow-soft flex flex-col justify-between">
-        <div>
-          <div class="serif text-6xl text-accent leading-none select-none" aria-hidden="true">&ldquo;</div>
-          <blockquote class="serif italic text-2xl sm:text-[1.75rem] text-txt leading-relaxed mt-2">${e(t.quote)}</blockquote>
-        </div>
-        <figcaption class="flex items-center justify-between gap-4 mt-8 pt-6 border-t border-txt/10">
-          <div class="flex items-center gap-3.5">
-            <div class="w-11 h-11 rounded-full bg-accent text-onAccent flex items-center justify-center serif font-semibold text-lg">${e((String(t.name || 'G').trim()[0] || 'G').toUpperCase())}</div>
-            <div><div class="text-sm font-semibold text-txt">${e(t.name)}</div><div class="text-xs text-muted">${e([t.origin, t.stay].filter(Boolean).join(' · '))}</div></div>
-          </div>
-          <div class="flex items-center gap-1 text-accent" aria-label="5/5">${LP_STAR.repeat(5)}</div>
-        </figcaption>
-      </figure>`).join('\n      ')}
-    </div>
+    ${(testiVariants[V.testimonials] || testiVariants.cards)()}
   </div>
 </section>
 
 <section id="booking" class="relative py-28 lg:py-36 overflow-hidden text-center">
   <img src="${LP_IMG(LP_PHOTOS.cta, 2200)}" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-  <div class="absolute inset-0 ${S.ctaOverlay}"></div>
+  <div class="absolute inset-0 ${dark ? 'bg-brand/80' : 'bg-brand/85'}"></div>
   <div class="relative z-10 max-w-2xl mx-auto px-6 reveal">
     ${c.cta.eyebrow ? '<div class="' + S.eyebrow + ' text-accent mb-4">' + e(c.cta.eyebrow) + '</div>' : ''}
-    <h2 class="serif italic text-4xl sm:text-6xl ${S.head} text-txt">${e(c.cta.heading)}</h2>
+    <h2 class="serif ${S.quote} text-4xl sm:text-6xl ${S.head} text-txt">${e(c.cta.heading)}</h2>
     <p class="text-txt/85 mt-5 text-base sm:text-lg leading-relaxed">${e(c.cta.body)}</p>
     <button type="button" onclick="openBookingModal(LP_FIRST)" class="mt-9 ${btnPrimary} px-10 py-4 shadow-glow">${e(c.cta.button)}</button>
   </div>
@@ -1375,7 +1536,7 @@ ${dark ? 'input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.8
     <div class="md:col-span-2">
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-full border border-accent flex items-center justify-center serif text-lg text-accent">${e(mono)}</div>
-        <div><span class="block serif text-2xl text-txt leading-none">${e(name)}</span><span class="text-[11px] uppercase tracking-[0.2em] text-muted">${e(ctx.propTypeLabel + ' · ' + ctx.location)}</span></div>
+        <div><span class="block serif text-2xl text-txt leading-none">${e(name)}</span><span class="text-[11px] uppercase tracking-[0.2em] text-muted">${e(c.ui.typeLabel + ' · ' + ctx.location)}</span></div>
       </div>
       <p class="text-muted text-sm mt-5 max-w-sm leading-relaxed">${e(c.footer.about)}</p>
     </div>
@@ -1419,15 +1580,15 @@ ${dark ? 'input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.8
     <h2 id="bkTitle" class="serif text-3xl sm:text-4xl ${S.head} text-txt mt-1">${e(c.ui.modalTitle)}</h2>
     <form id="bookingForm" class="mt-6 space-y-4">
       <div><label for="bkSuite" class="block text-xs uppercase tracking-wider text-muted mb-1.5">${e(c.ui.suite)}</label>
-        <select id="bkSuite" class="${field.replace('bg-elevated/90', 'bg-brand')}">${rooms.map((r) => '<option value="' + e(r.name) + '">' + e(r.name + (r.price ? ' (' + r.price + ' ' + c.ui.perNight + ')' : '')) + '</option>').join('')}</select></div>
+        <select id="bkSuite" class="${fieldModal}">${rooms.map((r) => '<option value="' + e(r.name) + '">' + e(r.name + (r.price ? ' (' + r.price + ' ' + c.ui.perNight + ')' : '')) + '</option>').join('')}</select></div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div><label for="bkIn" class="block text-xs uppercase tracking-wider text-muted mb-1.5">${e(c.ui.checkIn)}</label><input type="date" id="bkIn" required class="${field.replace('bg-elevated/90', 'bg-brand')}"></div>
-        <div><label for="bkOut" class="block text-xs uppercase tracking-wider text-muted mb-1.5">${e(c.ui.checkOut)}</label><input type="date" id="bkOut" required class="${field.replace('bg-elevated/90', 'bg-brand')}"></div>
+        <div><label for="bkIn" class="block text-xs uppercase tracking-wider text-muted mb-1.5">${e(c.ui.checkIn)}</label><input type="date" id="bkIn" required class="${fieldModal}"></div>
+        <div><label for="bkOut" class="block text-xs uppercase tracking-wider text-muted mb-1.5">${e(c.ui.checkOut)}</label><input type="date" id="bkOut" required class="${fieldModal}"></div>
       </div>
-      <div><label for="bkName" class="block text-xs uppercase tracking-wider text-muted mb-1.5">${e(c.ui.fullName)}</label><input type="text" id="bkName" required autocomplete="name" class="${field.replace('bg-elevated/90', 'bg-brand')}"></div>
-      <div><label for="bkEmail" class="block text-xs uppercase tracking-wider text-muted mb-1.5">${e(c.ui.email)}</label><input type="email" id="bkEmail" required autocomplete="email" class="${field.replace('bg-elevated/90', 'bg-brand')}"></div>
+      <div><label for="bkName" class="block text-xs uppercase tracking-wider text-muted mb-1.5">${e(c.ui.fullName)}</label><input type="text" id="bkName" required autocomplete="name" class="${fieldModal}"></div>
+      <div><label for="bkEmail" class="block text-xs uppercase tracking-wider text-muted mb-1.5">${e(c.ui.email)}</label><input type="email" id="bkEmail" required autocomplete="email" class="${fieldModal}"></div>
       <div><label for="bkReq" class="block text-xs uppercase tracking-wider text-muted mb-1.5">${e(c.ui.requests)}</label>
-        <select id="bkReq" class="${field.replace('bg-elevated/90', 'bg-brand')}">${c.booking.requests.map((r) => '<option>' + e(r) + '</option>').join('')}</select></div>
+        <select id="bkReq" class="${fieldModal}">${c.booking.requests.map((r) => '<option>' + e(r) + '</option>').join('')}</select></div>
       <button type="submit" class="w-full mt-2 py-4 ${btnPrimary}">${e(c.ui.submit)}</button>
     </form>
     <div id="bkThanks" class="hidden mt-6 text-center py-6">
@@ -1459,15 +1620,15 @@ PROPERTY
 - Unique selling points: ${p.usp}
 - Main call to action: ${p.cta}
 
-LANGUAGE: write EVERY string value in ${p.lang}, including the "ui" labels. Keep proper names as they are.
+LANGUAGE: write EVERY string value in ${p.lang}: headings, body text, ui labels, bed descriptions, specs, badges, room names, guest options. The example values below are in English only to show the format; translate them. Keep the property name as it is.
 
 Return ONLY a JSON object with exactly this structure:
 {
   "meta": { "title": "SEO title, 50-60 chars, includes name and location", "description": "meta description, 140-155 chars" },
-  "ui": { "nav": ["5 short menu labels: overview, rooms, outdoors, amenities, reviews"], "reserve": "", "check_in": "", "check_out": "", "guests": "", "guest_options": ["4 options, e.g. 1 guest .. 4+ guests"], "check_availability": "", "details": "", "per_night": "/ night", "close": "", "reserve_suite": "", "full_name": "", "email": "", "suite": "", "requests": "", "submit": "", "thanks_title": "", "thanks_text": "one sentence", "explore": "", "connect": "", "check_times": "Check-in 15:00 · Check-out 11:00", "direct_booking": "short trust line about booking direct", "modal_eyebrow": "", "modal_title": "" },
+  "ui": { "property_type": "property type, 1-2 words, e.g. Boutique Hotel", "nav": ["5 short menu labels: overview, rooms, outdoors, amenities, reviews"], "reserve": "", "check_in": "", "check_out": "", "guests": "", "guest_options": ["4 options, e.g. 1 guest .. 4+ guests"], "check_availability": "", "details": "", "per_night": "e.g. / night", "close": "", "reserve_suite": "", "full_name": "", "email": "", "suite": "", "requests": "", "submit": "", "thanks_title": "", "thanks_text": "one sentence", "explore": "", "connect": "", "check_times": "e.g. Check-in 15:00 · Check-out 11:00", "direct_booking": "short trust line about booking direct", "modal_eyebrow": "", "modal_title": "" },
   "hero": { "eyebrow": "location line, e.g. Phuket · Thailand", "headline": "3-7 words, evocative, NOT a quote", "headline_accent": "1-2 words copied exactly from headline to highlight", "subtitle": "one sentence, max 22 words", "cta_primary": "${p.cta}", "cta_secondary": "2-3 words" },
   "overview": { "eyebrow": "1-2 words", "heading": "max 8 words", "body": "2-3 sentences, concrete sensory detail", "stats": [{"value": "short number or fact, e.g. 14 or 5 min", "label": "1-3 words"}, {}, {}], "cta": "2-3 words", "slides": [{"tag": "2-3 words", "caption": "max 9 words"}, {}, {}] },
-  "rooms": { "eyebrow": "", "heading": "", "body": "1 sentence", "link": "2-4 words", "items": [ { "name": "room type name", "badge": "view or feature, 1-2 words", "size": "e.g. 65 m²", "price": "e.g. $340", "description": "1 sentence, max 22 words", "long_description": "2 sentences", "beds": "e.g. 1 King Bed · 1 Bath", "specs": ["5 short features"] } ] },
+  "rooms": { "eyebrow": "", "heading": "", "body": "1 sentence", "link": "2-4 words", "items": [ { "name": "room type name", "badge": "view or feature, 1-2 words", "size": "e.g. 65 m²", "price": "e.g. $340", "description": "1 sentence, max 22 words", "long_description": "2 sentences", "beds": "beds and baths, e.g. 1 King Bed · 1 Bath", "specs": ["5 short features"] } ] },
   "living": { "eyebrow": "", "heading": "", "body": "2 sentences", "pills": ["3 short features"], "cta": "" },
   "outdoor": { "eyebrow": "", "heading": "", "body": "1-2 sentences", "hotspots": [ {"tag": "2 words", "title": "2-4 words", "text": "max 14 words"}, {} ], "features": [ {"title": "2-4 words", "text": "max 8 words"}, {}, {} ] },
   "amenities": { "eyebrow": "", "heading": "", "body": "1 sentence", "items": [ {"icon": "one of: ${LP_ICON_KEYS.join(', ')}", "label": "1-3 words"} ] },
@@ -1478,13 +1639,15 @@ Return ONLY a JSON object with exactly this structure:
 }
 
 RULES
-- rooms.items: exactly 4 different room types (for a private villa: 4 bedrooms or spaces). amenities.items: exactly 10, each with a DIFFERENT icon key from the list. testimonials.items: exactly 2 guests from different countries.
+- rooms.items: exactly 4 different room types (for a private villa: 4 bedrooms or spaces). amenities.items: exactly 10, each with a DIFFERENT icon key from the list (icon keys stay in English). testimonials.items: exactly 2 guests from different countries.
 - "living" is the property's signature indoor space: villa = living pavilion/lounge, hotel = restaurant or lounge bar, resort = spa or clubhouse.
 - Every line must be specific to ${p.name} in ${p.location} and to the audience. No filler such as "welcome to our hotel", "luxury awaits", "home away from home".
 - Base claims on the selling points. Prices and sizes must be realistic for the location.
 - Plain text only in values: no HTML, no markdown, no emoji.`;
   }
 
+
+  const lpLastVariant = {};
 
   async function generate() {
     hideError();
@@ -1534,154 +1697,19 @@ RULES
         boutique: ['1542314831-068cd1dbfeeb','1618773928121-c32242e63f39','1549294413-26f195200c16','1551641506-6f254d9aca65','1444201983204-c43f3e953291'],
         spa: ['1544161515-4ab6ce6db874','1591017403271-70cf7a40f7f8','1583361703291-ad3cf86f6f39','1519824145371-296894a0daa9','1498904035984-a21538bc37a0'],
       };
-      const roomPhotos = [
-        'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=85',
-        'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=85',
-        'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1000&q=85',
-        'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=85',
-        'https://images.unsplash.com/photo-1549294413-26f195200c16?auto=format&fit=crop&w=1000&q=85',
-        'https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?auto=format&fit=crop&w=1000&q=85',
-      ];
       const ptKey = propType.toLowerCase().includes('villa') ? 'villa' : propType.toLowerCase().includes('spa') ? 'spa' : propType.toLowerCase().includes('boutique') ? 'boutique' : propType.toLowerCase().includes('resort') ? 'resort' : 'hotel';
       const heroArr = heroPhotos[ptKey] || heroPhotos.hotel;
       const heroId = heroArr[Math.floor(Math.random() * heroArr.length)];
       const heroImg = `https://images.unsplash.com/photo-${heroId}?auto=format&fit=crop&w=2200&q=85`;
-      const shuffled = roomPhotos.sort(() => 0.5 - Math.random());
-      const roomImg1 = shuffled[0];
-      const roomImg2 = shuffled[1];
-      const roomImg3 = shuffled[2];
-      const roomImg4 = shuffled[3];
-      prompt = `You are a world-class senior front-end developer and luxury hospitality designer with 15+ years of experience at top-tier agencies. Build a stunning, production-ready, single-file HTML landing page for a hospitality property. This must look like a $15,000 bespoke editorial design — refined, typographically excellent, and deeply specific to this property. Every word must feel written by a professional copywriter who visited the property.
-
-PROPERTY BRIEF:
-- Type: ${propType}
-- Name: ${propLabel}
-- Location: ${location}
-- Rooms/Units: ${rooms || 'not specified'}
-- Style/Vibe: ${style}
-- Target audience: ${audience}
-- Unique selling points: ${usp}
-- Primary CTA text: "${cta}"
-- Page language: ${lang}
-
-════════════════════════════════
-RULE 1 — OUTPUT FORMAT
-════════════════════════════════
-Output ONLY the raw HTML. First character: <!DOCTYPE html>. Last character: >. No markdown, no code fences, no explanations before or after.
-
-════════════════════════════════
-RULE 2 — TECH STACK
-════════════════════════════════
-Load Tailwind CSS CDN, Google Fonts (Cormorant Garamond + Plus Jakarta Sans), and configure tailwind.config exactly like this:
-tailwind.config = { theme: { extend: { colors: { brand: 'BRAND_COLOR', surface: 'SURFACE_COLOR', txt: 'TEXT_COLOR', muted: 'MUTED_COLOR', accent: 'ACCENT_COLOR', accent2: 'ACCENT2_COLOR' }, fontFamily: { serif: ['"Cormorant Garamond"', 'Georgia', 'serif'], sans: ['"Plus Jakarta Sans"', 'sans-serif'] }, boxShadow: { soft: '0 24px 60px -15px rgba(0,0,0,0.08)', floating: '0 32px 75px -12px rgba(0,0,0,0.22)' } } } }
-Replace BRAND/SURFACE/TEXT/MUTED/ACCENT/ACCENT2 with the hex values from RULE 3 below.
-Add a style block for ONLY: .reveal, .reveal.visible, .img-zoom, .group:hover .img-zoom, @keyframes hotspotPulse, .hotspot-ring, ::-webkit-scrollbar.
-
-════════════════════════════════
-RULE 3 — COLOR PALETTE for style "${style}"
-════════════════════════════════
-- luxury    → brand:#0a0f1e  surface:#111827  txt:#f0ebe0  muted:#8a8070  accent:#c9a96e  accent2:#a07840
-- eco       → brand:#f4f1eb  surface:#eae5d8  txt:#2c2c2c  muted:#6b6559  accent:#5a7a5f  accent2:#3d5c41
-- wellness  → brand:#FBF9F5  surface:#F3EFE8  txt:#1C1917  muted:#78716C  accent:#B5794B  accent2:#CA9366
-- romantic  → brand:#faf5f0  surface:#f0e8e0  txt:#2a1a1a  muted:#8a6a6a  accent:#b87a7a  accent2:#8f5555
-- minimalist→ brand:#ffffff  surface:#f7f7f5  txt:#111111  muted:#666666  accent:#1a1a1a  accent2:#444444
-- adventure → brand:#0f1a0f  surface:#1a2a1a  txt:#e8f0e8  muted:#7a9070  accent:#d4a843  accent2:#a87e28
-- boutique  → brand:#f2ede4  surface:#e8e0d4  txt:#1a1a1a  muted:#6a6055  accent:#2d5f5f  accent2:#1a4040
-- artsy     → brand:#1a1218  surface:#231820  txt:#f5f0eb  muted:#8a7a72  accent:#c47b5a  accent2:#9a5a3a
-
-════════════════════════════════
-RULE 4 — IMAGES
-════════════════════════════════
-HERO — use this exact src: ${heroImg}
-Place as: <img src="${heroImg}" loading="eager" alt="..." class="absolute inset-0 w-full h-full object-cover">
-
-For ROOM CARDS and DECORATIVE IMAGES — pick curated Unsplash IDs (use different ones for each card):
-Bedroom/Suite:
-  1618773928121-c32242e63f39 · 1582719478250-c89cae4dc85b · 1631049307264-da0ec9d70304
-  1590490360182-c33d57733427 · 1566665797739-1674de7a421a · 1566073771259-6a8506099945
-  1584622650111-993a426fbf0a · 1631049552240-59a8ad4b228f
-Living/Lounge:
-  1600607687939-ce8a6c25118c · 1600596542815-ffad4c1539a9 · 1613490493576-7fde63acd811
-Outdoor/Pool:
-  1540541338287-41700207dee6 · 1512917774080-9991f1c4c750 · 1537953773345-d172ccf13cf1
-Format: https://images.unsplash.com/photo-{ID}?auto=format&fit=crop&w=1100&q=85
-NEVER use placeholder.co, NEVER use picsum, NEVER use 2200px for room cards.
-
-════════════════════════════════
-RULE 5 — ALL 10 SECTIONS (build in this exact order)
-════════════════════════════════
-
-A) NAVIGATION — fixed top-0 inset-x-0 z-40. Transparent start; on scroll JS adds bg-brand/95 backdrop-blur shadow. Left: 2-letter monogram circle (w-9 h-9 rounded-full border border-accent flex items-center justify-center font-serif text-sm text-accent) + property name serif text-xl + tiny subtitle text-muted text-xs. Right: anchor links (hidden mobile) + "Reserve" CTA rounded-full border border-accent hover:bg-accent + hamburger button. Mobile drawer: absolute top-full inset-x-0 rounded-2xl bg-brand/98 backdrop-blur p-6 with anchor links stacked.
-
-B) HERO — min-h-[95vh] flex flex-col justify-between. Hero image absolute inset-0 object-cover. Two gradient overlays (from-brand/65 via-transparent to-brand/75 vertical + from-brand/30 horizontal). Content relative z-10 max-w-7xl mx-auto px-6 pt-32: eyebrow pill with property location text-xs uppercase tracking-widest, large serif h2 text-5xl sm:text-6xl lg:text-7xl font-normal leading-tight (property name or tagline — NEVER a quote, NEVER starts with "), italic serif subtitle, two CTA buttons (filled bg-accent text-brand + ghost outline), both rounded-full.
-   Availability bar: rounded-2xl lg:rounded-full bg-brand/95 backdrop-blur shadow-floating mx-6 mb-8 p-4 lg:px-8. grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4. Fields: Check-In (date input), Check-Out (date input), Guests (select), "Check Availability" button bg-accent text-brand rounded-full.
-
-C) OVERVIEW — py-24 lg:py-32. grid grid-cols-1 lg:grid-cols-12 gap-16 max-w-7xl mx-auto px-6. Left col lg:col-span-5: eyebrow "01 · Property Overview" text-xs uppercase tracking-widest text-accent, serif h2 text-4xl lg:text-5xl, body paragraph text-muted, 3-stat row (numbers text-4xl font-serif text-accent), CTA button. Right col lg:col-span-7: interactive slideshow — div with rounded-3xl overflow-hidden relative aspect-[4/3]. 3 slide images (use bedroom Unsplash IDs). Prev/next arrow buttons inside image bottom-right. Dot nav below. JS handles slide transitions.
-
-D) ACCOMMODATIONS — bg-surface py-24 lg:py-32. eyebrow "02 · Accommodations". Serif h2 + body + "View All" button top right of header. ASYMMETRIC grid: grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-7 max-w-7xl mx-auto px-6. First 2 rooms: lg:col-span-3. Remaining: lg:col-span-2. Each room card: bg-brand rounded-3xl overflow-hidden shadow-soft group cursor-pointer. Image div with .img-zoom + category badge pill top-left absolute. Card body p-6 lg:p-8: serif room name text-2xl lg:text-3xl, body text-sm text-muted mt-2, border-t border-muted/15 mt-4 pt-4 flex justify-between: amenity list text-xs text-muted + "Details →" text-accent font-medium. Number of room cards = ${rooms || 3} (minimum 3, max 5). Use DIFFERENT bedroom Unsplash IDs for each room.
-
-E) LIVING SPACES — py-24 lg:py-32 bg-brand. max-w-7xl mx-auto px-6. Full-bleed image block: rounded-[32px] overflow-hidden relative min-h-[500px] lg:min-h-[600px]. Use living/lounge Unsplash ID (1600607687939-ce8a6c25118c). Two gradient overlays. Glassmorphic card absolute bottom-8 left-8 right-8 lg:right-auto lg:max-w-sm: bg-brand/90 backdrop-blur-xl rounded-3xl p-8. eyebrow "03 · Living Spaces", serif h2 text-3xl, description text-sm text-muted mt-3, feature pills mt-4 flex flex-wrap gap-2 (rounded-full bg-surface/80 px-3 py-1 text-xs text-txt), CTA button mt-6.
-
-F) OUTDOOR & NATURE — py-24 lg:py-32 bg-surface. eyebrow "04 · Outdoor". Serif h2 + body centered max-w-2xl mx-auto px-6 mb-12. Full-width image: rounded-3xl overflow-hidden relative aspect-video max-w-7xl mx-auto mx-6. Use outdoor Unsplash ID (1540541338287-41700207dee6). Two overlays. 3 hotspot annotations: absolute divs with position (top-1/3 left-1/4 etc). Each hotspot: outer div w-8 h-8 rounded-full border-2 border-white/60 flex items-center justify-center + inner div w-3 h-3 rounded-full bg-white + .hotspot-ring div absolute inset-0 rounded-full border border-white/40. Tooltip on hover: absolute bg-brand/90 backdrop-blur rounded-xl px-3 py-2 text-xs text-txt whitespace-nowrap. Below image: grid grid-cols-3 gap-8 max-w-4xl mx-auto px-6 mt-10: numbered features (text-4xl font-serif text-accent + label text-sm text-muted).
-
-G) AMENITIES — bg-brand py-24 lg:py-32. eyebrow "05 · Amenities" + serif h2 centered mb-16. grid grid-cols-3 sm:grid-cols-5 gap-10 max-w-4xl mx-auto px-6. Each item: text-center. Circle div w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-3 text-accent. Inside: UNIQUE SVG from library. Label text-xs uppercase tracking-widest text-muted. 10 amenities based on "${usp}".
-   SVG LIBRARY (copy verbatim, one per amenity, never duplicate):
-   Pool: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h20M2 17c2-2 4 2 6 0s4-2 6 0 4 2 6 0"/><circle cx="12" cy="7" r="3"/></svg>
-   Wifi: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
-   Spa: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s-8-5.4-8-11a8 8 0 0116 0c0 5.6-8 11-8 11z"/><path d="M12 11c0-2 1.5-4 4-5-1 3-2 4-4 5zM12 11c0-2-1.5-4-4-5 1 3 2 4 4 5z"/></svg>
-   Bed: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20v-8a2 2 0 012-2h16a2 2 0 012 2v8"/><path d="M2 14h20"/><path d="M6 14V9a1 1 0 011-1h4a1 1 0 011 1v5"/></svg>
-   Coffee: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-   Location: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-   Sun: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-   Chef: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 13.87A4 4 0 017.41 6a5.11 5.11 0 019.18 0A4 4 0 0118 13.87V21H6z"/><line x1="6" y1="17" x2="18" y2="17"/></svg>
-   Garden: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12M12 12C12 7 7 4 3 6c3 1 6 3 9 6zM12 12c0-5 5-8 9-6-3 1-6 3-9 6z"/></svg>
-   Person: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-   NEVER use a star SVG for amenities. NEVER duplicate an icon.
-
-H) TESTIMONIALS — bg-surface py-24 lg:py-32. eyebrow "06 · Guest Voices" + serif h2 centered. Large card max-w-3xl mx-auto bg-brand rounded-3xl p-10 lg:p-14 shadow-soft. Carousel of 2-3 testimonials with dot buttons below. Each testimonial: decorative large open-quote " text-6xl lg:text-8xl font-serif text-accent leading-none, italic serif blockquote text-xl lg:text-2xl font-normal text-txt mt-2, then flex row mt-6 items-center gap-4: colored-initial-circle avatar (w-12 h-12 rounded-full bg-accent flex items-center justify-center font-bold text-brand text-lg — use FIRST LETTER of guest name, never photo) + div with guest name font-semibold text-sm + country text-muted text-xs, then 5 star SVGs flex gap-1 ml-auto.
-   STAR SVG (use this × 5): <svg width="16" height="16" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-   NEVER Unicode stars ☆ ★. NEVER Unsplash URLs for avatars.
-
-I) BOOKING CTA — bg-accent py-24 lg:py-32 text-center. Italic serif h2 text-4xl lg:text-5xl font-normal text-brand. Subtext text-brand/80 mt-4 max-w-xl mx-auto. CTA button mt-8 bg-brand text-accent rounded-full px-10 py-4 uppercase tracking-widest text-sm font-semibold hover:bg-brand/90.
-
-J) FOOTER — bg-brand border-t border-muted/20 py-16 px-6 lg:px-12. max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10. Col 1: monogram circle + serif property name text-2xl + tagline text-muted text-sm mt-1 + location text-muted text-xs mt-1. Col 2: label text-xs uppercase tracking-widest text-accent mb-4 + 4 SEPARATE <a> elements each block text-muted hover:text-accent text-sm mb-2 py-1. Col 3: label + 3 SEPARATE <a> blocks (Instagram, Facebook, TripAdvisor). ZERO copyright. ZERO year. ZERO "All rights reserved".
-
-════════════════════════════════
-RULE 6 — BOOKING MODAL
-════════════════════════════════
-Full-screen overlay fixed inset-0 z-[200] bg-black/60 backdrop-blur, hidden by default, id="bookingModal". Inner: max-w-lg mx-auto mt-16 bg-brand rounded-3xl p-10 relative. Close × button absolute top-4 right-4. Serif h2 "Reserve Your Stay" text-3xl. Form: suite name select (pre-filled from JS), check-in date, check-out date, full name text, email, special requests select (4 options). Submit button bg-accent text-brand rounded-full px-8 py-3 w-full mt-6. On submit: hide form, show thank-you div. openBookingModal(suiteName) and closeBookingModal() as named JS functions. All "Reserve/Book" buttons on page call openBookingModal(suiteName).
-
-════════════════════════════════
-RULE 7 — SCHEMA.ORG
-════════════════════════════════
-In head: LodgingBusiness JSON-LD: name, description, numberOfRooms="${rooms}", address city="${location}", amenityFeature (6 items), checkinTime "15:00", checkoutTime "11:00", priceRange "$$$$", aggregateRating ratingValue "4.9" reviewCount "86".
-
-════════════════════════════════
-RULE 8 — ANIMATIONS
-════════════════════════════════
-.reveal { opacity:0; transform:translateY(22px); transition: opacity 0.85s cubic-bezier(0.22,1,0.36,1), transform 0.85s cubic-bezier(0.22,1,0.36,1) }
-.reveal.visible { opacity:1; transform:translateY(0) }
-.img-zoom { transition:transform 1.2s cubic-bezier(0.22,1,0.36,1) }
-.group:hover .img-zoom { transform:scale(1.04) }
-@keyframes hotspotPulse { 0%,100%{transform:scale(1);opacity:.55} 50%{transform:scale(1.9);opacity:0} }
-.hotspot-ring { animation: hotspotPulse 2.6s infinite }
-IntersectionObserver (threshold 0.12) adds .visible to all .reveal elements. Stagger with nth-child delays 0s/0.1s/0.2s. Nav scrollY>60 → add backdrop + shadow.
-
-════════════════════════════════
-RULE 9 — COPY & LANGUAGE
-════════════════════════════════
-Every word: specific to "${propLabel}" in "${location}", style "${style}", audience "${audience}", USPs "${usp}". Language: ${lang}. No generic filler. Testimonials: 2-3 specific sentences, 3 different guests, 3 different countries.
-
-════════════════════════════════
-CRITICAL — COMPLETE OUTPUT
-════════════════════════════════
-Output ENTIRE HTML from <!DOCTYPE html> to </html>. All 10 sections A–J + Booking Modal are MANDATORY. FOOTER IS MANDATORY. Never truncate. Never stop before </html>.`;
-      const styleKey = LP_STYLE_MAP[style];
-      if (styleKey) {
+      const styleKey = LP_STYLE_MAP[style] || 'luxury';
+      {
         const typeSel = document.getElementById('propType');
         const propTypeLabel = typeSel.selectedOptions[0] ? typeSel.selectedOptions[0].text : propType;
         const displayName = propName || (location.split(',')[0].trim() + ' ' + propTypeLabel);
-        tplCtx = { styleKey, name: displayName, location, propTypeLabel, rooms, lang, cta, heroImg };
+        let variant = lpPickVariant(styleKey);
+        for (let t = 0; t < 6 && JSON.stringify(variant) === lpLastVariant[styleKey]; t++) variant = lpPickVariant(styleKey);
+        lpLastVariant[styleKey] = JSON.stringify(variant);
+        tplCtx = { styleKey, variant, name: displayName, location, propTypeLabel, rooms, lang, cta, heroImg };
         loadingMsg = 'Writing your landing page…';
         loadingSteps = ['Reading property details', 'Writing headlines & copy', 'Describing suites & amenities', 'Assembling the page'];
         prompt = buildContentPrompt({ name: displayName, propType, location, rooms, style, audience, usp, cta, lang });
