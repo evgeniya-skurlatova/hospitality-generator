@@ -891,6 +891,601 @@ select option { background: #141414; }
     document.querySelectorAll('.loading-step').forEach((el, idx) => el.classList.toggle('active', idx === i));
   }
 
+  const LP_STYLES = {
+    luxury: {
+      mode: 'dark',
+      colors: { brand: '#0b0f1a', surface: '#121826', elevated: '#1a2233', txt: '#f2ede3', muted: '#a39a8a', accent: '#c9a96e', accentHover: '#d9bc86', onAccent: '#0b0f1a' },
+      serif: 'Cormorant Garamond', sans: 'Plus Jakarta Sans',
+      fontHref: 'family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600',
+      head: 'font-normal tracking-tight',
+      card: 'rounded-3xl', big: 'rounded-[32px]', input: 'rounded-xl', btn: 'rounded-full',
+      btnText: 'text-xs uppercase tracking-[0.18em] font-semibold',
+      eyebrow: 'text-xs uppercase tracking-[0.22em] font-medium',
+      heroOverlays: ['bg-gradient-to-t from-brand via-brand/45 to-brand/70', 'bg-gradient-to-r from-brand/75 via-brand/25 to-transparent'],
+      ctaOverlay: 'bg-brand/80',
+      shadowSoft: '0 24px 60px -15px rgba(0,0,0,0.45)', shadowFloat: '0 32px 80px -12px rgba(0,0,0,0.6)', glow: '0 0 30px rgba(201,169,110,0.25)'
+    },
+    eco: {
+      mode: 'light',
+      colors: { brand: '#f6f2e9', surface: '#ece6d8', elevated: '#fffdf8', txt: '#22271f', muted: '#5f6658', accent: '#4d6b50', accentHover: '#3d5840', onAccent: '#f7f4ec' },
+      serif: 'Fraunces', sans: 'Inter',
+      fontHref: 'family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600',
+      head: 'font-light tracking-tight',
+      card: 'rounded-2xl', big: 'rounded-3xl', input: 'rounded-lg', btn: 'rounded-full',
+      btnText: 'text-sm font-medium tracking-wide',
+      eyebrow: 'text-xs uppercase tracking-[0.18em] font-semibold',
+      heroOverlays: ['bg-gradient-to-r from-brand/95 via-brand/75 to-brand/0', 'bg-gradient-to-t from-brand/85 via-transparent to-transparent'],
+      ctaOverlay: 'bg-brand/85',
+      shadowSoft: '0 20px 50px -20px rgba(34,39,31,0.18)', shadowFloat: '0 30px 70px -20px rgba(34,39,31,0.28)', glow: '0 12px 30px -10px rgba(77,107,80,0.5)'
+    }
+  };
+
+  const LP_STYLE_MAP = { 'luxury': 'luxury', 'eco / wellness': 'eco' };
+
+  const LP_ICONS = {
+    pool: '<path d="M3 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2M3 19c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2M8 11V6a2 2 0 114 0v5m4 0V7a2 2 0 114 0v4"/>',
+    wifi: '<path d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"/>',
+    spa: '<path d="M12 3c2.5 4 6 6.5 6 10.5a6 6 0 11-12 0C6 9.5 9.5 7 12 3z"/>',
+    bed: '<path d="M3 13h18M4 13V8a2 2 0 012-2h12a2 2 0 012 2v5M3 13v5m18-5v5M7 10h4m2 0h4"/>',
+    coffee: '<path d="M17 8h1a3 3 0 010 6h-1M4 8h13v6a5 5 0 01-5 5H9a5 5 0 01-5-5V8zm3-4v2m4-2v2"/>',
+    location: '<path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>',
+    sun: '<path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>',
+    dining: '<path d="M7 3v8a2 2 0 002 2v8M5 3v5a2 2 0 002 2M9 3v5a2 2 0 01-2 2M17 3c-1.7 0-3 2-3 5s1 4 3 4v9"/>',
+    garden: '<path d="M12 21V9m0 0c0-3.5 3-6 6-6 0 3.5-2.5 6-6 6zm0 0c0-3.5-3-6-6-6 0 3.5 2.5 6 6 6z"/>',
+    concierge: '<path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>',
+    yoga: '<circle cx="12" cy="5" r="2"/><path d="M12 8v5m-6 3c2-1 4-3 6-3s4 2 6 3M6 20h12"/>',
+    transfer: '<path d="M4 13l2-5a2 2 0 012-1.5h8A2 2 0 0118 8l2 5v4H4v-4zM4 13h16M6 17v2m12-2v2"/><circle cx="7.5" cy="15" r=".75"/><circle cx="16.5" cy="15" r=".75"/>',
+    gym: '<path d="M6 8v8M3 10v4M18 8v8M21 10v4M6 12h12"/>',
+    kids: '<path d="M12 3a5 5 0 015 5c0 3-2.5 5.5-5 6.5C9.5 13.5 7 11 7 8a5 5 0 015-5zM12 14.5V21"/>',
+    beach: '<path d="M12 3a9 9 0 019 9H3a9 9 0 019-9zM12 12v7a2 2 0 01-4 0"/>',
+    workspace: '<path d="M4 6h16v10H4zM2 19h20"/>',
+    security: '<path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z"/>',
+    sparkle: '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/>'
+  };
+  const LP_ICON_KEYS = Object.keys(LP_ICONS);
+
+  const LP_STAR = '<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+
+  const LP_IMG = (id, w) => 'https://images.unsplash.com/photo-' + id + '?auto=format&fit=crop&w=' + w + '&q=85';
+  const LP_PHOTOS = {
+    slides: ['1618773928121-c32242e63f39', '1600585154340-be6161a56a0c', '1544161515-4ab6ce6db874'],
+    rooms: ['1582719478250-c89cae4dc85b', '1590490360182-c33d57733427', '1584622650111-993a426fbf0a', '1566665797739-1674de7a421a'],
+    living: '1600607687939-ce8a6c25118c',
+    outdoor: '1540541338287-41700207dee6',
+    cta: '1571896349842-33c89424de2d'
+  };
+
+  const LP_LANG_CODES = { English: 'en', German: 'de', French: 'fr', Spanish: 'es', Italian: 'it', Russian: 'ru' };
+
+  function lpEsc(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  function lpArr(a, n, fill) {
+    const out = Array.isArray(a) ? a.filter(Boolean).slice(0, n) : [];
+    while (out.length < n) out.push(fill(out.length));
+    return out;
+  }
+
+  function lpNormalize(c, ctx) {
+    c = c && typeof c === 'object' ? c : {};
+    const o = (k) => (c[k] && typeof c[k] === 'object' ? c[k] : {});
+    const ui = o('ui'), meta = o('meta'), hero = o('hero'), ov = o('overview'), rm = o('rooms'), lv = o('living'),
+      od = o('outdoor'), am = o('amenities'), ts = o('testimonials'), cta = o('cta'), ft = o('footer'), bk = o('booking');
+    const name = ctx.name;
+    return {
+      ui: {
+        nav: lpArr(ui.nav, 5, (i) => ['Overview', 'Suites', 'Outdoors', 'Amenities', 'Reviews'][i]),
+        reserve: ui.reserve || 'Reserve', checkIn: ui.check_in || 'Check-In', checkOut: ui.check_out || 'Check-Out',
+        guests: ui.guests || 'Guests', guestOptions: lpArr(ui.guest_options, 4, (i) => ['1 Guest', '2 Guests', '3 Guests', '4+ Guests'][i]),
+        checkAvailability: ui.check_availability || 'Check Availability', details: ui.details || 'Details',
+        perNight: ui.per_night || '/ night', close: ui.close || 'Close', reserveSuite: ui.reserve_suite || 'Reserve This Suite',
+        fullName: ui.full_name || 'Full Name', email: ui.email || 'Email', suite: ui.suite || 'Suite',
+        requests: ui.requests || 'Special Requests', submit: ui.submit || 'Send Request',
+        thanksTitle: ui.thanks_title || 'Request Received',
+        thanksText: ui.thanks_text || 'Thank you. We will reply with your personal confirmation shortly.',
+        explore: ui.explore || 'Explore', connect: ui.connect || 'Connect', checkTimes: ui.check_times || 'Check-in 15:00 · Check-out 11:00',
+        directBooking: ui.direct_booking || 'Direct Booking · Best Rate Guaranteed', modalEyebrow: ui.modal_eyebrow || 'Direct Reservation',
+        modalTitle: ui.modal_title || 'Reserve Your Stay'
+      },
+      meta: { title: meta.title || (name + ' · ' + ctx.location), description: meta.description || '' },
+      hero: {
+        eyebrow: hero.eyebrow || ctx.location, headline: hero.headline || name, accent: hero.headline_accent || '',
+        subtitle: hero.subtitle || '', primary: hero.cta_primary || ctx.cta || 'Book Now', secondary: hero.cta_secondary || 'Explore'
+      },
+      overview: {
+        eyebrow: ov.eyebrow || 'Overview', heading: ov.heading || name, body: ov.body || '',
+        stats: lpArr(ov.stats, 3, () => ({ value: '', label: '' })), cta: ov.cta || 'Discover More',
+        slides: lpArr(ov.slides, 3, () => ({ tag: '', caption: '' }))
+      },
+      rooms: {
+        eyebrow: rm.eyebrow || 'Accommodations', heading: rm.heading || 'Suites', body: rm.body || '', link: rm.link || 'Compare & Book',
+        items: lpArr(rm.items, 4, (i) => ({ name: 'Suite ' + (i + 1) }))
+      },
+      living: {
+        eyebrow: lv.eyebrow || 'Living', heading: lv.heading || '', body: lv.body || '',
+        pills: lpArr(lv.pills, 3, () => ''), cta: lv.cta || 'Reserve'
+      },
+      outdoor: {
+        eyebrow: od.eyebrow || 'Outdoors', heading: od.heading || '', body: od.body || '',
+        hotspots: lpArr(od.hotspots, 2, () => ({ tag: '', title: '', text: '' })),
+        features: lpArr(od.features, 3, () => ({ title: '', text: '' }))
+      },
+      amenities: {
+        eyebrow: am.eyebrow || 'Amenities', heading: am.heading || '', body: am.body || '',
+        items: lpArr(am.items, 10, (i) => ({ icon: LP_ICON_KEYS[i], label: LP_ICON_KEYS[i] }))
+      },
+      testimonials: {
+        eyebrow: ts.eyebrow || 'Guest Voices', heading: ts.heading || '',
+        items: lpArr(ts.items, 2, () => ({ quote: '', name: 'Guest', origin: '', stay: '' }))
+      },
+      cta: { eyebrow: cta.eyebrow || '', heading: cta.heading || '', body: cta.body || '', button: cta.button || ctx.cta || 'Book Now' },
+      footer: { about: ft.about || '' },
+      booking: { requests: lpArr(bk.requests, 4, (i) => ['No special requests', 'Airport transfer', 'Late check-in', 'Late check-out'][i]) }
+    };
+  }
+
+  function buildLandingHTML(raw, ctx) {
+    const S = LP_STYLES[ctx.styleKey] || LP_STYLES.luxury;
+    const c = lpNormalize(raw, ctx);
+    const e = lpEsc;
+    const dark = S.mode === 'dark';
+    const name = ctx.name;
+    const mono = (name.trim()[0] || 'H').toUpperCase();
+    const ids = ['overview', 'accommodations', 'outdoor', 'amenities', 'testimonials'];
+
+    const btnPrimary = 'bg-accent hover:bg-accentHover text-onAccent ' + S.btn + ' ' + S.btnText + ' transition-all duration-300';
+    const btnGhost = 'border border-txt/25 hover:border-accent text-txt hover:text-accent bg-brand/35 backdrop-blur-md ' + S.btn + ' ' + S.btnText + ' transition-all duration-300';
+    const field = 'w-full bg-elevated/90 text-txt text-sm ' + S.input + ' border border-txt/15 focus:border-accent focus:outline-none px-4 py-3 transition-colors';
+    const eyebrow = (t) => t ? '<div class="' + S.eyebrow + ' text-accent mb-3">' + e(t) + '</div>' : '';
+    const num = (i) => String(i + 1).padStart(2, '0');
+    const eb = (i, t) => eyebrow(num(i) + ' · ' + t);
+
+    let headline = e(c.hero.headline);
+    const acc = e(c.hero.accent);
+    if (acc && headline.indexOf(acc) > -1) headline = headline.replace(acc, '<span class="italic text-accent">' + acc + '</span>');
+
+    const rooms = c.rooms.items.map((r, i) => ({
+      name: r.name || ('Suite ' + (i + 1)), badge: r.badge || '', size: r.size || '', price: r.price || '',
+      description: r.description || '', beds: r.beds || '', long: r.long_description || r.description || '',
+      specs: lpArr(r.specs, 5, () => '').filter(Boolean), img: LP_IMG(LP_PHOTOS.rooms[i % 4], 1200)
+    }));
+    const suiteData = {};
+    rooms.forEach((r) => {
+      suiteData[r.name] = { img: r.img, badge: [r.badge, r.size].filter(Boolean).join(' · '), price: r.price ? r.price + ' ' + c.ui.perNight : '', desc: r.long, specs: r.specs };
+    });
+    const slides = c.overview.slides.map((s, i) => ({
+      src: LP_IMG(LP_PHOTOS.slides[i], 1400),
+      tag: num(i) + ' / 03' + (s.tag ? ' · ' + s.tag : ''),
+      caption: s.caption || ''
+    }));
+    const safeJSON = (v) => JSON.stringify(v).replace(/</g, '\\u003c');
+
+    const usedIcons = {};
+    const amenityIcon = (k) => {
+      let key = LP_ICONS[k] ? k : 'sparkle';
+      if (usedIcons[key]) key = LP_ICON_KEYS.find((x) => !usedIcons[x]) || key;
+      usedIcons[key] = true;
+      return '<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">' + LP_ICONS[key] + '</svg>';
+    };
+
+    const schema = {
+      '@context': 'https://schema.org', '@type': 'LodgingBusiness', name: name,
+      description: c.meta.description || c.hero.subtitle,
+      address: { '@type': 'PostalAddress', addressLocality: ctx.location },
+      image: ctx.heroImg,
+      amenityFeature: c.amenities.items.slice(0, 6).map((a) => ({ '@type': 'LocationFeatureSpecification', name: a.label, value: true })),
+      checkinTime: '15:00', checkoutTime: '11:00'
+    };
+    const roomsNum = parseInt(String(ctx.rooms || '').replace(/[^0-9]/g, ''), 10);
+    if (roomsNum) schema.numberOfRooms = roomsNum;
+
+    const twConfig = {
+      theme: {
+        extend: {
+          colors: S.colors,
+          fontFamily: { serif: ['"' + S.serif + '"', 'Georgia', 'serif'], sans: ['"' + S.sans + '"', 'system-ui', 'sans-serif'] },
+          boxShadow: { soft: S.shadowSoft, floating: S.shadowFloat, glow: S.glow }
+        }
+      }
+    };
+
+    const navLinks = c.ui.nav.map((t, i) => '<a href="#' + ids[i] + '" class="hover:text-accent transition-colors">' + e(t) + '</a>').join('');
+    const mobileLinks = c.ui.nav.map((t, i) => '<a href="#' + ids[i] + '" class="mobile-link block text-base text-txt/90 hover:text-accent py-1">' + e(t) + '</a>').join('');
+
+    const pageScript = [
+      'var LP_SLIDES=' + safeJSON(slides) + ';',
+      'var LP_SUITES=' + safeJSON(suiteData) + ';',
+      'var LP_FIRST=' + safeJSON(rooms[0].name) + ';',
+      'var nav=document.getElementById("navbar");',
+      'var navOn=["bg-brand/90","backdrop-blur-xl","border-txt/10","shadow-soft"];',
+      'var NAV_T=' + (dark ? 40 : -1) + ';',
+      'function navState(){if(window.scrollY>NAV_T){navOn.forEach(function(c){nav.classList.add(c)});nav.classList.remove("border-transparent")}else{navOn.forEach(function(c){nav.classList.remove(c)});nav.classList.add("border-transparent")}}',
+      'window.addEventListener("scroll",navState);navState();',
+      'var mBtn=document.getElementById("mobileMenuBtn"),mMenu=document.getElementById("mobileMenu");',
+      'mBtn.addEventListener("click",function(){var h=mMenu.classList.contains("hidden");mMenu.classList.toggle("hidden");mBtn.setAttribute("aria-expanded",String(h))});',
+      'document.querySelectorAll(".mobile-link").forEach(function(l){l.addEventListener("click",function(){mMenu.classList.add("hidden");mBtn.setAttribute("aria-expanded","false")})});',
+      'if("IntersectionObserver" in window){var ro=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("visible");ro.unobserve(x.target)}})},{threshold:0.12});document.querySelectorAll(".reveal").forEach(function(el){ro.observe(el)})}else{document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible")})}',
+      'var slideIdx=0;',
+      'function renderSlide(){var img=document.getElementById("ovImg"),s=LP_SLIDES[slideIdx];img.style.opacity="0.35";setTimeout(function(){img.src=s.src;document.getElementById("ovTag").textContent=s.tag;document.getElementById("ovCap").textContent=s.caption;img.style.opacity="1"},180);Array.prototype.forEach.call(document.getElementById("ovDots").children,function(d,i){d.className=i===slideIdx?"w-8 h-2 rounded-full bg-accent transition-all":"w-2.5 h-2 rounded-full bg-muted/40 hover:bg-muted transition-all"})}',
+      'function changeSlide(d){slideIdx=(slideIdx+d+LP_SLIDES.length)%LP_SLIDES.length;renderSlide()}',
+      'function setSlide(i){slideIdx=i;renderSlide()}',
+      'function toggleHotspot(i){document.getElementById("hs-card-"+i).classList.toggle("hidden")}',
+      'function showModal(id){var m=document.getElementById(id);m.classList.remove("hidden");m.classList.add("flex")}',
+      'function hideModal(id){var m=document.getElementById(id);m.classList.add("hidden");m.classList.remove("flex")}',
+      'function openSuiteDetail(n){var d=LP_SUITES[n];if(!d)return;var img=document.getElementById("sdImg");img.src=d.img;img.alt=n;document.getElementById("sdBadge").textContent=d.badge;document.getElementById("sdBadge").style.display=d.badge?"":"none";document.getElementById("sdTitle").textContent=n;document.getElementById("sdPrice").textContent=d.price;document.getElementById("sdDesc").textContent=d.desc;var sp=document.getElementById("sdSpecs");sp.innerHTML="";d.specs.forEach(function(t){var s=document.createElement("span");s.className="px-3 py-1 rounded-full bg-brand border border-txt/10";s.textContent=t;sp.appendChild(s)});document.getElementById("sdBook").onclick=function(){closeSuiteDetail();openBookingModal(n)};showModal("suiteModal")}',
+      'function closeSuiteDetail(){hideModal("suiteModal")}',
+      'function fmt(d){return d.toISOString().split("T")[0]}',
+      'var t0=new Date(),ci=new Date(t0),co=new Date(t0);ci.setDate(t0.getDate()+7);co.setDate(t0.getDate()+11);',
+      '["heroIn","bkIn"].forEach(function(id){document.getElementById(id).value=fmt(ci)});["heroOut","bkOut"].forEach(function(id){document.getElementById(id).value=fmt(co)});',
+      'function syncAndBook(){var a=document.getElementById("heroIn").value,b=document.getElementById("heroOut").value;if(a)document.getElementById("bkIn").value=a;if(b)document.getElementById("bkOut").value=b;openBookingModal(LP_FIRST)}',
+      'function openBookingModal(n){var f=document.getElementById("bookingForm"),sel=document.getElementById("bkSuite");f.classList.remove("hidden");document.getElementById("bkThanks").classList.add("hidden");var vals=Array.prototype.map.call(sel.options,function(o){return o.value});sel.value=vals.indexOf(n)>-1?n:LP_FIRST;showModal("bookingModal")}',
+      'function closeBookingModal(){hideModal("bookingModal")}',
+      'document.getElementById("bookingForm").addEventListener("submit",function(ev){ev.preventDefault();this.classList.add("hidden");document.getElementById("bkThanks").classList.remove("hidden")});',
+      'document.addEventListener("keydown",function(ev){if(ev.key==="Escape"){closeBookingModal();closeSuiteDetail()}});',
+      '["bookingModal","suiteModal"].forEach(function(id){document.getElementById(id).addEventListener("click",function(ev){if(ev.target.id===id){closeBookingModal();closeSuiteDetail()}})});'
+    ].join('\n');
+
+    const hotspotPos = [['top-[52%]', 'left-[28%]', ''], ['top-[36%]', 'left-[72%]', '-ml-24 sm:ml-0']];
+
+    return `<!DOCTYPE html>
+<html lang="${LP_LANG_CODES[ctx.lang] || 'en'}" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${e(c.meta.title)}</title>
+<meta name="description" content="${e(c.meta.description)}">
+<meta property="og:title" content="${e(c.meta.title)}">
+<meta property="og:description" content="${e(c.meta.description)}">
+<meta property="og:image" content="${e(ctx.heroImg)}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?${S.fontHref}&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"><\/script>
+<script>tailwind.config = ${JSON.stringify(twConfig)};<\/script>
+<style>
+.serif{font-family:"${S.serif}",Georgia,serif}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:none}
+.img-zoom{transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+.group:hover .img-zoom{transform:scale(1.05)}
+@keyframes hotspotPulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(2.1);opacity:0}}
+.hotspot-ring{animation:hotspotPulse 2.6s infinite ease-out}
+${dark ? 'input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.85);cursor:pointer}' : ''}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-thumb{background:${S.colors.accent};border-radius:4px}::-webkit-scrollbar-track{background:${S.colors.brand}}
+</style>
+<script type="application/ld+json">${safeJSON(schema)}<\/script>
+</head>
+<body class="bg-brand text-txt font-sans antialiased selection:bg-accent selection:text-onAccent">
+
+<header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-500 border-b border-transparent">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3 group">
+      <div class="w-10 h-10 rounded-full border border-accent/80 flex items-center justify-center serif text-lg text-accent group-hover:bg-accent group-hover:text-onAccent transition-colors">${e(mono)}</div>
+      <div class="flex flex-col">
+        <span class="serif text-2xl leading-none text-txt">${e(name)}</span>
+        <span class="text-[10px] uppercase tracking-[0.22em] text-muted mt-1">${e(ctx.propTypeLabel)}</span>
+      </div>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm tracking-wide text-txt/85" aria-label="Primary">${navLinks}</nav>
+    <div class="flex items-center gap-3">
+      <button type="button" onclick="openBookingModal(LP_FIRST)" class="hidden sm:inline-flex items-center border border-accent text-accent hover:bg-accent hover:text-onAccent px-6 py-2.5 ${S.btn} ${S.btnText} transition-all">${e(c.ui.reserve)}</button>
+      <button type="button" id="mobileMenuBtn" aria-label="Menu" aria-expanded="false" class="md:hidden w-10 h-10 rounded-full border border-txt/15 flex items-center justify-center text-txt hover:border-accent hover:text-accent transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M3.75 7.5h16.5M3.75 12h16.5m-16.5 4.5h16.5"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden bg-brand/95 backdrop-blur-xl border-b border-txt/10 px-6 py-6 space-y-4">
+    ${mobileLinks}
+    <button type="button" onclick="openBookingModal(LP_FIRST)" class="w-full mt-2 py-3 ${btnPrimary}">${e(c.ui.reserve)}</button>
+  </div>
+</header>
+
+<section class="relative min-h-screen flex flex-col justify-between overflow-hidden">
+  <img src="${e(ctx.heroImg)}" loading="eager" alt="${e(name + ', ' + ctx.location)}" class="absolute inset-0 w-full h-full object-cover">
+  <div class="absolute inset-0 ${S.heroOverlays[0]}"></div>
+  <div class="absolute inset-0 ${S.heroOverlays[1]}"></div>
+  <div class="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-10 pt-36 lg:pt-44 pb-12">
+    <div class="max-w-2xl">
+      <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-brand/70 backdrop-blur-md border border-txt/10 mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+        <span class="text-[11px] uppercase tracking-[0.25em] text-accent font-medium">${e(c.hero.eyebrow)}</span>
+      </div>
+      <h1 class="serif text-5xl sm:text-6xl lg:text-[4.6rem] ${S.head} leading-[1.06] text-txt">${headline}</h1>
+      ${c.hero.subtitle ? '<p class="serif italic text-xl sm:text-2xl text-txt/90 mt-5 leading-relaxed max-w-xl">' + e(c.hero.subtitle) + '</p>' : ''}
+      <div class="flex flex-wrap items-center gap-4 mt-9">
+        <button type="button" onclick="openBookingModal(LP_FIRST)" class="${btnPrimary} px-8 py-4 shadow-glow">${e(c.hero.primary)}</button>
+        <a href="#accommodations" class="${btnGhost} px-7 py-4">${e(c.hero.secondary)}</a>
+      </div>
+    </div>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-10 pb-8 lg:pb-12">
+    <div class="bg-brand/90 backdrop-blur-xl border border-txt/10 shadow-floating p-5 lg:p-6 ${S.card}">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 items-end">
+        <div><label for="heroIn" class="block text-[11px] uppercase tracking-[0.18em] text-muted mb-2">${e(c.ui.checkIn)}</label><input type="date" id="heroIn" class="${field}"></div>
+        <div><label for="heroOut" class="block text-[11px] uppercase tracking-[0.18em] text-muted mb-2">${e(c.ui.checkOut)}</label><input type="date" id="heroOut" class="${field}"></div>
+        <div><label for="heroGuests" class="block text-[11px] uppercase tracking-[0.18em] text-muted mb-2">${e(c.ui.guests)}</label><select id="heroGuests" class="${field}">${c.ui.guestOptions.map((g, i) => '<option' + (i === 1 ? ' selected' : '') + '>' + e(g) + '</option>').join('')}</select></div>
+        <button type="button" onclick="syncAndBook()" class="w-full h-[46px] ${btnPrimary.replace(S.btn, S.input)}">${e(c.ui.checkAvailability)}</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="overview" class="py-24 lg:py-36 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <div class="lg:col-span-5 reveal">
+        ${eb(0, c.overview.eyebrow)}
+        <h2 class="serif text-4xl sm:text-5xl lg:text-[3.25rem] ${S.head} leading-[1.1] text-txt">${e(c.overview.heading)}</h2>
+        <p class="mt-6 text-muted leading-relaxed">${e(c.overview.body)}</p>
+        <div class="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-txt/10">
+          ${c.overview.stats.map((s) => '<div><div class="text-3xl sm:text-4xl serif text-accent">' + e(s.value) + '</div><div class="text-xs uppercase tracking-wider text-muted mt-1">' + e(s.label) + '</div></div>').join('')}
+        </div>
+        <div class="mt-9"><a href="#living" class="inline-flex ${btnPrimary} px-8 py-3.5">${e(c.overview.cta)}</a></div>
+      </div>
+      <div class="lg:col-span-7 reveal">
+        <div class="${S.card} overflow-hidden relative aspect-[4/3] shadow-soft border border-txt/10">
+          <img id="ovImg" src="${slides[0].src}" alt="${e(name)}" class="w-full h-full object-cover transition-opacity duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
+            <div>
+              <span id="ovTag" class="text-[11px] uppercase tracking-[0.2em] text-white/80 block">${e(slides[0].tag)}</span>
+              <p id="ovCap" class="serif text-2xl text-white mt-1">${e(slides[0].caption)}</p>
+            </div>
+            <div class="flex items-center gap-2.5 shrink-0">
+              <button type="button" onclick="changeSlide(-1)" aria-label="Previous" class="w-11 h-11 rounded-full bg-black/40 hover:bg-accent text-white hover:text-onAccent border border-white/20 backdrop-blur-md flex items-center justify-center transition-colors"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg></button>
+              <button type="button" onclick="changeSlide(1)" aria-label="Next" class="w-11 h-11 rounded-full bg-black/40 hover:bg-accent text-white hover:text-onAccent border border-white/20 backdrop-blur-md flex items-center justify-center transition-colors"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg></button>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center items-center gap-2.5 mt-5" id="ovDots">
+          ${slides.map((s, i) => '<button type="button" onclick="setSlide(' + i + ')" aria-label="Slide ' + (i + 1) + '" class="' + (i === 0 ? 'w-8 h-2 rounded-full bg-accent' : 'w-2.5 h-2 rounded-full bg-muted/40 hover:bg-muted') + ' transition-all"></button>').join('')}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="accommodations" class="bg-brand py-24 lg:py-36">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 reveal">
+      <div>
+        ${eb(1, c.rooms.eyebrow)}
+        <h2 class="serif text-4xl sm:text-5xl ${S.head} text-txt">${e(c.rooms.heading)}</h2>
+        <p class="mt-3 text-muted max-w-xl">${e(c.rooms.body)}</p>
+      </div>
+      <button type="button" onclick="openBookingModal(LP_FIRST)" class="self-start md:self-auto text-xs uppercase tracking-[0.18em] text-accent hover:text-accentHover border-b border-accent/40 pb-1.5 transition-colors">${e(c.rooms.link)} →</button>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      ${rooms.map((r) => `<article onclick='openSuiteDetail(${e(JSON.stringify(r.name))})' class="bg-surface ${S.card} overflow-hidden shadow-soft border border-txt/5 group cursor-pointer reveal flex flex-col">
+        <div class="relative aspect-[16/10] overflow-hidden">
+          <img src="${r.img}" alt="${e(r.name)}" loading="lazy" class="w-full h-full object-cover img-zoom">
+          ${r.badge ? '<span class="absolute top-4 left-4 bg-brand/85 backdrop-blur-md text-accent border border-accent/30 text-[11px] uppercase tracking-[0.16em] px-3.5 py-1.5 rounded-full">' + e(r.badge) + '</span>' : ''}
+          ${r.size || r.price ? '<span class="absolute bottom-4 right-4 bg-brand/85 backdrop-blur-md text-txt text-xs px-3 py-1 rounded-full">' + e([r.size, r.price ? r.price + ' ' + c.ui.perNight : ''].filter(Boolean).join(' · ')) + '</span>' : ''}
+        </div>
+        <div class="p-7 lg:p-9 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="serif text-3xl ${S.head} text-txt group-hover:text-accent transition-colors">${e(r.name)}</h3>
+            <p class="text-sm text-muted mt-2.5 leading-relaxed">${e(r.description)}</p>
+          </div>
+          <div class="border-t border-txt/10 mt-6 pt-5 flex items-center justify-between gap-4">
+            <span class="text-xs text-muted tracking-wide">${e(r.beds)}</span>
+            <span class="text-xs uppercase tracking-[0.16em] text-accent font-medium whitespace-nowrap group-hover:translate-x-1 transition-transform">${e(c.ui.details)} →</span>
+          </div>
+        </div>
+      </article>`).join('\n      ')}
+    </div>
+  </div>
+</section>
+
+<section id="living" class="py-12 lg:py-20 bg-brand">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 reveal">
+    <div class="${S.big} overflow-hidden relative min-h-[540px] lg:min-h-[640px] border border-txt/10 shadow-floating flex items-end">
+      <img src="${LP_IMG(LP_PHOTOS.living, 2200)}" alt="${e(c.living.heading)}" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-t from-brand/80 via-brand/10 to-transparent"></div>
+      <div class="relative z-10 m-6 sm:m-10 lg:m-12 max-w-md bg-brand/90 backdrop-blur-xl border border-txt/10 ${S.card} p-8 lg:p-10 shadow-soft">
+        ${eb(2, c.living.eyebrow)}
+        <h2 class="serif text-3xl sm:text-4xl ${S.head} text-txt leading-tight">${e(c.living.heading)}</h2>
+        <p class="text-sm text-muted mt-3.5 leading-relaxed">${e(c.living.body)}</p>
+        <div class="flex flex-wrap gap-2 mt-5">${c.living.pills.filter(Boolean).map((p) => '<span class="rounded-full bg-surface border border-txt/10 px-3.5 py-1.5 text-xs text-txt/90">' + e(p) + '</span>').join('')}</div>
+        <button type="button" onclick="openBookingModal(LP_FIRST)" class="mt-7 ${btnPrimary} px-7 py-3">${e(c.living.cta)}</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="outdoor" class="py-24 lg:py-36 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      ${eb(3, c.outdoor.eyebrow)}
+      <h2 class="serif text-4xl sm:text-5xl ${S.head} text-txt">${e(c.outdoor.heading)}</h2>
+      <p class="text-muted mt-4 leading-relaxed">${e(c.outdoor.body)}</p>
+    </div>
+    <div class="${S.card} overflow-hidden relative aspect-[4/5] sm:aspect-[16/9] shadow-floating border border-txt/10 reveal">
+      <img src="${LP_IMG(LP_PHOTOS.outdoor, 2000)}" alt="${e(c.outdoor.heading)}" loading="lazy" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20"></div>
+      ${c.outdoor.hotspots.map((h, i) => `<div class="absolute ${hotspotPos[i][0]} ${hotspotPos[i][1]} -translate-x-1/2 -translate-y-1/2 z-20">
+        <button type="button" onclick="toggleHotspot(${i})" aria-label="${e(h.title)}" class="relative flex items-center justify-center w-10 h-10">
+          <span class="hotspot-ring absolute inset-0 rounded-full bg-accent"></span>
+          <span class="relative w-8 h-8 rounded-full bg-brand/85 border-2 border-accent flex items-center justify-center shadow-lg"><span class="w-2.5 h-2.5 rounded-full bg-accent"></span></span>
+        </button>
+        <div id="hs-card-${i}" class="mt-2.5 ${hotspotPos[i][2]} w-56 bg-brand/95 backdrop-blur-xl border border-accent/30 ${S.input} p-3.5 shadow-floating text-left">
+          <div class="text-[10px] uppercase tracking-[0.18em] text-accent">${num(i)}${h.tag ? ' · ' + e(h.tag) : ''}</div>
+          <div class="serif text-lg text-txt leading-snug mt-0.5">${e(h.title)}</div>
+          <p class="text-xs text-muted mt-1">${e(h.text)}</p>
+        </div>
+      </div>`).join('\n      ')}
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 reveal">
+      ${c.outdoor.features.map((f, i) => '<div class="bg-brand/70 border border-txt/10 ' + S.input + ' p-6 flex items-center gap-5"><span class="text-4xl serif text-accent">' + num(i) + '</span><div><div class="text-txt font-medium">' + e(f.title) + '</div><div class="text-xs text-muted mt-0.5">' + e(f.text) + '</div></div></div>').join('\n      ')}
+    </div>
+  </div>
+</section>
+
+<section id="amenities" class="bg-brand py-24 lg:py-36">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-xl mx-auto mb-16 reveal">
+      ${eb(4, c.amenities.eyebrow)}
+      <h2 class="serif text-4xl sm:text-5xl ${S.head} text-txt">${e(c.amenities.heading)}</h2>
+      <p class="text-muted text-sm mt-3">${e(c.amenities.body)}</p>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8 reveal">
+      ${c.amenities.items.map((a) => '<div class="bg-surface/60 border border-txt/5 hover:border-accent/40 ' + S.input + ' p-6 text-center transition-all group"><div class="w-14 h-14 rounded-full bg-accent/10 group-hover:bg-accent/20 flex items-center justify-center mx-auto mb-4 text-accent transition-colors">' + amenityIcon(a.icon) + '</div><div class="text-xs uppercase tracking-[0.16em] text-txt/90 font-medium">' + e(a.label) + '</div></div>').join('\n      ')}
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="bg-surface py-24 lg:py-36">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-xl mx-auto mb-16 reveal">
+      ${eb(5, c.testimonials.eyebrow)}
+      <h2 class="serif text-4xl sm:text-5xl ${S.head} text-txt">${e(c.testimonials.heading)}</h2>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 reveal">
+      ${c.testimonials.items.map((t) => `<figure class="bg-brand border border-txt/10 ${S.card} p-8 sm:p-11 shadow-soft flex flex-col justify-between">
+        <div>
+          <div class="serif text-6xl text-accent leading-none select-none" aria-hidden="true">&ldquo;</div>
+          <blockquote class="serif italic text-2xl sm:text-[1.75rem] text-txt leading-relaxed mt-2">${e(t.quote)}</blockquote>
+        </div>
+        <figcaption class="flex items-center justify-between gap-4 mt-8 pt-6 border-t border-txt/10">
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-full bg-accent text-onAccent flex items-center justify-center serif font-semibold text-lg">${e((String(t.name || 'G').trim()[0] || 'G').toUpperCase())}</div>
+            <div><div class="text-sm font-semibold text-txt">${e(t.name)}</div><div class="text-xs text-muted">${e([t.origin, t.stay].filter(Boolean).join(' · '))}</div></div>
+          </div>
+          <div class="flex items-center gap-1 text-accent" aria-label="5/5">${LP_STAR.repeat(5)}</div>
+        </figcaption>
+      </figure>`).join('\n      ')}
+    </div>
+  </div>
+</section>
+
+<section id="booking" class="relative py-28 lg:py-36 overflow-hidden text-center">
+  <img src="${LP_IMG(LP_PHOTOS.cta, 2200)}" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+  <div class="absolute inset-0 ${S.ctaOverlay}"></div>
+  <div class="relative z-10 max-w-2xl mx-auto px-6 reveal">
+    ${c.cta.eyebrow ? '<div class="' + S.eyebrow + ' text-accent mb-4">' + e(c.cta.eyebrow) + '</div>' : ''}
+    <h2 class="serif italic text-4xl sm:text-6xl ${S.head} text-txt">${e(c.cta.heading)}</h2>
+    <p class="text-txt/85 mt-5 text-base sm:text-lg leading-relaxed">${e(c.cta.body)}</p>
+    <button type="button" onclick="openBookingModal(LP_FIRST)" class="mt-9 ${btnPrimary} px-10 py-4 shadow-glow">${e(c.cta.button)}</button>
+  </div>
+</section>
+
+<footer class="bg-brand border-t border-txt/10 py-16 px-6 lg:px-10">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full border border-accent flex items-center justify-center serif text-lg text-accent">${e(mono)}</div>
+        <div><span class="block serif text-2xl text-txt leading-none">${e(name)}</span><span class="text-[11px] uppercase tracking-[0.2em] text-muted">${e(ctx.propTypeLabel + ' · ' + ctx.location)}</span></div>
+      </div>
+      <p class="text-muted text-sm mt-5 max-w-sm leading-relaxed">${e(c.footer.about)}</p>
+    </div>
+    <div>
+      <div class="text-xs uppercase tracking-[0.2em] text-accent mb-4 font-medium">${e(c.ui.explore)}</div>
+      <ul class="space-y-2.5 text-sm text-muted">${c.ui.nav.map((t, i) => '<li><a href="#' + ids[i] + '" class="hover:text-accent transition-colors">' + e(t) + '</a></li>').join('')}</ul>
+    </div>
+    <div>
+      <div class="text-xs uppercase tracking-[0.2em] text-accent mb-4 font-medium">${e(c.ui.connect)}</div>
+      <ul class="space-y-2.5 text-sm text-muted">
+        <li><a href="https://instagram.com" target="_blank" rel="noopener" class="hover:text-accent transition-colors">Instagram</a></li>
+        <li><a href="https://facebook.com" target="_blank" rel="noopener" class="hover:text-accent transition-colors">Facebook</a></li>
+        <li><a href="https://tripadvisor.com" target="_blank" rel="noopener" class="hover:text-accent transition-colors">TripAdvisor</a></li>
+        <li class="pt-2 text-xs text-muted/80">${e(c.ui.checkTimes)}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-txt/5 text-xs text-muted/80 text-center sm:text-left">${e(c.ui.directBooking)}</div>
+</footer>
+
+<div id="suiteModal" class="fixed inset-0 z-[190] bg-black/70 backdrop-blur-md hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="sdTitle">
+  <div class="max-w-xl w-full bg-surface border border-txt/10 ${S.card} overflow-hidden shadow-floating relative">
+    <button type="button" onclick="closeSuiteDetail()" aria-label="${e(c.ui.close)}" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-brand/80 text-txt hover:text-accent flex items-center justify-center text-xl">&times;</button>
+    <div class="aspect-[16/9] relative"><img id="sdImg" src="" alt="" class="w-full h-full object-cover"><span id="sdBadge" class="absolute top-4 left-4 bg-brand/85 text-accent border border-accent/30 text-[11px] uppercase tracking-[0.16em] px-3.5 py-1.5 rounded-full"></span></div>
+    <div class="p-8">
+      <div class="flex items-baseline justify-between gap-4"><h3 id="sdTitle" class="serif text-3xl ${S.head} text-txt"></h3><span id="sdPrice" class="text-sm font-medium text-accent whitespace-nowrap"></span></div>
+      <p id="sdDesc" class="text-sm text-muted mt-3 leading-relaxed"></p>
+      <div id="sdSpecs" class="mt-5 pt-5 border-t border-txt/10 text-xs text-txt/90 flex flex-wrap gap-2"></div>
+      <div class="mt-7 flex gap-3">
+        <button type="button" id="sdBook" class="flex-1 py-3.5 ${btnPrimary}">${e(c.ui.reserveSuite)}</button>
+        <button type="button" onclick="closeSuiteDetail()" class="px-6 ${S.btn} border border-txt/15 text-xs uppercase tracking-wider text-muted hover:text-txt">${e(c.ui.close)}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="bookingModal" class="fixed inset-0 z-[200] bg-black/70 backdrop-blur-md hidden items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="bkTitle">
+  <div class="max-w-lg w-full my-8 bg-surface border border-txt/10 ${S.card} p-8 sm:p-10 relative shadow-floating">
+    <button type="button" onclick="closeBookingModal()" aria-label="${e(c.ui.close)}" class="absolute top-5 right-5 w-10 h-10 rounded-full bg-brand/60 hover:bg-brand text-muted hover:text-accent flex items-center justify-center text-xl transition-colors">&times;</button>
+    <div class="text-[11px] uppercase tracking-[0.2em] text-accent">${e(c.ui.modalEyebrow)}</div>
+    <h2 id="bkTitle" class="serif text-3xl sm:text-4xl ${S.head} text-txt mt-1">${e(c.ui.modalTitle)}</h2>
+    <form id="bookingForm" class="mt-6 space-y-4">
+      <div><label for="bkSuite" class="block text-xs uppercase tracking-wider text-muted mb-1.5">${e(c.ui.suite)}</label>
+        <select id="bkSuite" class="${field.replace('bg-elevated/90', 'bg-brand')}">${rooms.map((r) => '<option value="' + e(r.name) + '">' + e(r.name + (r.price ? ' (' + r.price + ' ' + c.ui.perNight + ')' : '')) + '</option>').join('')}</select></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div><label for="bkIn" class="block text-xs uppercase tracking-wider text-muted mb-1.5">${e(c.ui.checkIn)}</label><input type="date" id="bkIn" required class="${field.replace('bg-elevated/90', 'bg-brand')}"></div>
+        <div><label for="bkOut" class="block text-xs uppercase tracking-wider text-muted mb-1.5">${e(c.ui.checkOut)}</label><input type="date" id="bkOut" required class="${field.replace('bg-elevated/90', 'bg-brand')}"></div>
+      </div>
+      <div><label for="bkName" class="block text-xs uppercase tracking-wider text-muted mb-1.5">${e(c.ui.fullName)}</label><input type="text" id="bkName" required autocomplete="name" class="${field.replace('bg-elevated/90', 'bg-brand')}"></div>
+      <div><label for="bkEmail" class="block text-xs uppercase tracking-wider text-muted mb-1.5">${e(c.ui.email)}</label><input type="email" id="bkEmail" required autocomplete="email" class="${field.replace('bg-elevated/90', 'bg-brand')}"></div>
+      <div><label for="bkReq" class="block text-xs uppercase tracking-wider text-muted mb-1.5">${e(c.ui.requests)}</label>
+        <select id="bkReq" class="${field.replace('bg-elevated/90', 'bg-brand')}">${c.booking.requests.map((r) => '<option>' + e(r) + '</option>').join('')}</select></div>
+      <button type="submit" class="w-full mt-2 py-4 ${btnPrimary}">${e(c.ui.submit)}</button>
+    </form>
+    <div id="bkThanks" class="hidden mt-6 text-center py-6">
+      <div class="w-14 h-14 rounded-full bg-accent/15 text-accent flex items-center justify-center mx-auto mb-4"><svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+      <h3 class="serif text-3xl ${S.head} text-txt">${e(c.ui.thanksTitle)}</h3>
+      <p class="text-sm text-muted mt-2 leading-relaxed">${e(c.ui.thanksText)}</p>
+      <button type="button" onclick="closeBookingModal()" class="mt-6 border border-accent text-accent hover:bg-accent hover:text-onAccent px-8 py-2.5 ${S.btn} ${S.btnText} transition-colors">${e(c.ui.close)}</button>
+    </div>
+  </div>
+</div>
+
+<script>
+${pageScript}
+<\/script>
+</body>
+</html>`;
+  }
+
+  function buildContentPrompt(p) {
+    return `You are a senior hospitality copywriter. Write the content for a direct-booking landing page. The page design already exists; you only supply text.
+
+PROPERTY
+- Name: ${p.name}
+- Type: ${p.propType}
+- Location: ${p.location}
+- Rooms / units: ${p.rooms || 'not specified'}
+- Style: ${p.style}
+- Audience: ${p.audience}
+- Unique selling points: ${p.usp}
+- Main call to action: ${p.cta}
+
+LANGUAGE: write EVERY string value in ${p.lang}, including the "ui" labels. Keep proper names as they are.
+
+Return ONLY a JSON object with exactly this structure:
+{
+  "meta": { "title": "SEO title, 50-60 chars, includes name and location", "description": "meta description, 140-155 chars" },
+  "ui": { "nav": ["5 short menu labels: overview, rooms, outdoors, amenities, reviews"], "reserve": "", "check_in": "", "check_out": "", "guests": "", "guest_options": ["4 options, e.g. 1 guest .. 4+ guests"], "check_availability": "", "details": "", "per_night": "/ night", "close": "", "reserve_suite": "", "full_name": "", "email": "", "suite": "", "requests": "", "submit": "", "thanks_title": "", "thanks_text": "one sentence", "explore": "", "connect": "", "check_times": "Check-in 15:00 · Check-out 11:00", "direct_booking": "short trust line about booking direct", "modal_eyebrow": "", "modal_title": "" },
+  "hero": { "eyebrow": "location line, e.g. Phuket · Thailand", "headline": "3-7 words, evocative, NOT a quote", "headline_accent": "1-2 words copied exactly from headline to highlight", "subtitle": "one sentence, max 22 words", "cta_primary": "${p.cta}", "cta_secondary": "2-3 words" },
+  "overview": { "eyebrow": "1-2 words", "heading": "max 8 words", "body": "2-3 sentences, concrete sensory detail", "stats": [{"value": "short number or fact, e.g. 14 or 5 min", "label": "1-3 words"}, {}, {}], "cta": "2-3 words", "slides": [{"tag": "2-3 words", "caption": "max 9 words"}, {}, {}] },
+  "rooms": { "eyebrow": "", "heading": "", "body": "1 sentence", "link": "2-4 words", "items": [ { "name": "room type name", "badge": "view or feature, 1-2 words", "size": "e.g. 65 m²", "price": "e.g. $340", "description": "1 sentence, max 22 words", "long_description": "2 sentences", "beds": "e.g. 1 King Bed · 1 Bath", "specs": ["5 short features"] } ] },
+  "living": { "eyebrow": "", "heading": "", "body": "2 sentences", "pills": ["3 short features"], "cta": "" },
+  "outdoor": { "eyebrow": "", "heading": "", "body": "1-2 sentences", "hotspots": [ {"tag": "2 words", "title": "2-4 words", "text": "max 14 words"}, {} ], "features": [ {"title": "2-4 words", "text": "max 8 words"}, {}, {} ] },
+  "amenities": { "eyebrow": "", "heading": "", "body": "1 sentence", "items": [ {"icon": "one of: ${LP_ICON_KEYS.join(', ')}", "label": "1-3 words"} ] },
+  "testimonials": { "eyebrow": "", "heading": "", "items": [ {"quote": "2 sentences mentioning specific details of this property", "name": "First name + initial", "origin": "City, Country", "stay": "room type name"}, {} ] },
+  "cta": { "eyebrow": "2-4 words", "heading": "max 5 words", "body": "1-2 sentences with concrete direct-booking perks", "button": "${p.cta}" },
+  "footer": { "about": "1-2 sentences" },
+  "booking": { "requests": ["4 special request options, first one means no special requests"] }
+}
+
+RULES
+- rooms.items: exactly 4 different room types (for a private villa: 4 bedrooms or spaces). amenities.items: exactly 10, each with a DIFFERENT icon key from the list. testimonials.items: exactly 2 guests from different countries.
+- "living" is the property's signature indoor space: villa = living pavilion/lounge, hotel = restaurant or lounge bar, resort = spa or clubhouse.
+- Every line must be specific to ${p.name} in ${p.location} and to the audience. No filler such as "welcome to our hotel", "luxury awaits", "home away from home".
+- Base claims on the selling points. Prices and sizes must be realistic for the location.
+- Plain text only in values: no HTML, no markdown, no emoji.`;
+  }
+
+
   async function generate() {
     hideError();
     if (!isPro() && getCount() >= FREE_LIMIT) {
@@ -922,6 +1517,7 @@ select option { background: #141414; }
     document.getElementById('paywall').style.display = 'none';
 
     let prompt, loadingSteps, loadingMsg;
+    let tplCtx = null;
 
     if (currentMode === 'brief') {
       loadingMsg = 'Creating your landing page brief…';
@@ -1080,6 +1676,16 @@ Every word: specific to "${propLabel}" in "${location}", style "${style}", audie
 CRITICAL — COMPLETE OUTPUT
 ════════════════════════════════
 Output ENTIRE HTML from <!DOCTYPE html> to </html>. All 10 sections A–J + Booking Modal are MANDATORY. FOOTER IS MANDATORY. Never truncate. Never stop before </html>.`;
+      const styleKey = LP_STYLE_MAP[style];
+      if (styleKey) {
+        const typeSel = document.getElementById('propType');
+        const propTypeLabel = typeSel.selectedOptions[0] ? typeSel.selectedOptions[0].text : propType;
+        const displayName = propName || (location.split(',')[0].trim() + ' ' + propTypeLabel);
+        tplCtx = { styleKey, name: displayName, location, propTypeLabel, rooms, lang, cta, heroImg };
+        loadingMsg = 'Writing your landing page…';
+        loadingSteps = ['Reading property details', 'Writing headlines & copy', 'Describing suites & amenities', 'Assembling the page'];
+        prompt = buildContentPrompt({ name: displayName, propType, location, rooms, style, audience, usp, cta, lang });
+      }
     }
 
     document.getElementById('loadingMsg').textContent = loadingMsg;
@@ -1096,12 +1702,12 @@ Output ENTIRE HTML from <!DOCTYPE html> to </html>. All 10 sections A–J + Book
       const res = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-        body: JSON.stringify({
+        body: JSON.stringify(Object.assign({
           model: 'gpt-4o-mini',
           messages: [{ role: 'user', content: prompt }],
-          max_tokens: currentMode === 'landing' ? 8000 : 2500,
-          temperature: 0.75
-        })
+          max_tokens: tplCtx ? 4000 : (currentMode === 'landing' ? 8000 : 2500),
+          temperature: tplCtx ? 0.8 : 0.75
+        }, tplCtx ? { response_format: { type: 'json_object' } } : {}))
       });
       clearInterval(stepTimer);
       if (!res.ok) {
@@ -1114,6 +1720,14 @@ Output ENTIRE HTML from <!DOCTYPE html> to </html>. All 10 sections A–J + Book
       updateUsageBar();
       if (currentMode === 'brief') {
         parseAndRenderBrief(text, propLabel, location);
+      } else if (tplCtx) {
+        let content;
+        try {
+          content = JSON.parse(text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, ''));
+        } catch (err) {
+          throw new Error('The AI response was incomplete. Please try again.');
+        }
+        renderLandingPage(buildLandingHTML(content, tplCtx), tplCtx.name);
       } else {
         renderLandingPage(text, propLabel);
       }
@@ -1159,6 +1773,13 @@ Output ENTIRE HTML from <!DOCTYPE html> to </html>. All 10 sections A–J + Book
 
   function renderLandingPage(html, propLabel) {
     let cleanHTML = html.replace(/^```html\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '').trim();
+    const cfgRe = /<script>\s*tailwind\.config[\s\S]*?<\/script>/;
+    const cdnRe = /<script src="https:\/\/cdn\.tailwindcss\.com[^"]*"><\/script>/;
+    const cfgM = cleanHTML.match(cfgRe), cdnM = cleanHTML.match(cdnRe);
+    if (cfgM && cdnM && cfgM.index < cdnM.index) {
+      cleanHTML = cleanHTML.replace(cfgRe, '');
+      cleanHTML = cleanHTML.replace(cdnRe, function (m) { return m + cfgM[0]; });
+    }
     generatedHTML = cleanHTML;
     const frame = document.getElementById('lpFrame');
     frame.removeAttribute('srcdoc');
