@@ -1012,6 +1012,7 @@ B) HERO — height:100vh, position:relative, overflow:hidden.
    <img src="${heroImg}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0">
    Gradient overlay div above img (z-index:1): for dark styles use linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%); for light styles use linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.35) 60%).
    Content (z-index:2, centered): small eyebrow label → property location in accent color; large Playfair Display heading 4rem–5rem in white/cream; elegant italic subtitle 1.3rem; two buttons side by side (primary filled + secondary ghost outline).
+   CRITICAL: The hero heading is the PROPERTY NAME as a headline — NOT a testimonial quote. Do NOT start the heading with a quotation mark " or ". Do NOT use a guest quote as the hero heading. The heading must be the property name or a marketing tagline specific to this property.
    Bottom: animated scroll indicator (bouncing chevron-down SVG).
    HERO STATS BAR — just below hero content, 3 stats side by side separated by thin vertical lines: e.g. "15 Years of Excellence · 48 Suites · 4.9★ Rating". Use numbers from the property data.
 
@@ -1036,8 +1037,9 @@ E) ROOMS — background:var(--bg2), padding:110px 0. eyebrow + h2 centered, then
 
 F) PHOTO STRIP — full-width section, width:100%, padding:0, margin:0, height:340px, overflow:hidden.
    CRITICAL: This section must have NO text, NO headings, NO labels — only images. It is purely visual.
-   CRITICAL: Do NOT wrap content in a max-width container. The grid must be a direct child of the section and span the full viewport width.
-   The section itself: display:grid, grid-template-columns:repeat(4,1fr), gap:0, width:100%.
+   CRITICAL: Do NOT wrap content in a max-width container. The grid must be a DIRECT CHILD of the <section> tag and span the full viewport width.
+   CRITICAL: The section tag itself IS the grid container: <section style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;width:100%;height:340px;overflow:hidden;padding:0;margin:0">
+   EXACTLY 4 equal-width columns. 4 images. No wrapper divs between section and images.
    Each cell: overflow:hidden, height:340px. Inside each cell: <img> with width:100%, height:100%, object-fit:cover, display:block.
    Use these 4 img src values: ${heroImg} (object-position:center top), ${roomImg1} (object-position:center), ${roomImg2} (object-position:center bottom), ${roomImg3} (object-position:center).
    The AMENITIES section that follows must start AFTER this strip with its own background:var(--bg) and padding-top:110px. They must NOT overlap.
@@ -1052,7 +1054,10 @@ G) AMENITIES — background:var(--bg), padding:110px 0. eyebrow + h2 centered (m
    Use 10 amenities specific to the property's USPs.
 
 H) TESTIMONIALS — eyebrow + h2 centered, 2-column card layout.
-   Each card: large " in accent (font-size:4rem, line-height:1), guest quote (2-3 sentences, specific, authentic-sounding), guest name + country, 5 filled star SVGs. Card bg: var(--bg2), border-radius:16px, padding:40px.
+   Each card: large " in accent (font-size:4rem, line-height:1), guest quote (2-3 sentences, specific, authentic-sounding), guest name + country, 5 FILLED star SVGs (yellow/gold filled). Card bg: var(--bg2), border-radius:16px, padding:40px.
+   CRITICAL: Stars must be FILLED yellow SVGs — NOT Unicode ☆★ — use this exact pattern for each star:
+   <svg width="16" height="16" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+   Render 5 of these stars in a row (display:flex, gap:3px) below the guest name. NEVER use Unicode stars ☆ ★ or empty star outlines.
 
 I) BOOKING CTA — full-bleed section, background: var(--accent), padding:100px 48px. text-align:center.
    Inner div: max-width:700px, margin:0 auto.
@@ -1131,8 +1136,13 @@ Before writing the final HTML, confirm ALL of these:
 ☑ BOOKING CTA content is centered (text-align:center, button is display:inline-block inside centered parent)
 ☑ FOOTER has 3 columns in a CSS grid (not stacked in one column)
 ☑ Footer links: each nav link and social link is a SEPARATE <a> tag with display:block — not concatenated
-☑ PHOTO STRIP section: grid is a direct child of section with width:100% — no max-width container wrapping it
+☑ PHOTO STRIP section: grid is a direct child of section with width:100% — no max-width container wrapping it. MUST have exactly 4 equal columns: grid-template-columns:repeat(4,1fr)
 ☑ Footer has NO year, NO copyright, NO "All rights reserved"
+☑ Stars in Testimonials: 5 filled SVG stars per card (fill="#f5a623") — no Unicode ☆ ★
+☑ Hero heading is the property name or tagline — NOT a testimonial quote, does NOT start with "
+☑ The HTML document is COMPLETE and ends with </html> — never truncate mid-section
+
+CRITICAL — COMPLETE OUTPUT REQUIRED: You must output the ENTIRE HTML document from <!DOCTYPE html> to </html>. The document includes ALL 10 sections: Nav, Hero, About, Features, Rooms, Photo Strip, Amenities, Testimonials, Booking CTA, and Footer. The Footer (section J) is MANDATORY — the page is incomplete without it. Do NOT stop generating before the Footer is complete.
 
 Output ONLY the complete HTML document. First character: <. Last character: >.`;
     }
@@ -1154,7 +1164,7 @@ Output ONLY the complete HTML document. First character: <. Last character: >.`;
         body: JSON.stringify({
           model: 'gpt-4o-mini',
           messages: [{ role: 'user', content: prompt }],
-          max_tokens: currentMode === 'landing' ? 6000 : 2500,
+          max_tokens: currentMode === 'landing' ? 8000 : 2500,
           temperature: 0.75
         })
       });
