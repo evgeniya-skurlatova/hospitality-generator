@@ -904,7 +904,7 @@ select option { background: #141414; }
         { mode: 'light', colors: { brand: '#f7f3ec', surface: '#eee7da', elevated: '#fffdf9', txt: '#1d1a16', muted: '#6b6257', accent: '#7d5f37', accentHover: '#664d2c', onAccent: '#fbf8f2' } },
         { mode: 'dark', colors: { brand: '#0a1714', surface: '#10221d', elevated: '#173029', txt: '#eef2ec', muted: '#9fb1a7', accent: '#c8a66a', accentHover: '#d8b97f', onAccent: '#0a1714' } }
       ],
-      layouts: { hero: ['full', 'center', 'split'], rooms: ['grid', 'feature', 'alternating'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'] }
+      layouts: { hero: ['full', 'center', 'split'], rooms: ['grid', 'feature', 'alternating'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'] , audience: ['cards', 'band'], location: ['mapLeft', 'mapRight'] }
     },
     eco: {
       serif: 'Fraunces', sans: 'Inter',
@@ -918,7 +918,7 @@ select option { background: #141414; }
         { mode: 'dark', colors: { brand: '#121a14', surface: '#18231b', elevated: '#203024', txt: '#eef1e8', muted: '#a4ae9c', accent: '#a9c08f', accentHover: '#bcd0a5', onAccent: '#121a14' } },
         { mode: 'light', colors: { brand: '#f5efe6', surface: '#ebe1d2', elevated: '#fffaf3', txt: '#2b231c', muted: '#6e6153', accent: '#8d4f32', accentHover: '#763f26', onAccent: '#fbf6ef' } }
       ],
-      layouts: { hero: ['full', 'split'], rooms: ['grid', 'feature', 'alternating'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'] }
+      layouts: { hero: ['full', 'split'], rooms: ['grid', 'feature', 'alternating'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'] , audience: ['cards', 'band'], location: ['mapLeft', 'mapRight'] }
     },
     family: {
       serif: 'DM Serif Display', sans: 'Nunito Sans',
@@ -931,7 +931,7 @@ select option { background: #141414; }
         { mode: 'light', colors: { brand: '#fffaf2', surface: '#fdf0dc', elevated: '#ffffff', txt: '#1f2a37', muted: '#5b6573', accent: '#ad4816', accentHover: '#943c11', onAccent: '#ffffff' } },
         { mode: 'light', colors: { brand: '#f3fafa', surface: '#e3f2f1', elevated: '#ffffff', txt: '#14303a', muted: '#4f6b73', accent: '#0c6c75', accentHover: '#095961', onAccent: '#ffffff' } }
       ],
-      layouts: { hero: ['full', 'split'], rooms: ['grid', 'feature'], testimonials: ['cards'], amenities: ['cards'] }
+      layouts: { hero: ['full', 'split'], rooms: ['grid', 'feature'], testimonials: ['cards'], amenities: ['cards'] , audience: ['band', 'cards'], location: ['mapRight'] }
     },
     romantic: {
       serif: 'Playfair Display', sans: 'Lato',
@@ -944,7 +944,7 @@ select option { background: #141414; }
         { mode: 'light', colors: { brand: '#fbf5f2', surface: '#f3e6e0', elevated: '#fffbf9', txt: '#2e1d1d', muted: '#7a5f5c', accent: '#944852', accentHover: '#7d3b44', onAccent: '#fff8f6' } },
         { mode: 'dark', colors: { brand: '#1a0f12', surface: '#24151a', elevated: '#2f1c22', txt: '#f6ece8', muted: '#b59e9a', accent: '#e0a3a3', accentHover: '#ebb8b8', onAccent: '#1a0f12' } }
       ],
-      layouts: { hero: ['center', 'full', 'split'], rooms: ['alternating', 'grid', 'feature'], testimonials: ['single', 'cards'], amenities: ['cards', 'list'] }
+      layouts: { hero: ['center', 'full', 'split'], rooms: ['alternating', 'grid', 'feature'], testimonials: ['single', 'cards'], amenities: ['cards', 'list'] , audience: ['cards', 'band'], location: ['mapLeft', 'mapRight'] }
     },
     adventure: {
       serif: 'Barlow Condensed', sans: 'Barlow',
@@ -957,7 +957,7 @@ select option { background: #141414; }
         { mode: 'dark', colors: { brand: '#0e140f', surface: '#152017', elevated: '#1d2b20', txt: '#edf2e9', muted: '#9aaa95', accent: '#e3a33b', accentHover: '#efb658', onAccent: '#0e140f' } },
         { mode: 'dark', colors: { brand: '#17110d', surface: '#211812', elevated: '#2c2018', txt: '#f4ece4', muted: '#b3a291', accent: '#e2753a', accentHover: '#ec8b55', onAccent: '#17110d' } }
       ],
-      layouts: { hero: ['full', 'center'], rooms: ['feature', 'grid'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'] }
+      layouts: { hero: ['full', 'center'], rooms: ['feature', 'grid'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'] , audience: ['band', 'cards'], location: ['mapLeft', 'mapRight'] }
     },
     minimalist: {
       serif: 'Inter Tight', sans: 'Inter',
@@ -971,7 +971,7 @@ select option { background: #141414; }
         { mode: 'light', colors: { brand: '#efeeeb', surface: '#e4e2de', elevated: '#f8f7f5', txt: '#1a1a1a', muted: '#5e5c5b', accent: '#2f3b45', accentHover: '#1f2830', onAccent: '#f8f7f5' } },
         { mode: 'dark', colors: { brand: '#0e0e0e', surface: '#161616', elevated: '#1e1e1e', txt: '#f2f2f0', muted: '#9a9a96', accent: '#f2f2f0', accentHover: '#ffffff', onAccent: '#0e0e0e' } }
       ],
-      layouts: { hero: ['split', 'center'], rooms: ['alternating', 'grid'], testimonials: ['single'], amenities: ['list'] }
+      layouts: { hero: ['split', 'center'], rooms: ['alternating', 'grid'], testimonials: ['single'], amenities: ['list'] , audience: ['cards'], location: ['mapLeft', 'mapRight'] }
     },
     boutique: {
       serif: 'Instrument Serif', sans: 'Space Grotesk',
@@ -984,7 +984,7 @@ select option { background: #141414; }
         { mode: 'light', colors: { brand: '#f2ede4', surface: '#e7dfd2', elevated: '#fbf8f2', txt: '#1b1b1b', muted: '#625b52', accent: '#1f5c5c', accentHover: '#164848', onAccent: '#f7f3ec' } },
         { mode: 'dark', colors: { brand: '#1a1218', surface: '#241a22', elevated: '#2e222b', txt: '#f5f0eb', muted: '#b3a39d', accent: '#d9825b', accentHover: '#e5976f', onAccent: '#1a1218' } }
       ],
-      layouts: { hero: ['split', 'full', 'center'], rooms: ['alternating', 'feature', 'grid'], testimonials: ['single', 'cards'], amenities: ['list', 'cards'] }
+      layouts: { hero: ['split', 'full', 'center'], rooms: ['alternating', 'feature', 'grid'], testimonials: ['single', 'cards'], amenities: ['list', 'cards'] , audience: ['band', 'cards'], location: ['mapLeft', 'mapRight'] }
     }
   };
 
@@ -999,7 +999,8 @@ select option { background: #141414; }
     return {
       palette: Math.floor(Math.random() * S.palettes.length),
       hero: pick(S.layouts.hero), rooms: pick(S.layouts.rooms),
-      testimonials: pick(S.layouts.testimonials), amenities: pick(S.layouts.amenities)
+      testimonials: pick(S.layouts.testimonials), amenities: pick(S.layouts.amenities),
+      audience: pick(S.layouts.audience), location: pick(S.layouts.location)
     };
   }
 
@@ -1021,9 +1022,15 @@ select option { background: #141414; }
     beach: '<path d="M12 3a9 9 0 019 9H3a9 9 0 019-9zM12 12v7a2 2 0 01-4 0"/>',
     workspace: '<path d="M4 6h16v10H4zM2 19h20"/>',
     security: '<path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z"/>',
+    heart: '<path d="M12 20s-7-4.35-7-10a4 4 0 017-2.65A4 4 0 0119 10c0 5.65-7 10-7 10z"/>',
+    briefcase: '<path d="M4 8h16v11H4zM9 8V6a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16"/>',
+    compass: '<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>',
+    users: '<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 5.5a3 3 0 010 5.5M18 14c2 .8 3 3 3 6"/>',
+    moon: '<path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/>',
     sparkle: '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/>'
   };
   const LP_ICON_KEYS = Object.keys(LP_ICONS);
+  const LP_ICONS_SVG = (k) => '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">' + LP_ICONS[k] + '</svg>';
 
   const LP_STAR = '<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
   const LP_CHEV_L = '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>';
@@ -1059,7 +1066,8 @@ select option { background: #141414; }
     c = c && typeof c === 'object' ? c : {};
     const o = (k) => (c[k] && typeof c[k] === 'object' ? c[k] : {});
     const ui = o('ui'), meta = o('meta'), hero = o('hero'), ov = o('overview'), rm = o('rooms'), lv = o('living'),
-      od = o('outdoor'), am = o('amenities'), ts = o('testimonials'), cta = o('cta'), ft = o('footer'), bk = o('booking');
+      od = o('outdoor'), am = o('amenities'), ts = o('testimonials'), cta = o('cta'), ft = o('footer'), bk = o('booking'),
+      au = o('audience_section'), lc = o('location'), fq = o('faq');
     const name = ctx.name;
     return {
       ui: {
@@ -1107,6 +1115,18 @@ select option { background: #141414; }
       testimonials: {
         eyebrow: ts.eyebrow || 'Guest Voices', heading: ts.heading || '',
         items: lpArr(ts.items, 2, () => ({ quote: '', name: 'Guest', origin: '', stay: '' }))
+      },
+      audience: {
+        eyebrow: au.eyebrow || 'Made for You', heading: au.heading || '', body: au.body || '', cta: au.cta || '',
+        items: lpArr(au.items, 4, () => ({ icon: 'sparkle', title: '', text: '' }))
+      },
+      location: {
+        eyebrow: lc.eyebrow || 'Location', heading: lc.heading || ctx.location, body: lc.body || '', mapLink: lc.map_link || 'Google Maps',
+        distances: lpArr(lc.distances, 4, () => ({ place: '', time: '' })).filter((d) => d.place)
+      },
+      faq: {
+        eyebrow: fq.eyebrow || 'FAQ', heading: fq.heading || '', body: fq.body || '',
+        items: (Array.isArray(fq.items) ? fq.items : []).filter((x) => x && x.q && x.a).slice(0, 6)
       },
       cta: { eyebrow: cta.eyebrow || '', heading: cta.heading || '', body: cta.body || '', button: cta.button || ctx.cta || 'Book Now' },
       footer: { about: ft.about || '' },
@@ -1177,6 +1197,9 @@ select option { background: #141414; }
     };
     const roomsNum = parseInt(String(ctx.rooms || '').replace(/[^0-9]/g, ''), 10);
     if (roomsNum) schema.numberOfRooms = roomsNum;
+    const schemaOut = c.faq.items.length ? { '@context': 'https://schema.org', '@graph': [Object.assign({}, schema, { '@context': undefined }), {
+      '@type': 'FAQPage', mainEntity: c.faq.items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } }))
+    }] } : schema;
 
     const twConfig = {
       theme: {
@@ -1296,7 +1319,7 @@ select option { background: #141414; }
     const tAvatar = (t) => '<div class="w-11 h-11 rounded-full bg-accent text-onAccent flex items-center justify-center serif font-semibold text-lg">' + e((String(t.name || 'G').trim()[0] || 'G').toUpperCase()) + '</div>';
     const tMeta = (t) => '<div><div class="text-sm font-semibold text-txt">' + e(t.name) + '</div><div class="text-xs text-muted">' + e([t.origin, t.stay].filter(Boolean).join(' · ')) + '</div></div>';
     const stars = '<div class="flex items-center gap-1 text-accent" aria-label="5/5">' + LP_STAR.repeat(5) + '</div>';
-    const testiHeader = `<div class="text-center max-w-xl mx-auto mb-16 ${reveal}">${eb(5, c.testimonials.eyebrow)}${h2(c.testimonials.heading)}</div>`;
+    const testiHeader = `<div class="text-center max-w-xl mx-auto mb-16 ${reveal}">${eb(6, c.testimonials.eyebrow)}${h2(c.testimonials.heading)}</div>`;
     const testiVariants = {
       cards: () => testiHeader + '<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 ' + reveal + '">' + c.testimonials.items.map((t) => `<figure class="bg-brand border border-txt/10 ${S.card} p-8 sm:p-11 shadow-soft flex flex-col justify-between">
         <div><div class="serif text-6xl text-accent leading-none select-none" aria-hidden="true">&ldquo;</div>
@@ -1330,6 +1353,61 @@ select option { background: #141414; }
       </div>
     </div>`
     };
+
+    const icon = (k, size) => '<svg class="' + size + '" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">' + (LP_ICONS[k] || LP_ICONS.sparkle) + '</svg>';
+    const testiBg = V.audience === 'cards' ? 'brand' : 'surface';
+    const locBg = testiBg === 'brand' ? 'surface' : 'brand';
+    const faqBg = locBg === 'brand' ? 'surface' : 'brand';
+    const audVariants = {
+      cards: () => `<section id="for-you" class="bg-surface py-24 lg:py-36">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <div class="lg:col-span-5 ${reveal}">${eb(5, c.audience.eyebrow)}${h2(c.audience.heading)}<p class="text-muted mt-5 leading-relaxed">${e(c.audience.body)}</p>
+      ${c.audience.cta ? '<button type="button" onclick="openBookingModal(LP_FIRST)" class="mt-8 ' + btnPrimary + ' px-8 py-3.5">' + e(c.audience.cta) + '</button>' : ''}</div>
+    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5 ${reveal}">
+      ${c.audience.items.map((it) => '<div class="bg-brand border border-txt/10 ' + S.card + ' p-7 shadow-soft"><div class="w-12 h-12 rounded-full bg-accent/10 text-accent flex items-center justify-center">' + icon(it.icon, 'w-6 h-6') + '</div><h3 class="serif text-2xl ' + S.head + ' text-txt mt-5">' + e(it.title) + '</h3><p class="text-sm text-muted mt-2 leading-relaxed">' + e(it.text) + '</p></div>').join('')}
+    </div>
+  </div>
+</section>`,
+      band: () => `<section id="for-you" class="bg-accent text-onAccent py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-2xl mx-auto text-center ${reveal}">
+      <div class="${S.eyebrow} mb-3 opacity-80">${num(5)} · ${e(c.audience.eyebrow)}</div>
+      <h2 class="serif text-4xl sm:text-5xl ${S.head} leading-[1.1]">${e(c.audience.heading)}</h2>
+      <p class="mt-5 leading-relaxed opacity-85">${e(c.audience.body)}</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-16 ${reveal}">
+      ${c.audience.items.map((it) => '<div class="text-center sm:text-left"><div class="w-12 h-12 rounded-full border flex items-center justify-center mx-auto sm:mx-0" style="border-color:currentColor;opacity:.9">' + icon(it.icon, 'w-6 h-6') + '</div><h3 class="serif text-2xl ' + S.head + ' mt-5">' + e(it.title) + '</h3><p class="text-sm mt-2 leading-relaxed opacity-85">' + e(it.text) + '</p></div>').join('')}
+    </div>
+    ${c.audience.cta ? '<div class="text-center mt-14"><button type="button" onclick="openBookingModal(LP_FIRST)" class="bg-onAccent text-accent hover:opacity-90 ' + S.btn + ' ' + S.btnText + ' px-9 py-4 transition-opacity">' + e(c.audience.cta) + '</button></div>' : ''}
+  </div>
+</section>`
+    };
+
+    const mapQ = encodeURIComponent(ctx.location);
+    const mapBlock = `<div class="relative ${S.card} overflow-hidden border border-txt/10 shadow-soft min-h-[360px] lg:min-h-[460px] bg-${locBg === 'brand' ? 'surface' : 'brand'}">
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-muted gap-3">${icon('location', 'w-8 h-8')}<span class="text-sm">${e(ctx.location)}</span></div>
+        <iframe class="lp-map absolute inset-0 w-full h-full" src="https://maps.google.com/maps?q=${mapQ}&z=11&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="${e(ctx.location)}"></iframe>
+      </div>`;
+    const locationHTML = () => {
+      const textCol = `<div class="${reveal}">${eb(7, c.location.eyebrow)}${h2(c.location.heading)}<p class="text-muted mt-5 leading-relaxed">${e(c.location.body)}</p>
+        <ul class="mt-8 border-t border-txt/10">${c.location.distances.map((d) => '<li class="flex items-center justify-between gap-6 py-4 border-b border-txt/10"><span class="flex items-center gap-3 text-txt"><span class="text-accent">' + LP_ICONS_SVG('location') + '</span>' + e(d.place) + '</span><span class="serif text-xl text-accent whitespace-nowrap">' + e(d.time) + '</span></li>').join('')}</ul>
+        <a href="https://www.google.com/maps/search/?api=1&query=${mapQ}" target="_blank" rel="noopener" class="inline-flex mt-8 text-xs uppercase tracking-[0.18em] text-accent hover:text-accentHover border-b border-accent/40 pb-1.5">${e(c.location.mapLink)} →</a></div>`;
+      const mapCol = `<div class="${reveal}">${mapBlock}</div>`;
+      return `<section id="location" class="bg-${locBg} py-24 lg:py-36">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    ${V.location === 'mapLeft' ? mapCol + textCol : textCol + mapCol}
+  </div>
+</section>`;
+    };
+
+    const faqHTML = () => !c.faq.items.length ? '' : `<section id="faq" class="bg-${faqBg} py-24 lg:py-36">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+    <div class="lg:col-span-4 lg:sticky lg:top-28 self-start ${reveal}">${eb(8, c.faq.eyebrow)}${h2(c.faq.heading)}${c.faq.body ? '<p class="text-muted mt-5 leading-relaxed">' + e(c.faq.body) + '</p>' : ''}</div>
+    <div class="lg:col-span-8 border-t border-txt/10 ${reveal}">
+      ${c.faq.items.map((f, i) => '<details class="group border-b border-txt/10"' + (i === 0 ? ' open' : '') + '><summary class="flex items-center justify-between gap-6 py-6 cursor-pointer"><span class="serif text-xl sm:text-2xl ' + S.head + ' text-txt group-hover:text-accent transition-colors">' + e(f.q) + '</span><span class="shrink-0 w-9 h-9 rounded-full border border-txt/20 flex items-center justify-center text-accent transition-transform duration-300 group-open:rotate-45"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></span></summary><p class="text-muted leading-relaxed pb-6 pr-12">' + e(f.a) + '</p></details>').join('')}
+    </div>
+  </div>
+</section>`;
 
     const pageScript = [
       'var LP_SLIDES=' + safeJSON(slides) + ';',
@@ -1391,10 +1469,12 @@ select option { background: #141414; }
 .group:hover .img-zoom{transform:scale(1.05)}
 @keyframes hotspotPulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(2.1);opacity:0}}
 .hotspot-ring{animation:hotspotPulse 2.6s infinite ease-out}
+details summary::-webkit-details-marker{display:none}details summary{list-style:none}
+.lp-map{filter:${dark ? 'grayscale(.35) invert(.92) hue-rotate(180deg) contrast(.92)' : 'grayscale(.25) contrast(.95)'}}
 ${dark ? 'input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.85);cursor:pointer}' : ''}
 ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-thumb{background:${C.accent};border-radius:4px}::-webkit-scrollbar-track{background:${C.brand}}
 </style>
-<script type="application/ld+json">${safeJSON(schema)}<\/script>
+<script type="application/ld+json">${safeJSON(schemaOut)}<\/script>
 </head>
 <body class="bg-brand text-txt font-sans antialiased selection:bg-accent selection:text-onAccent">
 
@@ -1514,11 +1594,17 @@ ${(heroVariants[V.hero] || heroVariants.full)()}
   </div>
 </section>
 
-<section id="testimonials" class="bg-surface py-24 lg:py-36">
+${c.audience.items.some((it) => it.title) ? (audVariants[V.audience] || audVariants.cards)() : ''}
+
+<section id="testimonials" class="bg-${testiBg} py-24 lg:py-36">
   <div class="max-w-6xl mx-auto px-6 lg:px-10">
     ${(testiVariants[V.testimonials] || testiVariants.cards)()}
   </div>
 </section>
+
+${locationHTML()}
+
+${faqHTML()}
 
 <section id="booking" class="relative py-28 lg:py-36 overflow-hidden text-center">
   <img src="${LP_IMG(LP_PHOTOS.cta, 2200)}" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
@@ -1633,6 +1719,9 @@ Return ONLY a JSON object with exactly this structure:
   "outdoor": { "eyebrow": "", "heading": "", "body": "1-2 sentences", "hotspots": [ {"tag": "2 words", "title": "2-4 words", "text": "max 14 words"}, {} ], "features": [ {"title": "2-4 words", "text": "max 8 words"}, {}, {} ] },
   "amenities": { "eyebrow": "", "heading": "", "body": "1 sentence", "items": [ {"icon": "one of: ${LP_ICON_KEYS.join(', ')}", "label": "1-3 words"} ] },
   "testimonials": { "eyebrow": "", "heading": "", "items": [ {"quote": "2 sentences mentioning specific details of this property", "name": "First name + initial", "origin": "City, Country", "stay": "room type name"}, {} ] },
+  "audience_section": { "eyebrow": "1-3 words", "heading": "max 7 words, speaks directly to ${p.audience}", "body": "2 sentences on why this property suits ${p.audience}", "cta": "2-4 words", "items": [ {"icon": "one of the icon keys", "title": "2-4 words", "text": "1 sentence, max 18 words"}, {}, {}, {} ] },
+  "location": { "eyebrow": "1-2 words", "heading": "max 7 words", "body": "2 sentences about the surroundings", "map_link": "e.g. Open in Google Maps", "distances": [ {"place": "real nearby place: airport, beach, old town, attraction", "time": "e.g. 25 min"}, {}, {}, {} ] },
+  "faq": { "eyebrow": "1-2 words", "heading": "max 6 words", "body": "1 sentence", "items": [ {"q": "a question guests really ask before booking", "a": "1-2 sentences"}, {}, {}, {}, {} ] },
   "cta": { "eyebrow": "2-4 words", "heading": "max 5 words", "body": "1-2 sentences with concrete direct-booking perks", "button": "${p.cta}" },
   "footer": { "about": "1-2 sentences" },
   "booking": { "requests": ["4 special request options, first one means no special requests"] }
@@ -1640,6 +1729,8 @@ Return ONLY a JSON object with exactly this structure:
 
 RULES
 - rooms.items: exactly 4 different room types (for a private villa: 4 bedrooms or spaces). amenities.items: exactly 10, each with a DIFFERENT icon key from the list (icon keys stay in English). testimonials.items: exactly 2 guests from different countries.
+- audience_section: 4 concrete benefits for ${p.audience} (e.g. honeymooners: privacy and romantic rituals; families: kids club, family suites, safety; digital nomads: workspace, fast Wi-Fi, long stays; corporate retreats: meeting space, team activities; wellness seekers: spa, yoga, healthy food; solo travelers: safety, community, experiences). Use icon keys that fit.
+- location.distances: 4 real places near ${p.location} with realistic travel times. faq.items: exactly 5. FAQ answers must not invent prices, deposit amounts or cancellation terms; for policies say they are confirmed at booking.
 - "living" is the property's signature indoor space: villa = living pavilion/lounge, hotel = restaurant or lounge bar, resort = spa or clubhouse.
 - Every line must be specific to ${p.name} in ${p.location} and to the audience. No filler such as "welcome to our hotel", "luxury awaits", "home away from home".
 - Base claims on the selling points. Prices and sizes must be realistic for the location.
@@ -1733,7 +1824,7 @@ RULES
         body: JSON.stringify(Object.assign({
           model: 'gpt-4o-mini',
           messages: [{ role: 'user', content: prompt }],
-          max_tokens: tplCtx ? 4000 : (currentMode === 'landing' ? 8000 : 2500),
+          max_tokens: tplCtx ? 5500 : (currentMode === 'landing' ? 8000 : 2500),
           temperature: tplCtx ? 0.8 : 0.75
         }, tplCtx ? { response_format: { type: 'json_object' } } : {}))
       });
