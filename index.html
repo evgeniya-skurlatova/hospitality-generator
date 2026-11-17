@@ -464,7 +464,7 @@ select option { background: #141414; }
       <input type="password" id="apiKey" placeholder="Paste your OpenAI API key here" />
       <button class="btn-secondary" onclick="toggleKey()">Show</button>
     </div>
-    <p style="font-size:0.73rem;color:var(--muted);font-family:sans-serif;margin-top:9px;">Stored only in your browser — never sent to our servers. &nbsp;·&nbsp; <a href="https://platform.openai.com/api-keys" target="_blank" style="color:var(--accent);text-decoration:none;">Get a free key →</a></p>
+    <p style="font-size:0.73rem;color:var(--muted);font-family:sans-serif;margin-top:9px;">Stored only in your browser — never sent to our servers. &nbsp;·&nbsp; <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">Get an API key →</a></p>
   </div>
 
   <!-- MODE SWITCHER -->
@@ -699,7 +699,7 @@ select option { background: #141414; }
           </ul>
         </div>
         <div class="promo-cta">
-          <a href="https://fortune-thailand.com/" target="_blank" class="btn-promo">Get a Custom Website →</a>
+          <a href="https://fortune-thailand.com/" target="_blank" rel="noopener noreferrer" class="btn-promo">Get a Custom Website →</a>
           <p class="promo-note">Fortune International Thailand<br>Web development agency · Phuket</p>
         </div>
       </div>
@@ -733,7 +733,7 @@ select option { background: #141414; }
         <div class="iframe-dot"></div>
         <div class="iframe-url" id="iframeUrl">hospitality-generator.vercel.app · preview</div>
       </div>
-      <iframe id="lpFrame" sandbox="allow-same-origin allow-scripts"></iframe>
+      <iframe id="lpFrame" sandbox="allow-scripts"></iframe>
     </div>
     <div class="regenerate-row">
       <button class="btn-regen" onclick="generate()">
@@ -759,7 +759,7 @@ select option { background: #141414; }
           </ul>
         </div>
         <div class="promo-cta">
-          <a href="https://fortune-thailand.com/" target="_blank" class="btn-promo">Get a Custom Website →</a>
+          <a href="https://fortune-thailand.com/" target="_blank" rel="noopener noreferrer" class="btn-promo">Get a Custom Website →</a>
           <p class="promo-note">Fortune International Thailand<br>Web development agency · Phuket</p>
         </div>
       </div>
@@ -932,77 +932,151 @@ select option { background: #141414; }
       const roomImg1 = `https://picsum.photos/seed/${seed2}/800/600`;
       const roomImg2 = `https://picsum.photos/seed/${seed3}/800/600`;
       const roomImg3 = `https://picsum.photos/seed/${seed4}/800/600`;
-      prompt = `You are a senior front-end developer and luxury hospitality designer. Build a pixel-perfect, production-ready HTML landing page. This must look like a $5,000 custom agency design — not a template.
+      prompt = `You are a world-class front-end developer and luxury hospitality designer at a top-tier agency. Build a stunning, production-ready single-file HTML landing page. This must look like a $10,000 bespoke design — refined, editorial, and deeply specific to this property. Every word of copy must feel written by a professional copywriter who visited the property.
 
-PROPERTY:
+PROPERTY BRIEF:
 - Type: ${propType}
 - Name: ${propLabel}
 - Location: ${location}
 - Rooms/Units: ${rooms || 'not specified'}
 - Style/Vibe: ${style}
 - Target audience: ${audience}
-- USPs: ${usp}
-- Primary CTA: ${cta}
-- Language: ${lang}
+- Unique selling points: ${usp}
+- Primary CTA text: "${cta}"
+- Page language: ${lang}
 
-HERO IMAGE URL (use this exact src): ${heroImg}
-ROOM IMAGE URLs: ${roomImg1} | ${roomImg2} | ${roomImg3}
+IMAGES — use these exact URLs, do not change them:
+- Hero: ${heroImg}
+- Room 1: ${roomImg1}
+- Room 2: ${roomImg2}
+- Room 3: ${roomImg3}
 
-═══ HARD RULES — NEVER VIOLATE ═══
-1. Output ONLY raw HTML starting with <!DOCTYPE html>. Zero markdown. Zero code fences. Zero explanation.
-2. All CSS in one <style> block in <head>. No external CSS. No CDN.
-3. Google Fonts allowed: add ONE @import in <style> — use "Playfair Display" for headings and "Inter" for body.
-4. Hero section MUST use a real <img> tag with src="${heroImg}" covering full viewport (object-fit:cover, position:absolute, width:100%, height:100%). Overlay with semi-transparent gradient on top of the image.
-5. Room cards MUST use real <img> tags with the room image URLs above.
-6. SVG ICONS — CRITICAL: every icon must be a self-contained <svg> element written directly in HTML. Use ONLY these exact safe icons (copy verbatim):
-   - Bed: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20v-8a2 2 0 012-2h16a2 2 0 012 2v8"/><path d="M2 14h20"/><path d="M6 14V9a1 1 0 011-1h4a1 1 0 011 1v5"/></svg>
-   - Pool: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h20M2 17c2-2 4 2 6 0s4-2 6 0 4 2 6 0"/><circle cx="12" cy="7" r="3"/></svg>
-   - Location: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-   - Wifi: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
-   - Spa: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s-8-5.4-8-11a8 8 0 0116 0c0 5.6-8 11-8 11z"/><path d="M12 11c0-2 1.5-4 4-5-1 3-2 4-4 5z"/><path d="M12 11c0-2-1.5-4-4-5 1 3 2 4 4 5z"/></svg>
-   - Star: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-   - Coffee: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-   - Concierge: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-   NEVER use icon font characters, Unicode symbols, emoji, or &#x codes for icons.
+════════════════════════════════
+RULE 1 — OUTPUT FORMAT
+════════════════════════════════
+Output ONLY the raw HTML document. Start with <!DOCTYPE html>. No markdown, no code fences, no explanations before or after. The very first character must be < and last must be >.
 
-7. ══ COLOR PALETTE — MANDATORY ══
-   The style is "${style}". You MUST use the exact colors below for this style. DO NOT use any other color scheme.
-   - luxury → body background #0a0f1e (very dark navy), main text #f0ebe0 (warm cream), accent/buttons #c9a96e (gold), section alternates #111827 (dark slate)
-   - eco → body background #f4f1eb (warm off-white), main text #2c2c2c (dark charcoal), accent/buttons #6b8f71 (forest green), section alternates #eae5d8 (light taupe)
-   - wellness → body background #f9f6f1 (cream), main text #2c2c2c, accent/buttons #8b7355 (warm brown), section alternates #edf2ed (sage tint)
-   - romantic → body background #faf5f0 (ivory), main text #2a1a1a (deep brown), accent/buttons #b87a7a (dusty rose), section alternates #f0e8e0 (blush)
-   - minimalist → body background #ffffff (pure white), main text #111111 (near black), accent/buttons #2d2d2d (dark), section alternates #f7f7f5 (off-white)
-   - adventure → body background #0f1a0f (dark forest), main text #e8f0e8 (pale green-white), accent/buttons #d4a843 (amber), section alternates #1a2a1a (dark green)
-   - boutique → body background #f2ede4 (warm sand), main text #1a1a1a (black), accent/buttons #2d5f5f (teal), section alternates #e8e0d4 (pale sand)
-   - artsy → body background #1a1218 (dark plum), main text #f5f0eb (pale cream), accent/buttons #c47b5a (terracotta), section alternates #231820 (dark mauve)
-   CRITICAL: The current style is "${style}". If style is eco, wellness, romantic, minimalist, or boutique — use a LIGHT background (not dark navy). Only luxury, adventure, artsy use dark backgrounds.
+════════════════════════════════
+RULE 2 — FONTS & STYLES
+════════════════════════════════
+Single <style> block in <head>. No external CSS files. No CDN links except ONE Google Fonts @import:
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+- Headings: 'Playfair Display', Georgia, serif
+- Body: 'Inter', system-ui, sans-serif — font-weight: 300 or 400, line-height: 1.8
+- Section eyebrow labels: uppercase, letter-spacing: 0.18em, font-size: 0.72rem, font-family: Inter, font-weight: 500
 
-8. SECTIONS — build all 8 in this order:
-   a) NAV — sticky, transparent on hero with property name left, CTA button right, blur backdrop on scroll (use JS scroll listener + class)
-   b) HERO — full viewport height. <img> tag as background (position:absolute, inset:0, w:100%, h:100%, object-fit:cover). Gradient overlay. Large centered heading (3.5–4.5rem), elegant subtitle, CTA button. Add a subtle down-arrow animation.
-   c) ABOUT — 2-column: left side has large decorative number or quote mark + stat, right side has heading + 2 paragraphs of story copy. Max-width 1100px centered.
-   d) FEATURES — 3-column grid. Each card: SVG icon (from list above) + bold title + short description. Subtle card border or shadow.
-   e) ROOMS — 2 or 3 cards. Each card has <img> (from room URLs), room name, description, "from $X/night", CTA button. Cards in a responsive grid.
-   f) AMENITIES — icon grid 4-col or 5-col. Each item: SVG icon + label. Clean, airy layout.
-   g) TESTIMONIALS — 2 quote cards. Large opening quote mark ("), guest quote, name, country, ★★★★★. Subtle card styling.
-   h) LOCATION — map-pin SVG + address text. Brief paragraph on how to reach the property.
-   i) BOOKING CTA — full-width section, large heading, subtext, prominent button. Dark or accent background.
-   j) FOOTER — property name, tagline, 3 social links as plain text. NO copyright year. NO "All rights reserved".
+════════════════════════════════
+RULE 3 — COLOR PALETTE (MANDATORY — style is "${style}")
+════════════════════════════════
+Use ONLY these exact hex values for the "${style}" style:
+- luxury   → --bg:#0a0f1e  --bg2:#111827  --text:#f0ebe0  --muted:#8a8070  --accent:#c9a96e  --accent2:#a07840
+- eco      → --bg:#f4f1eb  --bg2:#eae5d8  --text:#2c2c2c  --muted:#6b6559  --accent:#5a7a5f  --accent2:#3d5c41
+- wellness → --bg:#f9f6f1  --bg2:#edf2ed  --text:#2c2c2c  --muted:#7a6e62  --accent:#8b7355  --accent2:#6b5840
+- romantic → --bg:#faf5f0  --bg2:#f0e8e0  --text:#2a1a1a  --muted:#8a6a6a  --accent:#b87a7a  --accent2:#8f5555
+- minimalist→--bg:#ffffff  --bg2:#f7f7f5  --text:#111111  --muted:#666666  --accent:#1a1a1a  --accent2:#444444
+- adventure → --bg:#0f1a0f  --bg2:#1a2a1a  --text:#e8f0e8  --muted:#7a9070  --accent:#d4a843  --accent2:#a87e28
+- boutique → --bg:#f2ede4  --bg2:#e8e0d4  --text:#1a1a1a  --muted:#6a6055  --accent:#2d5f5f  --accent2:#1a4040
+- artsy    → --bg:#1a1218  --bg2:#231820  --text:#f5f0eb  --muted:#8a7a72  --accent:#c47b5a  --accent2:#9a5a3a
+LIGHT BACKGROUNDS (eco, wellness, romantic, minimalist, boutique): nav text is dark, hero overlay is light-to-transparent.
+DARK BACKGROUNDS (luxury, adventure, artsy): nav text is light, hero overlay is dark gradient.
 
-9. TYPOGRAPHY:
-   - Headings: "Playfair Display", Georgia, serif — 2.5rem to 4.5rem
-   - Body: "Inter", system-ui, sans-serif — 1rem, line-height 1.75
-   - Letter-spacing on section labels: 0.15em uppercase, font-size 0.75rem
-   - Section labels styled as small gold/accent uppercase tags above headings
+════════════════════════════════
+RULE 4 — SVG ICONS (copy these verbatim, never invent icons)
+════════════════════════════════
+Bed: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20v-8a2 2 0 012-2h16a2 2 0 012 2v8"/><path d="M2 14h20"/><path d="M6 14V9a1 1 0 011-1h4a1 1 0 011 1v5"/></svg>
+Pool: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h20M2 17c2-2 4 2 6 0s4-2 6 0 4 2 6 0"/><circle cx="12" cy="7" r="3"/></svg>
+Location: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+Wifi: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
+Spa: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s-8-5.4-8-11a8 8 0 0116 0c0 5.6-8 11-8 11z"/><path d="M12 11c0-2 1.5-4 4-5-1 3-2 4-4 5z"/><path d="M12 11c0-2-1.5-4-4-5 1 3 2 4 4 5z"/></svg>
+Star: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+Coffee: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+Concierge: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+NEVER use emoji, Unicode symbols ✓ ★ ♥, icon fonts, or &#x; codes anywhere.
 
-10. SPACING: section padding 100px top/bottom. Card gaps 32px. Max content width 1200px centered.
-11. ANIMATIONS: CSS transitions on buttons (0.3s), card hover (translateY -4px + shadow). JS scroll class for nav only.
-12. MOBILE: full responsive. At 768px: single column. Hero heading 2.2rem. Nav collapses gracefully.
-13. All text, headings, and copy in ${lang}. CTA buttons say "${cta}".
-14. Footer: NO year, NO "All rights reserved", NO copyright symbol.
-15. Write real, evocative copy based on the property details — not placeholder text.
+════════════════════════════════
+RULE 5 — PAGE SECTIONS (build all 10 in this order)
+════════════════════════════════
 
-Output ONLY the complete HTML document starting with <!DOCTYPE html>. Nothing else.`;
+A) NAV — sticky, position:fixed, top:0, full width, z-index:1000.
+   Initially: transparent background, no shadow.
+   On scroll (JS adds class .scrolled): background var(--bg) with backdrop-filter:blur(16px), border-bottom 1px solid rgba(accent,0.15).
+   Left: property name in Playfair Display italic. Right: CTA button (small, outlined style).
+
+B) HERO — height:100vh, position:relative, overflow:hidden.
+   <img src="${heroImg}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0">
+   Gradient overlay div above img (z-index:1): for dark styles use linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%); for light styles use linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.35) 60%).
+   Content (z-index:2, centered): small eyebrow label → property location in accent color; large Playfair Display heading 4rem–5rem in white/cream; elegant italic subtitle 1.3rem; two buttons side by side (primary filled + secondary ghost outline).
+   Bottom: animated scroll indicator (bouncing chevron-down SVG).
+   HERO STATS BAR — just below hero content, 3 stats side by side separated by thin vertical lines: e.g. "15 Years of Excellence · 48 Suites · 4.9★ Rating". Use numbers from the property data.
+
+C) ABOUT — 2-column asymmetric layout, max-width:1100px, centered, padding 100px 0.
+   Left col (40%): huge decorative numeral or " quote mark in accent color (font-size:12rem, opacity:0.15 as background element) overlaid with a key stat (e.g. "Est. 2009" or "60 Rooms") in bold and 2-line description.
+   Right col (60%): eyebrow label, Playfair Display h2, 2 paragraphs of genuine story copy about the property's history, philosophy, and what makes it special. Write based on the USPs provided — not generic filler.
+
+D) FEATURES — eyebrow + h2 centered, then 3-column card grid (gap:28px).
+   Each card: accent-colored SVG icon (40px container), bold title, 2-sentence description.
+   Cards have subtle border (1px solid rgba(accent,0.2)), border-radius:12px, padding:32px, hover: translateY(-6px) + stronger shadow (transition:0.3s).
+   Feature titles and descriptions must reflect the actual USPs, not generic "luxury experience" copy.
+
+E) ROOMS — eyebrow + h2 centered, then 3-column card grid.
+   Card structure: image wrapper (height:260px, overflow:hidden, border-radius:12px 12px 0 0) → <img src="ROOM_URL" style="width:100%;height:100%;object-fit:cover;transition:transform 0.6s"> card hover zooms image (transform:scale(1.05)).
+   Below image: padding:24px. Room name (Playfair Display, 1.3rem). 2-line description. Price "from $X / night" in accent color. CTA button full-width.
+   Add a badge on one card: position:absolute top:16px left:16px, background:accent, color:bg, text "Most Popular" or "Sea View" — relevant to the property.
+
+F) PHOTO STRIP — full-width section, no padding top/bottom, height:340px.
+   CSS grid: 4 columns. Each cell: overflow:hidden. <img> fills each cell (width:100%, height:100%, object-fit:cover).
+   Use: ${heroImg}, ${roomImg1}, ${roomImg2}, ${roomImg3} — same images, different crops via object-position.
+   On mobile: 2 columns, height:220px.
+
+G) AMENITIES — eyebrow + h2 centered, then icon grid 5-col desktop / 3-col tablet / 2-col mobile.
+   Each item: SVG icon (from list above) in a 48px accent-tinted circle bg, label below. Use 10 amenities relevant to the property type and USPs.
+
+H) TESTIMONIALS — eyebrow + h2 centered, 2-column card layout.
+   Each card: large " in accent (font-size:4rem, line-height:1), guest quote (2-3 sentences, specific, authentic-sounding), guest name + country, 5 filled star SVGs. Card bg: var(--bg2), border-radius:16px, padding:40px.
+
+I) BOOKING CTA — full-bleed section, background: var(--accent) or accent gradient.
+   Large centered heading (Playfair Display italic), 1-line subtext, oversized CTA button with contrasting colors. Add subtle texture via CSS (repeating-linear-gradient or box-shadow layering).
+
+J) FOOTER — 3-column layout: left (property name + tagline + location), center (3–4 nav links as plain text), right (3 social platform names as styled text links). Thin top border. NO year, NO "All rights reserved", NO ©.
+
+════════════════════════════════
+RULE 6 — SCROLL ANIMATIONS
+════════════════════════════════
+Add IntersectionObserver in a <script> at bottom of body:
+- All section headings, cards, and stat items get class .reveal
+- CSS: .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s ease, transform 0.65s ease; }
+- CSS: .reveal.visible { opacity:1; transform:none; }
+- JS observer adds .visible when element enters viewport (threshold:0.15)
+- Stagger cards with transition-delay: 0s, 0.1s, 0.2s using nth-child
+
+════════════════════════════════
+RULE 7 — SPACING & LAYOUT
+════════════════════════════════
+- Section padding: 110px top/bottom
+- Max content width: 1200px, margin:0 auto, padding:0 48px
+- Card grids: gap:32px
+- Mobile (≤768px): single column, section padding 60px, hero heading 2.4rem, padding:0 20px
+
+════════════════════════════════
+RULE 8 — COPY QUALITY (CRITICAL)
+════════════════════════════════
+Every word of copy must be specific to THIS property. Use the property name "${propLabel}", location "${location}", style "${style}", audience "${audience}", and USPs "${usp}" throughout.
+- NO generic phrases like "Welcome to our hotel", "Luxury experience awaits", "Your home away from home"
+- YES to specific details: reference the actual location's character, the property's specific offerings, authentic emotional triggers for the target audience
+- Testimonial quotes must sound like real guests wrote them — specific details, not "Amazing stay!"
+- All copy, all labels, all buttons in ${lang}
+
+════════════════════════════════
+RULE 9 — TECHNICAL QUALITY
+════════════════════════════════
+- All images: loading="lazy" except hero (loading="eager")
+- All buttons: cursor:pointer, transition:all 0.3s, no outline on focus (add custom focus-visible style)
+- Smooth scroll: html { scroll-behavior: smooth }
+- Nav active scroll JS: window.addEventListener('scroll', () => document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 60))
+- NO inline event handlers (onclick="...") — use addEventListener in script block
+- NO placeholder comments like <!-- Add content here -->
+
+Output ONLY the complete HTML document. First character: <. Last character: >.`;
     }
 
     document.getElementById('loadingMsg').textContent = loadingMsg;
