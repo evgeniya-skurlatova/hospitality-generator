@@ -533,6 +533,16 @@ select option { background: #141414; }
       <button type="button" class="chip" data-val="adventure" aria-pressed="false">Adventure</button>
       <button type="button" class="chip" data-val="minimalist design" aria-pressed="false">Minimalist</button>
       <button type="button" class="chip" data-val="boutique artsy" aria-pressed="false">Boutique / Artsy</button>
+      <button type="button" class="chip" data-val="tropical" aria-pressed="false">Tropical</button>
+      <button type="button" class="chip" data-val="mediterranean" aria-pressed="false">Mediterranean</button>
+      <button type="button" class="chip" data-val="japandi" aria-pressed="false">Japandi</button>
+      <button type="button" class="chip" data-val="desert / moroccan" aria-pressed="false">Desert / Moroccan</button>
+      <button type="button" class="chip" data-val="alpine chalet" aria-pressed="false">Alpine Chalet</button>
+      <button type="button" class="chip" data-val="urban loft" aria-pressed="false">Urban Loft</button>
+      <button type="button" class="chip" data-val="art deco" aria-pressed="false">Art Deco</button>
+      <button type="button" class="chip" data-val="coastal / nautical" aria-pressed="false">Coastal</button>
+      <button type="button" class="chip" data-val="heritage / colonial" aria-pressed="false">Heritage</button>
+      <button type="button" class="chip" data-val="retro / mid-century" aria-pressed="false">Retro</button>
     </div>
   </div>
 
@@ -985,12 +995,153 @@ select option { background: #141414; }
         { mode: 'dark', colors: { brand: '#1a1218', surface: '#241a22', elevated: '#2e222b', txt: '#f5f0eb', muted: '#b3a39d', accent: '#d9825b', accentHover: '#e5976f', onAccent: '#1a1218' } }
       ],
       layouts: { hero: ['split', 'full', 'center'], rooms: ['alternating', 'feature', 'grid'], testimonials: ['single', 'cards'], amenities: ['list', 'cards'] , audience: ['band', 'cards'], location: ['mapLeft', 'mapRight'] , overview: ['mosaic', 'slideshow', 'statsBand'], living: ['split', 'overlay', 'banner'], outdoor: ['gallery', 'hotspots', 'splitList'], cta: ['split', 'image', 'minimal'], footer: ['big', 'columns'] }
+    },
+    tropical: {
+      serif: 'Prata', sans: 'Manrope',
+      fontHref: 'family=Prata&family=Manrope:wght@300;400;500;600',
+      head: 'font-normal tracking-tight', quote: '',
+      card: 'rounded-3xl', big: 'rounded-[36px]', input: 'rounded-xl', btn: 'rounded-full',
+      btnText: 'text-xs uppercase tracking-[0.18em] font-semibold',
+      eyebrow: 'text-xs uppercase tracking-[0.22em] font-semibold',
+      palettes: [
+        { mode: 'dark', colors: { brand: '#0d1c17', surface: '#13271f', elevated: '#1a3329', txt: '#eef3ec', muted: '#9db3a7', accent: '#f2a07b', accentHover: '#f6b495', onAccent: '#0d1c17' } },
+        { mode: 'light', colors: { brand: '#fbf7f0', surface: '#f1e9db', elevated: '#ffffff', txt: '#10302a', muted: '#51665f', accent: '#0b6e6b', accentHover: '#085a57', onAccent: '#ffffff' } },
+        { mode: 'dark', colors: { brand: '#0a1f24', surface: '#0f2b31', elevated: '#15373e', txt: '#eef6f5', muted: '#93b3b2', accent: '#e9c46a', accentHover: '#f0d388', onAccent: '#0a1f24' } }
+      ],
+      layouts: { hero: ['full', 'center', 'split'], rooms: ['grid', 'feature', 'alternating'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'], audience: ['cards', 'band'], location: ['mapLeft', 'mapRight'], overview: ['mosaic', 'slideshow', 'statsBand'], living: ['banner', 'overlay', 'split'], outdoor: ['hotspots', 'gallery'], cta: ['image', 'split'], footer: ['big', 'columns'] }
+    },
+    mediterranean: {
+      serif: 'Forum', sans: 'Jost',
+      fontHref: 'family=Forum&family=Jost:wght@300;400;500;600',
+      head: 'font-normal tracking-[0.01em]', quote: '',
+      card: 'rounded-2xl', big: 'rounded-[28px]', input: 'rounded-lg', btn: 'rounded-full',
+      btnText: 'text-xs uppercase tracking-[0.2em] font-medium',
+      eyebrow: 'text-xs uppercase tracking-[0.24em] font-medium',
+      palettes: [
+        { mode: 'light', colors: { brand: '#fbfaf7', surface: '#eef1f4', elevated: '#ffffff', txt: '#13233a', muted: '#55637a', accent: '#1d4e89', accentHover: '#163d6c', onAccent: '#ffffff' } },
+        { mode: 'light', colors: { brand: '#faf4ec', surface: '#f1e5d6', elevated: '#fffaf4', txt: '#2c1d15', muted: '#6f5c4e', accent: '#a2472a', accentHover: '#873a21', onAccent: '#fff8f2' } },
+        { mode: 'dark', colors: { brand: '#0f1b2d', surface: '#15243a', elevated: '#1c2e48', txt: '#f3efe6', muted: '#a3adbd', accent: '#e3b873', accentHover: '#ecc88f', onAccent: '#0f1b2d' } }
+      ],
+      layouts: { hero: ['center', 'full', 'split'], rooms: ['alternating', 'grid', 'feature'], testimonials: ['single', 'cards'], amenities: ['cards', 'list'], audience: ['cards', 'band'], location: ['mapLeft', 'mapRight'], overview: ['statsBand', 'mosaic', 'slideshow'], living: ['split', 'banner', 'overlay'], outdoor: ['gallery', 'splitList', 'hotspots'], cta: ['image', 'minimal', 'split'], footer: ['big', 'columns'] }
+    },
+    japandi: {
+      serif: 'Spectral', sans: 'Onest',
+      fontHref: 'family=Spectral:ital,wght@0,300;0,400;1,300;1,400&family=Onest:wght@300;400;500;600',
+      head: 'font-light tracking-tight', quote: 'italic',
+      card: 'rounded-md', big: 'rounded-lg', input: 'rounded-sm', btn: 'rounded-sm',
+      btnText: 'text-xs uppercase tracking-[0.2em] font-medium',
+      eyebrow: 'text-[11px] uppercase tracking-[0.28em] font-medium',
+      palettes: [
+        { mode: 'light', colors: { brand: '#f4f0e8', surface: '#ebe5da', elevated: '#faf8f3', txt: '#2a2723', muted: '#67605a', accent: '#4f5d4d', accentHover: '#3f4b3e', onAccent: '#f4f0e8' } },
+        { mode: 'dark', colors: { brand: '#1c1b19', surface: '#24231f', elevated: '#2d2b27', txt: '#ece6dc', muted: '#a39b8f', accent: '#c8b393', accentHover: '#d6c4a8', onAccent: '#1c1b19' } },
+        { mode: 'light', colors: { brand: '#efe8dc', surface: '#e3d9c9', elevated: '#f7f2ea', txt: '#2b241c', muted: '#6a5e51', accent: '#7a5534', accentHover: '#63452a', onAccent: '#f7f2ea' } }
+      ],
+      layouts: { hero: ['split', 'center'], rooms: ['alternating', 'grid'], testimonials: ['single'], amenities: ['list'], audience: ['cards'], location: ['mapLeft', 'mapRight'], overview: ['statsBand', 'mosaic'], living: ['split', 'banner'], outdoor: ['splitList', 'gallery'], cta: ['minimal', 'split'], footer: ['big', 'columns'] }
+    },
+    desert: {
+      serif: 'Alegreya', sans: 'Commissioner',
+      fontHref: 'family=Alegreya:ital,wght@0,400;0,500;1,400&family=Commissioner:wght@300;400;500;600',
+      head: 'font-medium tracking-tight', quote: 'italic',
+      card: 'rounded-[24px]', big: 'rounded-[32px]', input: 'rounded-xl', btn: 'rounded-full',
+      btnText: 'text-xs uppercase tracking-[0.18em] font-semibold',
+      eyebrow: 'text-xs uppercase tracking-[0.22em] font-semibold',
+      palettes: [
+        { mode: 'light', colors: { brand: '#f4ebdf', surface: '#eadbc6', elevated: '#fbf6ef', txt: '#2d1f16', muted: '#6e5847', accent: '#9b4325', accentHover: '#80361d', onAccent: '#fbf6ef' } },
+        { mode: 'dark', colors: { brand: '#24160f', surface: '#2f1e15', elevated: '#3a261b', txt: '#f6ebdd', muted: '#bfa58f', accent: '#e3a467', accentHover: '#ebb784', onAccent: '#24160f' } }
+      ],
+      layouts: { hero: ['full', 'center', 'split'], rooms: ['feature', 'alternating', 'grid'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'], audience: ['band', 'cards'], location: ['mapLeft', 'mapRight'], overview: ['mosaic', 'statsBand'], living: ['banner', 'split'], outdoor: ['gallery', 'hotspots'], cta: ['split', 'image'], footer: ['big', 'columns'] }
+    },
+    alpine: {
+      serif: 'Bitter', sans: 'Fira Sans',
+      fontHref: 'family=Bitter:ital,wght@0,400;0,500;0,600;1,400&family=Fira+Sans:wght@300;400;500;600',
+      head: 'font-semibold tracking-tight', quote: 'italic',
+      card: 'rounded-xl', big: 'rounded-2xl', input: 'rounded-lg', btn: 'rounded-lg',
+      btnText: 'text-sm font-semibold tracking-wide',
+      eyebrow: 'text-xs uppercase tracking-[0.2em] font-semibold',
+      palettes: [
+        { mode: 'dark', colors: { brand: '#17130f', surface: '#201a15', elevated: '#2a221c', txt: '#f2ebe2', muted: '#ad9f8f', accent: '#d39a5c', accentHover: '#ddad77', onAccent: '#17130f' } },
+        { mode: 'light', colors: { brand: '#f6f7f7', surface: '#e9ecee', elevated: '#ffffff', txt: '#1b232a', muted: '#56616b', accent: '#8a4527', accentHover: '#723820', onAccent: '#ffffff' } },
+        { mode: 'dark', colors: { brand: '#0f1a17', surface: '#16241f', elevated: '#1e2f29', txt: '#edf1ee', muted: '#9fb0a8', accent: '#e0b46c', accentHover: '#e8c388', onAccent: '#0f1a17' } }
+      ],
+      layouts: { hero: ['full', 'center'], rooms: ['feature', 'grid', 'alternating'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'], audience: ['cards', 'band'], location: ['mapLeft', 'mapRight'], overview: ['slideshow', 'mosaic', 'statsBand'], living: ['overlay', 'split', 'banner'], outdoor: ['hotspots', 'gallery', 'splitList'], cta: ['image', 'split'], footer: ['columns', 'big'] }
+    },
+    urban: {
+      serif: 'Oswald', sans: 'IBM Plex Sans',
+      fontHref: 'family=Oswald:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600',
+      head: 'font-medium tracking-tight', quote: '',
+      card: 'rounded-md', big: 'rounded-lg', input: 'rounded-none', btn: 'rounded-none',
+      btnText: 'text-xs uppercase tracking-[0.16em] font-semibold',
+      eyebrow: 'text-[11px] uppercase tracking-[0.26em] font-semibold',
+      palettes: [
+        { mode: 'dark', colors: { brand: '#121212', surface: '#1a1a1a', elevated: '#222222', txt: '#f0f0ec', muted: '#9c9c96', accent: '#d4f25a', accentHover: '#e0f67f', onAccent: '#121212' } },
+        { mode: 'light', colors: { brand: '#ecebe8', surface: '#e0dfdb', elevated: '#f6f5f3', txt: '#141414', muted: '#5a5956', accent: '#a3360f', accentHover: '#872c0b', onAccent: '#ffffff' } }
+      ],
+      layouts: { hero: ['split', 'full'], rooms: ['grid', 'feature'], testimonials: ['single', 'cards'], amenities: ['list', 'cards'], audience: ['cards', 'band'], location: ['mapLeft', 'mapRight'], overview: ['statsBand', 'mosaic'], living: ['banner', 'split'], outdoor: ['splitList', 'gallery'], cta: ['minimal', 'split'], footer: ['big'] }
+    },
+    artdeco: {
+      serif: 'Poiret One', sans: 'Raleway',
+      fontHref: 'family=Poiret+One&family=Raleway:wght@300;400;500;600',
+      head: 'font-normal uppercase tracking-[0.04em]', quote: '',
+      card: 'rounded-none', big: 'rounded-none', input: 'rounded-none', btn: 'rounded-none',
+      btnText: 'text-xs uppercase tracking-[0.25em] font-semibold',
+      eyebrow: 'text-xs uppercase tracking-[0.3em] font-medium',
+      palettes: [
+        { mode: 'dark', colors: { brand: '#0c0c0e', surface: '#141416', elevated: '#1c1c1f', txt: '#f1ead9', muted: '#a69d88', accent: '#d4af6a', accentHover: '#e0c288', onAccent: '#0c0c0e' } },
+        { mode: 'dark', colors: { brand: '#0b221d', surface: '#102c26', elevated: '#163731', txt: '#f2ecdc', muted: '#a3b2a8', accent: '#d8b46e', accentHover: '#e3c68e', onAccent: '#0b221d' } },
+        { mode: 'light', colors: { brand: '#f6f1e6', surface: '#ece4d2', elevated: '#fcf9f2', txt: '#151412', muted: '#5f584b', accent: '#735522', accentHover: '#5c441b', onAccent: '#fcf9f2' } }
+      ],
+      layouts: { hero: ['center', 'full'], rooms: ['grid', 'feature'], testimonials: ['single', 'cards'], amenities: ['cards', 'list'], audience: ['band', 'cards'], location: ['mapLeft', 'mapRight'], overview: ['statsBand', 'slideshow'], living: ['overlay', 'banner'], outdoor: ['hotspots', 'gallery'], cta: ['image', 'minimal'], footer: ['big', 'columns'] }
+    },
+    coastal: {
+      serif: 'Lora', sans: 'Montserrat',
+      fontHref: 'family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@300;400;500;600',
+      head: 'font-normal', quote: 'italic',
+      card: 'rounded-2xl', big: 'rounded-3xl', input: 'rounded-lg', btn: 'rounded-full',
+      btnText: 'text-xs uppercase tracking-[0.18em] font-semibold',
+      eyebrow: 'text-xs uppercase tracking-[0.22em] font-semibold',
+      palettes: [
+        { mode: 'light', colors: { brand: '#fbfcfd', surface: '#eaf1f5', elevated: '#ffffff', txt: '#0f2438', muted: '#50637a', accent: '#1c3f60', accentHover: '#14304a', onAccent: '#ffffff' } },
+        { mode: 'light', colors: { brand: '#f5faf9', surface: '#e2efed', elevated: '#ffffff', txt: '#12302f', muted: '#4c6866', accent: '#1b6a70', accentHover: '#15575c', onAccent: '#ffffff' } },
+        { mode: 'dark', colors: { brand: '#0d1b2a', surface: '#13243a', elevated: '#1a2e48', txt: '#eef3f8', muted: '#9fb0c3', accent: '#9fd3e6', accentHover: '#b6dff0', onAccent: '#0d1b2a' } }
+      ],
+      layouts: { hero: ['full', 'center', 'split'], rooms: ['grid', 'feature', 'alternating'], testimonials: ['cards', 'single'], amenities: ['cards', 'list'], audience: ['cards', 'band'], location: ['mapLeft', 'mapRight'], overview: ['slideshow', 'mosaic', 'statsBand'], living: ['overlay', 'split', 'banner'], outdoor: ['hotspots', 'gallery', 'splitList'], cta: ['image', 'split', 'minimal'], footer: ['columns', 'big'] }
+    },
+    heritage: {
+      serif: 'Old Standard TT', sans: 'PT Sans',
+      fontHref: 'family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=PT+Sans:wght@400;700',
+      head: 'font-normal', quote: 'italic',
+      card: 'rounded-lg', big: 'rounded-xl', input: 'rounded-md', btn: 'rounded-md',
+      btnText: 'text-xs uppercase tracking-[0.2em] font-bold',
+      eyebrow: 'text-xs uppercase tracking-[0.24em] font-bold',
+      palettes: [
+        { mode: 'light', colors: { brand: '#f5efe2', surface: '#ebe2cf', elevated: '#fbf7ee', txt: '#1d2a22', muted: '#5d6358', accent: '#1e4a3a', accentHover: '#173a2d', onAccent: '#f5efe2' } },
+        { mode: 'dark', colors: { brand: '#102019', surface: '#162a21', elevated: '#1d352a', txt: '#f1ebdc', muted: '#a6ad9d', accent: '#c9a35c', accentHover: '#d6b679', onAccent: '#102019' } },
+        { mode: 'light', colors: { brand: '#f4ece4', surface: '#e9dccf', elevated: '#faf5ef', txt: '#2a1717', muted: '#6d5650', accent: '#7a2e2a', accentHover: '#632522', onAccent: '#faf5ef' } }
+      ],
+      layouts: { hero: ['full', 'center', 'split'], rooms: ['alternating', 'feature', 'grid'], testimonials: ['single', 'cards'], amenities: ['cards', 'list'], audience: ['cards', 'band'], location: ['mapLeft', 'mapRight'], overview: ['slideshow', 'statsBand', 'mosaic'], living: ['overlay', 'split'], outdoor: ['hotspots', 'splitList'], cta: ['image', 'split'], footer: ['columns', 'big'] }
+    },
+    retro: {
+      serif: 'Yeseva One', sans: 'Rubik',
+      fontHref: 'family=Yeseva+One&family=Rubik:wght@300;400;500;600',
+      head: 'font-normal', quote: '',
+      card: 'rounded-[32px]', big: 'rounded-[48px]', input: 'rounded-2xl', btn: 'rounded-full',
+      btnText: 'text-sm font-semibold',
+      eyebrow: 'text-xs uppercase tracking-[0.2em] font-semibold',
+      palettes: [
+        { mode: 'light', colors: { brand: '#fbf3e4', surface: '#f3e3c7', elevated: '#fffaf0', txt: '#3a2314', muted: '#74563f', accent: '#87500e', accentHover: '#6c400b', onAccent: '#fffaf0' } },
+        { mode: 'light', colors: { brand: '#f4efe4', surface: '#e6ddca', elevated: '#fbf8f1', txt: '#18302f', muted: '#4f6461', accent: '#9c3d17', accentHover: '#803213', onAccent: '#ffffff' } },
+        { mode: 'dark', colors: { brand: '#231610', surface: '#2e1e16', elevated: '#3a271d', txt: '#f7ead6', muted: '#c3a88c', accent: '#f0a830', accentHover: '#f4ba58', onAccent: '#231610' } }
+      ],
+      layouts: { hero: ['split', 'full'], rooms: ['grid', 'feature'], testimonials: ['cards'], amenities: ['cards'], audience: ['band', 'cards'], location: ['mapLeft', 'mapRight'], overview: ['mosaic', 'slideshow'], living: ['split', 'overlay'], outdoor: ['gallery', 'hotspots'], cta: ['split', 'image'], footer: ['big', 'columns'] }
     }
   };
 
   const LP_STYLE_MAP = {
     'luxury': 'luxury', 'eco / wellness': 'eco', 'family-friendly': 'family', 'romantic couples': 'romantic',
-    'adventure': 'adventure', 'minimalist design': 'minimalist', 'boutique artsy': 'boutique'
+    'adventure': 'adventure', 'minimalist design': 'minimalist', 'boutique artsy': 'boutique',
+    'tropical': 'tropical', 'mediterranean': 'mediterranean', 'japandi': 'japandi', 'desert / moroccan': 'desert',
+    'alpine chalet': 'alpine', 'urban loft': 'urban', 'art deco': 'artdeco', 'coastal / nautical': 'coastal',
+    'heritage / colonial': 'heritage', 'retro / mid-century': 'retro'
   };
 
   function lpPickVariant(styleKey) {
@@ -1718,6 +1869,7 @@ select option { background: #141414; }
 <script>tailwind.config = ${JSON.stringify(twConfig)};<\/script>
 <style>
 .serif{font-family:"${S.serif}",Georgia,serif}
+h1,h2,h3{overflow-wrap:break-word}@media (max-width:640px){h1,h2,h3{hyphens:auto}}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1)}
 .reveal.visible{opacity:1;transform:none}
 .img-zoom{transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
