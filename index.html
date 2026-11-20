@@ -518,6 +518,44 @@ input, select, textarea { font-size: 1rem; }
 input:focus, select:focus, textarea:focus { border-color: #d8bd86; box-shadow: 0 0 0 3px color-mix(in srgb, #d8bd86 20%, transparent); }
 :root { --ui: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif; --display: 'Plus Jakarta Sans', Georgia, serif; }
 .header h1 { letter-spacing: -0.02em; font-weight: 700; } .hiw-title, .demo-panel h2 { font-weight: 700; letter-spacing: -0.01em; }
+
+:root { --glow1: rgba(216,189,134,0.06); --glow2: rgba(120,120,140,0.06); --glow3: rgba(216,189,134,0.03); }
+.header { padding: 84px 24px 64px; }
+.header h1 { margin-bottom: 18px; }
+.header-stats { margin-top: 30px; }
+.btn-demo { margin-top: 30px; box-shadow: none !important; }
+.usage-bar { padding: 14px 24px; }
+.container { padding: 64px 24px 120px; }
+.hiw-title { margin: 0 0 52px; }
+.hiw { gap: 24px; margin-bottom: 56px; }
+.hiw-step { padding: 28px 22px 26px; }
+.hiw::before { box-shadow: none !important; opacity: 0.55; }
+.hiw-num { box-shadow: 0 0 0 5px var(--bg) !important; }
+.demo-panel { padding: 32px 30px 30px; margin-bottom: 48px; }
+.demo-panel > p { margin-bottom: 22px; }
+.demo-grid { gap: 18px; }
+.demo-card b { padding: 14px 16px 4px; }
+.demo-card span { padding: 0 16px; }
+.demo-card em { margin: auto 16px 16px; padding-top: 10px; }
+.demo-lap-scr { box-shadow: none; }
+.card { padding: 32px 30px; margin-bottom: 22px; }
+.card, .mode-switcher, .demo-panel, .promo-block, .iframe-wrap, .hiw-step { box-shadow: 0 18px 40px -28px rgba(0,0,0,0.6), inset 0 1px 0 var(--glass-hi); }
+.card:focus-within { box-shadow: 0 18px 40px -28px rgba(0,0,0,0.6), 0 0 0 1px color-mix(in srgb, var(--gold) 35%, transparent), inset 0 1px 0 var(--glass-hi); }
+.mode-switcher { margin-bottom: 36px; }
+.section-label { margin-bottom: 20px; }
+.grid-2 { gap: 22px 20px; }
+label { margin-bottom: 9px; }
+.chips, .chip-group { gap: 10px; }
+.chip.active { box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 45%, transparent) !important; }
+.mode-btn.active { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--gold) 45%, transparent) !important; }
+input:focus, select:focus, textarea:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 16%, transparent) !important; }
+.btn-generate { margin-top: 14px; padding-top: 20px; padding-bottom: 20px; box-shadow: 0 10px 24px -14px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.3) !important; }
+.btn-generate:hover { box-shadow: 0 14px 28px -14px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.35) !important; }
+.dot.used { box-shadow: none; }
+.header-bg-glow { opacity: 0.4; }
+.result, .lp-result { margin-top: 48px; }
+.demo-note { padding: 16px 20px; margin-bottom: 22px; }
+@media (max-width: 640px) { .header { padding: 64px 20px 48px; } .container { padding: 44px 16px 90px; } .card { padding: 24px 20px; } .demo-panel { padding: 24px 18px; } .hiw { gap: 34px; } }
 </style>
 </head>
 <body>
