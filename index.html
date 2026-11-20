@@ -569,6 +569,26 @@ html.embed .usage-bar { background: rgba(255,255,255,0.03); border: 1px solid va
 html.embed .container { padding: 28px 24px 24px; }
 html.embed #lpFrame { height: 640px; }
 @media (max-width: 640px) { html.embed .container { padding: 20px 12px 16px; } html.embed .usage-bar { margin: 0 12px; } }
+
+.lp-stage { position: relative; }
+.lp-loading { position: absolute; inset: 0; z-index: 6; background: var(--surface); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0.35s; }
+.lp-loading.on { opacity: 1; visibility: visible; }
+.lp-skel { position: absolute; inset: 0; padding: 22px 28px; display: flex; flex-direction: column; gap: 14px; }
+.lp-skel i, .lp-skel .s-row i { display: block; border-radius: 8px; background: linear-gradient(90deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.09) 50%, rgba(255,255,255,0.04) 100%); background-size: 200% 100%; animation: lpShimmer 1.4s ease-in-out infinite; }
+.lp-skel .s-nav { height: 34px; width: 100%; }
+.lp-skel .s-h1 { height: 30px; width: 62%; margin-top: 26px; }
+.lp-skel .s-h2 { height: 30px; width: 44%; }
+.lp-skel .s-p { height: 14px; width: 54%; margin-top: 6px; }
+.lp-skel .s-row { display: flex; gap: 12px; margin-top: 6px; }
+.lp-skel .s-row i { width: 120px; height: 40px; border-radius: 999px; }
+.lp-skel .s-img { flex: 1; width: 100%; margin-top: 10px; }
+.lp-loading-box { position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 22px 30px; border-radius: 16px; background: rgba(11,11,13,0.82); border: 1px solid var(--glass-border); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); text-align: center; }
+.lp-loading-box b { font-size: 1rem; font-weight: 700; color: var(--text); }
+.lp-loading-box small { font-size: 0.8rem; color: var(--muted); }
+.lp-spin { width: 30px; height: 30px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.12); border-top-color: var(--gold); animation: lpSpin 0.8s linear infinite; margin-bottom: 4px; }
+@keyframes lpShimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+@keyframes lpSpin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .lp-skel i, .lp-spin { animation: none; } }
 </style>
 </head>
 <body>
@@ -913,7 +933,7 @@ html.embed #lpFrame { height: 640px; }
         <div class="iframe-dot"></div>
         <div class="iframe-url" id="iframeUrl">hospitality-generator.vercel.app · preview</div>
       </div>
-      <iframe id="lpFrame" sandbox="allow-scripts"></iframe>
+      <div class="lp-stage"><div class="lp-loading" id="lpLoading" role="status" aria-live="polite"><div class="lp-skel"><i class="s-nav"></i><i class="s-h1"></i><i class="s-h2"></i><i class="s-p"></i><div class="s-row"><i></i><i></i></div><i class="s-img"></i></div><div class="lp-loading-box"><span class="lp-spin"></span><b>Loading preview…</b><small>Fonts and photos take a few seconds</small></div></div><iframe id="lpFrame" sandbox="allow-scripts"></iframe></div>
     </div>
     <div class="regenerate-row">
       <button class="btn-regen" onclick="regen()">
@@ -2460,6 +2480,12 @@ RULES
     }
     generatedHTML = cleanHTML;
     const frame = document.getElementById('lpFrame');
+    const loader = document.getElementById('lpLoading');
+    const token = (window.__lpLoadToken = (window.__lpLoadToken || 0) + 1);
+    const hideLoader = () => { if (window.__lpLoadToken === token && loader) loader.classList.remove('on'); };
+    if (loader) loader.classList.add('on');
+    frame.onload = () => setTimeout(hideLoader, 400);
+    setTimeout(hideLoader, 12000);
     frame.removeAttribute('srcdoc');
     void frame.offsetHeight;
     frame.srcdoc = cleanHTML;
