@@ -2484,11 +2484,23 @@ RULES
     const token = (window.__lpLoadToken = (window.__lpLoadToken || 0) + 1);
     const hideLoader = () => { if (window.__lpLoadToken === token && loader) loader.classList.remove('on'); };
     if (loader) loader.classList.add('on');
-    frame.onload = () => setTimeout(hideLoader, 400);
+    frame.onload = () => setTimeout(hideLoader, 3500);
     setTimeout(hideLoader, 12000);
+    if (!window.__lpReadyBound) {
+      window.__lpReadyBound = true;
+      window.addEventListener('message', (e) => {
+        const f = document.getElementById('lpFrame');
+        if (f && e.source === f.contentWindow && e.data && e.data.type === 'lp-ready') {
+          const l = document.getElementById('lpLoading');
+          if (l) l.classList.remove('on');
+        }
+      });
+    }
+    const readyProbe = '<script>(function(){function go(){var w=[];try{if(document.fonts&&document.fonts.ready)w.push(document.fonts.ready)}catch(e){}Promise.all(w).then(function(){setTimeout(function(){try{parent.postMessage({type:"lp-ready"},"*")}catch(e){}},700)})}if(document.readyState==="complete")go();else window.addEventListener("load",go)})();<\/script>';
+    const previewHTML = /<\/body>/i.test(cleanHTML) ? cleanHTML.replace(/<\/body>(?![\s\S]*<\/body>)/i, readyProbe + '</body>') : cleanHTML + readyProbe;
     frame.removeAttribute('srcdoc');
     void frame.offsetHeight;
-    frame.srcdoc = cleanHTML;
+    frame.srcdoc = previewHTML;
     document.getElementById('iframeUrl').textContent = propLabel + ' · preview';
     document.getElementById('lpResult').style.display = 'block';
     document.getElementById('lpResult').scrollIntoView({ behavior: 'smooth' });
