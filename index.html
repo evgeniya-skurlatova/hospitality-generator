@@ -30,8 +30,36 @@
     Paddle.Initialize({ token: 'live_3506df6f6808f630825c1d97468' });
   }
 </script>
+<script>(function(){try{var t=localStorage.getItem("hg_theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}})();</script>
 <style>
 :root {
+  --bg: #f6f2ea;
+  --surface: #ffffff;
+  --surface2: #f3eee4;
+  --border: #e4dccc;
+  --border2: #cfc4ae;
+  --accent: #85601f;
+  --accent-dark: #6f4f1b;
+  --accent-glow: rgba(154,116,50,0.10);
+  --gold: #c9a96e;
+  --gold-hover: #d4b47a;
+  --on-gold: #17202e;
+  --text: #17202e;
+  --muted: #555c69;
+  --muted2: #676d79;
+  --label: #2f3644;
+  --chip: #2f3644;
+  --ph: #6f747e;
+  --input-bg: #fbf9f5;
+  --promo-bg: linear-gradient(135deg, #fbf6ec 0%, #ffffff 60%);
+  --shadow: rgba(23,32,46,0.14);
+  --success: #2e7d55;
+  --error: #b83b3b;
+  --radius: 14px;
+  --radius-sm: 9px;
+  color-scheme: light;
+}
+[data-theme="dark"] {
   --bg: #0d0d0f;
   --surface: #18181b;
   --surface2: #222226;
@@ -40,13 +68,21 @@
   --accent: #c9a96e;
   --accent-dark: #a07840;
   --accent-glow: rgba(201,169,110,0.15);
+  --gold: #c9a96e;
+  --gold-hover: #d4b47a;
+  --on-gold: #0d0d0f;
   --text: #f4efe7;
   --muted: #b3ada4;
   --muted2: #948e86;
+  --label: #cfc9c0;
+  --chip: #d6d0c7;
+  --ph: #8f8a83;
+  --input-bg: #0d0d0f;
+  --promo-bg: linear-gradient(135deg, #111008 0%, #141414 50%);
+  --shadow: rgba(0,0,0,0.45);
   --success: #4caf7d;
   --error: #e05c5c;
-  --radius: 14px;
-  --radius-sm: 9px;
+  color-scheme: dark;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -96,7 +132,7 @@ body::before {
   border-radius: 20px; margin-bottom: 20px;
   background: rgba(201,169,110,0.04);
 }
-.header-tag-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); display: inline-block; }
+.header-tag-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); display: inline-block; }
 .header h1 {
   font-size: 2.4rem; color: var(--text); letter-spacing: 0.01em;
   margin-bottom: 14px; line-height: 1.15;
@@ -119,7 +155,7 @@ body::before {
 
 
 .btn-demo { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; padding: 13px 24px; border-radius: 30px; border: 1px solid var(--accent); background: rgba(201,169,110,0.12); color: var(--accent); font-family: sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; cursor: pointer; transition: all 0.2s; position: relative; }
-.btn-demo:hover { background: var(--accent); color: #0d0d0f; }
+.btn-demo:hover { background: var(--gold); color: var(--on-gold); }
 .btn-demo small { font-weight: 400; font-size: 0.76rem; opacity: 0.85; letter-spacing: 0; }
 .btn-demo svg { width: 16px; height: 16px; }
 .demo-panel { background: linear-gradient(160deg, rgba(201,169,110,0.10), rgba(201,169,110,0.02)); border: 1px solid rgba(201,169,110,0.35); border-radius: var(--radius); padding: 22px 22px 20px; margin-bottom: 28px; scroll-margin-top: 20px; }
@@ -127,7 +163,7 @@ body::before {
 .demo-panel > p { font-family: sans-serif; font-size: 0.86rem; color: var(--muted); margin-bottom: 16px; line-height: 1.55; }
 .demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .demo-card { text-align: left; background: var(--surface); border: 1px solid var(--border2); border-radius: 12px; padding: 0; overflow: hidden; cursor: pointer; color: var(--text); font-family: sans-serif; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
-.demo-card:hover, .demo-card:focus-visible { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 12px 28px rgba(0,0,0,0.45); outline: none; }
+.demo-card:hover, .demo-card:focus-visible { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 12px 28px var(--shadow); outline: none; }
 .demo-card.loading { opacity: 0.6; pointer-events: none; }
 .demo-sw { height: 54px; display: flex; }
 .demo-sw i { flex: 1; }
@@ -135,7 +171,7 @@ body::before {
 .demo-card span { display: block; padding: 0 12px; font-size: 0.74rem; color: var(--muted); line-height: 1.4; }
 .demo-card em { display: block; margin: auto 12px 12px; padding-top: 8px; font-style: normal; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
 .demo-note { display: none; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.35); border-radius: var(--radius-sm); padding: 12px 16px; margin-bottom: 14px; font-family: sans-serif; font-size: 0.86rem; color: var(--text); }
-.demo-note button { background: var(--accent); color: #0d0d0f; border: none; border-radius: 20px; padding: 8px 16px; font-weight: 700; font-size: 0.8rem; cursor: pointer; font-family: sans-serif; }
+.demo-note button { background: var(--gold); color: var(--on-gold); border: none; border-radius: 20px; padding: 8px 16px; font-weight: 700; font-size: 0.8rem; cursor: pointer; font-family: sans-serif; }
 @media (max-width: 560px) { .demo-grid { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 420px) { .btn-demo small { display: none; } }
 
@@ -152,11 +188,11 @@ body.is-demo #result { user-select: none; -webkit-user-select: none; }
 }
 .usage-dots { display: flex; gap: 5px; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border2); transition: background 0.3s; }
-.dot.used { background: var(--accent); box-shadow: 0 0 6px rgba(201,169,110,0.4); }
+.dot.used { background: var(--gold); box-shadow: 0 0 6px rgba(201,169,110,0.4); }
 .usage-text { color: var(--muted); }
 .usage-text span { color: var(--accent); font-weight: 600; }
 .pro-badge {
-  background: var(--accent); color: #0a0a0a; font-size: 0.65rem;
+  background: var(--gold); color: var(--on-gold); font-size: 0.65rem;
   font-weight: 700; padding: 3px 10px; border-radius: 10px; letter-spacing: 0.06em;
 }
 
@@ -194,9 +230,9 @@ body.is-demo #result { user-select: none; -webkit-user-select: none; }
 /* FORM */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 540px) { .grid-2 { grid-template-columns: 1fr; } }
-label { display: block; font-size: 0.82rem; color: #cfc9c0; font-family: sans-serif; margin-bottom: 7px; }
+label { display: block; font-size: 0.82rem; color: var(--label); font-family: sans-serif; margin-bottom: 7px; }
 input, select, textarea {
-  width: 100%; background: var(--bg); border: 1px solid var(--border2);
+  width: 100%; background: var(--input-bg); border: 1px solid var(--border2);
   color: var(--text); border-radius: var(--radius-sm); padding: 11px 14px;
   font-size: 0.92rem; font-family: sans-serif; outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
@@ -205,7 +241,7 @@ select {
   padding-right: 40px;
   appearance: none;
   -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a96e' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a07840' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   cursor: pointer;
@@ -214,8 +250,8 @@ input:focus, select:focus, textarea:focus {
   border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201,169,110,0.07);
 }
 textarea { resize: vertical; min-height: 86px; line-height: 1.55; }
-select option { background: #18181b; }
-::placeholder { color: #8f8a83; opacity: 1; }
+select option { background: var(--surface); color: var(--text); }
+::placeholder { color: var(--ph); opacity: 1; }
 
 .api-row { display: flex; gap: 10px; align-items: flex-start; }
 .api-row input { flex: 1; font-family: monospace; font-size: 0.82rem; }
@@ -231,7 +267,7 @@ select option { background: #18181b; }
 .chip {
   padding: 8px 16px; border: 1px solid var(--border2); border-radius: 20px;
   font-size: 0.84rem; cursor: pointer; font-family: sans-serif;
-  transition: all 0.15s; user-select: none; color: #d6d0c7;
+  transition: all 0.15s; user-select: none; color: var(--chip);
   display: flex; align-items: center; gap: 7px;
   background: transparent; appearance: none; -webkit-appearance: none;
   line-height: 1.4;
@@ -242,7 +278,7 @@ select option { background: #18181b; }
 
 /* GENERATE BUTTON */
 .btn-generate {
-  width: 100%; padding: 19px; background: var(--accent); color: #0a0a0a;
+  width: 100%; padding: 19px; background: var(--gold); color: var(--on-gold);
   border: none; border-radius: var(--radius); font-size: 1rem; font-weight: 700;
   cursor: pointer; font-family: sans-serif; letter-spacing: 0.04em;
   transition: all 0.2s; margin-top: 18px; position: relative; overflow: hidden;
@@ -253,7 +289,7 @@ select option { background: #18181b; }
   transform: translateX(-100%); transition: transform 0.5s;
 }
 .btn-generate:hover::after { transform: translateX(100%); }
-.btn-generate:hover { background: #d4b47a; transform: translateY(-1px); box-shadow: 0 10px 30px rgba(201,169,110,0.2); }
+.btn-generate:hover { background: var(--gold-hover); transform: translateY(-1px); box-shadow: 0 10px 30px rgba(201,169,110,0.2); }
 .btn-generate:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
 
 /* ERROR */
@@ -284,7 +320,7 @@ select option { background: #18181b; }
 .loading-step { font-size: 0.77rem; color: var(--muted2); font-family: sans-serif; display: flex; align-items: center; gap: 9px; transition: color 0.3s; }
 .loading-step.active { color: var(--accent); }
 .ls-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border2); transition: background 0.3s; flex-shrink: 0; }
-.loading-step.active .ls-dot { background: var(--accent); box-shadow: 0 0 6px rgba(201,169,110,0.5); }
+.loading-step.active .ls-dot { background: var(--gold); box-shadow: 0 0 6px rgba(201,169,110,0.5); }
 
 /* RESULT - BRIEF */
 .result { display: none; margin-top: 32px; }
@@ -353,17 +389,17 @@ select option { background: #18181b; }
 .plan-features { font-size: 0.79rem; color: var(--muted); font-family: sans-serif; line-height: 1.9; margin-top: 12px; list-style: none; }
 .plan-features li::before { content: '✓ '; color: var(--accent); }
 .plans-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px; }
-.btn-upgrade { display: inline-block; padding: 13px 26px; background: var(--accent); color: #0a0a0a; border: none; border-radius: var(--radius-sm); font-size: 0.88rem; font-weight: 700; cursor: pointer; font-family: sans-serif; text-decoration: none; transition: all 0.2s; }
-.btn-upgrade:hover { background: #d4b47a; transform: translateY(-1px); }
+.btn-upgrade { display: inline-block; padding: 13px 26px; background: var(--gold); color: var(--on-gold); border: none; border-radius: var(--radius-sm); font-size: 0.88rem; font-weight: 700; cursor: pointer; font-family: sans-serif; text-decoration: none; transition: all 0.2s; }
+.btn-upgrade:hover { background: var(--gold-hover); transform: translateY(-1px); }
 .btn-upgrade.secondary { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
-.btn-upgrade.secondary:hover { background: var(--accent); color: #0a0a0a; }
+.btn-upgrade.secondary:hover { background: var(--gold); color: var(--on-gold); }
 .license-row { margin-top: 24px; display: flex; gap: 10px; align-items: center; justify-content: center; }
 .license-row input { max-width: 300px; font-family: monospace; font-size: 0.85rem; }
 .btn-activate { padding: 11px 20px; background: transparent; border: 1px solid var(--accent); color: var(--accent); border-radius: var(--radius-sm); cursor: pointer; font-family: sans-serif; font-size: 0.85rem; white-space: nowrap; transition: all 0.15s; }
-.btn-activate:hover { background: var(--accent); color: #0a0a0a; }
+.btn-activate:hover { background: var(--gold); color: var(--on-gold); }
 
 /* PROMO BLOCK */
-.promo-block { margin-top: 32px; background: linear-gradient(135deg, #111008 0%, #141414 50%); border: 1px solid rgba(201,169,110,0.2); border-radius: var(--radius); overflow: hidden; position: relative; }
+.promo-block { margin-top: 32px; background: var(--promo-bg); border: 1px solid rgba(201,169,110,0.2); border-radius: var(--radius); overflow: hidden; position: relative; }
 .promo-block::before { content: ''; position: absolute; top: 0; right: 0; width: 200px; height: 200px; background: radial-gradient(ellipse at top right, rgba(201,169,110,0.06), transparent 60%); pointer-events: none; }
 .promo-inner { display: grid; grid-template-columns: 1fr auto; gap: 32px; padding: 32px; align-items: center; }
 @media (max-width: 600px) { .promo-inner { grid-template-columns: 1fr; } }
@@ -372,10 +408,10 @@ select option { background: #18181b; }
 .promo-text p { font-size: 0.83rem; color: var(--muted); font-family: sans-serif; line-height: 1.65; margin-bottom: 14px; }
 .promo-list { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 5px 20px; }
 .promo-list li { font-size: 0.79rem; color: var(--muted); font-family: sans-serif; padding: 3px 0; display: flex; align-items: center; gap: 7px; }
-.promo-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+.promo-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
 .promo-cta { text-align: center; min-width: 190px; }
-.btn-promo { display: inline-block; padding: 15px 28px; background: var(--accent); color: #0a0a0a; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 700; font-family: sans-serif; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
-.btn-promo:hover { background: #d4b47a; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(201,169,110,0.2); }
+.btn-promo { display: inline-block; padding: 15px 28px; background: var(--gold); color: var(--on-gold); border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 700; font-family: sans-serif; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+.btn-promo:hover { background: var(--gold-hover); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(201,169,110,0.2); }
 .promo-note { font-size: 0.72rem; color: var(--muted2); font-family: sans-serif; margin-top: 10px; line-height: 1.6; }
 
 /* FEATURES STRIP */
@@ -415,18 +451,27 @@ select option { background: #18181b; }
   .print-title { display: block !important; }
 }
 .print-title { display: none; font-family: sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; color: #8a6530; }
+
+.theme-toggle { position: absolute; top: 18px; right: 18px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border2); background: var(--surface); color: var(--accent); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; box-shadow: 0 4px 14px var(--shadow); }
+.theme-toggle:hover { border-color: var(--accent); transform: rotate(-12deg); }
+.theme-toggle svg { width: 18px; height: 18px; }
+.theme-toggle .i-sun { display: none; }
+[data-theme="dark"] .theme-toggle .i-sun { display: block; }
+[data-theme="dark"] .theme-toggle .i-moon { display: none; }
+.header, .card, .demo-card, .mode-switcher, .usage-bar, input, select, textarea, .chip { transition: background-color 0.25s, border-color 0.25s, color 0.25s; }
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
 <div class="header">
+  <button type="button" class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Switch to dark theme" title="Switch theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
   <div class="header-bg">
     <div class="header-bg-glow"></div>
     <div class="header-bg-lines"></div>
   </div>
   <div class="header-icon">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
       <polyline points="9 22 9 12 15 12 15 22"/>
     </svg>
@@ -456,7 +501,7 @@ select option { background: #18181b; }
   <div class="features-strip">
     <div class="feature-item">
       <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
         </svg>
       </div>
@@ -467,7 +512,7 @@ select option { background: #18181b; }
     </div>
     <div class="feature-item">
       <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
         </svg>
       </div>
@@ -478,7 +523,7 @@ select option { background: #18181b; }
     </div>
     <div class="feature-item">
       <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
         </svg>
       </div>
@@ -853,12 +898,12 @@ select option { background: #18181b; }
     const div = document.createElement('div');
     div.id = 'paddleFallback';
     div.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;display:flex;align-items:center;justify-content:center;';
-    div.innerHTML = '<div style="background:#1c1c1c;border:1px solid #2e2e2e;border-radius:16px;padding:40px;max-width:420px;text-align:center;font-family:sans-serif;">' +
+    div.innerHTML = '<div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:40px;max-width:420px;text-align:center;font-family:sans-serif;">' +
       '<div style="font-size:2rem;margin-bottom:16px;">✦</div>' +
-      '<h3 style="color:#ede8e0;font-size:1.3rem;margin-bottom:12px;">Upgrade to Pro</h3>' +
-      '<p style="color:#6e6e6e;font-size:0.9rem;line-height:1.6;margin-bottom:24px;">Our payment system is currently being set up. To unlock unlimited generations, please contact us directly.</p>' +
+      '<h3 style="color:var(--text);font-size:1.3rem;margin-bottom:12px;">Upgrade to Pro</h3>' +
+      '<p style="color:var(--muted);font-size:0.9rem;line-height:1.6;margin-bottom:24px;">Our payment system is currently being set up. To unlock unlimited generations, please contact us directly.</p>' +
       '<a href="mailto:info@fortune-thailand.com?subject=Hospitality%20Generator%20Pro" style="display:inline-block;background:#c9a96e;color:#0a0a0a;padding:12px 28px;border-radius:9px;text-decoration:none;font-weight:600;font-size:0.9rem;margin-bottom:16px;">Contact for Pro Access →</a>' +
-      '<br><button onclick="document.getElementById(\'paddleFallback\').remove()" style="background:none;border:none;color:#6e6e6e;cursor:pointer;font-size:0.85rem;margin-top:8px;">Close</button>' +
+      '<br><button onclick="document.getElementById(\'paddleFallback\').remove()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:0.85rem;margin-top:8px;">Close</button>' +
       '</div>';
     document.body.appendChild(div);
   }
@@ -2088,6 +2133,17 @@ RULES
     santorini: { styleKey: 'mediterranean', name: 'Casa Azure', location: 'Oia, Santorini', propTypeLabel: 'Boutique Hotel', rooms: '18', hero: '1520250497591-112791e18919' }
   };
   const LP_DEMO_BRIEF = "## 1. PAGE STRUCTURE\n1. Hero: first impression with the estate at golden hour and an availability bar. Layout: full-width photo, headline left, booking bar below.\n2. Overview: the story of an 18th-century farmhouse turned into eight private villas. Layout: text left, photo slideshow right.\n3. Villas: four villa types with size, beds and price from. Layout: card grid with a detail view.\n4. Living & Dining: farm-to-table dinners and the wine cellar. Layout: full-bleed photo with overlay text.\n5. Grounds: infinity pool, olive grove and vineyard walks. Layout: image with clickable hotspots.\n6. For Couples: why the estate suits honeymooners. Layout: four benefit cards.\n7. Guest Reviews: two short quotes from different countries. Layout: single rotating quote.\n8. Location: travel times to Siena, Florence and Pisa Airport. Layout: map with distance list.\n9. FAQ and final call to action: five questions, then Book Now.\n\n## 2. COPYWRITING\nHero\n- Headline: Where the Tuscan Hills Slow Down\n- Body: Eight private villas on a 40-hectare wine estate between Siena and Florence, each with its own terrace over the vineyards.\n- CTA: Book Now\n\nOverview\n- Headline: A Farmhouse With a Story\n- Body: Built in 1780 and restored by the same family for three generations, Villa Serenova keeps its stone walls, chestnut beams and terracotta floors. Modern comfort lives quietly inside.\n\nVillas\n- Headline: Eight Villas, Each With a View\n- Body: From a two-person stone cottage to a four-bedroom farmhouse with a private pool.\n- CTA: Compare Villas\n\nLiving & Dining\n- Headline: Dinner From the Garden\n- Body: Our chef cooks with vegetables from the estate garden and olive oil pressed on site. Wine tastings are held in the 18th-century cellar every Thursday.\n\n## 3. SEO BLOCK\n- Page Title: Villa Serenova | Private Villas on a Tuscan Wine Estate\n- Meta Description: Eight private villas on a 40-hectare wine estate between Siena and Florence, with an infinity pool, farm-to-table dining and vineyard views.\n- H1 Tag: Private Villas on a Tuscan Wine Estate\n- Focus Keywords: tuscany villa rental, private pool villa tuscany, wine estate accommodation, chianti villa, honeymoon villa italy\n- Schema: LodgingBusiness with FAQPage\n\n## 4. IMAGE RECOMMENDATIONS\n- Hero: wide shot of the estate and infinity pool at golden hour, vineyards in soft focus behind, warm light.\n- Overview: stone facade with climbing wisteria, shot at eye level in morning light.\n- Villas: bright bedroom with chestnut beams and linen bedding, window open to the vineyard.\n- Living & Dining: long table set under a pergola at dusk, candles and garden vegetables.\n- Grounds: aerial view of the pool, olive grove and vineyard rows.\n- Location: drone view of the hills with Siena visible on the horizon.\n";
+  function toggleTheme() {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (dark) document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', 'dark');
+    try { localStorage.setItem('hg_theme', dark ? 'light' : 'dark'); } catch (e) {}
+    syncThemeLabel();
+  }
+  function syncThemeLabel() {
+    const b = document.getElementById('themeToggle');
+    if (b) b.setAttribute('aria-label', document.documentElement.getAttribute('data-theme') === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+  }
+  document.addEventListener('DOMContentLoaded', syncThemeLabel);
   let isDemo = false;
   function setDemoNotes(lp, br) {
     isDemo = !!(lp || br);
