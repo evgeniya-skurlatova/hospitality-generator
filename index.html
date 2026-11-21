@@ -590,6 +590,15 @@ html.embed #lpFrame { height: 640px; }
 @keyframes lpSpin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .lp-skel i, .lp-spin { animation: none; } }
 select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d8bd86' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important; background-repeat: no-repeat !important; background-position: right 16px center !important; padding-right: 42px !important; }
+.legal-foot { border-top: 1px solid var(--border); padding: 28px 24px 34px; font-family: var(--ui); font-size: 0.86rem; color: var(--muted2); }
+.legal-foot-in { max-width: 860px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
+.legal-foot nav { display: flex; gap: 20px; flex-wrap: wrap; }
+.legal-foot a { color: var(--muted); text-decoration: none; }
+.legal-foot a:hover { color: var(--gold); }
+.legal-foot-mor { max-width: 860px; margin: 12px auto 0; font-size: 0.8rem; color: var(--ph); }
+.checkout-note { margin: 18px auto 0; max-width: 560px; text-align: center; font-family: var(--ui); font-size: 0.8rem; line-height: 1.6; color: var(--muted2); }
+.checkout-note a { color: var(--accent); }
+html.embed .legal-foot { display: none; }
 </style>
 </head>
 <body>
@@ -831,6 +840,7 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
       <button onclick="openCheckout('pri_01m7kxw9p15jxevpa58h1xs1fc')" class="btn-upgrade">Pro $49/mo ✦</button>
       <button onclick="openCheckout('pri_01m7kxz0m9tmc8dyv8x97kgwrw')" class="btn-upgrade secondary">Agency $99/mo</button>
     </div>
+    <p class="checkout-note">Monthly subscription, cancel anytime. 14-day money-back guarantee. By subscribing you agree to our <a href="https://fortune-thailand.com/ai-generator-terms/" target="_blank" rel="noopener">Terms</a> and <a href="https://fortune-thailand.com/ai-generator-refund-policy/" target="_blank" rel="noopener">Refund Policy</a>. Payments are processed by Paddle.com, our Merchant of Record.</p>
     <div class="license-row">
       <input type="text" id="licenseKey" placeholder="Have a license key? Enter it here…" />
       <button class="btn-activate" onclick="activateLicense()">Activate</button>
@@ -969,6 +979,18 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
 
 </div>
 
+<footer class="legal-foot">
+  <div class="legal-foot-in">
+    <span>&copy; 2026 Fortune International Thailand Co., Ltd. &middot; Phuket, Thailand</span>
+    <nav aria-label="Legal">
+      <a href="https://fortune-thailand.com/ai-generator-terms/" target="_blank" rel="noopener">Terms</a>
+      <a href="https://fortune-thailand.com/ai-generator-refund-policy/" target="_blank" rel="noopener">Refund Policy</a>
+      <a href="https://fortune-thailand.com/ai-generator-privacy-policy/" target="_blank" rel="noopener">Privacy</a>
+    </nav>
+  </div>
+  <p class="legal-foot-mor">Payments are processed by Paddle.com, our Merchant of Record, which handles billing, taxes and refunds.</p>
+</footer>
+
 <script>
   const FREE_LIMIT = 3;
   const LS_COUNT = 'hlpg_count';
@@ -1008,7 +1030,7 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
       '<div style="font-size:2rem;margin-bottom:16px;">✦</div>' +
       '<h3 style="color:var(--text);font-size:1.3rem;margin-bottom:12px;">Upgrade to Pro</h3>' +
       '<p style="color:var(--muted);font-size:0.9rem;line-height:1.6;margin-bottom:24px;">Our payment system is currently being set up. To unlock unlimited generations, please contact us directly.</p>' +
-      '<a href="mailto:info@fortune-thailand.com?subject=Hospitality%20Generator%20Pro" style="display:inline-block;background:#c9a96e;color:#0a0a0a;padding:12px 28px;border-radius:9px;text-decoration:none;font-weight:600;font-size:0.9rem;margin-bottom:16px;">Contact for Pro Access →</a>' +
+      '<a href="mailto:evgeniya.skurlatova@gmail.com?subject=Hospitality%20Generator%20Pro" style="display:inline-block;background:#c9a96e;color:#0a0a0a;padding:12px 28px;border-radius:9px;text-decoration:none;font-weight:600;font-size:0.9rem;margin-bottom:16px;">Contact for Pro Access →</a>' +
       '<br><button onclick="document.getElementById(\'paddleFallback\').remove()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:0.85rem;margin-top:8px;">Close</button>' +
       '</div>';
     document.body.appendChild(div);
